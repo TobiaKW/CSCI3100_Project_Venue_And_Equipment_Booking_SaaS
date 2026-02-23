@@ -1,0 +1,16 @@
+# Render Blueprint - deploy from dashboard: New > Blueprint
+# No database needed for this skeleton app.
+services:
+  - type: web
+    name: proj
+    runtime: ruby
+    plan: free
+
+    buildCommand: "./bin/render-build.sh"
+    startCommand: "bin/rails server -p $PORT -e production"
+
+    envVars:
+      - key: RAILS_MASTER_KEY
+        sync: false
+      - key: WEB_CONCURRENCY
+        value: "2"
