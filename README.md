@@ -1,4 +1,4 @@
-##CSCI3100 Group project --- CUHK Venue and Equipment Booking SaaS
+## CSCI3100 Group project --- CUHK Venue and Equipment Booking SaaS
 Members:
     - Wong Cheuk Yin (1155192671)
     - insert
@@ -6,7 +6,7 @@ Members:
     - insert
     - insert
 
-##Disclaimer
+## Disclaimer
 This repository contains academic work and is published for record and reference purposes only. Do not copy or reuse the code as it may constitute academic misconduct. The code is specific to our course project and should be used solely for learning and understanding the concepts. For your own good, please do your project with your own understanding and knowledge. I am not responsible for any academic misconduct caused by the code in this repository.
 
 ##Notes for collaborators: We are using ruby version 3.3.10, rails 7.2.3 for this project, so make sure you install correct version before working.
@@ -48,4 +48,4 @@ heroku ps:scale web=1 -a secret-sierra-05778 <-turn on
 Free plan: app sleeps after ~15 min of no traffic; first request may take 30–60s to wake.
 Now the web service is deployed on render via this repository, check deployment.
 
-##TODO: One-page proposal. Please check the directory "Proposal".
+## TODO: One-page proposal. Please check the directory "Proposal".
