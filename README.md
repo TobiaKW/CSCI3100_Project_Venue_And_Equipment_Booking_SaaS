@@ -1,5 +1,7 @@
 ## CSCI3100 Group project --- CUHK Venue and Equipment Booking SaaS
 
+Course project @CUHK 2026 Spring
+
 Members:
 
 - Wong Cheuk Yin (1155192671)
