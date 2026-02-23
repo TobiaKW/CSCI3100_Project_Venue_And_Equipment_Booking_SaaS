@@ -1,5 +1,5 @@
 ## 1. Heroku
-## Run locally
+Run locally
 
 ```bash
 bundle install
@@ -17,7 +17,7 @@ git push heroku main
 heroku ps:scale web=0 -a secret-sierra-05778 --turn off
 heroku ps:scale web=1 -a secret-sierra-05778 --turn on
 ```
-## 2. Render (free tier, no card)
+## 2. Render (We are using this!)
 
 1. Push this repo to **GitHub** (if you haven’t).
 2. Go to [dashboard.render.com](https://dashboard.render.com) and sign in with GitHub.
@@ -31,4 +31,4 @@ heroku ps:scale web=1 -a secret-sierra-05778 --turn on
      - `WEB_CONCURRENCY` = `2`
 6. Click **Create Web Service**. After the build, the app will be at `https://<name>.onrender.com`.
 
-Free tier: app sleeps after ~15 min of no traffic; first request may take 30–60s to wake.
+Free plan: app sleeps after ~15 min of no traffic; first request may take 30–60s to wake.
