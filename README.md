@@ -1,10 +1,12 @@
 ## CSCI3100 Group project --- CUHK Venue and Equipment Booking SaaS
+
 Members:
-    - Wong Cheuk Yin (1155192671)
-    - insert
-    - insert
-    - insert
-    - insert
+
+- Wong Cheuk Yin (1155192671)
+- insert
+- insert
+- insert
+- insert
 
 ## Disclaimer
 This repository contains academic work and is published for record and reference purposes only. Do not copy or reuse the code as it may constitute academic misconduct. The code is specific to our course project and should be used solely for learning and understanding the concepts. For your own good, please do your project with your own understanding and knowledge. I am not responsible for any academic misconduct caused by the code in this repository.
