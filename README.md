@@ -1,3 +1,5 @@
+##Notes: We are using ruby version 3.3.10, rails 7.2.3 for this project, so remember to install correct version before working.
+
 ## 1. Heroku
 Run locally
 
