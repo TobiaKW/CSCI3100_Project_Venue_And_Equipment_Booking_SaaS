@@ -12,9 +12,11 @@ bin/rails server
 heroku create
 git push heroku main
 ```
+
+```
 heroku ps:scale web=0 -a secret-sierra-05778 --turn off
 heroku ps:scale web=1 -a secret-sierra-05778 --turn on
-
+```
 ## 2. Render (free tier, no card)
 
 1. Push this repo to **GitHub** (if you haven’t).
