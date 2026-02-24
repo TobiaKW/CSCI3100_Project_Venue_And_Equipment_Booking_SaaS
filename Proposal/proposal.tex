@@ -37,7 +37,7 @@ The Chinese University of Hong Kong \\
 \section{Topic: CUHK Venue and Equipment Booking SaaS}
 \subsection{Planned N-1 Features}
 \begin{enumerate}
-    \item ActionMailer to send email notification to the user when the booking is confirmed.
+    \item ActionMailer to send email notification to the user when the booking is confirmed and to the admin when there is pending approval.
     \item Sidekiq+Redis to implement Daily digest to each Department admin (e.g. “Today’s bookings in the department”, “Pending approvals”.)
     \item ActionCable to implement real-time booking status updates.
     \item Chartkick dashboard to show the usage statistics of the venues or equipments.
@@ -45,7 +45,7 @@ The Chinese University of Hong Kong \\
 \end{enumerate}
 
 \subsection{Overview}
-Multi-Tenant SaaS Application built with \textbf{Rails 7.2.3} :
+Multi-Tenant SaaS Application built with \textbf{Rails 7.2.3} with Conflict detection and Approval workflow as the Core features.
 
 \vspace{0.5em}
 
@@ -67,14 +67,14 @@ Multi-Tenant SaaS Application built with \textbf{Rails 7.2.3} :
     \hline
     \textbf{Pain Points} & \textbf{Solutions} \\
     \hline
-    \textbf{Fragmented booking} \newline Double booking may happen since every dept have separate database &
+    \textbf{Fragmented booking} \newline Double booking may happen since every dept have separate Excel spreadsheets &
     \textbf{Conflict detection} \newline Single Rails database check availability in real-time \\
     \hline
     \textbf{No approval workflow} \newline Direct booking without approval may cause conflicts (e.g. proposed exam) &
-    \textbf{Multi-stage approval} \newline Pending approval $\to$ admin dashboard \newline $\to$ approved/rejected/expired \\
+    \textbf{Multi-stage approval} \newline Student books → PENDING \newline→ Admin [Approve/Reject] button \\
     \hline
     \textbf{Poor visibility} \newline No current room/equipment utilization statistics &
-    \textbf{Chartkick Dashboard} \newline Room usage charts + peak times + email notifications \\
+    \textbf{Chartkick dashboard} \newline Room usage charts + peak times + email notifications \\
     \hline
     \textbf{Manual communication} \newline Need email chains to get approval without a centralized system, may be time-consuming &
     \textbf{ActionCable + ActionMailer} \newline Admin approve → instant browser notification + confirmation email \\
