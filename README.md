@@ -6,7 +6,7 @@ Members:
 
 - Wong Cheuk Yin (1155192671)   https://github.com/TobiaKW
 - Li Yun Sum (1155212047)   https://github.com/Samuelliys
-- insert
+- Wong Sheung Chit (1155212592)   https://github.com/jw1101
 - insert
 - insert
 - insert
