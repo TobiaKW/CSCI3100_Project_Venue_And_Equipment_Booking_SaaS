@@ -15,6 +15,31 @@ This repository contains academic work and is published for record and reference
 
 ## Notes for collaborators: We are using ruby version 3.3.10, rails 7.2.3 for this project, so make sure you install correct version before working.
 
+Start from an empty folder...
+```bash
+git clone https://github.com/TobiaKW/CSCI3100_Project_Venue_And_Equipment_Booking_SaaS.git
+git pull --rebase origin main
+```
+
+Then, for each change session:
+
+```bash
+git pull --rebase origin main #get latest change
+# then do the modification
+git add .       # or specific files
+git commit -m "commit message"
+git push origin main    #may need to add --set-upstream for first time
+```
+
+When prompted by git for authentication:
+
+```bash
+username for 'https://github.com': <your-github-username>
+password for 'https://github.com': <your-github-personal-token>
+```
+
+your token should included the `repo` scope.
+
 ## Web service deployment choice 1: Heroku
 Run locally
 
@@ -31,8 +56,8 @@ git push heroku main
 
 **To turn on/off the website**
 ```
-heroku ps:scale web=0 -a secret-sierra-05778 <-turn off
-heroku ps:scale web=1 -a secret-sierra-05778 <-turn on 
+heroku ps:scale web=0 -a secret-sierra-05778 # turn off
+heroku ps:scale web=1 -a secret-sierra-05778 # turn on 
 (last arg is the domain name)
 ```
 ## Web service deployment choice 2: Render (We are using this!)
