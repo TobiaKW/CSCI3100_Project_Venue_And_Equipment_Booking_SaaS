@@ -33,3 +33,12 @@
 
 # Ignore master key for decrypting credentials and more.
 /config/master.key
+
+# LaTeX build artifacts (regenerated from .tex)
+/Proposal/*.aux
+/Proposal/*.fdb_latexmk
+/Proposal/*.fls
+/Proposal/*.log
+/Proposal/*.out
+/Proposal/*.pdf
+/Proposal/*.synctex.gz

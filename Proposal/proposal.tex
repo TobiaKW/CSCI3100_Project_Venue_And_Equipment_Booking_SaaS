@@ -44,15 +44,50 @@ CUHK Venue and Equipment Booking SaaS
     \item Mobile Display
     \\ Users may use mobile phone to view the page, the UI may not display optimally
 \end{itemize}
+\section{Topic: CUHK Venue and Equipment Booking SaaS}
+\subsection{Planned N-1 Features}
+\begin{enumerate}
+    \item ActionMailer to send email notification to the user when the booking is confirmed.
+    \item Sidekiq+Redis to implement Daily digest to each Department admin: “Today’s bookings in your department”, “Tomorrow’s schedule”, “Pending approvals”.
+    \item ActionCable to implement real-time booking status updates.
+    \item Chartkick dashboard to show the usage statistics of the venues or equipments.
+\end{enumerate}
 
-\section{Solution Overview}
+\subsection{Overview}
+Multi-Tenant SaaS Application built with \textbf{Rails 7.2.3} :
 
-\section{Planned N-1 Features}
+\vspace{0.5em}
+
+\noindent\textbf{Data Models:}
 \begin{itemize}
-    \item External calendar API
-    \\ Link to external calendar (e.g. Google Calendar) API to show bookings in users' own calendar
-    \item Real time booking status
-    \item Utilisation stat
-    \item Email notification
+    \item \textbf{Department} (tenant isolation: Engineering, Arts, Medicine)
+    \item \textbf{Resources} (2 types: Room or Equipment) 
+    \item \textbf{Booking} (status: pending $\to$ approved/rejected/expired)
+    \item \textbf{User} (student submits, admin approves)
 \end{itemize}
+
+\vspace{0.5em}
+
+\noindent\textbf{Major Pain Points and Solutions:}
+
+\vspace{1em}
+
+\begin{tabular}{|p{7cm}|p{9cm}|}
+    \hline
+    \textbf{Pain Points} & \textbf{Solutions} \\
+    \hline
+    \textbf{Fragmented booking} \newline Double booking may happen since every dept have separate database &
+    \textbf{Conflict detection} \newline Single Rails database check availability in real-time \\
+    \hline
+    \textbf{No approval workflow} \newline Direct booking without approval may cause conflicts (e.g. proposed exam) &
+    \textbf{Multi-stage approval} \newline Pending approval $\to$ admin dashboard $\to$ approved/rejected/expired \\
+    \hline
+    \textbf{Poor visibility} \newline No room/equipment utilization stats &
+    \textbf{Chartkick Dashboard} \newline Room usage charts + peak times + email notifications \\
+    \hline
+    \textbf{Manual communication} \newline Need email chains to get approval without a centralized system &
+    \textbf{ActionCable + ActionMailer} \newline Admin approve → instant browser notification + confirmation email \\
+    \hline
+\end{tabular}
+
 \end{document}
