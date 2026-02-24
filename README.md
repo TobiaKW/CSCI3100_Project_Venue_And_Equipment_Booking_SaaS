@@ -8,7 +8,7 @@ Members:
 - Li Yun Sum (1155212047)   https://github.com/Samuelliys
 - Wong Sheung Chit (1155212592)   https://github.com/jw1101
 - Hsieh Chong Ho (1155213925)   https://github.com/Qwerty-Pi
-- insert
+- Ng Shing Hin (1155214379) https://github.com/Eason2123
 
 ## Disclaimer
 This repository contains academic work and is published for record and reference purposes only. Do not copy or reuse the code as it may constitute academic misconduct. The code is specific to our course project and should be used solely for learning and understanding the concepts. For your own good, please do your project with your own understanding and knowledge. We are not responsible for any academic misconduct caused by the code in this repository.
