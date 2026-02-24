@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023/Debian) (preloaded format=pdflatex 2026.2.23)  24 FEB 2026 18:16
+This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023/Debian) (preloaded format=pdflatex 2026.2.23)  24 FEB 2026 19:36
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -411,11 +411,9 @@ LaTeX Font Info:    Trying to load font information for U+msb on input line 25.
 (/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 )
-
-Package hyperref Warning: Suppressing empty link on input line 33.
-
 LaTeX Font Info:    Trying to load font information for TS1+ptm on input line 4
 2.
+
 (/usr/share/texlive/texmf-dist/tex/latex/psnfss/ts1ptm.fd
 File: ts1ptm.fd 2001/06/04 font definitions for TS1/ptm.
 ) [1
@@ -439,10 +437,10 @@ Here is how much of TeX's memory you used:
  75i,6n,79p,252b,439s stack positions out of 10000i,1000n,20000p,200000b,200000s
 </usr/share/texlive/texmf-dist/fonts/type1/urw/times/utmb8a.pfb></usr/share/t
 exlive/texmf-dist/fonts/type1/urw/times/utmr8a.pfb>
-Output written on proposal.pdf (1 page, 31248 bytes).
+Output written on proposal.pdf (1 page, 33396 bytes).
 PDF statistics:
- 51 PDF objects out of 1000 (max. 8388607)
- 43 compressed objects within 1 object stream
+ 52 PDF objects out of 1000 (max. 8388607)
+ 44 compressed objects within 1 object stream
  7 named destinations out of 1000 (max. 500000)
  41 words of extra memory for PDF output out of 10000 (max. 10000000)
 
