@@ -32,7 +32,7 @@ git commit -m "commit message"
 git push origin main    #may need to add --set-upstream for first time
 ```
 
-If push is rejected (remote has new commits):
+If push is rejected:
 
 1. Pull and rebase: `git pull --rebase origin main`
 2. If Git reports a **conflict**, open the listed file(s), resolve the conflict markers (`<<<<<<<`, `=======`, `>>>>>>>`), then:
