@@ -11,7 +11,7 @@
 }
 
 \begin{document}
-
+\pagenumbering{gobble}
 \begin{center}
 The Chinese University of Hong Kong \\
 2025-26 Term 2 \quad CSCI3100 Software Engineering \\
@@ -19,7 +19,6 @@ The Chinese University of Hong Kong \\
 \end{center}
 
 \hrule
-\vspace{0.5em}
 
 \section{Team Members}
 \begin{tabular}{ | c | c | c | }
@@ -34,16 +33,6 @@ The Chinese University of Hong Kong \\
     \hline
 \end{tabular}
 
-\section{Topic}
-CUHK Venue and Equipment Booking SaaS
-
-\section{Pain Points}
-\begin{itemize}
-    \item Double-booking
-    \\ Conflicts occur when multiple student societies attempt to book the same room or equipment
-    \item Mobile Display
-    \\ Users may use mobile phone to view the page, the UI may not display optimally
-\end{itemize}
 \section{Topic: CUHK Venue and Equipment Booking SaaS}
 \subsection{Planned N-1 Features}
 \begin{enumerate}
@@ -51,6 +40,7 @@ CUHK Venue and Equipment Booking SaaS
     \item Sidekiq+Redis to implement Daily digest to each Department admin: “Today’s bookings in your department”, “Tomorrow’s schedule”, “Pending approvals”.
     \item ActionCable to implement real-time booking status updates.
     \item Chartkick dashboard to show the usage statistics of the venues or equipments.
+    %mobile display?
 \end{enumerate}
 
 \subsection{Overview}
@@ -70,7 +60,7 @@ Multi-Tenant SaaS Application built with \textbf{Rails 7.2.3} :
 
 \noindent\textbf{Major Pain Points and Solutions:}
 
-\vspace{1em}
+\vspace{0.7em}
 
 \begin{tabular}{|p{7cm}|p{9cm}|}
     \hline

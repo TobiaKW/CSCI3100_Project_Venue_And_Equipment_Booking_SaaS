@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.27 (TeX Live 2025/Homebrew) (preloaded format=pdflatex 2025.10.11)  24 FEB 2026 20:57
+This is pdfTeX, Version 3.141592653-2.6-1.40.27 (TeX Live 2025/Homebrew) (preloaded format=pdflatex 2025.10.11)  24 FEB 2026 21:11
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -343,57 +343,55 @@ Package hyperref Info: Link coloring ON on input line 13.
 \@outlinefile=\write3
 \openout3 = `proposal.out'.
 
-LaTeX Font Info:    Trying to load font information for U+msa on input line 25.
+LaTeX Font Info:    Trying to load font information for U+msa on input line 24.
  (/opt/homebrew/Cellar/texlive/20250308_1/share/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Trying to load font information for U+msb on input line 25.
+LaTeX Font Info:    Trying to load font information for U+msb on input line 24.
  (/opt/homebrew/Cellar/texlive/20250308_1/share/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 )
-LaTeX Font Info:    Trying to load font information for TS1+ptm on input line 42.
+LaTeX Font Info:    Trying to load font information for TS1+ptm on input line 53.
  (/opt/homebrew/Cellar/texlive/20250308_1/share/texmf-dist/tex/latex/psnfss/ts1ptm.fd
 File: ts1ptm.fd 2001/06/04 font definitions for TS1/ptm.
 )
-Underfull \hbox (badness 1831) in paragraph at lines 82--82
+Underfull \hbox (badness 1831) in paragraph at lines 72--72
 \OT1/ptm/m/n/12 Direct book-ing with-out ap-proval may
  []
 
 
-Underfull \hbox (badness 4556) in paragraph at lines 83--84
+Underfull \hbox (badness 4556) in paragraph at lines 73--74
 \OT1/ptm/m/n/12 Pending ap-proval $\OMS/cmsy/m/n/12 !$ \OT1/ptm/m/n/12 ad-min dash-board $\OMS/cmsy/m/n/12 !$ \OT1/ptm/m/n/12 ap-
  []
 
 LaTeX Info: Symbol \textrightarrow not provided by
             font family ptm in TS1 encoding.
-            Default family used instead on input line 89.
+            Default family used instead on input line 79.
 
 
 [1
 
-{/opt/homebrew/Cellar/texlive/20250308_1/share/texmf-dist/fonts/map/pdftex/updmap/pdftex.map}{/opt/homebrew/Cellar/texlive/20250308_1/share/texmf-dist/fonts/enc/dvips/base/8r.enc}]
-
-[2{/opt/homebrew/Cellar/texlive/20250308_1/share/texmf-dist/fonts/enc/dvips/cm-super/cm-super-ts1.enc}] (./proposal.aux)
+{/opt/homebrew/Cellar/texlive/20250308_1/share/texmf-dist/fonts/map/pdftex/updmap/pdftex.map}{/opt/homebrew/Cellar/texlive/20250308_1/share/texmf-dist/fonts/enc/dvips/base/8r.enc}{/opt/homebrew/Cellar/texlive/20250308_1/share/texmf-dist/fonts/enc/dvips/cm-super/cm-super-ts1.enc}] (./proposal.aux)
  ***********
 LaTeX2e <2024-11-01> patch level 2
 L3 programming layer <2025-01-18>
  ***********
 Package rerunfilecheck Info: File `proposal.out' has not changed.
-(rerunfilecheck)             Checksum: 5A163174024E0A7BF6D1727E06CADAD4;816.
+(rerunfilecheck)             Checksum: 9B75DCC1F4C5A274B71AC5AF835A4533;647.
  ) 
 Here is how much of TeX's memory you used:
- 10380 strings out of 473190
- 161330 string characters out of 5704334
- 570451 words of memory out of 5000000
- 33484 multiletter control sequences out of 15000+600000
+ 10376 strings out of 473190
+ 161294 string characters out of 5704334
+ 572451 words of memory out of 5000000
+ 33483 multiletter control sequences out of 15000+600000
  571610 words of font info for 66 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 75i,9n,79p,368b,440s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 75i,9n,79p,368b,439s stack positions out of 10000i,1000n,20000p,200000b,200000s
 </opt/homebrew/Cellar/texlive/20250308_1/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></opt/homebrew/Cellar/texlive/20250308_1/share/texmf-dist/fonts/type1/public/cm-super/sfrm1200.pfb></opt/homebrew/Cellar/texlive/20250308_1/share/texmf-dist/fonts/type1/urw/times/utmb8a.pfb></opt/homebrew/Cellar/texlive/20250308_1/share/texmf-dist/fonts/type1/urw/times/utmr8a.pfb>
-Output written on proposal.pdf (2 pages, 49636 bytes).
+Output written on proposal.pdf (1 page, 48339 bytes).
 PDF statistics:
- 76 PDF objects out of 1000 (max. 8388607)
- 63 compressed objects within 1 object stream
- 13 named destinations out of 1000 (max. 500000)
- 49 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 63 PDF objects out of 1000 (max. 8388607)
+ 51 compressed objects within 1 object stream
+ 10 named destinations out of 1000 (max. 500000)
+ 33 words of extra memory for PDF output out of 10000 (max. 10000000)
 

@@ -1,6 +1,6 @@
 # Fdb version 4
-["pdflatex"] 1771937836.29301 "/Users/kevin/Desktop/CSCI3100/PROJ/Proposal/proposal.tex" "proposal.pdf" "proposal" 1771937836.6317 0
-  "/Users/kevin/Desktop/CSCI3100/PROJ/Proposal/proposal.tex" 1771937192.1434 3419 dce8ab58cd1e5f882e0361e35b3076be ""
+["pdflatex"] 1771938690.56024 "/Users/kevin/Desktop/CSCI3100/PROJ/Proposal/proposal.tex" "proposal.pdf" "proposal" 1771938690.893 0
+  "/Users/kevin/Desktop/CSCI3100/PROJ/Proposal/proposal.tex" 1771938690.33047 3109 bea9aba428878711cd1cf54c3e7d24b5 ""
   "/opt/homebrew/Cellar/texlive/20250308_1/share/texmf-dist/fonts/enc/dvips/base/8r.enc" 1741388039 4850 80dc9bab7f31fb78a000ccfed0e27cab ""
   "/opt/homebrew/Cellar/texlive/20250308_1/share/texmf-dist/fonts/enc/dvips/cm-super/cm-super-ts1.enc" 1741388039 2900 1537cc8184ad1792082cd229ecc269f4 ""
   "/opt/homebrew/Cellar/texlive/20250308_1/share/texmf-dist/fonts/map/fontname/texfonts.map" 1741388039 3524 cb3e574dea2d1052e39280babc910dc8 ""
@@ -94,9 +94,9 @@
   "/opt/homebrew/Cellar/texlive/20250308_1/share/texmf-dist/tex/latex/url/url.sty" 1741388039 12796 8edb7d69a20b857904dd0ea757c14ec9 ""
   "/opt/homebrew/Cellar/texlive/20250308_1/share/texmf-dist/web2c/texmf.cnf" 1741388039 42151 79f67285bdd95beca4d137b380b4b9e5 ""
   "/opt/homebrew/Cellar/texlive/20250308_1/share/texmf-var/web2c/pdftex/pdflatex.fmt" 1741388039 3346132 6a939494d30ef2febcac9d47a1191e44 ""
-  "proposal.aux" 1771937836.60472 864 37afe28d7e79bba22cec9973aa4cc79d "pdflatex"
-  "proposal.out" 1771937836.60503 816 5a163174024e0a7bf6d1727e06cadad4 "pdflatex"
-  "proposal.tex" 1771937192.1434 3419 dce8ab58cd1e5f882e0361e35b3076be ""
+  "proposal.aux" 1771938690.8653 650 ea910c0c130b1e3583dbb5dcd8181623 "pdflatex"
+  "proposal.out" 1771938690.8656 647 9b75dcc1f4c5a274b71ac5af835a4533 "pdflatex"
+  "proposal.tex" 1771938690.33047 3109 bea9aba428878711cd1cf54c3e7d24b5 ""
   (generated)
   "proposal.aux"
   "proposal.log"
