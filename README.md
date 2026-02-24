@@ -96,4 +96,5 @@ Now the web service is deployed on render via this repository, check deployment.
 
 ## Changelog
 2026-02-23: Initialize the walking skeleton, deployed on Render
-2026-02-24: 
+
+2026-02-24: Finished proposal with LaTex
