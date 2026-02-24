@@ -15,7 +15,7 @@ This repository contains academic work and is published for record and reference
 
 ## Notes for collaborators: We are using ruby version 3.3.10, rails 7.2.3 for this project, so make sure you install correct version before working.
 
-Start from an empty folder...
+Starting from an empty local folder...
 ```bash
 git clone https://github.com/TobiaKW/CSCI3100_Project_Venue_And_Equipment_Booking_SaaS.git
 git pull --rebase origin main
@@ -38,7 +38,7 @@ username for 'https://github.com': <your-github-username>
 password for 'https://github.com': <your-github-personal-token>
 ```
 
-your token should included the `repo` scope.
+your token should include the `repo` scope.
 
 ## Web service deployment choice 1: Heroku
 Run locally
