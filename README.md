@@ -92,4 +92,8 @@ heroku ps:scale web=1 -a secret-sierra-05778 # turn on
 Free plan: app sleeps after ~15 min of no traffic; first request may take 30–60s to wake.
 Now the web service is deployed on render via this repository, check deployment.
 
-## TODO: One-page proposal. Please check the directory "Proposal".
+## TODOS:
+
+## Changelog
+2026-02-23: Initialize the walking skeleton, deployed on Render
+2026-02-24: 
