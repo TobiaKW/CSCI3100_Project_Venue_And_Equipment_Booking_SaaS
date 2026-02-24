@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023/Debian) (preloaded format=pdflatex 2026.2.23)  24 FEB 2026 16:32
+This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023/Debian) (preloaded format=pdflatex 2026.2.23)  24 FEB 2026 16:59
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -424,10 +424,10 @@ Here is how much of TeX's memory you used:
 k></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></us
 r/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/share
 /texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt12.pfb>
-Output written on proposal.pdf (1 page, 38704 bytes).
+Output written on proposal.pdf (1 page, 39880 bytes).
 PDF statistics:
- 53 PDF objects out of 1000 (max. 8388607)
- 42 compressed objects within 1 object stream
+ 54 PDF objects out of 1000 (max. 8388607)
+ 43 compressed objects within 1 object stream
  6 named destinations out of 1000 (max. 500000)
  33 words of extra memory for PDF output out of 10000 (max. 10000000)
 
