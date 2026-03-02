@@ -78,7 +78,7 @@ GEM
     base64 (0.3.0)
     benchmark (0.5.0)
     bigdecimal (4.0.1)
-    brakeman (8.0.2)
+    brakeman (8.0.4)
       racc
     builder (3.3.0)
     cgi (0.5.1)
@@ -258,7 +258,7 @@ PLATFORMS
   x86_64-linux
 
 DEPENDENCIES
-  brakeman
+  brakeman (= 8.0.4)
   debug
   pg (~> 1.5)
   puma (>= 5.0)
