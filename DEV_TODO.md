@@ -1,20 +1,3 @@
-# Offline dev TODO & guide — Venue & Equipment Booking SaaS
-
-Use this when you're offline (e.g. on a flight). Sync with GitHub when you're back.
-
----
-
-## Quick start (no internet)
-
-```bash
-cd /path/to/PROJ
-bundle install
-bin/rails server
-# Open http://localhost:3000
-```
-
-Stop server: `Ctrl+C`
-
 ---
 
 ## TODO list (order suggested)
@@ -96,4 +79,3 @@ Stop server: `Ctrl+C`
 - **Core:** Conflict detection (no double booking); multi-stage approval (student submit → admin approve/reject).
 - **Stack:** Rails 7.2.3, PostgreSQL, RSpec. N-1: ActionMailer, Sidekiq+Redis, ActionCable, Chartkick.
 
-Good flight. When back, sync and push.

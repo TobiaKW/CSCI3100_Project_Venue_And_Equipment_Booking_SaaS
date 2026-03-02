@@ -13,65 +13,76 @@
 #            booking.start_time, booking.end_time    date+time
 # can add more attr such as room capacity etc for more info
 
-# initialization
-bin/rails g model Department name:string
-bin/rails g model User email:string role:string department:references
-bin/rails g model Resource name:string resource_type:string department:references
-bin/rails g model Booking user:references resource:references start_time:datetime end_time:datetime status:string department:references
-bin/rails db:migrate
-
+# Run migrations first (in terminal): bin/rails db:migrate
 
 Department_list = [
-    'Enginnering', 'Science', 'Physical Education Unit'
+    'Engineering', 'Science', 'Physical Education Unit'
 ]
 
-Department_list.each do |deaprtment_attr|#pends checking
-    Department.find_or_create_by(name: department_attr) do |department_attr|
-    end
+Department_list.each do |dept_name|
+  Department.find_or_create_by!(name: dept_name)
 end
 
-## create admin
-User.find_or_create_by(email: 'admin@booking.cuhk.edu.hk') do |user|
-    user.name = 'Admin User'
+# Create admin (ensure User model has :name, :password_digest or use Devise)
+User.find_or_create_by!(email: 'admin@booking.cuhk.edu.hk') do |user|
+    user.name = 'Admin User'    
     user.password = '123456'
+    user.role = 'admin'
+    user.department = Department.find_by!(name: 'Engineering')
 end
-## create user "Kevin"
-User.find_or_create_by(email: 'kevin@link.cuhk.edu.hk') do |user|
+# Create user "Kevin"
+User.find_or_create_by!(email: 'kevin@link.cuhk.edu.hk') do |user|
     user.name = 'Kevin'
     user.password = '654321'
+    user.role = 'student'
+    user.department = Department.find_by!(name: 'Engineering')
 end
 
 
 #resources for test
 Resource_list = [
-    {name: 'SHB122', type: 'room', dept: 'Engineering'},
-    {name: 'ERB803', type: 'room', dept: 'Engineering'},
-    {name: 'T. Y. Wong Hall', type: 'room', dept: 'Engineering'},
-    {name: 'FPGA board', type: 'equipment', dept: 'Engineering'}
-    {name: 'Science Centre LT1', type: 'Room', dept: 'Science'}
-    {name: 'Science Centre LT2', type: 'Room', dept: 'Science'}
-    {name: 'Badminton Bat', type: 'equipment', dept: 'Physical Education Unit'},
-    {name: 'Basketball', type: 'equipment', dept: 'Physical Education Unit'},
-    {name: 'University Gym New Arc', type: 'room', dept: 'Physical Education Unit'},
+    {name: 'SHB122', rtype: 'room', dept: 'Engineering'},
+    {name: 'ERB803', rtype: 'room', dept: 'Engineering'},
+    {name: 'T. Y. Wong Hall', rtype: 'room', dept: 'Engineering'},
+    {name: 'FPGA board', rtype: 'equipment', dept: 'Engineering'},
+    {name: 'Science Centre LT1', rtype: 'room', dept: 'Science'},
+    {name: 'Science Centre LT2', rtype: 'room', dept: 'Science'},
+    {name: 'Badminton Bat', rtype: 'equipment', dept: 'Physical Education Unit'},
+    {name: 'Basketball', rtype: 'equipment', dept: 'Physical Education Unit'},
+    {name: 'University Gym New Arc', rtype: 'room', dept: 'Physical Education Unit'},
 ]
 
-Resource_list.each do |resource_attr|
-    Resource.find_or_create_by(name: resource_attr[:name]) do |resource|
-        resource.type = resource_attr[:type]
-        resource.department = resource_attr[:dept]
+Resource_list.each do |attr|
+    dept = Department.find_by!(name: attr[:dept])
+    Resource.find_or_create_by!(name: attr[:name], department: dept) do |resource|
+      resource.rtype = attr[:rtype]
     end
 end
 
 Booking_list = [
-    {user: 'Kevin', resource: 'SHB122', start_time: '2026/3/1 14:00', start_time: '2026/3/1 16:00', dept = 'Engineering'}
+    {
+      user: 'Kevin',
+      resource: 'SHB122',
+      start_time: '2026-03-01 14:00',
+      end_time:   '2026-03-01 16:00',
+      dept:       'Engineering'
+    }
 ]
 
-Booking_list.each do |booking_list_attr|
-    Booking.find_or_create_by(user: booking_attr[:user]) do |booking|
-        booking.resource = resource_attr[:resource]
-        booking.start_time = resource_attr[:start_time]
-        booking.end_time = resource_attr[:end_time]
-        booking.department = resource_attr[:dept]
+Booking_list.each do |attr|
+    
+    user = User.find_by!(name: attr[:user])
+    dept = Department.find_by!(name: attr[:dept])
+    resource = Resource.find_by!(name: attr[:resource_name], department: dept)
+    start_at = Time.zone.parse(attr[:start_time])
+    end_at = Time.zone.parse(attr[:end_time])
+
+    next if Booking.exists?(user: user, resource: resource, start_time: start_at)
+
+    Booking.find_or_create_by!(user: user, resource: resource, start_time: start_at) do |b|
+        b.end_time = end_at
+        b.status = 'approved'
+        b.department = dept
     end
 end
 
