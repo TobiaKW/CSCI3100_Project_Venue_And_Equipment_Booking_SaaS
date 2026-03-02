@@ -98,3 +98,5 @@ Now the web service is deployed on render via this repository, check deployment.
 2026-02-23: Initialize the walking skeleton, deployed on Render
 
 2026-02-24: Finished proposal with LaTeX
+
+2026-03-02: basic data model set in seed.rb

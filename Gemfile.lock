@@ -262,12 +262,14 @@ DEPENDENCIES
   debug
   pg (~> 1.5)
   puma (>= 5.0)
-  rails (~> 7.2.3)
+  rails (= 7.2.3)
   rubocop-rails-omakase
   sprockets-rails
   sqlite3 (>= 1.4)
   tzinfo-data
 
+RUBY VERSION
+   ruby 3.3.10p183
+
 BUNDLED WITH
    2.4.10
-   

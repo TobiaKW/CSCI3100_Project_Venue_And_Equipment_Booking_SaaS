@@ -19,6 +19,11 @@ jobs:
           ruby-version: .ruby-version
           bundler-cache: true
 
+      - name: Verify Ruby 3.3.10 and Rails 7.2.3
+        run: |
+          [ "$(ruby -e 'puts RUBY_VERSION')" = "3.3.10" ] || (echo "Expected Ruby 3.3.10, got $(ruby -e 'puts RUBY_VERSION')"; exit 1)
+          [ "$(bundle exec rails -v)" = "Rails 7.2.3" ] || (echo "Expected Rails 7.2.3, got $(bundle exec rails -v)"; exit 1)
+
       - name: Scan for common Rails security vulnerabilities using static analysis
         run: bin/brakeman --no-pager
 
