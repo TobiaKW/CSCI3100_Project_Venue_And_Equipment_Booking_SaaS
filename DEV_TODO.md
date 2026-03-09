@@ -16,6 +16,8 @@
 2. **Fix seeds**  
    After migrations, run `bin/rails db:seed`. 
 
+can add password encrytion later
+
 CURRENT PROGRESS
 
 3. **Auth**  
@@ -113,4 +115,3 @@ CURRENT PROGRESS
 - **Models:** Department → Users, Resources (room/equipment), Bookings (pending → approved/rejected/expired).
 - **Core:** Conflict detection (no double booking); multi-stage approval (student submit → admin approve/reject).
 - **Stack:** Rails 7.2.3, PostgreSQL, RSpec. N-1: ActionMailer, Sidekiq+Redis, ActionCable, Chartkick.
-
