@@ -23,19 +23,19 @@ Department_list.each do |dept_name|
   Department.find_or_create_by!(name: dept_name)
 end
 
-# Create admin (ensure User model has :name, :password_digest or use Devise)
+# Create admin (add has_secure_password + bcrypt when you add auth)
 User.find_or_create_by!(email: 'admin@booking.cuhk.edu.hk') do |user|
-    user.name = 'Admin User'
-    user.password = '123456'
-    user.role = 'admin'
-    user.department = Department.find_by!(name: 'Engineering')
+  user.name = 'Admin User'
+  user.password_digest = 'dev'
+  user.role = 'admin'
+  user.department = Department.find_by!(name: 'Engineering')
 end
 # Create user "Kevin"
 User.find_or_create_by!(email: 'kevin@link.cuhk.edu.hk') do |user|
-    user.name = 'Kevin'
-    user.password = '654321'
-    user.role = 'student'
-    user.department = Department.find_by!(name: 'Engineering')
+  user.name = 'Kevin'
+  user.password_digest = 'dev'
+  user.role = 'student'
+  user.department = Department.find_by!(name: 'Engineering')
 end
 
 

@@ -2,21 +2,21 @@
 
 ## From HW cap → Booking app (what was done / what you do)
 
-**Done**
-- **HomeController** — Removed Movie CRUD (no `Movie` model existed). It’s now a simple landing with one `index` action. Root still goes to `home#index`.
 
 **You do next (in order)**
 
 1. **Migrations & models**  
    Create the four tables and models so `db/seeds` can run and the app has a real data layer:
    - `Department` (name)
-   - `User` (email, password_digest, name, role, department_id) — use `has_secure_password` or add Devise later
+   - `User` (email, password, name, role, department_id) — use `has_secure_password` or add Devise later
    - `Resource` (name, rtype, department_id) — `rtype` = 'room' or 'equipment'
    - `Booking` (user_id, resource_id, department_id, start_time, end_time, status)  
    Commands: `bin/rails g model Department name:string`, then same for User, Resource, Booking; add associations and indexes; then `bin/rails db:migrate`.
 
 2. **Fix seeds**  
-   After migrations, run `bin/rails db:seed`. If User uses `has_secure_password`, ensure seeds set `password` (not `password_digest`) so validations pass.
+   After migrations, run `bin/rails db:seed`. 
+
+CURRENT PROGRESS
 
 3. **Auth**  
    Add Devise (or similar) so you have sign in / sign out and `current_user`. Restrict by role (student vs admin) in controllers.

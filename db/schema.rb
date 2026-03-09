@@ -4,7 +4,7 @@ ActiveRecord::Schema[7.2].define(version: 0) do
     end
     create_table "users", force: :cascade do |t|
         t.string "email"
-        t.string "password_digest"
+        t.string "password"
         t.string "name"
         t.string "role"
         t.references "department", null: false, foreign_key: true
@@ -17,6 +17,7 @@ ActiveRecord::Schema[7.2].define(version: 0) do
     create_table "bookings", force: :cascade do |t|
         t.references "user", null: false, foreign_key: true
         t.references "resource", null: false, foreign_key: true
+        t.references "department", null: false, foreign_key: true
         t.datetime "start_time"
         t.datetime "end_time"
         t.string "status"
