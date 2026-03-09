@@ -18,7 +18,7 @@
 
 can add password encrytion later
 
-CURRENT PROGRESS
+-CURRENT PROGRESS-
 
 3. **Auth**  
    Add Devise (or similar) so you have sign in / sign out and `current_user`. Restrict by role (student vs admin) in controllers.
