@@ -19,6 +19,4 @@ production:
   encoding: unicode
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
   url: <%= ENV["DATABASE_URL"] %>
-  # Ensure we don't try to connect via socket if URL is present
-  host: <%= ENV["DATABASE_URL"] ? URI.parse(ENV["DATABASE_URL"]).host : nil %>
-  port: <%= ENV["DATABASE_URL"] ? URI.parse(ENV["DATABASE_URL"]).port : nil %>
+  sslmode: require
