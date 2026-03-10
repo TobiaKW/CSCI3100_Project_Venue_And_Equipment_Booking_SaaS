@@ -11,4 +11,8 @@ class ApplicationController < ActionController::Base
     devise_parameter_sanitizer.permit(:sign_up, keys: extra)
     devise_parameter_sanitizer.permit(:account_update, keys: extra)
   end
+  
+  def after_sign_out_path_for(_resource_or_scope)
+    new_user_session_path   # redirect to login page after logout
+  end
 end
