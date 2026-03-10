@@ -5,12 +5,13 @@ ruby "3.3.10"
 gem "rails", "7.2.3"
 # The original asset pipeline for Rails [https://github.com/rails/sprockets-rails]
 gem "sprockets-rails"
-# Use sqlite3 as the database for Active Record (development/test)
+# database gem
 gem "sqlite3", ">= 1.4"
-# Use pg on Heroku (production)
-gem "pg", "~> 1.5", group: :production
+gem "pg", "~> 1.5"
 # Use the Puma web server [https://github.com/puma/puma]
 gem "puma", ">= 5.0"
+# authentication
+gem "devise"
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem "tzinfo-data", platforms: %i[ windows jruby ]
@@ -25,5 +26,3 @@ group :development, :test do
   # Omakase Ruby styling [https://github.com/rails/rubocop-rails-omakase/]
   gem "rubocop-rails-omakase", require: false
 end
-
-gem "devise", "~> 5.0"
