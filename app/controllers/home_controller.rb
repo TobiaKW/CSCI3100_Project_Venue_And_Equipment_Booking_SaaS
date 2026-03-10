@@ -5,7 +5,7 @@ class HomeController < ApplicationController
   def index
     @resources = Resource.all
 
-    # Search by name (case-insensitive)
+    # Filter by name
     if params[:search].present?
       @resources = @resources.where("name ILIKE ?", "%#{params[:search]}%")
     end
@@ -14,5 +14,6 @@ class HomeController < ApplicationController
     if params[:rtypes].present?
       @resources = @resources.where(rtype: params[:rtypes])
     end
+    
   end
 end

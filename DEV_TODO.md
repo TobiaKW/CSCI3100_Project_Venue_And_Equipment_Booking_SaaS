@@ -18,10 +18,10 @@
 
 can add password encrytion later
 
--CURRENT PROGRESS-
-
-3. **Auth**  
+3. **Auth(DONE)** 
    Add Devise (or similar) so you have sign in / sign out and `current_user`. Restrict by role (student vs admin) in controllers.
+
+-CURRENT PROGRESS-
 
 4. **Booking app controllers & routes**  
    Add controllers and routes for the booking flow, e.g.:

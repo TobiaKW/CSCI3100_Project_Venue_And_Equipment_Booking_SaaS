@@ -19,4 +19,6 @@ production:
   encoding: unicode
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
   url: <%= ENV["DATABASE_URL"] %>
-  sslmode: require
+
+  variables:
+    statement_timeout: 5000
