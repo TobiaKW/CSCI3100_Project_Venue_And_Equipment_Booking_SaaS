@@ -1,12 +1,54 @@
-<h1>Hello World</h1>
+<h1>Venue & Equipment Booking</h1>
 
 <% if user_signed_in? %>
+  <p>Welcome, <%= current_user.name %> (<%= current_user.role %>)</p>
   <%= button_to "Log out", destroy_user_session_path, method: :delete %>
 <% else %>
-  <%= button_to "Log in", new_user_session_path, method: :get %>
-  <%= button_to "Sign up", new_user_registration_path, method: :get %>
+  <p>
+    <%= button_to "Log in", new_user_session_path, method: :get %>
+    <%= button_to "Sign up", new_user_registration_path, method: :get %>
+  </p>
 <% end %>
 
-<% if current_user %>
-    <p>“Welcome, <%= current_user.name %>”</p>
+<hr>
+
+<h3>Search Resources</h3>
+<%= form_with url: root_path, method: :get, local: true do |f| %>
+  <div>
+    <%= f.label :search, "Search by name:" %>
+    <%= f.text_field :search, value: params[:search] %>
+  </div>
+
+  <div>
+    <p>Filter by type:</p>
+    <%= f.check_box :rtypes, { multiple: true, checked: params[:rtypes]&.include?("room") }, "room", nil %> Room
+    <%= f.check_box :rtypes, { multiple: true, checked: params[:rtypes]&.include?("equipment") }, "equipment", nil %> Equipment
+  </div>
+
+  <div>
+    <%= f.submit "Search" %>
+    <%= button_to "Clear", root_path, method: :get %>
+  </div>
 <% end %>
+
+<hr>
+
+<h3>Available Resources</h3>
+<table border="1">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Type</th>
+      <th>Department</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @resources.each do |resource| %>
+      <tr>
+        <td><%= resource.name %></td>
+        <td><%= resource.rtype %></td>
+        <td><%= resource.department.name %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

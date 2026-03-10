@@ -1,7 +1,18 @@
 # Landing page for Venue & Equipment Booking app
 class HomeController < ApplicationController
   skip_before_action :authenticate_user!, only: [ :index ]
+
   def index
-    # Root: show landing; add links to resources/bookings when those controllers exist
+    @resources = Resource.all
+
+    # Search by name (case-insensitive)
+    if params[:search].present?
+      @resources = @resources.where("name ILIKE ?", "%#{params[:search]}%")
+    end
+
+    # Filter by rtype (room/equipment)
+    if params[:rtypes].present?
+      @resources = @resources.where(rtype: params[:rtypes])
+    end
   end
 end
