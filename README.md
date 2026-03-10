@@ -92,6 +92,39 @@ heroku ps:scale web=1 -a secret-sierra-05778 # turn on
 Free plan: app sleeps after ~15 min of no traffic; first request may take 30–60s to wake.
 Now the web service is deployed on render via this repository, check deployment.
 
+## Database pgsql
+
+connecting
+
+```bash
+psql -d proj_development        # connect to DB
+\q                              # quit
+```
+
+See structure
+
+```
+\dt                             -- list tables
+\d users                        -- describe users table (columns, indexes)
+\d+ bookings                    -- same, with extra info
+```
+
+Basic Enquires
+
+```sql
+SELECT * FROM users;            -- all users
+SELECT id, email FROM users;    -- specific columns
+SELECT * FROM users WHERE email = 'abc@example.com';
+SELECT COUNT(*) FROM bookings;  -- how many rows
+```
+
+```sql
+SELECT * FROM users;            -- all users
+SELECT id, email FROM users;    -- specific columns
+SELECT * FROM users WHERE email = 'abc@example.com';
+SELECT COUNT(*) FROM bookings;  -- how many rows
+```
+
 ## TODOS:
 
 ## Changelog
@@ -100,3 +133,6 @@ Now the web service is deployed on render via this repository, check deployment.
 2026-02-24: Finished proposal with LaTeX
 
 2026-03-02: basic data model set in seed.rb
+
+2026-03-10: Working in login feature using devise
+            Now using PostgreSQL instead of sqlite3
