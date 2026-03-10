@@ -92,7 +92,7 @@ heroku ps:scale web=1 -a secret-sierra-05778 # turn on
 Free plan: app sleeps after ~15 min of no traffic; first request may take 30–60s to wake.
 Now the web service is deployed on render via this repository, check deployment.
 
-## Database pgsql
+## Database PSQL
 
 connecting
 
@@ -142,5 +142,6 @@ WHERE email = 'abc@example.com';
 
 2026-03-02: basic data model set in seed.rb
 
-2026-03-10: Working in login feature using devise
-            Now using PostgreSQL instead of sqlite3
+2026-03-10: Working in login feature using devise.
+
+            Now using PostgreSQL instead of sqlite3.
