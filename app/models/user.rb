@@ -1,7 +1,14 @@
 class User < ApplicationRecord
+  devise :database_authenticatable, :registerable, :validatable
+
   belongs_to :department
   has_many :bookings, dependent: :restrict_with_error
 
-  validates :email, presence: true, uniqueness: true
-  devise :database_authenticatable, :registerable, :validatable
+  before_validation :set_default_role, on: :create
+
+  private
+
+  def set_default_role
+    self.role ||= "student"
+  end
 end

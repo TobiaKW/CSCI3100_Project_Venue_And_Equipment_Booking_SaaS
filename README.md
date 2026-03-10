@@ -116,13 +116,21 @@ SELECT * FROM users;            -- all users
 SELECT id, email FROM users;    -- specific columns
 SELECT * FROM users WHERE email = 'abc@example.com';
 SELECT COUNT(*) FROM bookings;  -- how many rows
+
+SELECT id, name, email, role, department_id  FROM users;
 ```
 
+update/insert/delete rows
+
 ```sql
-SELECT * FROM users;            -- all users
-SELECT id, email FROM users;    -- specific columns
-SELECT * FROM users WHERE email = 'abc@example.com';
-SELECT COUNT(*) FROM bookings;  -- how many rows
+INSERT INTO departments (name) VALUES ('Engineering');
+
+UPDATE users
+SET role = 'admin'
+WHERE email = 'abc@example.com';
+
+DELETE FROM users
+WHERE email = 'abc@example.com';
 ```
 
 ## TODOS:
