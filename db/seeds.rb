@@ -26,14 +26,14 @@ end
 # Create admin (add has_secure_password + bcrypt when you add auth)
 User.find_or_create_by!(email: 'admin@booking.cuhk.edu.hk') do |user|
   user.name = 'Admin User'
-  user.password_digest = 'dev'
+  user.password = 'dev1234'
   user.role = 'admin'
   user.department = Department.find_by!(name: 'Engineering')
 end
 # Create user "Kevin"
 User.find_or_create_by!(email: 'kevin@link.cuhk.edu.hk') do |user|
   user.name = 'Kevin'
-  user.password_digest = 'dev'
+  user.password = 'dev12345'
   user.role = 'student'
   user.department = Department.find_by!(name: 'Engineering')
 end

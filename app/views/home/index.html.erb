@@ -1,1 +1,10 @@
 <h1>Hello World</h1>
+
+<p>
+  <%= link_to "Log in", new_user_session_path %> |
+  <%= link_to "Sign up", new_user_registration_path %>
+</p>
+
+<% if current_user %>
+    <p>“Welcome, <%= current_user.name %>”</p>
+<% end %>
