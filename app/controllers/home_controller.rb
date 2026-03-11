@@ -14,6 +14,5 @@ class HomeController < ApplicationController
     if params[:rtypes].present?
       @resources = @resources.where(rtype: params[:rtypes])
     end
-    
   end
 end

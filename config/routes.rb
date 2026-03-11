@@ -9,6 +9,13 @@ Rails.application.routes.draw do
   get "service-worker" => "rails/pwa#service_worker", as: :pwa_service_worker
   get "manifest" => "rails/pwa#manifest", as: :pwa_manifest
 
+
+  resources :resources, only: [ :index, :show ]
+  resources :bookings, only: [ :index, :new, :create ]
+  namespace :admin do
+    resources :bookings, only: [ :index, :update ]
+  end
+
   devise_for :users
 
   root "home#index"
