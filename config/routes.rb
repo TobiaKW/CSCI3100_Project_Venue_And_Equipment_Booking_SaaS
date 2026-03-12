@@ -11,10 +11,10 @@ Rails.application.routes.draw do
 
 
   resources :resources, only: [ :index, :show ]
-  resources :bookings, only: [ :index, :new, :create ]
-  namespace :admin do
-    resources :bookings, only: [ :index, :update ]
-  end
+  # resources :bookings, only: [ :index, :new, :create ]
+  # namespace :admin do
+  #   resources :bookings, only: [ :index, :update ]
+  # end
 
   devise_for :users
 
