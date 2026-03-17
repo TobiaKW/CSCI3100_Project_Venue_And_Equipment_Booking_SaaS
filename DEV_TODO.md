@@ -22,7 +22,7 @@ can add password encrytion later
    Add Devise (or similar) so you have sign in / sign out and `current_user`. Restrict by role (student vs admin) in controllers.
 
 -CURRENT PROGRESS-
-
+(TODO: insert more resources in the db/seed, ref cuhk websites)
 4. **Booking app controllers & routes**  
    Add controllers and routes for the booking flow, e.g.:
    - `ResourcesController` — index (list), show (for a resource)
