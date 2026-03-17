@@ -1,15 +1,15 @@
 <h2>Make a booking for <%= @resource.name %></h2>
 
 <%= form_with model: @booking, url: bookings_path(resource_id: @resource.id), local: true do |f| %>
-    
+
   <div class="field">
     <p><%= f.label :start_time, "Start time" %></p>
-    <p><%= f.datetime_select :start_time %></p>
+    <p><%= f.datetime_local_field :start_time %></p>
   </div>
 
   <div class="field">
     <p><%= f.label :end_time, "End time" %></p>
-    <p><%= f.datetime_select :end_time %></p>
+    <p><%= f.datetime_local_field :end_time %></p>
   </div>
 
   <div class="actions">
