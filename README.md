@@ -142,6 +142,6 @@ WHERE email = 'abc@example.com';
 
 2026-03-02: basic data model set in seed.rb
 
-2026-03-10: Working in login feature using devise. Now using PostgreSQL instead of sqlite3.
+2026-03-10: Working in login/signup feature using devise. Now using PostgreSQL instead of sqlite3.
 
-2026-03-17: Simple booking interface. Not working yet.
+2026-03-17: Simple booking interface. pending data validation.

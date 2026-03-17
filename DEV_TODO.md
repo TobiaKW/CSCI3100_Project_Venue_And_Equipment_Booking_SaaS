@@ -21,12 +21,13 @@ can add password encrytion later
 3. **Auth(DONE)** 
    Add Devise (or similar) so you have sign in / sign out and `current_user`. Restrict by role (student vs admin) in controllers.
 
--CURRENT PROGRESS-
-(TODO: insert more resources in the db/seed, ref cuhk websites)
+
+(TODO(sidequest): insert more resources in the db/seed, ref cuhk websites)
 4. **Booking app controllers & routes**  
    Add controllers and routes for the booking flow, e.g.:
    - `ResourcesController` — index (list), show (for a resource)
-   - `BookingsController` — index (my bookings), new/create (request), and later approve/reject for admins  
+   - `BookingsController` — index (my bookings), new/create (request), and later approve/reject for admins  -CURRENT PROGRESS-
+   - need to make a admin dashboard
    Wire these in `config/routes.rb` and scope by department/tenant when you add multi-tenant.
 
 5. **Views**  
