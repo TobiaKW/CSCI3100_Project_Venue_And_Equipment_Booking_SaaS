@@ -1,12 +1,11 @@
 class BookingsController < ApplicationController
-
   def index
     @bookings = Booking.all
   end
 
   def new
     @resource = Resource.find(params[:resource_id])
-    @booking = booking.new(resource: @resource)
+    @booking = Booking.new(resource: @resource)
   end
 
   def create
