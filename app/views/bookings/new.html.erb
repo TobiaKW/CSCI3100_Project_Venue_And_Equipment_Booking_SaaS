@@ -2,6 +2,17 @@
 
 <%= form_with model: @booking, url: bookings_path(resource_id: @resource.id), local: true do |f| %>
 
+  <% if @booking.errors.any? %>
+    <div style="color: red;">
+      <h3><%= pluralize(@booking.errors.count, "error") %> prohibited this booking from being saved:</h3>
+      <ul>
+        <% @booking.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
   <div class="field">
     <p><%= f.label :start_time, "Start time" %></p>
     <p><%= f.datetime_local_field :start_time %></p>
