@@ -1,15 +1,28 @@
 class BookingsController < ApplicationController
+
   def index
     @bookings = Booking.all
   end
 
   def new
-    @booking = Booking.new
+    @resource = Resource.find(params[:resource_id])
+    @booking = booking.new(resource: @resource)
   end
 
   def create
-    @booking = Booking.new(booking_params)
+    @resource = Resource.find(params[:resource_id])
+    @booking  = current_user.bookings.build(booking_params.merge(
+      resource: @resource,
+      department: current_user.department,
+      status: "pending"
+    ))
+    if @booking.save
+      redirect_to bookings_path, notice: "Booking requested."
+    else
+      render :new, status: :unprocessable_entity
+    end
   end
+
 
   private
 
