@@ -12,44 +12,50 @@
 
 <hr>
 
-<h3>Search Resources</h3>
-<%= form_with url: root_path, method: :get, local: true do |f| %>
-  <div>
-    <%= f.label :search, "Search by name:" %>
-    <%= f.text_field :search, value: params[:search] %>
-  </div>
+<% if user_signed_in? %>
+  <h3>Search Resources</h3>
+  <%= form_with url: root_path, method: :get, local: true do |f| %>
+    <div>
+      <%= f.label :search, "Search by name:" %>
+      <%= f.text_field :search, value: params[:search] %>
+    </div>
 
-  <div>
-    <p>Filter by type:</p>
-    <%= f.check_box :rtypes, { multiple: true, checked: params[:rtypes]&.include?("room") }, "room", nil %> Room
-    <%= f.check_box :rtypes, { multiple: true, checked: params[:rtypes]&.include?("equipment") }, "equipment", nil %> Equipment
-  </div>
+    <div>
+      <p>Filter by type:</p>
+      <%= f.check_box :rtypes, { multiple: true, checked: params[:rtypes]&.include?("room") }, "room", nil %> Room
+      <%= f.check_box :rtypes, { multiple: true, checked: params[:rtypes]&.include?("equipment") }, "equipment", nil %> Equipment
+    </div>
 
-  <div>
-    <%= f.submit "Search" %>
-  </div>
-<% end %>
+    <div>
+      <%= f.submit "Search" %>
+    </div>
+  <% end %>
 
-<hr>
+  <hr>
 
-<h3>Available Resources</h3>
-<table border="1">
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th>Type</th>
-      <th>Department</th>
-      <th>Action</th>
-    </tr>
-  </thead>
-  <tbody>
-    <% @resources.each do |resource| %>
+  <h3>Available Resources</h3>
+  <table border="1">
+    <thead>
       <tr>
-        <td><%= resource.name %></td>
-        <td><%= resource.rtype %></td>
-        <td><%= resource.department.name %></td>
-        <td><% button_to "Book", new_booking_path(resource_id: resource.id), method: :get %></td>
+        <th>Name</th>
+        <th>Type</th>
+        <th>Department</th>
+        <th>Action</th>
       </tr>
-    <% end %>
-  </tbody>
-</table>
+    </thead>
+    <tbody>
+      <% @resources.each do |resource| %>
+        <tr>
+          <td><%= resource.name %></td>
+          <td><%= resource.rtype %></td>
+          <td><%= resource.department.name %></td>
+          <td>
+            <%= button_to "Book", new_booking_path(resource_id: resource.id), method: :get %>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+<% else %>
+  <p>Please log in to view and book resources.</p>
+<% end %>
