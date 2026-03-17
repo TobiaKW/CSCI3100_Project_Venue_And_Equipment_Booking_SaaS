@@ -50,7 +50,7 @@
           <td><%= resource.rtype %></td>
           <td><%= resource.department.name %></td>
           <td>
-            <%= button_to "Book", new_booking_path(resource_id: resource.id), method: :get %>
+            <%= link_to "Book", new_booking_path(resource_id: resource.id) %>
           </td>
         </tr>
       <% end %>
