@@ -1,0 +1,25 @@
+# TODO: Implement the booking form and confirmation page
+<h2>Make a booking</h2>
+
+<%= form_for(booking, as: booking_name, url: booking_path(booking_name)) do |f| %>
+
+  <div class="field">
+    <p><%= f.label :Date %></p>
+    <p><%= f.date_field :date, autofocus: true, autocomplete: "date" %></p>
+  </div>
+
+  <div class="field">
+    <p><%= f.label :Start time %></p>
+    <p><%= f.time_field :start_time, autocomplete: "start_time" %></p>
+  </div>
+
+  <div class="field">
+    <p><%= f.label :End time %></p>
+    <p><%= f.time_field :end_time, autocomplete: "end_time" %></p>
+  </div>
+
+  <div class="actions">
+    <%= f.submit "Confirm Booking" %>
+  </div>
+
+<% end %>
