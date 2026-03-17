@@ -1,0 +1,28 @@
+<h2>My Bookings</h2>
+
+<% if notice %>
+  <p style="color: green;"><%= notice %></p>
+<% end %>
+
+<table border="1">
+  <thead>
+    <tr>
+      <th>Resource</th>
+      <th>Start Time</th>
+      <th>End Time</th>
+      <th>Status</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @bookings.each do |booking| %>
+      <tr>
+        <td><%= booking.resource.name %></td>
+        <td><%= booking.start_time.strftime("%Y-%m-%d %H:%M") %></td>
+        <td><%= booking.end_time.strftime("%Y-%m-%d %H:%M") %></td>
+        <td><%= booking.status %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<p><%= link_to "Back to Resources", root_path %></p>
