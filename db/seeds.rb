@@ -24,7 +24,7 @@ Department_list.each do |dept_name|
 end
 
 # Create admin (add has_secure_password + bcrypt when you add auth)
-User.find_or_create_by!(email: 'admin@booking.cuhk.edu.hk') do |user|
+User.find_or_create_by!(email: 'kevinwong391@gmail.com') do |user|
   user.name = 'Admin User'
   user.password = 'dev1234'
   user.role = 'admin'
