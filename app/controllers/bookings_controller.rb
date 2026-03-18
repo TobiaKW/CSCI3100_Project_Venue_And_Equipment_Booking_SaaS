@@ -17,7 +17,12 @@ class BookingsController < ApplicationController
     ))
     if @booking.save
       # Notify admins in the same department that a booking needs approval.
-      AdminMailer.pending_approval(@booking).deliver_now
+      # exit when smtp is not working
+      begin
+        AdminMailer.pending_approval(@booking).deliver_now
+      rescue StandardError => e
+        Rails.logger.error("Admin approval email failed: #{e.class}: #{e.message}")
+      end
       redirect_to bookings_path, notice: "Booking requested."
     else
       render :new, status: :unprocessable_entity

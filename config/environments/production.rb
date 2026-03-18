@@ -79,7 +79,9 @@ Rails.application.configure do
     user_name: ENV.fetch("SMTP_USERNAME", ENV.fetch("SENDGRID_USERNAME", nil)),
     password: ENV.fetch("SMTP_PASSWORD", ENV.fetch("SENDGRID_PASSWORD", nil)),
     authentication: :plain,
-    enable_starttls_auto: true
+    enable_starttls_auto: true,
+    open_timeout: 2,
+    read_timeout: 5
   }
 
   # Use a different cache store in production.

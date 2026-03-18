@@ -13,7 +13,12 @@ class Admin::BookingsController < ApplicationController
     if booking.department_id == current_user.department_id
       booking.update!(status: params[:status])
       # email the booking owner
-      UserMailer.booking_decision(booking).deliver_now
+      # smtp fail exit
+      begin
+        UserMailer.booking_decision(booking).deliver_now
+      rescue StandardError => e
+        Rails.logger.error("Booking decision email failed: #{e.class}: #{e.message}")
+      end
     end
       redirect_to admin_bookings_path
   end
