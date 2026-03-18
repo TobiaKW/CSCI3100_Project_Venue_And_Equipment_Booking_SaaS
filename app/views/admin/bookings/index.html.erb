@@ -1,0 +1,39 @@
+<h2>Admin Dashboard: All Bookings</h2>
+<% if notice %>
+  <p style="color: green;"><%= notice %></p>
+<% end %>
+<% if alert %>
+  <p style="color: red;"><%= alert %></p>
+<% end %>
+<table border="1" style="width: 100%; border-collapse: collapse;">
+  <thead>
+    <tr style="background-color: #f2f2f2;">
+      <th>User</th>
+      <th>Resource</th>
+      <th>Start Time</th>
+      <th>End Time</th>
+      <th>Status</th>
+      <th>Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @bookings.each do |booking| %>
+      <tr>
+        <td><%= booking.user.name %> (<%= booking.user.email %>)</td>
+        <td><%= booking.resource.name %></td>
+        <td><%= booking.start_time.strftime("%Y-%m-%d %H:%M") %></td>
+        <td><%= booking.end_time.strftime("%Y-%m-%d %H:%M") %></td>
+        <td><strong><%= booking.status %></strong></td>
+        <td>
+          <% if booking.status == "pending" %>
+            <%= button_to "Approve", admin_booking_path(booking, status: "approved"), method: :patch, style: "color: green;" %>
+            <%= button_to "Reject", admin_booking_path(booking, status: "rejected"), method: :patch, style: "color: red;" %>
+          <% else %>
+            -
+          <% end %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+<p><%= link_to "Back to Home", root_path %></p>

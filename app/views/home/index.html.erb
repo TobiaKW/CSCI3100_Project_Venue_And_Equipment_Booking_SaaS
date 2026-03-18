@@ -2,6 +2,7 @@
 
 <% if user_signed_in? %>
   <p>Welcome, <%= current_user.name %> (<%= current_user.role %>)</p>
+  <%= button_to "Admin Dashboard", admin_bookings_path, method: :get %>
   <%= button_to "Log out", destroy_user_session_path, method: :delete %>
 <% else %>
   <p>
