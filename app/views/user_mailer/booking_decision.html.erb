@@ -1,0 +1,16 @@
+<h2>Booking update</h2>
+
+<p>
+Hello <%= @booking.user.name %>,
+</p>
+
+<p>
+Your booking has been <strong><%= @booking.status %></strong>.
+</p>
+
+<ul>
+  <li><strong>Resource:</strong> <%= @resource.name %></li>
+  <li><strong>Department:</strong> <%= @department.name %></li>
+  <li><strong>Start:</strong> <%= @booking.start_time.strftime("%Y-%m-%d %H:%M") %></li>
+  <li><strong>End:</strong> <%= @booking.end_time.strftime("%Y-%m-%d %H:%M") %></li>
+</ul>

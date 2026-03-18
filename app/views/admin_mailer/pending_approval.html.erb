@@ -1,0 +1,18 @@
+<h2>Booking approval requested</h2>
+
+<p>
+Hello Admin,
+</p>
+
+<p>
+A booking request has been submitted for approval.
+</p>
+
+<ul>
+  <li><strong>Resource:</strong> <%= @booking.resource.name %></li>
+  <li><strong>Department:</strong> <%= @department.name %></li>
+  <li><strong>Start:</strong> <%= @booking.start_time.strftime("%Y-%m-%d %H:%M") %></li>
+  <li><strong>End:</strong> <%= @booking.end_time.strftime("%Y-%m-%d %H:%M") %></li>
+</ul>
+
+<p>Status: <%= @booking.status %></p>

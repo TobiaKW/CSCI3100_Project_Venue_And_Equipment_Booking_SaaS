@@ -16,6 +16,8 @@ class BookingsController < ApplicationController
       status: "pending"
     ))
     if @booking.save
+      # Notify admins in the same department that a booking needs approval.
+      AdminMailer.pending_approval(@booking).deliver_now
       redirect_to bookings_path, notice: "Booking requested."
     else
       render :new, status: :unprocessable_entity

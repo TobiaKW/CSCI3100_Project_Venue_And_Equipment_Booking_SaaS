@@ -59,6 +59,29 @@ Rails.application.configure do
   # want to log everything, set the level to "debug".
   config.log_level = ENV.fetch("RAILS_LOG_LEVEL", "info")
 
+  # ---- Action Mailer (SMTP) ----
+  # Use SendGrid SMTP (recommended for this project).
+  # Set these env vars on Render:  ## TODO!
+  # - SMTP_USERNAME (or SENDGRID_USERNAME)
+  # - SMTP_PASSWORD (or SENDGRID_PASSWORD)
+  # - MAIL_FROM
+  #
+  # Examples:
+  #   SMTP_USERNAME=your_sendgrid_username
+  #   SMTP_PASSWORD=your_sendgrid_api_key
+  #   MAIL_FROM=no-reply@yourdomain.com
+  config.action_mailer.delivery_method = :smtp
+  config.action_mailer.default_options = { from: ENV.fetch("MAIL_FROM", "no-reply@example.com") }
+  config.action_mailer.smtp_settings = {
+    address: "smtp.sendgrid.net",
+    port: 587,
+    domain: ENV.fetch("SMTP_DOMAIN", ENV.fetch("SENDGRID_DOMAIN", "localhost")),
+    user_name: ENV.fetch("SMTP_USERNAME", ENV.fetch("SENDGRID_USERNAME", nil)),
+    password: ENV.fetch("SMTP_PASSWORD", ENV.fetch("SENDGRID_PASSWORD", nil)),
+    authentication: :plain,
+    enable_starttls_auto: true
+  }
+
   # Use a different cache store in production.
   # config.cache_store = :mem_cache_store
 

@@ -12,6 +12,8 @@ class Admin::BookingsController < ApplicationController
     # Ensure admin only updates their own department’s bookings
     if booking.department_id == current_user.department_id
       booking.update!(status: params[:status])
+      # email the booking owner
+      UserMailer.booking_decision(booking).deliver_now
     end
       redirect_to admin_bookings_path
   end
