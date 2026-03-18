@@ -145,3 +145,5 @@ WHERE email = 'abc@example.com';
 2026-03-10: Working in login/signup feature using devise. Now using PostgreSQL instead of sqlite3.
 
 2026-03-17: Simple booking interface. pending data validation.
+
+2026-03-18: Simple Sendgrid Mailer implemented.

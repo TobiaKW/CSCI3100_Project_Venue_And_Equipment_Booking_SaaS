@@ -14,4 +14,3 @@ class AdminMailer < ApplicationMailer
     User.where(role: "admin", department_id: department.id).pluck(:email)
   end
 end
-
