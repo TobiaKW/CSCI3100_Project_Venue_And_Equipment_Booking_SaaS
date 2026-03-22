@@ -59,35 +59,45 @@ Rails.application.configure do
   # want to log everything, set the level to "debug".
   config.log_level = ENV.fetch("RAILS_LOG_LEVEL", "info")
 
-  # ---- Action Mailer (SendGrid SMTP) ----
-  # Render env: SMTP_USERNAME=apikey, SMTP_PASSWORD=<SendGrid API key>, MAIL_FROM=<verified sender>
-  # Optional: SMTP_PORT=465 if 587 times out; SMTP_OPEN_TIMEOUT / SMTP_READ_TIMEOUT
-  config.action_mailer.delivery_method = :smtp
+  # ---- Action Mailer ----
+  # SMTP (default): SMTP_USERNAME=apikey, SMTP_PASSWORD=<API key>, MAIL_FROM=...
+  # If SMTP times out on your host (e.g. Net::OpenTimeout on Render), use HTTPS instead:
+  #   USE_SENDGRID_HTTP_API=true  +  SENDGRID_API_KEY or SMTP_PASSWORD (same SendGrid API key)
   config.action_mailer.default_options = { from: ENV.fetch("MAIL_FROM", "no-reply@example.com") }
 
-  smtp_port = Integer(ENV.fetch("SMTP_PORT", "587"))
-  use_implicit_ssl = smtp_port == 465
-
-  smtp_settings = {
-    address: ENV.fetch("SMTP_ADDRESS", "smtp.sendgrid.net"),
-    port: smtp_port,
-    domain: ENV.fetch("SMTP_DOMAIN", ENV.fetch("SENDGRID_DOMAIN", "localhost")),
-    user_name: ENV.fetch("SMTP_USERNAME", ENV.fetch("SENDGRID_USERNAME", nil)),
-    password: ENV.fetch("SMTP_PASSWORD", ENV.fetch("SENDGRID_PASSWORD", nil)),
-    authentication: :plain,
-    open_timeout: Integer(ENV.fetch("SMTP_OPEN_TIMEOUT", "60")),
-    read_timeout: Integer(ENV.fetch("SMTP_READ_TIMEOUT", "120"))
-  }
-
-  if use_implicit_ssl
-    smtp_settings[:enable_starttls_auto] = false
-    smtp_settings[:tls] = true
-    smtp_settings[:ssl] = true
+  if ENV["USE_SENDGRID_HTTP_API"].to_s == "true"
+    config.action_mailer.delivery_method = :sendgrid_http
+    config.action_mailer.sendgrid_http_settings = {
+      api_key: ENV["SENDGRID_API_KEY"].presence || ENV["SMTP_PASSWORD"].presence,
+      open_timeout: Integer(ENV.fetch("SMTP_OPEN_TIMEOUT", "30")),
+      read_timeout: Integer(ENV.fetch("SMTP_READ_TIMEOUT", "60"))
+    }
   else
-    smtp_settings[:enable_starttls_auto] = true
-  end
+    config.action_mailer.delivery_method = :smtp
+    smtp_port = Integer(ENV.fetch("SMTP_PORT", "587"))
+    use_implicit_ssl = smtp_port == 465
 
-  config.action_mailer.smtp_settings = smtp_settings
+    smtp_settings = {
+      address: ENV.fetch("SMTP_ADDRESS", "smtp.sendgrid.net"),
+      port: smtp_port,
+      domain: ENV.fetch("SMTP_DOMAIN", ENV.fetch("SENDGRID_DOMAIN", "localhost")),
+      user_name: ENV.fetch("SMTP_USERNAME", ENV.fetch("SENDGRID_USERNAME", nil)),
+      password: ENV.fetch("SMTP_PASSWORD", ENV.fetch("SENDGRID_PASSWORD", nil)),
+      authentication: :plain,
+      open_timeout: Integer(ENV.fetch("SMTP_OPEN_TIMEOUT", "60")),
+      read_timeout: Integer(ENV.fetch("SMTP_READ_TIMEOUT", "120"))
+    }
+
+    if use_implicit_ssl
+      smtp_settings[:enable_starttls_auto] = false
+      smtp_settings[:tls] = true
+      smtp_settings[:ssl] = true
+    else
+      smtp_settings[:enable_starttls_auto] = true
+    end
+
+    config.action_mailer.smtp_settings = smtp_settings
+  end
 
   # Use a different cache store in production.
   # config.cache_store = :mem_cache_store

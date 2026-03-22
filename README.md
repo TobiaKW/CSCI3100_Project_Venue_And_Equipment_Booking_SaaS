@@ -133,10 +133,17 @@ DELETE FROM users
 WHERE email = 'abc@example.com';
 ```
 
-## Email (SendGrid SMTP)
+## Email (SendGrid)
 
-Render env vars: `SMTP_USERNAME=apikey`, `SMTP_PASSWORD=<SendGrid API key>`, `MAIL_FROM=<verified sender>`.  
-Optional: `SMTP_PORT=465` if port 587 is flaky; `SMTP_OPEN_TIMEOUT` / `SMTP_READ_TIMEOUT` (seconds).
+**SMTP (default):** `SMTP_USERNAME=apikey`, `SMTP_PASSWORD=<SendGrid API key>`, `MAIL_FROM=<verified sender>`.  
+Optional: `SMTP_PORT=465`; `SMTP_OPEN_TIMEOUT` / `SMTP_READ_TIMEOUT` (seconds).
+
+**If SMTP fails with `Net::OpenTimeout` on your host** (common on some PaaS networks), use SendGrid’s **HTTPS API** instead (same API key, port 443):
+
+- `USE_SENDGRID_HTTP_API=true`
+- `SENDGRID_API_KEY=<same key>` (or reuse `SMTP_PASSWORD`)
+
+Keep `MAIL_FROM` set to a verified sender.
 
 ## Notes when you need rebuild the deployment database
 

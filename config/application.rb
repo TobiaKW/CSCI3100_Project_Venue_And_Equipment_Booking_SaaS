@@ -39,5 +39,11 @@ module Proj
 
     # Don't generate system test files.
     config.generators.system_tests = nil
+
+    # Must run before config/environments/*.rb so `sendgrid_http_settings=` exists when production loads.
+    initializer :register_sendgrid_http_delivery, before: :load_environment_config do
+      require Rails.root.join("lib/sendgrid_http_delivery")
+      ActionMailer::Base.add_delivery_method :sendgrid_http, SendgridHttpDelivery
+    end
   end
 end
