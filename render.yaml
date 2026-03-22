@@ -7,7 +7,8 @@ services:
     plan: free
 
     buildCommand: "./bin/render-build.sh"
-    startCommand: "bin/rails server -p $PORT -e production"
+    # No paid "release command" needed: migrate runs when the dyno boots (adds a few seconds per restart).
+    startCommand: "bin/rails db:migrate && bin/rails server -p $PORT -e production"
 
     envVars:
       - key: RAILS_MASTER_KEY
