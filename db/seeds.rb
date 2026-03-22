@@ -31,7 +31,7 @@ User.find_or_create_by!(email: 'kevinwong391@gmail.com') do |user|
   user.department = Department.find_by!(name: 'Engineering')
 end
 # Create user "Kevin"
-User.find_or_create_by!(email: 'kevin@link.cuhk.edu.hk') do |user|
+User.find_or_create_by!(email: 'kerubintobia@gmail.com') do |user|
   user.name = 'Kevin'
   user.password = 'dev12345'
   user.role = 'student'
