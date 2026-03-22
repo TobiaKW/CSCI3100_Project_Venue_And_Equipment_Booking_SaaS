@@ -80,8 +80,9 @@ Rails.application.configure do
     password: ENV.fetch("SMTP_PASSWORD", ENV.fetch("SENDGRID_PASSWORD", nil)),
     authentication: :plain,
     enable_starttls_auto: true,
-    open_timeout: 2,
-    read_timeout: 5
+    # Net::OpenTimeout fix trial
+    open_timeout: Integer(ENV.fetch("SMTP_OPEN_TIMEOUT", "20")),
+    read_timeout: Integer(ENV.fetch("SMTP_READ_TIMEOUT", "30"))
   }
 
   # Use a different cache store in production.

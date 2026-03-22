@@ -16,12 +16,23 @@ class BookingsController < ApplicationController
       status: "pending"
     ))
     if @booking.save
-      # Notify admins in the same department that a booking needs approval.
-      # exit when smtp is not working
-      begin
-        AdminMailer.pending_approval(@booking).deliver_now
-      rescue StandardError => e
-        Rails.logger.error("Admin approval email failed: #{e.class}: #{e.message}")
+      # Notify admins (same department, else any admin). See Render logs for [mail] lines.
+      recipients = AdminMailer.pending_approval_recipients(@booking)
+      if recipients.any?
+        begin
+          AdminMailer.pending_approval(@booking).deliver_now
+          Rails.logger.info(
+            "[mail] pending_approval delivered to=#{recipients.join(',')} booking_id=#{@booking.id}"
+          )
+        rescue StandardError => e
+          Rails.logger.error(
+            "[mail] pending_approval FAILED booking_id=#{@booking.id}: #{e.class}: #{e.message}"
+          )
+        end
+      else
+        Rails.logger.warn(
+          "[mail] pending_approval SKIPPED: no User with role=admin booking_id=#{@booking.id}"
+        )
       end
       redirect_to bookings_path, notice: "Booking requested."
     else

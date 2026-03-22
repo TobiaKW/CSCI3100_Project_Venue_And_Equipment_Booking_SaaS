@@ -75,7 +75,9 @@ Rails.application.configure do
       user_name: ENV["SMTP_USERNAME"],
       password: ENV["SMTP_PASSWORD"],
       authentication: :plain,
-      enable_starttls_auto: true
+      enable_starttls_auto: true,
+      open_timeout: Integer(ENV.fetch("SMTP_OPEN_TIMEOUT", "20")),
+      read_timeout: Integer(ENV.fetch("SMTP_READ_TIMEOUT", "30"))
     }
   end
 
