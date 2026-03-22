@@ -135,13 +135,20 @@ WHERE email = 'abc@example.com';
 
 ## Notes when you need rebuild the deployment database
 
-(optional if need)modify the db/seeds.rb
-
-then run 
+for local server database:
 
 ```
 bin/rails db:drop db:create db:migrate db:seed
 ```
+
+for Render server:
+
+1. Create a brand new database in Render interface.
+
+2. Replace the DATABASE_URL with the new internal database URL
+
+3. run `RAILS_ENV=production DATABASE_URL="external_URL" bin/rails db:seed` in the dir of the project. Replace external_URL with the full URL.
+
 ## TODOS:
 
 refer to DEV_TODO.md
@@ -154,8 +161,10 @@ refer to DEV_TODO.md
 
 2026-03-02: basic data model set in seed.rb
 
-2026-03-10: Working in login/signup feature using devise. Now using PostgreSQL instead of sqlite3.
+2026-03-10: Done Login/signup feature using devise. Now using PostgreSQL instead of sqlite3.
 
 2026-03-17: Simple booking interface. pending data validation.
 
-2026-03-18: Simple Sendgrid Mailer implemented.
+2026-03-18: Simple Sendgrid Mailer WIP.
+
+2026-03-22: Mailer pass testing. Render database reinitialized.
