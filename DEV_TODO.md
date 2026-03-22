@@ -26,12 +26,14 @@ can add password encrytion later
 4. **Booking app controllers & routes**  
    Add controllers and routes for the booking flow, e.g.:
    - `ResourcesController` — index (list), show (for a resource)
-   - `BookingsController` — index (my bookings), new/create (request), and later approve/reject for admins  -CURRENT PROGRESS-
+   - `BookingsController` — index (my bookings), new/create (request), and later approve/reject for admins  
    - need to make a admin dashboard
    Wire these in `config/routes.rb` and scope by department/tenant when you add multi-tenant.
 
 5. **Views**  
    Replace `app/views/home/index.html.erb` with a simple landing (e.g. “Venue & Equipment Booking”, links to resources and bookings). Add views for resources and bookings as you build the controllers.
+
+--CURRENT PROGRESS--
 
 6. **Conflict detection & approval**  
    In the Booking model or a service, validate no overlapping bookings for the same resource. New bookings from students → status `pending`; admin list to approve/reject (Phase 2 in the list below).
