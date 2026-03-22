@@ -59,31 +59,35 @@ Rails.application.configure do
   # want to log everything, set the level to "debug".
   config.log_level = ENV.fetch("RAILS_LOG_LEVEL", "info")
 
-  # ---- Action Mailer (SMTP) ----
-  # Use SendGrid SMTP (recommended for this project).
-  # Set these env vars on Render:  ## TODO!
-  # - SMTP_USERNAME (or SENDGRID_USERNAME)
-  # - SMTP_PASSWORD (or SENDGRID_PASSWORD)
-  # - MAIL_FROM
-  #
-  # Examples:
-  #   SMTP_USERNAME=your_sendgrid_username
-  #   SMTP_PASSWORD=your_sendgrid_api_key
-  #   MAIL_FROM=no-reply@yourdomain.com
+  # ---- Action Mailer (SendGrid SMTP) ----
+  # Render env: SMTP_USERNAME=apikey, SMTP_PASSWORD=<SendGrid API key>, MAIL_FROM=<verified sender>
+  # Optional: SMTP_PORT=465 if 587 times out; SMTP_OPEN_TIMEOUT / SMTP_READ_TIMEOUT
   config.action_mailer.delivery_method = :smtp
   config.action_mailer.default_options = { from: ENV.fetch("MAIL_FROM", "no-reply@example.com") }
-  config.action_mailer.smtp_settings = {
-    address: "smtp.sendgrid.net",
-    port: 587,
+
+  smtp_port = Integer(ENV.fetch("SMTP_PORT", "587"))
+  use_implicit_ssl = smtp_port == 465
+
+  smtp_settings = {
+    address: ENV.fetch("SMTP_ADDRESS", "smtp.sendgrid.net"),
+    port: smtp_port,
     domain: ENV.fetch("SMTP_DOMAIN", ENV.fetch("SENDGRID_DOMAIN", "localhost")),
     user_name: ENV.fetch("SMTP_USERNAME", ENV.fetch("SENDGRID_USERNAME", nil)),
     password: ENV.fetch("SMTP_PASSWORD", ENV.fetch("SENDGRID_PASSWORD", nil)),
     authentication: :plain,
-    enable_starttls_auto: true,
-    # Net::OpenTimeout fix trial
-    open_timeout: Integer(ENV.fetch("SMTP_OPEN_TIMEOUT", "20")),
-    read_timeout: Integer(ENV.fetch("SMTP_READ_TIMEOUT", "30"))
+    open_timeout: Integer(ENV.fetch("SMTP_OPEN_TIMEOUT", "60")),
+    read_timeout: Integer(ENV.fetch("SMTP_READ_TIMEOUT", "120"))
   }
+
+  if use_implicit_ssl
+    smtp_settings[:enable_starttls_auto] = false
+    smtp_settings[:tls] = true
+    smtp_settings[:ssl] = true
+  else
+    smtp_settings[:enable_starttls_auto] = true
+  end
+
+  config.action_mailer.smtp_settings = smtp_settings
 
   # Use a different cache store in production.
   # config.cache_store = :mem_cache_store

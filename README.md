@@ -133,6 +133,11 @@ DELETE FROM users
 WHERE email = 'abc@example.com';
 ```
 
+## Email (SendGrid SMTP)
+
+Render env vars: `SMTP_USERNAME=apikey`, `SMTP_PASSWORD=<SendGrid API key>`, `MAIL_FROM=<verified sender>`.  
+Optional: `SMTP_PORT=465` if port 587 is flaky; `SMTP_OPEN_TIMEOUT` / `SMTP_READ_TIMEOUT` (seconds).
+
 ## Notes when you need rebuild the deployment database
 
 (optional if need)modify the db/seeds.rb

@@ -58,26 +58,21 @@ Rails.application.configure do
   # Raise error when a before_action's only/except options reference missing actions.
   config.action_controller.raise_on_missing_callback_actions = true
 
-  # ---- Action Mailer (SMTP) for local testing ----
-  # This enables you to send real emails from `development` while you test.
-  # Set these env vars when running locally:
-  # - SMTP_USERNAME=apikey
-  # - SMTP_PASSWORD=<SendGrid API key for SMTP>
-  # - MAIL_FROM=no-reply@cuhkbooking.sendgrid.net
-  # - (optional) SMTP_DOMAIN=cuhkbooking.sendgrid.net
+  # ---- Action Mailer (SendGrid SMTP) for local testing ----
+  # export SMTP_USERNAME=apikey SMTP_PASSWORD=SG.xxx MAIL_FROM=you@example.com
   if ENV["SMTP_PASSWORD"].present? && ENV["SMTP_USERNAME"].present?
     config.action_mailer.delivery_method = :smtp
     config.action_mailer.default_options = { from: ENV.fetch("MAIL_FROM", "no-reply@example.com") }
     config.action_mailer.smtp_settings = {
       address: "smtp.sendgrid.net",
-      port: 587,
+      port: Integer(ENV.fetch("SMTP_PORT", "587")),
       domain: ENV.fetch("SMTP_DOMAIN", "localhost"),
       user_name: ENV["SMTP_USERNAME"],
       password: ENV["SMTP_PASSWORD"],
       authentication: :plain,
       enable_starttls_auto: true,
-      open_timeout: Integer(ENV.fetch("SMTP_OPEN_TIMEOUT", "20")),
-      read_timeout: Integer(ENV.fetch("SMTP_READ_TIMEOUT", "30"))
+      open_timeout: Integer(ENV.fetch("SMTP_OPEN_TIMEOUT", "60")),
+      read_timeout: Integer(ENV.fetch("SMTP_READ_TIMEOUT", "120"))
     }
   end
 
