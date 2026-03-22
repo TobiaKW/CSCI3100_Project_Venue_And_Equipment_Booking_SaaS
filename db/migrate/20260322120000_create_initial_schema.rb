@@ -1,14 +1,16 @@
 # Used for fresh DBs (local or Render): run `db:migrate` after create.
-# To rebuild Render: reset/drop DB in dashboard, then deploy with migrate (or run db:migrate once).
+#
+# `if_not_exists` / `if_not_exists` on indexes: safe when tables already exist but
+# `schema_migrations` never recorded this version (e.g. DB created manually or from schema load).
 class CreateInitialSchema < ActiveRecord::Migration[7.2]
   def change
-    create_table :departments do |t|
+    create_table :departments, if_not_exists: true do |t|
       t.string :name, null: false
       t.timestamps
     end
-    add_index :departments, :name, unique: true
+    add_index :departments, :name, unique: true, if_not_exists: true
 
-    create_table :users do |t|
+    create_table :users, if_not_exists: true do |t|
       ## Devise
       t.string :email, null: false, default: ""
       t.string :encrypted_password, null: false, default: ""
@@ -21,18 +23,18 @@ class CreateInitialSchema < ActiveRecord::Migration[7.2]
       t.references :department, null: false, foreign_key: true
       t.timestamps
     end
-    add_index :users, :email, unique: true
-    add_index :users, :reset_password_token, unique: true
+    add_index :users, :email, unique: true, if_not_exists: true
+    add_index :users, :reset_password_token, unique: true, if_not_exists: true
 
-    create_table :resources do |t|
+    create_table :resources, if_not_exists: true do |t|
       t.string :name, null: false
       t.string :rtype, null: false
       t.references :department, null: false, foreign_key: true
       t.timestamps
     end
-    add_index :resources, [ :department_id, :name ], unique: true
+    add_index :resources, [ :department_id, :name ], unique: true, if_not_exists: true
 
-    create_table :bookings do |t|
+    create_table :bookings, if_not_exists: true do |t|
       t.references :user, null: false, foreign_key: true
       t.references :resource, null: false, foreign_key: true
       t.references :department, null: false, foreign_key: true
