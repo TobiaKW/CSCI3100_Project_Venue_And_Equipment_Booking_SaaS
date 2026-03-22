@@ -68,20 +68,32 @@ class SendgridHttpDelivery
     payload
   end
 
+  # Mail sometimes returns Mail::Address objects, sometimes plain strings.
+  def parse_address(addr)
+    case addr
+    when Mail::Address
+      addr
+    else
+      Mail::Address.new(addr.to_s)
+    end
+  end
+
   def addresses_to_sg(mail_addresses)
     Array(mail_addresses).map do |a|
-      h = { "email" => a.address }
-      h["name"] = a.display_name if a.display_name.present?
+      parsed = parse_address(a)
+      h = { "email" => parsed.address }
+      h["name"] = parsed.display_name if parsed.display_name.present?
       h
     end
   end
 
   def first_from(mail)
-    a = mail.from_addrs&.first
-    raise ArgumentError, "SendgridHttpDelivery: message has no From" unless a
+    raw = mail.from_addrs&.first || Array(mail.from).first
+    raise ArgumentError, "SendgridHttpDelivery: message has no From" unless raw
 
-    h = { "email" => a.address }
-    h["name"] = a.display_name if a.display_name.present?
+    parsed = parse_address(raw)
+    h = { "email" => parsed.address }
+    h["name"] = parsed.display_name if parsed.display_name.present?
     h
   end
 
