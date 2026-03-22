@@ -133,9 +133,18 @@ DELETE FROM users
 WHERE email = 'abc@example.com';
 ```
 
+## Notes when you need rebuild the deployment database
+
+(optional if need)modify the db/seeds.rb
+
+then run bin/rails db:drop db:create db:migrate db:seed
+
 ## TODOS:
 
+refer to DEV_TODO.md
+
 ## Changelog
+
 2026-02-23: Initialize the walking skeleton, deployed on Render
 
 2026-02-24: Finished proposal with LaTeX
