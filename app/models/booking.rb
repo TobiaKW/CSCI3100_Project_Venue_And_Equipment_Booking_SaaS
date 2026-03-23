@@ -10,6 +10,8 @@ class Booking < ApplicationRecord
   validate :end_time_after_start_time
   validate :minimum_duration_one_hour
   validate :no_overlapping_bookings_for_resource
+  validate :seven_days_in_advance
+  validate :no_overnight_bookings_of_venue
 
   private
 
@@ -46,16 +48,16 @@ class Booking < ApplicationRecord
   end
 
   def seven_days_in_advance
-    return if start_time.blank?
+    return if start_time.blank? || end_time.blank?
     return if start_time >= 7.days.from_now
 
     errors.add(:base, "Booking must be made at least 7 days in advance")
   end
 
   def no_overnight_bookings_of_venue
-    return if resource.rtype != "room"
-    return if end_time.day == start_time.day
-
+    return if resource.rtype != "room" || start_time.blank? || end_time.blank?
+    return if end_time.to_date == start_time.to_date
+    # day alone fails across months, e.g. Apr 1 vs May 1
     errors.add(:base, "You cannot book a venue for overnight")
   end
 
