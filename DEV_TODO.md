@@ -1,120 +1,65 @@
----
+## Booking App Progress Tracker
 
-## From HW cap → Booking app (what was done / what you do)
+Last updated: 2026-03-23
 
+### Done
+- [x] Core data model and migration created (`Department`, `User`, `Resource`, `Booking`).
+- [x] Devise authentication integrated (`devise_for :users`, sign in/out, role-aware flow).
+- [x] Booking routes/controllers wired (`resources`, `bookings`, `admin/bookings`).
+- [x] Seed data works on fresh DB (`bin/rails db:migrate db:seed`).
+- [x] Booking validations implemented:
+  - [x] `start_time` / `end_time` presence
+  - [x] end after start
+  - [x] minimum duration 1 hour
+  - [x] no overlap with existing `approved` booking on same resource
+  - [x] at least 7 days in advance
+  - [x] no overnight booking for venue (`rtype == "room"`)
+- [x] Approval workflow: when admin approves one booking, overlapping pending bookings are auto-rejected.
+- [x] Mail setup switched to SMTP baseline + optional SendGrid HTTP delivery fallback.
+- [x] ActionCable framework enabled in app config.
+- [x] `config/cable.yml` environment sections created.
 
-**You do next (in order)**
+### In progress
+- [ ] ActionCable real-time booking status updates (channel + broadcast + client subscriber).
+- [ ] Verify production ActionCable setup on Render (`REDIS_URL`, allowed origins).
 
-1. **Migrations & models**  
-   Create the four tables and models so `db/seeds` can run and the app has a real data layer:
-   - `Department` (name)
-   - `User` (email, password, name, role, department_id) — use `has_secure_password` or add Devise later
-   - `Resource` (name, rtype, department_id) — `rtype` = 'room' or 'equipment'
-   - `Booking` (user_id, resource_id, department_id, start_time, end_time, status)  
-   Commands: `bin/rails g model Department name:string`, then same for User, Resource, Booking; add associations and indexes; then `bin/rails db:migrate`.
+### Next (priority order)
+1. **Finish ActionCable MVP**
+   - [ ] Update `app/channels/application_cable/connection.rb` to use Devise/Warden (`env["warden"]`), not `cookies.encrypted[:user_id]`.
+   - [ ] Add `BookingsChannel` subscription scope (user-level stream first).
+   - [ ] Broadcast on admin approve/reject in `admin/bookings_controller.rb`.
+   - [ ] Add frontend subscription and update booking status badge without refresh.
 
-2. **Fix seeds**  
-   After migrations, run `bin/rails db:seed`. 
+2. **UI and product polish**
+   - [ ] Improve validation error copy in `Booking` model + booking form.
+   - [ ] Add clearer status labels/colors in user and admin booking lists.
 
-can add password encrytion later
+3. **Stability**
+   - [ ] Add tests for booking validation and approval auto-reject behavior.
+   - [ ] Add index for overlap queries (`resource_id`, `status`, time columns).
 
-3. **Auth(DONE)** 
-   Add Devise (or similar) so you have sign in / sign out and `current_user`. Restrict by role (student vs admin) in controllers.
-
-
-(TODO(sidequest): insert more resources in the db/seed, ref cuhk websites)
-4. **Booking app controllers & routes**  
-   Add controllers and routes for the booking flow, e.g.:
-   - `ResourcesController` — index (list), show (for a resource)
-   - `BookingsController` — index (my bookings), new/create (request), and later approve/reject for admins  
-   - need to make a admin dashboard
-   Wire these in `config/routes.rb` and scope by department/tenant when you add multi-tenant.
-
-5. **Views**  
-   Replace `app/views/home/index.html.erb` with a simple landing (e.g. “Venue & Equipment Booking”, links to resources and bookings). Add views for resources and bookings as you build the controllers.
-
---CURRENT PROGRESS--
-
-6. **Conflict detection & approval**  
-   In the Booking model or a service, validate no overlapping bookings for the same resource. New bookings from students → status `pending`; admin list to approve/reject (Phase 2 in the list below).
-
----
-
-## TODO list (order suggested)
-
-### Phase 1 — Data & auth
-- [ ] **PostgreSQL in dev**  
-  - In `Gemfile`: use `pg` in development too (or keep sqlite for dev; use pg in prod).  
-  - `config/database.yml`: set up `development` for your chosen DB.
-- [ ] **Models**  
-  - `Department` (name, tenant key).  
-  - `User` (email, password, role: student/admin, `department_id`).  
-  - `Resource` (name, type: room/equipment, `department_id`).  
-  - `Booking` (user, resource, start_time, end_time, status: pending/approved/rejected/expired, `department_id`).
-- [ ] **Migrations**  
-  - `bin/rails g migration CreateDepartments ...` (and similar for User, Resource, Booking).  
-  - `bin/rails db:migrate`
-- [ ] **Auth**  
-  - Add Devise (or similar): sign up, sign in, sign out, “current user”.  
-  - Restrict actions by role (student vs admin).
-
-### Phase 2 — Core
-- [ ] **Conflict detection**  
-  - Before saving a Booking, check no overlapping booking for same resource (and same tenant).  
-  - Validation or service object; show a clear error if conflict.
-- [ ] **Approval workflow**  
-  - Student creates booking → status `pending`.  
-  - Admin list: “Pending approvals”.  
-  - Admin can approve or reject (and optionally set expiry).
-
-### Phase 3 — N-1 features (from proposal)
-- [ ] **ActionMailer**  
-  - Email to user when booking is confirmed.  
-  - Email to admin when there is a new pending approval.
-- [ ] **Sidekiq + Redis**  
-  - Daily digest for department admin: “Today’s bookings”, “Tomorrow’s schedule”, “Pending approvals”.
-- [ ] **ActionCable**  
-  - Real-time booking status updates (e.g. notify student when admin approves/rejects).
-- [ ] **Chartkick**  
-  - Dashboard: usage stats for venues/equipment (e.g. by department, by time).
-
-### Phase 4 — Polish
-- [ ] **Multi-tenant**  
-  - Scope all queries by `department_id` (or current tenant).  
-  - Ensure students/admins only see their department’s resources and bookings.
-- [ ] **Responsive UI**  
-  - Bootstrap (or similar) so it’s usable on mobile.
-- [ ] **Tests**  
-  - BDD-style: “student can request booking”, “admin can approve”, “double booking is rejected”.  
-  - RSpec + request/feature tests (no need for Cucumber unless required).
+4. **N-1 features**
+   - [ ] Sidekiq + Redis digest jobs.
+   - [ ] Chartkick usage dashboard.
 
 ---
 
-## Useful commands (offline)
+## Commands you use most
 
 | Task | Command |
-|------|--------|
+|---|---|
 | Start app | `bin/rails server` |
-| Console | `bin/rails console` |
-| New migration | `bin/rails g migration AddXToY ...` |
 | Run migrations | `bin/rails db:migrate` |
-| Rollback last migration | `bin/rails db:rollback` |
-| Routes | `bin/rails routes` |
-| Check Ruby/Rails | `ruby -v` and `bin/rails -v` |
+| Rebuild local DB | `bin/rails db:drop db:create db:migrate db:seed` |
+| Seed only | `bin/rails db:seed` |
+| Show routes | `bin/rails routes` |
+| Rails console | `bin/rails console` |
+| RuboCop | `bundle exec rubocop` |
 
 ---
 
-## When you're back online
+## Render notes
 
-1. Pull latest: `git pull --rebase origin main`
-2. Resolve any conflicts (see README), then `git add` and `git rebase --continue`
-3. Push: `git push origin main`
-4. Deploy (Render/Heroku) if needed — see README.
-
----
-
-## Proposal reminder (data & flow)
-
-- **Models:** Department → Users, Resources (room/equipment), Bookings (pending → approved/rejected/expired).
-- **Core:** Conflict detection (no double booking); multi-stage approval (student submit → admin approve/reject).
-- **Stack:** Rails 7.2.3, PostgreSQL, RSpec. N-1: ActionMailer, Sidekiq+Redis, ActionCable, Chartkick.
+- `startCommand` currently runs migrate on boot (`db:migrate && rails server`).
+- `DATABASE_URL` on web service should use Render internal DB URL.
+- For ActionCable in production, set `REDIS_URL`.
