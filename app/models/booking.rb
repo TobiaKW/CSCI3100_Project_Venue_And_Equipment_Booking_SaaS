@@ -4,8 +4,8 @@ class Booking < ApplicationRecord
   belongs_to :department
 
   # validation: conflict detection
-  BLOCKING_STATUSES = %w[pending approved].freeze
-
+  BLOCKING_STATUSES = %w[approved].freeze
+ 
   validates :start_time, :end_time, presence: true # check data PRESENCE
   validate :end_time_after_start_time
   validate :minimum_duration_one_hour
@@ -26,6 +26,37 @@ class Booking < ApplicationRecord
     return if (end_time - start_time) >= 1.hour
 
     errors.add(:base, "Booking must last at least one hour")
+  end
+
+  def no_overlapping_bookings_for_resource
+    return if resource_id.blank? || start_time.blank? || end_time.blank?
+    return unless end_time > start_time
+
+    scope = Booking
+            .where(resource_id: resource_id)
+            .where(status: BLOCKING_STATUSES)
+    scope = scope.where.not(id: id) if persisted? # for update operation later
+
+    # Half-open intervals [start_time, end_time): overlap iff
+    # existing.start < self.end AND existing.end > self.start
+    overlaps = scope.where("start_time < ? AND end_time > ?", end_time, start_time)
+    return unless overlaps.exists?
+
+    errors.add(:base, "This time overlaps another booking for this resource")
+  end
+
+  def seven_days_in_advance
+    return if start_time.blank?
+    return if start_time >= 7.days.from_now
+
+    errors.add(:base, "Booking must be made at least 7 days in advance")
+  end
+
+  def no_overnight_bookings_of_venue
+    return if resource.rtype != "room"
+    return if end_time.day == start_time.day
+
+    errors.add(:base, "You cannot book a venue for overnight")
   end
 
 end

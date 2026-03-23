@@ -11,7 +11,19 @@ class Admin::BookingsController < ApplicationController
     booking = Booking.find(params[:id])
     # Ensure admin only updates their own department’s bookings
     if booking.department_id == current_user.department_id
-      booking.update!(status: params[:status])
+      Booking.transaction do
+        booking.update!(status: params[:status])
+
+        if params[:status] == "approved"
+          # Keep your policy: many pending requests can exist, but only one can be approved.
+          # reject all other pending bookings for the same resource same time
+          Booking
+            .where(resource_id: booking.resource_id, status: "pending")
+            .where.not(id: booking.id)
+            .where("start_time < ? AND end_time > ?", booking.end_time, booking.start_time)
+            .update_all(status: "rejected", updated_at: Time.current)
+        end
+      end
       # email the booking owner
       # smtp fail exit
       begin
@@ -20,7 +32,7 @@ class Admin::BookingsController < ApplicationController
         Rails.logger.error("Booking decision email failed: #{e.class}: #{e.message}")
       end
     end
-      redirect_to admin_bookings_path
+    redirect_to admin_bookings_path
   end
 
   private
