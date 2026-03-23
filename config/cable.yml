@@ -5,6 +5,6 @@ test:
   adapter: test
 
 production:
-  adapter: redis
-  url: <%= ENV.fetch("REDIS_URL") %>
+  adapter: <%= ENV["REDIS_URL"] ? "redis" : "async" %>
+  url: <%= ENV["REDIS_URL"] %>
   channel_prefix: proj_production
