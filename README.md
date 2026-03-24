@@ -168,3 +168,5 @@ refer to DEV_TODO.md
 2026-03-18: Simple Sendgrid Mailer WIP.
 
 2026-03-22: Mailer pass testing. Render database reinitialized.
+
+2026-03-23: Conflict detection + other booking contraints implemented. ActionCable WIP.
