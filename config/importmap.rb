@@ -3,3 +3,4 @@
 pin "application"
 pin "@rails/actioncable", to: "@rails--actioncable.js" # @8.1.200
 pin_all_from "app/javascript/channels", under: "channels"
+pin "@hotwired/turbo-rails", to: "turbo.min.js"

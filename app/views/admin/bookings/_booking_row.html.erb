@@ -6,8 +6,13 @@
   <td><strong data-booking-status><%= booking.status %></strong></td>
   <td>
     <% if booking.status == "pending" %>
-      <%= button_to "Approve", admin_booking_path(booking, status: "approved"), method: :patch, style: "color: green;" %>
-      <%= button_to "Reject", admin_booking_path(booking, status: "rejected"), method: :patch, style: "color: red;" %>
+      <%= link_to "Approve", admin_booking_path(booking, status: "approved"),
+        data: { turbo_method: :patch },
+        style: "color: green;" %>
+      <%= " " %>
+      <%= link_to "Reject", admin_booking_path(booking, status: "rejected"),
+        data: { turbo_method: :patch },
+        style: "color: red;" %>
     <% else %>
       -
     <% end %>

@@ -4,6 +4,8 @@
   <p>Welcome, <%= current_user.name %> (<%= current_user.role %>)</p>
   <% if current_user.role == "admin" %>
     <%= button_to "Admin Dashboard", admin_bookings_path, method: :get %>
+  <% else %>
+    <%= button_to "My Bookings", bookings_path, method: :get %>
   <% end %>
   <%= button_to "Log out", destroy_user_session_path, method: :delete %>
 <% else %>
