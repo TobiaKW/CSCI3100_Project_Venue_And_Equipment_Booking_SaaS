@@ -15,11 +15,11 @@
   </thead>
   <tbody>
     <% @bookings.each do |booking| %>
-      <tr>
+      <tr data-booking-id="<%= booking.id %>">
         <td><%= booking.resource.name %></td>
         <td><%= booking.start_time.strftime("%Y-%m-%d %H:%M") %></td>
         <td><%= booking.end_time.strftime("%Y-%m-%d %H:%M") %></td>
-        <td><%= booking.status %></td>
+        <td data-booking-status><%= booking.status %></td>
       </tr>
     <% end %>
   </tbody>

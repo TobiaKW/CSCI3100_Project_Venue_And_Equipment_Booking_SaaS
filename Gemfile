@@ -5,6 +5,8 @@ ruby "3.3.10"
 gem "rails", "7.2.3"
 # The original asset pipeline for Rails [https://github.com/rails/sprockets-rails]
 gem "sprockets-rails"
+# Use Import maps to manage JavaScript [https://github.com/rails/importmap-rails]
+gem "importmap-rails"
 # database gem
 gem "pg", "~> 1.5"
 # Use the Puma web server [https://github.com/puma/puma]

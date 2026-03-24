@@ -29,6 +29,15 @@ class BookingsController < ApplicationController
             "[mail] pending_approval FAILED booking_id=#{@booking.id}: #{e.class}: #{e.message}"
           )
         end
+        begin
+          ActionCable.server.broadcast("admin_bookings_dept_#{@booking.department_id}", {
+            type: "new_booking_created",
+            booking_id: @booking.id,
+            html: render_to_string(partial: "admin/bookings/booking_row", locals: { booking: @booking })
+          })
+        rescue StandardError => e
+          Rails.logger.error("ActionCable broadcast failed: #{e.class}: #{e.message}")
+        end
       else
         Rails.logger.warn(
           "[mail] pending_approval SKIPPED: no User with role=admin booking_id=#{@booking.id}"

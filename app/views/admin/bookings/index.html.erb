@@ -16,23 +16,9 @@
       <th>Actions</th>
     </tr>
   </thead>
-  <tbody>
+  <tbody data-bookings-list>
     <% @bookings.each do |booking| %>
-      <tr>
-        <td><%= booking.user.name %> (<%= booking.user.email %>)</td>
-        <td><%= booking.resource.name %></td>
-        <td><%= booking.start_time.strftime("%Y-%m-%d %H:%M") %></td>
-        <td><%= booking.end_time.strftime("%Y-%m-%d %H:%M") %></td>
-        <td><strong><%= booking.status %></strong></td>
-        <td>
-          <% if booking.status == "pending" %>
-            <%= button_to "Approve", admin_booking_path(booking, status: "approved"), method: :patch, style: "color: green;" %>
-            <%= button_to "Reject", admin_booking_path(booking, status: "rejected"), method: :patch, style: "color: red;" %>
-          <% else %>
-            -
-          <% end %>
-        </td>
-      </tr>
+      <%= render "admin/bookings/booking_row", booking: booking %>
     <% end %>
   </tbody>
 </table>

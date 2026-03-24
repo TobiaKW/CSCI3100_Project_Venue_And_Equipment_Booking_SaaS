@@ -31,6 +31,17 @@ class Admin::BookingsController < ApplicationController
       rescue StandardError => e
         Rails.logger.error("Booking decision email failed: #{e.class}: #{e.message}")
       end
+
+      begin # server broadcast
+        ActionCable.server.broadcast("bookings_#{booking.user_id}", {
+          type: "booking_status_changed",
+          booking_id: booking.id,
+          status: params[:status],
+          updated_at: Time.current
+        })
+      rescue StandardError => e
+        Rails.logger.error("ActionCable broadcast failed: #{e.class}: #{e.message}")
+      end
     end
     redirect_to admin_bookings_path
   end
