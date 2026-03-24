@@ -55,6 +55,7 @@ class Booking < ApplicationRecord
 
   def no_overnight_bookings_of_venue
     return if resource.rtype != "room" || start_time.blank? || end_time.blank?
+    return unless end_time > start_time
     return if end_time.to_date == start_time.to_date
     # day alone fails across months, e.g. Apr 1 vs May 1
     errors.add(:base, "You cannot book a venue for overnight")

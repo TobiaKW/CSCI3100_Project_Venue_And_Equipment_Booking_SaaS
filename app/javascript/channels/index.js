@@ -1,1 +1,1 @@
-import "./bookings_channel"
+import "channels/bookings_channel"
