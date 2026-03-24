@@ -1,6 +1,6 @@
 ## Booking App Progress Tracker
 
-Last updated: 2026-03-23
+Last updated: 2026-03-24
 
 ### Done
 - [x] Core data model and migration created (`Department`, `User`, `Resource`, `Booking`).
@@ -18,23 +18,29 @@ Last updated: 2026-03-23
 - [x] Mail setup switched to SMTP baseline + optional SendGrid HTTP delivery fallback.
 - [x] ActionCable framework enabled in app config.
 - [x] `config/cable.yml` environment sections created.
+- [x] ActionCable channel base and connection auth configured (`ApplicationCable::Channel`, Warden user lookup).
+- [x] `BookingsChannel` streams set up for user and admin-department updates.
+- [x] Broadcast on booking create (student -> admin dashboard) and admin decision (admin -> student status).
+- [x] Frontend subscription wired via importmap (`@rails/actioncable`, `app/javascript/channels/*`).
+- [x] Booking row partial extracted for realtime prepend in admin dashboard.
 
 ### In progress
-- [ ] ActionCable real-time booking status updates (channel + broadcast + client subscriber).
-- [ ] Verify production ActionCable setup on Render (`REDIS_URL`, allowed origins).
+- [ ] End-to-end ActionCable verification in browser (both directions).
+- [ ] Verify production ActionCable setup on Render (`REDIS_URL`, allowed origins, websocket stability).
 
 ### Next (priority order)
 1. **Finish ActionCable MVP**
-   - [ ] Update `app/channels/application_cable/connection.rb` to use Devise/Warden (`env["warden"]`), not `cookies.encrypted[:user_id]`.
-   - [ ] Add `BookingsChannel` subscription scope (user-level stream first).
-   - [ ] Broadcast on admin approve/reject in `admin/bookings_controller.rb`.
-   - [ ] Add frontend subscription and update booking status badge without refresh.
+   - [ ] Local browser test A: student creates booking -> admin table prepends row live.
+   - [ ] Local browser test B: admin approve/reject -> student booking status updates live.
+   - [ ] Add small UI cue for live updates (optional highlight badge/row flash).
+   - [ ] Add short ActionCable troubleshooting note to README.
 
 2. **UI and product polish**
    - [ ] Improve validation error copy in `Booking` model + booking form.
    - [ ] Add clearer status labels/colors in user and admin booking lists.
 
 3. **Stability**
+   - [ ] Remove redundant gems from `Gemfile` (`actioncable`, `redis-actionpack`) and use `redis` only if needed.
    - [ ] Add tests for booking validation and approval auto-reject behavior.
    - [ ] Add index for overlap queries (`resource_id`, `status`, time columns).
 

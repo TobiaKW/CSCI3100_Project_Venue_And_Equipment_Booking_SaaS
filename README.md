@@ -55,27 +55,7 @@ password for 'https://github.com': <your-github-personal-token>
 
 your token should include the `repo` scope.
 
-## Web service deployment choice 1: Heroku
-Run locally
-
-```bash
-bundle install
-bin/rails server
-```
-
-**Deploy to Heroku**
-```bash
-heroku create
-git push heroku main
-```
-
-**To turn on/off the website**
-```
-heroku ps:scale web=0 -a secret-sierra-05778 # turn off
-heroku ps:scale web=1 -a secret-sierra-05778 # turn on 
-(last arg is the domain name)
-```
-## Web service deployment choice 2: Render (We are using this!)
+## Web service deployment: Render
 
 1. Push this repo to **GitHub** (if you haven’t).
 2. Go to [dashboard.render.com](https://dashboard.render.com) and sign in with GitHub.
@@ -169,4 +149,6 @@ refer to DEV_TODO.md
 
 2026-03-22: Mailer pass testing. Render database reinitialized.
 
-2026-03-23: Conflict detection + other booking contraints implemented. ActionCable WIP.
+2026-03-23: Conflict detection + other booking contraints implemented. Real-time update WIP.
+
+2026-03-24: Real-time update feature implementation done with Redis.
