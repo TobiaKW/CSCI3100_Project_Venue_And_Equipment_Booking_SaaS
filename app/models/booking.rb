@@ -5,7 +5,6 @@ class Booking < ApplicationRecord
 
   # validation: conflict detection
   BLOCKING_STATUSES = %w[approved].freeze
- 
   validates :start_time, :end_time, presence: true # check data PRESENCE
   validate :end_time_after_start_time
   validate :minimum_duration_one_hour
@@ -60,5 +59,4 @@ class Booking < ApplicationRecord
     # day alone fails across months, e.g. Apr 1 vs May 1
     errors.add(:base, "You cannot book a venue for overnight")
   end
-
 end
