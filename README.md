@@ -129,6 +129,41 @@ for Render server:
 
 3. run `RAILS_ENV=production DATABASE_URL="external_URL" bin/rails db:seed` in the dir of the project. Replace external_URL with the full URL.
 
+## ActionCable troubleshooting (real-time updates)
+
+If real-time updates do not work, check these in order:
+
+1. **Server logs show websocket connected**
+   - You should see lines like:
+   - `Started GET "/cable" [WebSocket]`
+   - `BookingsChannel is streaming from ...`
+
+2. **Importmap / JS loading**
+   - `app/javascript/application.js` should import both:
+   - `import "@hotwired/turbo-rails"`
+   - `import "channels"`
+   - If you see `No route matches [GET] "/assets/channels/bookings_channel"`, import paths are wrong.
+     Use importmap-style module names (e.g. `import "channels/bookings_channel"`).
+
+3. **Missing channel base class**
+   - If you see `uninitialized constant ApplicationCable::Channel`,
+     ensure `app/channels/application_cable/channel.rb` exists and defines:
+   - `class Channel < ActionCable::Channel::Base`
+
+4. **CSRF / approve-reject issues on admin dashboard**
+   - If you see `InvalidAuthenticityToken` after clicking approve/reject on a realtime-added row:
+   - Do not use `button_to` inside HTML broadcast partials.
+   - Use `link_to` with `data: { turbo_method: :patch }` and ensure Turbo is loaded.
+
+5. **Wrong HTTP method for admin action**
+   - If you see `No route matches [GET] "/admin/bookings/:id"`, then PATCH was not sent.
+   - Confirm Turbo is loaded and links use `data-turbo-method="patch"`.
+
+6. **Render production setup**
+   - Set `REDIS_URL` in Render web service env vars.
+   - Keep `config/cable.yml` configured for production redis adapter.
+   - Use Redis service in the same Render workspace/region when possible.
+
 ## TODOS:
 
 refer to DEV_TODO.md
@@ -151,4 +186,4 @@ refer to DEV_TODO.md
 
 2026-03-23: Conflict detection + other booking contraints implemented. Real-time update WIP.
 
-2026-03-24: Real-time update feature implementation done with Redis.
+2026-03-24: Real-time update feature implementation done with Redis/ActionCable.

@@ -9,7 +9,7 @@ class Booking < ApplicationRecord
   validate :end_time_after_start_time
   validate :minimum_duration_one_hour
   validate :no_overlapping_bookings_for_resource
-  validate :seven_days_in_advance
+  validate :seven_days_in_advance, on: :create
   validate :no_overnight_bookings_of_venue
 
   private

@@ -25,28 +25,33 @@ Last updated: 2026-03-24
 - [x] Booking row partial extracted for realtime prepend in admin dashboard.
 
 ### In progress
-- [ ] End-to-end ActionCable verification in browser (both directions).
-- [ ] Verify production ActionCable setup on Render (`REDIS_URL`, allowed origins, websocket stability).
+1. **Data quality for demos**
+   - [ ] Expand departments coverage in `db/seeds.rb`.
+   - [ ] Add more users per department (students + at least one admin each).
+   - [ ] Add richer resources (rooms/equipment) across departments.
+   - [ ] Add representative booking records (mix of pending/approved/rejected).
 
 ### Next (priority order)
-1. **Finish ActionCable MVP**
-   - [ ] Local browser test A: student creates booking -> admin table prepends row live.
-   - [ ] Local browser test B: admin approve/reject -> student booking status updates live.
-   - [ ] Add small UI cue for live updates (optional highlight badge/row flash).
-   - [ ] Add short ActionCable troubleshooting note to README.
 
-2. **UI and product polish**
+1. **N-1 features**
+   - [ ] Sidekiq + Redis digest jobs.
+   - [ ] Chartkick usage dashboard.
+
+2. **Production hardening**
+   - [x] Verify Render has `REDIS_URL` set and websocket connection stays stable after deploy.
+   - [x] Add short ActionCable troubleshooting note to README.
+   - [ ] Add small UI cue for live updates (optional highlight badge/row flash).
+
+3. **UI and product polish**
    - [ ] Improve validation error copy in `Booking` model + booking form.
    - [ ] Add clearer status labels/colors in user and admin booking lists.
 
-3. **Stability**
+4. **Stability**
    - [ ] Remove redundant gems from `Gemfile` (`actioncable`, `redis-actionpack`) and use `redis` only if needed.
    - [ ] Add tests for booking validation and approval auto-reject behavior.
    - [ ] Add index for overlap queries (`resource_id`, `status`, time columns).
 
-4. **N-1 features**
-   - [ ] Sidekiq + Redis digest jobs.
-   - [ ] Chartkick usage dashboard.
+
 
 ---
 
