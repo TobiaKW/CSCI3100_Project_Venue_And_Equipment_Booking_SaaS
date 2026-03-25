@@ -168,6 +168,8 @@ If real-time updates do not work, check these in order:
 
 refer to DEV_TODO.md
 
+For now, the website can already provide most fundamental functions that a typical booking SaaS shoould have.
+
 ## Changelog
 
 2026-02-23: Initialize the walking skeleton, deployed on Render
