@@ -57,7 +57,7 @@ Resource_list = [
     { name: 'Basketball', rtype: 'equipment', dept: 'Physical Education Unit' },
     { name: 'University Gym New Arc', rtype: 'room', dept: 'Physical Education Unit' },
     { name: 'BMSB LT1', rtype: 'room', dept: 'Medicine' },
-    { name: 'BMSB LT2', rtype: 'room', dept: 'Medicine' },
+    { name: 'BMSB LT2', rtype: 'room', dept: 'Medicine' }
 ]
 
 Resource_list.each do |attr|
