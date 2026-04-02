@@ -168,7 +168,7 @@ If real-time updates do not work, check these in order:
 
 refer to DEV_TODO.md
 
-For now, the website can already provide most fundamental functions that a typical booking SaaS shoould have.
+For now, the website can already provide most fundamental functions that a typical booking SaaS should have.
 
 ## Changelog
 
