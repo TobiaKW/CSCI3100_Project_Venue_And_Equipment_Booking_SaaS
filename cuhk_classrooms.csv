@@ -1,0 +1,239 @@
+Room Code,Seating Capacity,Seat Type,Department,rtype
+NAH 11,80,Table & Chair,New Asia College,room
+NAH 12,96,Lecture Theatre,New Asia College,room
+NAH 114,80,Table & Chair,New Asia College,room
+NAH 115,166,Lecture Theatre,New Asia College,room
+NAH 213,90,Lecture Theatre,New Asia College,room
+SWC LT,495,Lecture Theatre,Shaw College,room
+UCA 102,30,Table & Chair,United College,room
+UCA 103,45,Table & Chair,United College,room
+UCA 104,60,Table & Chair,United College,room
+UCA 105,30,Table & Chair,United College,room
+UCA 111,35,Table & Chair,United College,room
+UCA 312,59,Chamber-type,United College,room
+UCC C1,200,Lecture Theatre,United College,room
+UCC C2,89,Lecture Theatre,United College,room
+UCC C3,78,Lecture Theatre,United College,room
+UCC C4,75,Table & Chair,United College,room
+UCC C5,75,Table & Chair,United College,room
+UCC 102,20,Armchair,United College,room
+UCC 103,20,Armchair,United College,room
+UCC 104,20,Armchair,United College,room
+UCC 105,20,Armchair,United College,room
+UCC 108,25,Table & Chair,United College,room
+UCC 109,24,Table & Chair,United College,room
+UCC 110,45,Table & Chair,United College,room
+UCC 111,50,Armchair,United College,room
+UCC 114,45,Table & Chair,United College,room
+UCC 201,50,Table & Chair,United College,room
+UCC 204,20,Armchair,United College,room
+UCC 205,20,Armchair,United College,room
+UCC 206,30,Table & Chair,United College,room
+UCC 207,30,Table & Chair,United College,room
+UCC 208,30,Table & Chair,United College,room
+WLS LG204,80,Table & Chair,U-Wide,room
+BMS LT,76,Lecture Theatre,Science,room
+BMS 1,45,Armchair,Science,room
+BMS 2,45,Armchair,Science,room
+BMS G18,166,Lecture Theatre,Science,room
+SWH 1,117,Lecture Theatre,,room
+SWH 2,117,Lecture Theatre,,room
+ICS L1,108,Lecture Theatre,,room
+LSB C1,80,Table & Chair,,room
+LSB C2,80,Table & Chair,,room
+LSB C3,80,Table & Chair,,room
+LSB C4,80,Table & Chair,,room
+LSB LT1,274,Lecture Theatre,,room
+LSB LT2,104,Lecture Theatre,,room
+LSB LT3,81,Lecture Theatre,,room
+LSB LT4,68,Lecture Theatre,,room
+LSB LT6,166,Lecture Theatre,,room
+LPN LT,70,Lecture Theatre,,room
+LSK 201,57,Table & Chair,U-Wide,room
+LSK 202,30,Armchair,U-Wide,room
+LSK 203,20,Armchair,U-Wide,room
+LSK 204,30,Armchair,U-Wide,room
+LSK 206,50,Table & Chair,U-Wide,room
+LSK 208,65,Table & Chair,U-Wide,room
+LSK 210,65,Table & Chair,U-Wide,room
+LSK 212,48,Table & Chair,U-Wide,room
+LSK 301,55,Table & Chair,U-Wide,room
+LSK 302,60,Table & Chair,U-Wide,room
+LSK 303,12,Armchair,U-Wide,room
+LSK 304,65,Table & Chair,U-Wide,room
+LSK 306,65,Table & Chair,U-Wide,room
+LSK 308,65,Table & Chair,U-Wide,room
+LSK 401,30,Table & Chair,English,room
+LSK 404,30,Table & Chair,English,room
+LSK 408,30,Table & Chair,English,room
+LSK 410,30,Table & Chair,English,room
+LSK 416,30,Table & Chair,English,room
+LSK 514,64,Table & Chair,U-Wide,room
+LSK 515,64,Table & Chair,U-Wide,room
+LSK LT1,150,Lecture Theatre,U-Wide,room
+LSK LT2,150,Lecture Theatre,U-Wide,room
+LSK LT3,150,Lecture Theatre,U-Wide,room
+LSK LT4,150,Lecture Theatre,U-Wide,room
+LSK LT5,350,Lecture Theatre,U-Wide,room
+LSK LT7,260,Lecture Theatre,U-Wide,room
+KKB 101,86,Lecture Theatre,Arts,room
+LDS 214,50,Table & Chair,Arts,room
+LDS 218,25,Armchair,Arts,room
+MMW 702,70,Table & Chair,U-Wide,room
+MMW 703,90,Table & Chair,U-Wide,room
+MMW 704,40,Table & Chair,U-Wide,room
+MMW 705,55,Table & Chair,U-Wide,room
+MMW 706,40,Table & Chair,U-Wide,room
+MMW 707,60,Table & Chair,U-Wide,room
+MMW 710,80,Table & Chair,U-Wide,room
+MMW 715,45,Table & Chair,U-Wide,room
+MMW LT1,224,Lecture Theatre,U-Wide,room
+MMW LT2,143,Lecture Theatre,U-Wide,room
+SC 139,25,Table & Chair,Science,room
+SC L1,214,Lecture Theatre,Science,room
+SC L2,117,Lecture Theatre,Science,room
+SC L3,86,Lecture Theatre,Science,room
+SC L4,117,Lecture Theatre,Science,room
+SC L5,86,Lecture Theatre,Science,room
+SC LG23,73,Lecture Theatre,Science,room
+TYW LT,272,Lecture Theatre,Engineering,room
+ERB 401,50,Table & Chair,Engineering,room
+ERB 402,30,Armchair,Engineering,room
+ERB 404,65,Table & Chair,Engineering,room
+ERB 405,45,Table & Chair,Engineering,room
+ERB 406,20,Armchair,Engineering,room
+ERB 407,100,Table & Chair,Engineering,room
+ERB 408,40,Table & Chair,Engineering,room
+ERB 703,55,Table & Chair,Engineering,room
+ERB 706,45,Armchair,Engineering,room
+ERB 712,55,Table & Chair,Engineering,room
+ERB 713,45,Armchair,Engineering,room
+ERB 803,80,Table & Chair,Engineering,room
+ERB 804,55,Table & Chair,Engineering,room
+ERB LT,241,Lecture Theatre,Engineering,room
+LHC 101,55,Armchair,New Asia College,room
+LHC 103,100,Lecture Theatre,New Asia College,room
+LHC 104,100,Lecture Theatre,New Asia College,room
+LHC 106,55,Armchair,New Asia College,room
+LHC G01,35,Armchair,New Asia College,room
+LHC G03,40,Armchair,New Asia College,room
+LHC G04,70,Lecture Theatre,New Asia College,room
+LHC G06,45,Armchair,New Asia College,room
+CKB 108,40,Table & Chair,Education,room
+CKB 109,70,Table & Chair,Education,room
+CKB 122,45,Table & Chair,Education,room
+CKB 123,40,Table & Chair,Education,room
+CKB706B,40,Armchair,Education,room
+CKB706C,40,Armchair,Education,room
+CKB LT3,135,Lecture Theatre,Education,room
+CKB UG03,55,Table & Chair,Education,room
+CKB UG04,60,Table & Chair,Education,room
+CKB UG05,55,Table & Chair,Education,room
+CYT 201,66,Table & Chair,Business,room
+CYT 202,70,Table & Chair,Business,room
+CYT 203,80,Table & Chair,Business,room
+CYT 205,8,Table & Chair,Business,room
+CYT 206,8,Table & Chair,Business,room
+CYT 207,8,Table & Chair,Business,room
+CYT 208,8,Table & Chair,Business,room
+CYT 209A,95,Table & Chair,Business,room
+CYT 209B,78,Table & Chair,Business,room
+CYT 210,4,Table & Chair,Business,room
+CYT 211,4,Table & Chair,Business,room
+CYT 214,47,Table & Chair,Business,room
+CYT 215,47,Table & Chair,Business,room
+CYT LT4,81,Lecture Theatre,Business,room
+CYT LT5,81,Lecture Theatre,Business,room
+CK TSE,147,Lecture Theatre,,room
+ELB 202,55,Table & Chair,U-Wide,room
+ELB 203,70,Table & Chair,U-Wide,room
+ELB 204,20,Table & Chair,U-Wide,room
+ELB 205,50,Table & Chair,U-Wide,room
+ELB 206,65,Table & Chair,U-Wide,room
+ELB 207,50,Table & Chair,U-Wide,room
+ELB 302,65,Table & Chair,U-Wide,room
+ELB 303,65,Table & Chair,U-Wide,room
+ELB 304,20,Table & Chair,U-Wide,room
+ELB 305,28,Table & Chair,U-Wide,room
+ELB 306,35,Table & Chair,U-Wide,room
+ELB 307,65,Table & Chair,U-Wide,room
+ELB 308,60,Table & Chair,U-Wide,room
+ELB 401,70,Table & Chair,U-Wide,room
+ELB 403,65,Table & Chair,U-Wide,room
+ELB 405,80,Table & Chair,U-Wide,room
+ELB LT1,244,Lecture Theatre,U-Wide,room
+ELB LT2,154,Lecture Theatre,U-Wide,room
+ELB LT3,154,Lecture Theatre,U-Wide,room
+ELB LT4,154,Lecture Theatre,U-Wide,room
+HTB B6,220,Lecture Theatre,,room
+HYS 501,40,Armchair,,room
+HYS G01,55,Table & Chair,,room
+HYS G05,70,Table & Chair,,room
+LKC LT1,229,Lecture Theatre,U-Wide,room
+SB 239,45,Armchair,U-Wide,room
+SB UG06,72,Table & Chair,U-Wide,room
+FYB 105,20,Table & Chair,,room
+FYB 106,30,Table & Chair,,room
+FYB 107A,20,Armchair,,room
+FYB 107B,20,Armchair,,room
+FYB 401,40,Armchair,,room
+FYB 402,20,Armchair,,room
+FYB 405,40,Armchair/Table & Chair,,room
+FYB 603,30,Armchair/Table & Chair,,room
+FYB LT4,122,Lecture Theatre,,room
+FYB UG01,60,Table & Chair,,room
+FYB UG02,55,Table & Chair,,room
+WMY 302,30,Armchair/Table & Chair,U-Wide,room
+WMY 303,64,Table & Chair,U-Wide,room
+WMY 304,70,Armchair/Table & Chair,U-Wide,room
+WMY 305,70,Table & Chair,U-Wide,room
+WMY 306,70,Armchair/Table & Chair,U-Wide,room
+WMY 401,30,Armchair/Table & Chair,U-Wide,room
+WMY 402,50,Table & Chair,U-Wide,room
+WMY 403,70,Table & Chair,U-Wide,room
+WMY 404,40,Table & Chair,U-Wide,room
+WMY 405,40,Table & Chair,U-Wide,room
+WMY 406,70,Table & Chair,U-Wide,room
+WMY 407,70,Table & Chair,U-Wide,room
+WMY 408,70,Armchair/Table & Chair,U-Wide,room
+WMY 501,30,Armchair/Table & Chair,U-Wide,room
+WMY 502,50,Table & Chair,U-Wide,room
+WMY 503,30,Armchair/Table & Chair,U-Wide,room
+WMY 504,40,Table & Chair,U-Wide,room
+WMY 505,90,Table & Chair,U-Wide,room
+WMY 506,70,Table & Chair,U-Wide,room
+WMY 507,90,Table & Chair,U-Wide,room
+WMY 508,70,Table & Chair,U-Wide,room
+YIA 201,72,Armchair/Table & Chair,U-Wide,room
+YIA 401,30,Armchair/Table & Chair,U-Wide,room
+YIA 402,52,Table & Chair,U-Wide,room
+YIA 403,65,Table & Chair,U-Wide,room
+YIA 404,30,Armchair/Table & Chair,U-Wide,room
+YIA 405,80,Armchair/Table & Chair,U-Wide,room
+YIA 406,30,Armchair/Table & Chair,U-Wide,room
+YIA 407,30,Armchair/Table & Chair,U-Wide,room
+YIA 408,30,Armchair/Table & Chair,U-Wide,room
+YIA 409,30,Armchair/Table & Chair,U-Wide,room
+YIA 410,30,Armchair/Table & Chair,U-Wide,room
+YIA 411,30,Armchair/Table & Chair,U-Wide,room
+YIA 501,30,Armchair/Table & Chair,U-Wide,room
+YIA 502,52,Table & Chair,U-Wide,room
+YIA 503,65,Table & Chair,U-Wide,room
+YIA 504,30,Armchair/Table & Chair,U-Wide,room
+YIA 505,80,Armchair/Table & Chair,U-Wide,room
+YIA 506,30,Armchair/Table & Chair,U-Wide,room
+YIA 507,30,Armchair/Table & Chair,U-Wide,room
+YIA 508,30,Armchair/Table & Chair,U-Wide,room
+YIA 509,30,Armchair/Table & Chair,U-Wide,room
+YIA 510,30,Armchair/Table & Chair,U-Wide,room
+YIA 511,30,Armchair/Table & Chair,U-Wide,room
+YIA 605,30,Table & Chair,U-Wide,room
+YIA 607,30,Table & Chair,U-Wide,room
+YIA 608,30,Table & Chair,U-Wide,room
+YIA LT3,249,Lecture Theatre,U-Wide,room
+YIA LT4,160,Lecture Theatre,U-Wide,room
+YIA LT5,160,Lecture Theatre,U-Wide,room
+YIA LT6,160,Lecture Theatre,U-Wide,room
+YIA LT7,153,Lecture Theatre,U-Wide,room
+YIA LT8,100,Lecture Theatre,U-Wide,room
+YIA LT9,95,Lecture Theatre,U-Wide,room
