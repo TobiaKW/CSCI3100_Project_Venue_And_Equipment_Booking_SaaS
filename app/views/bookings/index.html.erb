@@ -1,28 +1,52 @@
-<h2>My Bookings</h2>
+<div class="dashboard-container">
+  <div class="dashboard-header">
+    <h1 class="dashboard-title">📋 My Bookings</h1>
+    <%= link_to "← Back to Resources", root_path, class: "btn btn-secondary" %>
+  </div>
 
-<% if notice %>
-  <p style="color: green;"><%= notice %></p>
-<% end %>
+  <% if notice %>
+    <div class="alert alert-success"><%= notice %></div>
+  <% end %>
 
-<table border="1">
-  <thead>
-    <tr>
-      <th>Resource</th>
-      <th>Start Time</th>
-      <th>End Time</th>
-      <th>Status</th>
-    </tr>
-  </thead>
-  <tbody>
-    <% @bookings.each do |booking| %>
-      <tr data-booking-id="<%= booking.id %>">
-        <td><%= booking.resource.name %></td>
-        <td><%= booking.start_time.strftime("%Y-%m-%d %H:%M") %></td>
-        <td><%= booking.end_time.strftime("%Y-%m-%d %H:%M") %></td>
-        <td data-booking-status><%= booking.status %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-
-<p><%= link_to "Back to Resources", root_path %></p>
+  <% if @bookings.any? %>
+    <div class="resources-grid">
+      <% @bookings.each do |booking| %>
+        <div class="resource-card" data-booking-id="<%= booking.id %>">
+          <div class="resource-card-header type-<%= booking.resource.rtype %>">
+            <h3 class="resource-name"><%= booking.resource.name %></h3>
+            <div class="resource-department">
+              📍 <%= booking.resource.department.name %>
+            </div>
+          </div>
+          
+          <div class="resource-card-body">
+            <div class="resource-details">
+              <div class="resource-detail-item">
+                <span class="resource-detail-label">🗓 Start Time</span>
+                <span class="resource-detail-value"><%= booking.start_time.strftime("%Y-%m-%d %H:%M") %></span>
+              </div>
+              <div class="resource-detail-item">
+                <span class="resource-detail-label">⏰ End Time</span>
+                <span class="resource-detail-value"><%= booking.end_time.strftime("%Y-%m-%d %H:%M") %></span>
+              </div>
+              <div class="resource-detail-item">
+                <span class="resource-detail-label">Status</span>
+                <span class="resource-detail-value">
+                  <span class="status-indicator status-<%= booking.status %>" data-booking-status>
+                    <%= booking.status.capitalize %>
+                  </span>
+                </span>
+              </div>
+            </div>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  <% else %>
+    <div class="empty-state">
+      <div class="empty-state-icon">📭</div>
+      <p class="empty-state-text">You don't have any bookings yet.</p>
+      <%= link_to "Browse Resources", root_path, class: "btn" %>
+    </div>
+  <% end %>
+</div>
