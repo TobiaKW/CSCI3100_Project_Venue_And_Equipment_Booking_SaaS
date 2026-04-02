@@ -16,7 +16,7 @@
 # Run migrations first (in terminal): bin/rails db:migrate
 
 Department_list = [
-    'Engineering', 'Science', 'Physical Education Unit'
+    'Engineering', 'Science', 'Physical Education Unit', 'Medicine'
 ]
 
 Department_list.each do |dept_name|
@@ -37,7 +37,13 @@ User.find_or_create_by!(email: 'kerubintobia@gmail.com') do |user|
   user.role = 'student'
   user.department = Department.find_by!(name: 'Engineering')
 end
-
+# Create user "Eason23"
+User.find_or_create_by!(email: 'easonng23@gmail.com') do |user|
+  user.name = 'Eason23'
+  user.password = 'dev54321'
+  user.role = 'student'
+  user.department = Department.find_by!(name: 'Medicine')
+end
 
 # resources for test
 Resource_list = [
@@ -49,7 +55,9 @@ Resource_list = [
     { name: 'Science Centre LT2', rtype: 'room', dept: 'Science' },
     { name: 'Badminton Bat', rtype: 'equipment', dept: 'Physical Education Unit' },
     { name: 'Basketball', rtype: 'equipment', dept: 'Physical Education Unit' },
-    { name: 'University Gym New Arc', rtype: 'room', dept: 'Physical Education Unit' }
+    { name: 'University Gym New Arc', rtype: 'room', dept: 'Physical Education Unit' },
+    { name: 'BMSB LT1', rtype: 'room', dept: 'Medicine' },
+    { name: 'BMSB LT2', rtype: 'room', dept: 'Medicine' }
 ]
 
 Resource_list.each do |attr|
@@ -66,6 +74,13 @@ Booking_list = [
       start_time: '2026-05-01 14:00',
       end_time:   '2026-05-01 16:00',
       dept:       'Engineering'
+    },
+    {
+      user: 'Eason23',
+      resource: 'BMSB LT1',
+      start_time: '2026-04-15 10:00',
+      end_time:   '2026-04-15 12:00',
+      dept:       'Medicine'
     }
 ]
 
