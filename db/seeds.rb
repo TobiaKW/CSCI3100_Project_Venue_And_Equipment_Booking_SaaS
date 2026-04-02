@@ -19,7 +19,8 @@
 Department_list = [
     'Engineering', 'Science', 'Physical Education Unit', 'Medicine',
     'Arts', 'Business Administration', 'Education', 'Law', 'Social Science',
-    'New Asia College', 'United College', 'Shaw College', 'Chung Chi College'
+    'New Asia College', 'United College', 'Shaw College', 'Chung Chi College',
+    'Business', 'English', 'U-Wide'
 ]
 
 Department_list.each do |dept_name|
