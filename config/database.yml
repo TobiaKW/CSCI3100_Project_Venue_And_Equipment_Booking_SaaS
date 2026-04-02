@@ -21,6 +21,5 @@ production:
   url: <%= ENV["DATABASE_URL"] %>
   sslmode: require
   connect_timeout: 5
-
   variables:
     statement_timeout: 5000

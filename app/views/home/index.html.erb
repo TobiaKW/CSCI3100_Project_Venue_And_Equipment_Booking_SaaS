@@ -68,6 +68,16 @@
                   <span class="resource-detail-label">Type</span>
                   <span class="resource-detail-value"><%= resource.rtype.capitalize %></span>
                 </div>
+                <% if resource.rtype == 'room' && resource.capacity && resource.capacity > 0 %>
+                  <div class="resource-detail-item">
+                    <span class="resource-detail-label">👥 Capacity</span>
+                    <span class="resource-detail-value"><%= resource.capacity %> seats</span>
+                  </div>
+                  <div class="resource-detail-item">
+                    <span class="resource-detail-label">💺 Seat Type</span>
+                    <span class="resource-detail-value"><%= resource.seat_type %></span>
+                  </div>
+                <% end %>
                 <div class="resource-detail-item">
                   <span class="resource-detail-label">Department</span>
                   <span class="resource-detail-value"><%= resource.department.name %></span>
