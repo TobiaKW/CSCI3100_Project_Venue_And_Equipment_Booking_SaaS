@@ -14,5 +14,10 @@ class HomeController < ApplicationController
     if params[:rtypes].present?
       @resources = @resources.where(rtype: params[:rtypes])
     end
+
+    # Filter by department
+    if params[:department_id].present?
+      @resources = @resources.where(department_id: params[:department_id])
+    end
   end
 end

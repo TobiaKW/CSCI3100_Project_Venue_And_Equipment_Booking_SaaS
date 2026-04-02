@@ -29,6 +29,11 @@
           <%= f.label :search, "🔍 Search by name:", style: "font-weight: 600;" %>
           <%= f.text_field :search, value: params[:search], placeholder: "Enter resource name...", class: "search-input" %>
           
+          <div>
+            <%= f.label :department_id, "Department:", style: "font-weight: 600;" %>
+            <%= f.collection_select :department_id, Department.all, :id, :name, { prompt: "All Departments" }, class: "filter-select" %>
+          </div>
+
           <div class="filter-checkboxes">
             <label class="filter-checkbox-label">
               <%= f.check_box :rtypes, { multiple: true, checked: params[:rtypes]&.include?("room") }, "room", nil %>

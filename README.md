@@ -127,7 +127,7 @@ for Render server:
 
 2. Replace the DATABASE_URL with the new internal database URL
 
-3. run `RAILS_ENV=production DATABASE_URL="external_URL" bin/rails db:seed` in the dir of the project. Replace external_URL with the full URL.
+3. Redeploy
 
 ## ActionCable troubleshooting (real-time updates)
 

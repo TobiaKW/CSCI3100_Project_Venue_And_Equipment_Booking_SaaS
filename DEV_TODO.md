@@ -74,3 +74,98 @@ Last updated: 2026-03-24
 - `startCommand` currently runs migrate on boot (`db:migrate && rails server`).
 - `DATABASE_URL` on web service should use Render internal DB URL.
 - For ActionCable in production, set `REDIS_URL`.
+
+## 📋 HTML to CSS Refactoring Checklist
+
+1. VIEW FILES TO REFACTOR (11 main views)
+
+ - app/views/home/index.html.erb - Landing page (most complex)
+ - app/views/bookings/index.html.erb - User bookings list
+ - app/views/bookings/new.html.erb - Booking creation form
+ - app/views/admin/bookings/index.html.erb - Admin dashboard
+ - app/views/admin/bookings/_booking_row.html.erb - Partial
+ - app/views/devise/sessions/new.html.erb - Login
+ - app/views/devise/registrations/new.html.erb - Sign up
+ - app/views/devise/registrations/edit.html.erb - Edit profile
+ - app/views/layouts/application.html.erb - Main layout
+ - app/views/devise/shared/_links.html.erb - Auth links partial
+ - app/views/devise/shared/_error_messages.html.erb - Error messages
+
+2. INLINE STYLES TO MOVE (6 instances currently)
+
+Move these from style="..." attributes to CSS classes in app/assets/stylesheets/:
+
+ - style="font-weight: 600;" - Create .font-weight-bold or .label-bold
+ - Search form styling
+ - Filter section styling
+ - Label styling
+
+3. CSS FILES ORGANIZATION
+
+Current structure (good):
+
+ - application.css - Global styles
+ - layout.css - Navigation, layout
+ - components.css - Reusable components
+ - bookings.css - Booking-specific
+ - dashboard.css - Admin dashboard
+
+What needs work:
+
+ - Consolidate related styles (some duplication likely exists)
+ - Add home.css for landing page styles
+ - Add forms.css for Devise forms (login, signup, edit profile)
+
+4. KEY REFACTORING TASKS
+
+A. Extract Inline Styles (Priority: HIGH)
+
+ home/index.html.erb:
+   - style="font-weight: 600;" on labels → .label-bold
+   - Search form layout styles → .search-section, .search-form, .search-input-group
+   - Filter checkbox styling → .filter-checkboxes, .filter-checkbox-label
+   - Resource grid styling → .resources-grid, .resource-card
+
+B. Clean Up HTML Structure (Priority: MEDIUM)
+
+ - Reduce nested divs in forms
+ - Use semantic HTML (nav, section, article, aside)
+ - Improve accessibility (ARIA labels, proper heading hierarchy)
+ - Check for redundant wrapper divs
+
+C. Create Missing CSS Files (Priority: MEDIUM)
+
+ - forms.css - All Devise form styling (login, signup, edit)
+ - home.css - Landing page specific styles
+ - responsive.css - Media queries for mobile/tablet
+
+D. CSS Best Practices (Priority: LOW)
+
+ - Establish naming convention (BEM, SMACSS, or custom)
+ - Define color palette variables (currently using inline hex?)
+ - Create reusable utility classes
+ - Document CSS class structure
+
+5. SPECIFIC AREAS TO CHECK
+
+┌─────────────────────────────────┬──────────────────────────┬──────────────────────────────────────┐
+│ File                            │ Issue Type               │ What to Look For                     │
+├─────────────────────────────────┼──────────────────────────┼──────────────────────────────────────┤
+│ home/index.html.erb             │ Inline styles, structure │ Search form, resource cards, filters │
+├─────────────────────────────────┼──────────────────────────┼──────────────────────────────────────┤
+│ admin/bookings/index.html.erb   │ Complex table, styling   │ Status badges, action buttons        │
+├─────────────────────────────────┼──────────────────────────┼──────────────────────────────────────┤
+│ bookings/new.html.erb           │ Form styling             │ Date/time pickers, submit buttons    │
+├─────────────────────────────────┼──────────────────────────┼──────────────────────────────────────┤
+│ devise/sessions/new.html.erb    │ Form layout              │ Login form styling                   │
+├─────────────────────────────────┼──────────────────────────┼──────────────────────────────────────┤
+│ layouts/application.html.erb    │ Global markup            │ Navigation, alerts, footer           │
+└─────────────────────────────────┴──────────────────────────┴──────────────────────────────────────┘
+
+6. REFACTORING ORDER (Recommended)
+
+ 1. Phase 1: Extract inline styles (quick wins)
+ 2. Phase 2: Create missing CSS files (forms.css, home.css)
+ 3. Phase 3: Reorganize HTML structure (semantic HTML, reduce nesting)
+ 4. Phase 4: Implement responsive design and mobile-first approach
+ 5. Phase 5: Establish CSS naming conventions and document
