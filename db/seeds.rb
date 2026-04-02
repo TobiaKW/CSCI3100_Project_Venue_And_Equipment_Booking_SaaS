@@ -34,6 +34,19 @@ User.find_or_create_by!(email: 'kevinwong391@gmail.com') do |user|
   user.role = 'admin'
   user.department = Department.find_by!(name: 'Engineering')
 end
+
+# Create admin users for all other departments
+admin_departments = Department_list.reject { |d| d == 'Engineering' }
+admin_departments.each do |dept_name|
+  dept_slug = dept_name.downcase.gsub(/[^a-z0-9]+/, '')
+  User.find_or_create_by!(email: "admin#{dept_slug}@temp.edu") do |user|
+    user.name = "#{dept_name} Admin"
+    user.password = 'dev1234'
+    user.role = 'admin'
+    user.department = Department.find_by!(name: dept_name)
+  end
+end
+
 # Create user "Kevin"
 User.find_or_create_by!(email: 'kerubintobia@gmail.com') do |user|
   user.name = 'Kevin'
@@ -302,13 +315,13 @@ Resource_list = [
     { name: 'Basketball', rtype: 'equipment', capacity: -1, seat_type: 'N/A', dept: 'Physical Education Unit' },
     { name: 'Projector - Portable', rtype: 'equipment', capacity: -1, seat_type: 'N/A', dept: 'Engineering' },
     { name: 'Volleyball', rtype: 'equipment', capacity: -1, seat_type: 'N/A', dept: 'Physical Education Unit' },
-    { name: 'Microscope', rtype: 'equipment', capacity: -1, seat_type: 'N/A', dept: 'Medicine' },
+    { name: 'Microscope', rtype: 'equipment', capacity: -1, seat_type: 'N/A', dept: 'Medicine' }
 ]
 
 Resource_list.each do |attr|
     dept = Department.find_by!(name: attr[:dept])
     next unless dept
-    
+
     Resource.find_or_create_by!(name: attr[:name], department: dept) do |resource|
       resource.rtype = attr[:rtype]
       resource.capacity = attr[:capacity]
