@@ -1,9 +1,11 @@
-<h2>Make a booking for <%= @resource.name %></h2>
+<div class="dashboard-container">
+  <div class="dashboard-header">
+    <h1 class="dashboard-title">Make a booking for <%= @resource.name %></h1>
 
 <%= form_with model: @booking, url: bookings_path(resource_id: @resource.id), local: true do |f| %>
 
   <% if @booking.errors.any? %>
-    <div style="color: red;">
+    <div class="form-errors">
       <h3><%= pluralize(@booking.errors.count, "error") %> prohibited this booking from being saved:</h3>
       <ul>
         <% @booking.errors.full_messages.each do |message| %>
@@ -13,17 +15,31 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <p><%= f.label :start_time, "Start time" %></p>
-    <p><%= f.datetime_local_field :start_time %></p>
+  <div class="form-row">
+    <div class="form-group">
+      <p><%= f.label :start_date, "Start Date" %></p>
+      <p><%= f.date_field :start_time, value: @booking.start_time&.to_date, data: { field: 'start-date' } %></p>
+    </div>
+
+    <div class="form-group">
+      <p><%= f.label :start_time_only, "Start Time" %></p>
+      <p><%= f.time_field :start_time, value: @booking.start_time&.strftime("%H:%M"), data: { field: 'start-time' } %></p>
+    </div>
   </div>
 
-  <div class="field">
-    <p><%= f.label :end_time, "End time" %></p>
-    <p><%= f.datetime_local_field :end_time %></p>
+  <div class="form-row">
+    <div class="form-group">
+      <p><%= f.label :end_date, "End Date" %></p>
+      <p><%= f.date_field :end_time, value: @booking.end_time&.to_date, data: { field: 'end-date' } %></p>
+    </div>
+
+    <div class="form-group">
+      <p><%= f.label :end_time_only, "End Time" %></p>
+      <p><%= f.time_field :end_time, value: @booking.end_time&.strftime("%H:%M"), data: { field: 'end-time' } %></p>
+    </div>
   </div>
 
-  <div class="actions">
-    <%= f.submit "Confirm Booking" %>
+  <div class="form-actions">
+    <%= f.submit "Confirm Booking", class: "btn btn-primary" %>
   </div>
 <% end %>
