@@ -339,7 +339,7 @@ Booking_list = [
     },
     {
       user: 'Eason23',
-      resource: 'BMSB LT1',
+      resource: 'BMS LT',
       start_time: '2026-04-15 10:00',
       end_time:   '2026-04-15 12:00',
       dept:       'Medicine'
@@ -349,7 +349,7 @@ Booking_list = [
 Booking_list.each do |attr|
     user = User.find_by!(name: attr[:user])
     dept = Department.find_by!(name: attr[:dept])
-    resource = Resource.find_by!(name: attr[:resource], department: dept)
+    resource = Resource.find_by!(name: attr[:resource], department_id: dept.id)
     start_at = Time.zone.parse(attr[:start_time])
     end_at = Time.zone.parse(attr[:end_time])
 

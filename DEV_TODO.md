@@ -25,11 +25,16 @@ Last updated: 2026-03-24
 - [x] Booking row partial extracted for realtime prepend in admin dashboard.
 
 ### In progress
-1. **Data quality for demos**
-   - [ ] Expand departments coverage in `db/seeds.rb`.
-   - [ ] Add more users per department (students + at least one admin each).
-   - [ ] Add richer resources (rooms/equipment) across departments.
-   - [ ] Add representative booking records (mix of pending/approved/rejected).
+1. **HTML to CSS refactoring**
+   - [ ] Convert remaining inline styles to reusable CSS classes.
+   - [ ] Consolidate styles into `home.css`, `forms.css`, and responsive styles.
+   - [ ] Polish layout consistency across user/admin/auth pages.
+
+2. **Data quality for demos (mostly done)**
+   - [x] Expand departments coverage in `db/seeds.rb`.
+   - [x] Add more users per department (students + at least one admin each).
+   - [x] Add richer room resources across departments.
+   - [ ] Continue enriching equipment dataset for better digest/usage presentation.
 
 ### Next (priority order)
 
@@ -42,14 +47,11 @@ Last updated: 2026-03-24
    - [x] Add short ActionCable troubleshooting note to README.
    - [ ] Add small UI cue for live updates (optional highlight badge/row flash).
 
-3. **UI and product polish**
-   - [ ] Improve validation error copy in `Booking` model + booking form.
-   - [ ] Add clearer status labels/colors in user and admin booking lists.
-
-4. **Stability**
-   - [ ] Remove redundant gems from `Gemfile` (`actioncable`, `redis-actionpack`) and use `redis` only if needed.
-   - [ ] Add tests for booking validation and approval auto-reject behavior.
-   - [ ] Add index for overlap queries (`resource_id`, `status`, time columns).
+3. **RSpec testing**
+   - [ ] Set up `rspec-rails` and baseline test helpers.
+   - [ ] Add model specs for booking validations (duration, overlap, seven-day, overnight).
+   - [ ] Add request specs for admin approval + auto-reject overlapping pending bookings.
+   - [ ] Add request spec for admin authorization protection.
 
 
 
@@ -148,19 +150,13 @@ D. CSS Best Practices (Priority: LOW)
 
 5. SPECIFIC AREAS TO CHECK
 
-┌─────────────────────────────────┬──────────────────────────┬──────────────────────────────────────┐
-│ File                            │ Issue Type               │ What to Look For                     │
-├─────────────────────────────────┼──────────────────────────┼──────────────────────────────────────┤
-│ home/index.html.erb             │ Inline styles, structure │ Search form, resource cards, filters │
-├─────────────────────────────────┼──────────────────────────┼──────────────────────────────────────┤
-│ admin/bookings/index.html.erb   │ Complex table, styling   │ Status badges, action buttons        │
-├─────────────────────────────────┼──────────────────────────┼──────────────────────────────────────┤
-│ bookings/new.html.erb           │ Form styling             │ Date/time pickers, submit buttons    │
-├─────────────────────────────────┼──────────────────────────┼──────────────────────────────────────┤
-│ devise/sessions/new.html.erb    │ Form layout              │ Login form styling                   │
-├─────────────────────────────────┼──────────────────────────┼──────────────────────────────────────┤
-│ layouts/application.html.erb    │ Global markup            │ Navigation, alerts, footer           │
-└─────────────────────────────────┴──────────────────────────┴──────────────────────────────────────┘
+| File | Issue Type | What to Look For |
+|---|---|---|
+| `home/index.html.erb` | Inline styles, structure | Search form, resource cards, filters |
+| `admin/bookings/index.html.erb` | Complex table, styling | Status badges, action buttons |
+| `bookings/new.html.erb` | Form styling | Date/time pickers, submit buttons |
+| `devise/sessions/new.html.erb` | Form layout | Login form styling |
+| `layouts/application.html.erb` | Global markup | Navigation, alerts, footer |
 
 6. REFACTORING ORDER (Recommended)
 
