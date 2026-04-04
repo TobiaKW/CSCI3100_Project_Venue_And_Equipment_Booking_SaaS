@@ -2,9 +2,33 @@ class Admin::BookingsController < ApplicationController
   before_action :require_admin!
 
   def index
-    @bookings = Booking
-                .where(department: current_user.department, status: "pending")
-                .includes(:user, :resource)
+    # Pending bookings table
+    @pending_bookings = Booking
+                        .where(department: current_user.department, status: "pending")
+                        .includes(:user, :resource)
+                        .order(created_at: :desc)
+
+    # Approved bookings for this week
+    week_start = Date.today.beginning_of_week
+    week_end = week_start.end_of_week
+    @week_bookings = Booking
+                     .where(department: current_user.department, status: "approved")
+                     .where("DATE(start_time) BETWEEN ? AND ?", week_start, week_end)
+                     .includes(:user, :resource)
+                     .order(start_time: :asc)
+
+    # Chart data with Redis caching (1 hour TTL)
+    @bookings_by_status = cached_chart_data("bookings_by_status") do
+      booking_status_data
+    end
+
+    @booking_trends = cached_chart_data("booking_trends") do
+      booking_trends_data
+    end
+
+    @resource_utilization = cached_chart_data("resource_utilization") do
+      resource_utilization_data
+    end
   end
 
   def update
@@ -50,5 +74,48 @@ class Admin::BookingsController < ApplicationController
 
   def require_admin!
     redirect_to root_path, alert: "Not authorized" unless current_user&.role == "admin"
+  end
+
+  def cached_chart_data(chart_name)
+    cache_key = "admin:chart:#{chart_name}:#{current_user.department_id}"
+    cached = Rails.cache.read(cache_key)
+    return cached if cached.present?
+
+    data = yield
+    Rails.cache.write(cache_key, data, expires_in: 1.hour)
+    data
+  end
+
+  def booking_status_data
+    statuses = Booking
+               .where(department: current_user.department)
+               .group(:status)
+               .count
+
+    statuses.transform_keys { |k| k.capitalize }
+  end
+
+  def booking_trends_data
+    # Bookings per week from April to June
+    bookings = Booking
+               .where(department: current_user.department)
+               .where("start_time >= ? AND start_time <= ?", Date.new(2026, 4, 1), Date.new(2026, 6, 30))
+               .group_by { |b| b.start_time.to_date.beginning_of_week }
+               .transform_keys { |k| k.strftime("%b %d") }
+               .transform_values(&:count)
+
+    bookings.sort_by { |k, _| Date.strptime(k, "%b %d") }.to_h
+  end
+
+  def resource_utilization_data
+    # Top 10 most booked resources
+    Booking
+      .where(department: current_user.department)
+      .joins(:resource)
+      .group("resources.name")
+      .count
+      .sort_by { |_, v| -v }
+      .first(10)
+      .to_h
   end
 end
