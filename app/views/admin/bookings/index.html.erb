@@ -1,25 +1,88 @@
-<h2>Admin Dashboard: All Bookings</h2>
-<% if notice %>
-  <p style="color: green;"><%= notice %></p>
-<% end %>
-<% if alert %>
-  <p style="color: red;"><%= alert %></p>
-<% end %>
-<table border="1" style="width: 100%; border-collapse: collapse;">
-  <thead>
-    <tr style="background-color: #f2f2f2;">
-      <th>User</th>
-      <th>Resource</th>
-      <th>Start Time</th>
-      <th>End Time</th>
-      <th>Status</th>
-      <th>Actions</th>
-    </tr>
-  </thead>
-  <tbody data-bookings-list>
-    <% @bookings.each do |booking| %>
-      <%= render "admin/bookings/booking_row", booking: booking %>
+<div class="admin-dashboard">
+  <h1>Admin Dashboard</h1>
+
+  <% if notice %>
+    <div class="alert alert-success"><%= notice %></div>
+  <% end %>
+  <% if alert %>
+    <div class="alert alert-error"><%= alert %></div>
+  <% end %>
+
+  <!-- Pending Bookings Table -->
+  <section class="dashboard-section">
+    <h2>Pending Bookings</h2>
+    <% if @pending_bookings.any? %>
+      <table class="bookings-table">
+        <thead>
+          <tr>
+            <th>User</th>
+            <th>Resource</th>
+            <th>Start Time</th>
+            <th>End Time</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody data-bookings-list>
+          <% @pending_bookings.each do |booking| %>
+            <%= render "admin/bookings/booking_row", booking: booking %>
+          <% end %>
+        </tbody>
+      </table>
+    <% else %>
+      <p class="no-data">No pending bookings</p>
     <% end %>
-  </tbody>
-</table>
-<p><%= link_to "Back to Home", root_path %></p>
+  </section>
+
+  <!-- This Week's Approved Bookings Table -->
+  <section class="dashboard-section">
+    <h2>Approved Bookings This Week</h2>
+    <% if @week_bookings.any? %>
+      <table class="bookings-table">
+        <thead>
+          <tr>
+            <th>User</th>
+            <th>Resource</th>
+            <th>Start Time</th>
+            <th>End Time</th>
+            <th>Status</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @week_bookings.each do |booking| %>
+            <tr>
+              <td><%= booking.user.name %></td>
+              <td><%= booking.resource.name %></td>
+              <td><%= booking.start_time.strftime("%Y-%m-%d %H:%M") %></td>
+              <td><%= booking.end_time.strftime("%Y-%m-%d %H:%M") %></td>
+              <td><span class="badge badge-confirmed"><%= booking.status %></span></td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    <% else %>
+      <p class="no-data">No approved bookings this week</p>
+    <% end %>
+  </section>
+
+  <!-- Charts Section -->
+  <section class="dashboard-section charts-section">
+    <div class="chart-container">
+      <div class="chart-item">
+        <h3>Bookings by Status</h3>
+        <%= pie_chart @bookings_by_status, library: { pieHole: 0.4 } %>
+      </div>
+
+      <div class="chart-item">
+        <h3>Booking Trends (Apr-Jun 2026)</h3>
+        <%= line_chart @booking_trends, library: { curveType: "function" } %>
+      </div>
+
+      <div class="chart-item">
+        <h3>Top 10 Resources</h3>
+        <%= bar_chart @resource_utilization %>
+      </div>
+    </div>
+  </section>
+
+  <p class="back-link"><%= link_to "Back to Home", root_path %></p>
+</div>
