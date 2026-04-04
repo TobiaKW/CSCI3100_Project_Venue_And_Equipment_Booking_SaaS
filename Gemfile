@@ -15,6 +15,8 @@ gem "puma", ">= 5.0"
 gem "devise"
 # Action Cable
 gem "redis", "~> 5.0"
+# chartkick
+gem "chartkick", "~> 5.2"
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem "tzinfo-data", platforms: %i[ windows jruby ]
