@@ -53,16 +53,16 @@ class BookingsController < ApplicationController
 
   def booking_params
     params_permitted = params.require(:booking).permit(:resource_id, :start_date, :start_time_only, :end_date, :end_time_only)
-    
+
     # Merge separate date and time fields into datetime format
     if params_permitted[:start_date].present? && params_permitted[:start_time_only].present?
       params_permitted[:start_time] = "#{params_permitted[:start_date]} #{params_permitted[:start_time_only]}:00"
     end
-    
+
     if params_permitted[:end_date].present? && params_permitted[:end_time_only].present?
       params_permitted[:end_time] = "#{params_permitted[:end_date]} #{params_permitted[:end_time_only]}:00"
     end
-    
+
     # Remove the separate fields since we've merged them
     params_permitted.except(:start_date, :start_time_only, :end_date, :end_time_only)
   end
