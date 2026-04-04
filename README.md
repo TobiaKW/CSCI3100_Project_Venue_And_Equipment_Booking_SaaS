@@ -191,3 +191,5 @@ For now, the website can already provide most fundamental functions that a typic
 2026-03-24: Real-time update feature implementation done with Redis/ActionCable.
 
 2026-04-02: CSS interface WIP. Resource model upgraded + database reinitialised.
+
+2026-04-04: ChartKick WIP.
