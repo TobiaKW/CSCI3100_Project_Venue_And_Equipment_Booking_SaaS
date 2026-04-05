@@ -1,19 +1,15 @@
 namespace :db do
-  desc "Reset production database (truncate tables, load schema, seed)"
+  desc "Reset production database (clear all data, then seed)"
   task reset_prod: :environment do
-    conn = ActiveRecord::Base.connection
+    # Delete all records in the correct order (respecting foreign keys)
+    puts "Clearing all data..."
 
-    # Disable foreign key checks temporarily
-    conn.execute("SET session_replication_role = 'replica';")
+    Booking.delete_all
+    Resource.delete_all
+    User.delete_all
+    Department.delete_all
 
-    # Truncate all tables except migrations
-    conn.tables.each do |table|
-      next if table == 'schema_migrations' || table == 'ar_internal_metadata'
-      conn.execute("TRUNCATE TABLE #{table} CASCADE")
-    end
-
-    # Re-enable foreign key checks
-    conn.execute("SET session_replication_role = 'origin';")
+    puts "Data cleared. Running seeds..."
 
     # Seed data
     Rake::Task['db:seed'].invoke
