@@ -128,7 +128,7 @@ for Render server:
  startCommand: 
 
  ```
- "bin/rails db:reset && bin/rails server -p $PORT -e production"
+ "DISABLE_DATABASE_ENVIRONMENT_CHECK=1 bin/rails db:reset && bin/rails server -p $PORT -e production"
  ```
 
  1. Deploy once (this will wipe and regenerate everything)
@@ -137,7 +137,7 @@ for Render server:
  startCommand: 
 
  ```
- "DISABLE_DATABASE_ENVIRONMENT_CHECK=1 bin/rails db:migrate && bin/rails db:seed && bin/rails server -p $PORT -e production"
+ "bin/rails db:migrate && bin/rails db:seed && bin/rails server -p $PORT -e production"
  ```
  1. Deploy again
 
