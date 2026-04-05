@@ -365,7 +365,7 @@ end
 # Generate random bookings for April-June 2026
 rooms = Resource.where(rtype: 'room').all
 equipment = Resource.where(rtype: 'equipment').all
-users = User.all
+users = User.where.not(role: 'admin').all
 all_resources = rooms + equipment
 
 if rooms.any? && equipment.any? && users.any?

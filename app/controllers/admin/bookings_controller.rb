@@ -2,17 +2,21 @@ class Admin::BookingsController < ApplicationController
   before_action :require_admin!
 
   def index
-    # Pending bookings table
+    # Pending bookings table - only for resources in admin's department
     @pending_bookings = Booking
-                        .where(department: current_user.department, status: "pending")
+                        .joins(:resource)
+                        .where(status: "pending")
+                        .where("resources.department_id = ?", current_user.department_id)
                         .includes(:user, :resource)
                         .order(created_at: :desc)
 
-    # Approved bookings for this week
+    # Approved bookings for this week - only for resources in admin's department
     week_start = Date.today.beginning_of_week
     week_end = week_start.end_of_week
     @week_bookings = Booking
-                     .where(department: current_user.department, status: "approved")
+                     .joins(:resource)
+                     .where(status: "approved")
+                     .where("resources.department_id = ?", current_user.department_id)
                      .where("DATE(start_time) BETWEEN ? AND ?", week_start, week_end)
                      .includes(:user, :resource)
                      .order(start_time: :asc)
@@ -88,7 +92,8 @@ class Admin::BookingsController < ApplicationController
 
   def booking_status_data
     statuses = Booking
-               .where(department: current_user.department)
+               .joins(:resource)
+               .where("resources.department_id = ?", current_user.department_id)
                .group(:status)
                .count
 
@@ -96,9 +101,10 @@ class Admin::BookingsController < ApplicationController
   end
 
   def booking_trends_data
-    # Bookings per week from April to June
+    # Bookings per week from April to June for admin's department resources
     bookings = Booking
-               .where(department: current_user.department)
+               .joins(:resource)
+               .where("resources.department_id = ?", current_user.department_id)
                .where("start_time >= ? AND start_time <= ?", Date.new(2026, 4, 1), Date.new(2026, 6, 30))
                .group_by { |b| b.start_time.to_date.beginning_of_week }
                .transform_keys { |k| k.strftime("%b %d") }
@@ -108,10 +114,10 @@ class Admin::BookingsController < ApplicationController
   end
 
   def resource_utilization_data
-    # Top 10 most booked resources
+    # Top 10 most booked resources in admin's department
     Booking
-      .where(department: current_user.department)
       .joins(:resource)
+      .where("resources.department_id = ?", current_user.department_id)
       .group("resources.name")
       .count
       .sort_by { |_, v| -v }
