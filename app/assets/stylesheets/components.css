@@ -148,3 +148,30 @@
   width: 90%;
   box-shadow: 0 4px 16px rgba(0,0,0,0.2);
 }
+
+/* Charts */
+.charts-section {
+  margin-top: 2rem;
+}
+
+.chart-container {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2rem;
+  margin-top: 1.5rem;
+}
+
+.chart-item {
+  background: #fff;
+  padding: 1.5rem;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+}
+
+.chart-item h3 {
+  margin-top: 0;
+  margin-bottom: 1rem;
+  color: #333;
+  font-size: 1rem;
+}

@@ -363,61 +363,78 @@ Booking_list.each do |attr|
 end
 
 # Generate random bookings for April-June 2026
+# 2-3 bookings per department per week
 rooms = Resource.where(rtype: 'room').all
 equipment = Resource.where(rtype: 'equipment').all
 users = User.where.not(role: 'admin').all
+departments = Department.all
 all_resources = rooms + equipment
 
-if rooms.any? && equipment.any? && users.any?
+if rooms.any? && equipment.any? && users.any? && departments.any?
   start_date = Date.new(2026, 4, 1)
   end_date = Date.new(2026, 6, 30)
 
-  (start_date..end_date).each do |date|
-    # 0-3 bookings per day
-    num_bookings = rand(0..3)
+  # Generate 2-3 bookings per department per week
+  departments.each do |dept|
+    dept_users = users.where(department: dept)
+    next if dept_users.empty?
 
-    num_bookings.times do
-      resource = all_resources.sample
-      user = users.sample
+    # Loop through weeks
+    current_week_start = start_date.beginning_of_week
+    while current_week_start <= end_date
+      current_week_end = current_week_start.end_of_week
 
-      # Randomly pick status with more weight on confirmed
-      status_rand = rand(100)
-      if status_rand < 70
-        status = 'confirmed'
-      elsif status_rand < 85
-        status = 'pending'
-      else
-        status = 'cancelled'
+      # 2-3 bookings per week per department
+      num_bookings = rand(2..3)
+
+      num_bookings.times do
+        # Pick random date in this week
+        date = Date.new(current_week_start.year, current_week_start.month, current_week_start.day) + rand(0..6)
+
+        resource = all_resources.sample
+        user = dept_users.sample
+
+        # Randomly pick status with more weight on confirmed
+        status_rand = rand(100)
+        if status_rand < 70
+          status = 'confirmed'
+        elsif status_rand < 85
+          status = 'pending'
+        else
+          status = 'cancelled'
+        end
+
+        # For rooms: random hour start/end on same day, max 8 hours
+        # For equipment: can be overnight
+        if resource.rtype == 'room'
+          start_hour = rand(8..20)
+          duration = rand(1..4)
+          end_hour = [ start_hour + duration, 22 ].min
+
+          start_time = date.to_datetime + start_hour.hours
+          end_time = date.to_datetime + end_hour.hours
+        else
+          # Equipment can be overnight - randomly pick 1-3 days
+          start_hour = rand(0..23)
+          duration_days = rand(1..3)
+
+          start_time = date.to_datetime + start_hour.hours
+          end_time = (date + duration_days).to_datetime
+        end
+
+        # Create without validation to bypass 7-day advance requirement
+        booking = Booking.new(
+          user: user,
+          resource: resource,
+          department: user.department,
+          start_time: start_time,
+          end_time: end_time,
+          status: status
+        )
+        booking.save(validate: false)
       end
 
-      # For rooms: random hour start/end on same day, max 8 hours
-      # For equipment: can be overnight
-      if resource.rtype == 'room'
-        start_hour = rand(8..20)
-        duration = rand(1..4)
-        end_hour = [ start_hour + duration, 22 ].min
-
-        start_time = date.to_datetime + start_hour.hours
-        end_time = date.to_datetime + end_hour.hours
-      else
-        # Equipment can be overnight - randomly pick 1-3 days
-        start_hour = rand(0..23)
-        duration_days = rand(1..3)
-
-        start_time = date.to_datetime + start_hour.hours
-        end_time = (date + duration_days).to_datetime
-      end
-
-      # Create without validation to bypass 7-day advance requirement
-      booking = Booking.new(
-        user: user,
-        resource: resource,
-        department: user.department,
-        start_time: start_time,
-        end_time: end_time,
-        status: status
-      )
-      booking.save(validate: false)
+      current_week_start += 1.week
     end
   end
 end
