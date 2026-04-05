@@ -123,11 +123,24 @@ bin/rails db:drop db:create db:migrate db:seed
 
 for Render server:
 
-1. Create a brand new database in Render interface.
+ 1. Update render.yaml to use db:reset:
 
-2. Replace the DATABASE_URL with the new internal database URL
+ startCommand: 
 
-3. Redeploy
+ ```
+ "bin/rails db:reset && bin/rails server -p $PORT -e production"
+ ```
+
+ 1. Deploy once (this will wipe and regenerate everything)
+ 2. Then switch it back to safe mode:
+
+ startCommand: 
+
+ ```
+ "DISABLE_DATABASE_ENVIRONMENT_CHECK=1 bin/rails db:migrate && bin/rails db:seed && bin/rails server -p $PORT -e production"
+ ```
+ 1. Deploy again
+
 
 ## ActionCable troubleshooting (real-time updates)
 
