@@ -343,9 +343,13 @@ Booking_list = [
 ]
 
 Booking_list.each do |attr|
-    user = User.find_by!(name: attr[:user])
-    dept = Department.find_by!(name: attr[:dept])
-    resource = Resource.find_by!(name: attr[:resource], department_id: dept.id)
+    user = User.find_by(name: attr[:user])
+    dept = Department.find_by(name: attr[:dept])
+    resource = Resource.find_by(name: attr[:resource], department_id: dept&.id)
+
+    # Skip if any required data is missing
+    next unless user && dept && resource
+
     start_at = Time.zone.parse(attr[:start_time])
     end_at = Time.zone.parse(attr[:end_time])
 
