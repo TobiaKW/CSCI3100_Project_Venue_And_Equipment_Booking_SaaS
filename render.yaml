@@ -8,7 +8,7 @@ services:
 
     buildCommand: "./bin/render-build.sh"
     # No paid "release command" needed: migrate runs when the dyno boots (adds a few seconds per restart).
-    startCommand: "DISABLE_DATABASE_ENVIRONMENT_CHECK=1 bin/rails db:reset_prod && bin/rails server -p $PORT -e production"
+    startCommand: "bin/rails server -p $PORT -e production"
 
     envVars:
       - key: RAILS_MASTER_KEY
