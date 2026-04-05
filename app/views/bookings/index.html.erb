@@ -4,10 +4,6 @@
     <%= link_to "← Back to Resources", root_path, class: "btn btn-secondary" %>
   </div>
 
-  <% if notice %>
-    <div class="alert alert-success"><%= notice %></div>
-  <% end %>
-
   <% if @bookings.any? %>
     <div class="resources-grid">
       <% @bookings.each do |booking| %>

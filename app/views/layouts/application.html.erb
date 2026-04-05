@@ -12,13 +12,16 @@
     <link rel="manifest" href="/manifest.json">
     <link rel="icon" href="/icon.svg" type="image/svg+xml">
     <link rel="apple-touch-icon" href="/icon.svg">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4"></script>
     <%= stylesheet_link_tag "application" %>
     <%= javascript_importmap_tags %>
   </head>
 
   <body>
-    <% if notice.present? %><p class="notice"><%= notice %></p><% end %>
-    <% if alert.present? %><p class="alert"><%= alert %></p><% end %>
+    <div class="alerts-container">
+      <% if notice.present? %><div class="alert alert-success"><%= notice %></div><% end %>
+      <% if alert.present? %><div class="alert alert-error"><%= alert %></div><% end %>
+    </div>
     <%= yield %>
   </body>
 </html>
