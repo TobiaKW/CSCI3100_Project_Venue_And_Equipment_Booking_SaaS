@@ -5,6 +5,7 @@ class User < ApplicationRecord
   has_many :bookings, dependent: :restrict_with_error
   before_validation :normalize_name
   validates :name, presence: true
+  validate :username_must_be_unique
   before_validation :set_default_role, on: :create
 
   private
@@ -15,5 +16,12 @@ class User < ApplicationRecord
 
   def normalize_name
     self.name = name.to_s.strip.presence
+  end
+
+  def username_must_be_unique
+    return if name.blank?
+    return unless self.class.where("LOWER(name) = ?", name.downcase).where.not(id: id).exists?
+
+    errors.add(:base, "Username already exists")
   end
 end
