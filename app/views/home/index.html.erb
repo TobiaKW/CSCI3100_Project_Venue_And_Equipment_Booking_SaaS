@@ -1,11 +1,11 @@
 <div class="dashboard-container">
   <!-- Header Section -->
   <div class="dashboard-header">
-    <h1 class="dashboard-title">🏢 Venue & Equipment Booking</h1>
+    <h1 class="dashboard-title"><span class="material-symbols-outlined">corporate_fare</span> Venue & Equipment Booking</h1>
     
     <% if user_signed_in? %>
       <div class="dashboard-user-info">
-        <span class="user-badge">👤 <%= current_user.name %> (<%= current_user.role %>)</span>
+        <span class="user-badge"><span class="material-symbols-outlined">person</span> <%= current_user.name %> (<%= current_user.role %>)</span>
         <% if current_user.role == "admin" %>
           <%= link_to "Admin Dashboard", admin_bookings_path, class: "btn btn-secondary" %>
         <% else %>
@@ -26,7 +26,7 @@
     <div class="search-section">
       <%= form_with url: root_path, method: :get, local: true, class: "search-form" do |f| %>
         <div class="search-input-group">
-          <%= f.label :search, "🔍 Search by name:", style: "font-weight: 600;" %>
+          <%= f.label :search, "<span class='material-symbols-outlined'>search</span> Search by name:".html_safe, style: "font-weight: 600;" %>
           <%= f.text_field :search, value: params[:search], placeholder: "Enter resource name...", class: "search-input" %>
           
           <div>
@@ -37,11 +37,13 @@
           <div class="filter-checkboxes">
             <label class="filter-checkbox-label">
               <%= f.check_box :rtypes, { multiple: true, checked: params[:rtypes]&.include?("room") }, "room", nil %>
-              🏠 Room
+              <span class="material-symbols-outlined">home</span>
+              Room
             </label>
             <label class="filter-checkbox-label">
               <%= f.check_box :rtypes, { multiple: true, checked: params[:rtypes]&.include?("equipment") }, "equipment", nil %>
-              🔧 Equipment
+              <span class="material-symbols-outlined">build</span>
+              Equipment
             </label>
           </div>
         </div>
@@ -63,7 +65,8 @@
               <span class="resource-type-badge"><%= resource.rtype %></span>
               <h3 class="resource-name"><%= resource.name %></h3>
               <div class="resource-department">
-                📍 <%= resource.department.name %>
+                <span class="material-symbols-outlined">location_on</span>
+                <%= resource.department.name %>
               </div>
             </div>
             
@@ -75,11 +78,17 @@
                 </div>
                 <% if resource.rtype == 'room' && resource.capacity && resource.capacity > 0 %>
                   <div class="resource-detail-item">
-                    <span class="resource-detail-label">👥 Capacity</span>
+                    <span class="resource-detail-label">
+                      <span class="material-symbols-outlined">groups</span>
+                      Capacity
+                    </span>
                     <span class="resource-detail-value"><%= resource.capacity %> seats</span>
                   </div>
                   <div class="resource-detail-item">
-                    <span class="resource-detail-label">💺 Seat Type</span>
+                    <span class="resource-detail-label">
+                      <span class="material-symbols-outlined">tatami_seat</span>
+                      Seat Type
+                    </span>
                     <span class="resource-detail-value"><%= resource.seat_type %></span>
                   </div>
                 <% end %>
@@ -91,14 +100,14 @@
             </div>
             
             <div class="resource-card-footer">
-              <%= link_to "📅 Book Now", new_booking_path(resource_id: resource.id), class: "book-btn" %>
+              <%= link_to "<span class='material-symbols-outlined'>calendar_add_on</span> Book Now".html_safe, new_booking_path(resource_id: resource.id), class: "book-btn" %>
             </div>
           </div>
         <% end %>
       </div>
     <% else %>
       <div class="empty-state">
-        <div class="empty-state-icon">📭</div>
+        <div class="empty-state-icon"><span class="material-symbols-outlined">markunread_mailbox</span></div>
         <p class="empty-state-text">No resources found. Try adjusting your search filters.</p>
       </div>
     <% end %>

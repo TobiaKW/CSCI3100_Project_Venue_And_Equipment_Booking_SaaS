@@ -1,6 +1,9 @@
 <div class="dashboard-container">
   <div class="dashboard-header">
-    <h1 class="dashboard-title">📋 My Bookings</h1>
+    <h1 class="dashboard-title">
+      <span class="material-symbols-outlined">pending_actions</span>
+      My Bookings
+    </h1>
     <%= link_to "← Back to Resources", root_path, class: "btn btn-secondary" %>
   </div>
 
@@ -11,18 +14,25 @@
           <div class="resource-card-header type-<%= booking.resource.rtype %>">
             <h3 class="resource-name"><%= booking.resource.name %></h3>
             <div class="resource-department">
-              📍 <%= booking.resource.department.name %>
+              <span class="material-symbols-outlined">location_on</span>
+              <%= booking.resource.department.name %>
             </div>
           </div>
           
           <div class="resource-card-body">
             <div class="resource-details">
               <div class="resource-detail-item">
-                <span class="resource-detail-label">🗓 Start Time</span>
+                <span class="resource-detail-label">
+                  <span class="material-symbols-outlined">clock_loader_10</span>
+                  Start Time
+                </span>
                 <span class="resource-detail-value"><%= booking.start_time.strftime("%Y-%m-%d %H:%M") %></span>
               </div>
               <div class="resource-detail-item">
-                <span class="resource-detail-label">⏰ End Time</span>
+                <span class="resource-detail-label">
+                  <span class="material-symbols-outlined">clock_loader_90</span>
+                  End Time
+                </span>
                 <span class="resource-detail-value"><%= booking.end_time.strftime("%Y-%m-%d %H:%M") %></span>
               </div>
               <div class="resource-detail-item">
@@ -40,7 +50,7 @@
     </div>
   <% else %>
     <div class="empty-state">
-      <div class="empty-state-icon">📭</div>
+      <div class="empty-state-icon"><span class="material-symbols-outlined">markunread_mailbox</span></div>
       <p class="empty-state-text">You don't have any bookings yet.</p>
       <%= link_to "Browse Resources", root_path, class: "btn" %>
     </div>
