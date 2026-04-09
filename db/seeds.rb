@@ -355,11 +355,15 @@ Booking_list.each do |attr|
 
     next if Booking.exists?(user: user, resource: resource, start_time: start_at)
 
-    Booking.find_or_create_by!(user: user, resource: resource, start_time: start_at) do |b|
-        b.end_time = end_at
-        b.status = 'approved'
-        b.department = dept
-    end
+    booking = Booking.new(
+      user: user,
+      resource: resource,
+      start_time: start_at,
+      end_time: end_at,
+      status: 'approved',
+      department: dept
+    )
+    booking.save(validate: false)
 end
 
 # Generate random bookings for April-June 2026
