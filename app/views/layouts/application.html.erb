@@ -21,9 +21,74 @@
     <script src="https://cdn.jsdelivr.net/npm/chartkick@5"></script>
     <%= stylesheet_link_tag "application" %>
     <%= javascript_importmap_tags %>
+
+    <script>
+      function setTheme(themeName) {
+        localStorage.setItem("theme", themeName);
+        document.documentElement.classList.remove("light");
+        document.documentElement.classList.remove("dark");
+        document.documentElement.classList.add(themeName);
+      }
+
+      function changeTheme() {
+        if (localStorage.getItem("theme") === "dark"){
+          setTheme("light");
+        } else{
+          setTheme("dark");
+        }
+      }
+
+      (() => {
+        if (localStorage.getItem("theme") === "dark") {
+          setTheme("dark");
+          return;
+        }
+        if (localStorage.getItem("theme") === "light") {
+          setTheme("light");
+          return;
+        }
+        var preference = window.matchMedia("(prefers-color-scheme: dark)");
+        if (preference.matches) {
+          setTheme("dark");
+        } else {
+          setTheme("light");
+        }
+      })();
+    </script>
   </head>
 
   <body>
+    <header>
+      <%= link_to root_path do %>
+        <div class="title"><span class="material-symbols-outlined">corporate_fare</span> Venue & Equipment Booking</div>
+      <% end %>
+      
+      <div class="info">
+        <button class="toggle-theme" title="Toggle Theme" onclick="changeTheme()">
+          <div class="logo theme-light"></div>
+          <div class="logo theme-dark"></div>
+        </button>
+
+        <% if user_signed_in? %>
+          <div class="user-info">
+            <span class="user-badge"><span class="material-symbols-outlined">person</span> <%= current_user.name %> (<%= current_user.role %>)</span>
+            <% if current_user.role == "admin" %>
+              <%= link_to "Admin Dashboard", admin_bookings_path, class: "btn btn-secondary" %>
+            <% else %>
+              <%= link_to "My Bookings", bookings_path, class: "btn btn-secondary" %>
+            <% end %>
+            <%= button_to "Log out", destroy_user_session_path, method: :delete, class: "btn" %>
+          </div>
+        <% else %>
+          <% unless current_page?(new_user_session_path) || current_page?(new_user_registration_path) %>
+            <div class="dashboard-user-info">
+              <%= button_to "Log in", new_user_session_path, method: :get, class: "btn" %>
+              <%= button_to "Sign up", new_user_registration_path, method: :get, class: "btn btn-secondary" %>
+            </div>
+          <% end %>
+        <% end %>
+      </div>
+    </header>
     <div class="alerts-container">
       <% if notice.present? %><div class="alert alert-success"><%= notice %></div><% end %>
       <% if alert.present? %><div class="alert alert-error"><%= alert %></div><% end %>

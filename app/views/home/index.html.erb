@@ -1,26 +1,4 @@
 <div class="dashboard-container">
-  <!-- Header Section -->
-  <div class="dashboard-header">
-    <h1 class="dashboard-title"><span class="material-symbols-outlined">corporate_fare</span> Venue & Equipment Booking</h1>
-    
-    <% if user_signed_in? %>
-      <div class="dashboard-user-info">
-        <span class="user-badge"><span class="material-symbols-outlined">person</span> <%= current_user.name %> (<%= current_user.role %>)</span>
-        <% if current_user.role == "admin" %>
-          <%= link_to "Admin Dashboard", admin_bookings_path, class: "btn btn-secondary" %>
-        <% else %>
-          <%= link_to "My Bookings", bookings_path, class: "btn btn-secondary" %>
-        <% end %>
-        <%= button_to "Log out", destroy_user_session_path, method: :delete, class: "btn" %>
-      </div>
-    <% else %>
-      <div class="dashboard-user-info">
-        <%= button_to "Log in", new_user_session_path, method: :get, class: "btn" %>
-        <%= button_to "Sign up", new_user_registration_path, method: :get, class: "btn btn-secondary" %>
-      </div>
-    <% end %>
-  </div>
-
   <% if user_signed_in? %>
     <!-- Search Section -->
     <div class="search-section">
@@ -72,10 +50,6 @@
             
             <div class="resource-card-body">
               <div class="resource-details">
-                <div class="resource-detail-item">
-                  <span class="resource-detail-label">Type</span>
-                  <span class="resource-detail-value"><%= resource.rtype.capitalize %></span>
-                </div>
                 <% if resource.rtype == 'room' && resource.capacity && resource.capacity > 0 %>
                   <div class="resource-detail-item">
                     <span class="resource-detail-label">

@@ -14,7 +14,142 @@
  *= require_self
  */
 
+* {
+  box-sizing: border-box;
+}
+
 .material-symbols-outlined {
   font-size: 1em;
   vertical-align: middle;
+}
+
+:root {
+  --fix-white: #fafafa;
+  --fix-black: #050505;
+  --fix-computer-blue-dark: #1f4e79;
+  --fix-computer-blue-light: #b9daf6;
+}
+
+.light {
+  --white: var(--fix-white);
+  --black: var(--fix-black);
+  --computer-blue-dark: var(--fix-computer-blue-dark);
+  --computer-blue-light: var(--fix-computer-blue-light);
+}
+
+.dark {
+  --white: var(--fix-black);
+  --black: var(--fix-white);
+  --computer-blue-dark: var(--fix-computer-blue-light);
+  --computer-blue-light: var(--fix-computer-blue-dark);
+}
+
+button, input[type="text"] {
+  all: unset;
+  background-color: color-mix(in srgb, var(--computer-blue-light) 50%, transparent);
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.25s ease;
+  text-align: center;
+  padding: 0.5em 1em;
+
+  &:hover {
+    background-color: color-mix(in srgb, var(--computer-blue-light) 75%, transparent);
+  }
+}
+
+a {
+  text-decoration: none;
+  color: unset;
+}
+
+body {
+  font-family: "Lexend", sans-serif;
+  margin: 0;
+  --background-color: color-mix(in srgb, var(--white) 98%, var(--black));
+  background-color: var(--background-color);
+  color: color-mix(in srgb, var(--black) 85%, var(--white));
+  transition: all 0.5s ease;
+  transition-property: background-color, color;
+}
+
+.logo {
+  mask-repeat: no-repeat;
+  mask-position: center;
+  mask-size: contain;
+  background-color: var(--computer-blue-dark);
+  transition: background-color 0.25s ease;
+  display: block;
+
+  &.theme-light {
+    mask-image: url("theme_light.svg");
+  }
+
+  &.theme-dark {
+    mask-image: url("theme_dark.svg");
+  }
+}
+
+header {
+  display: flex;
+  justify-content: space-between;
+  background-color: color-mix(in srgb, var(--background-color) 25%, transparent);
+  padding: 1em 2em;
+  position: sticky;
+  backdrop-filter: blur(2em);
+  top: 0;
+
+  &:before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background-color: color-mix(in srgb, var(--computer-blue-light) 25%, transparent);
+    z-index: -1;
+  }
+
+  .title {
+    color: var(--computer-blue-dark);
+    font-size: 1.25em;
+  }
+
+  .info {
+    display: flex;
+    
+    > .toggle-theme {
+      background-color: transparent;
+      font-size: 0.75em;
+      height: 2em;
+      aspect-ratio: 1 / 1;
+      position: relative;
+      overflow: hidden;
+      margin-left: 2em;
+      justify-content: space-between;
+  
+      > .logo {
+        position: absolute;
+        inset: 17.5%;
+        transition: transform 0.75s ease;
+  
+        &.theme-light {
+          transform-origin: 150% 150%;
+  
+          .dark & {
+            transform: rotate(-90deg);
+          }
+        }
+  
+        &.theme-dark {
+          transform-origin: -150% -150%;
+  
+          .light & {
+            transform: rotate(-90deg);
+          }
+        }
+      }
+    }
+
+    > .user-info {
+      display: flex;
+    }
+  }
 }
