@@ -112,7 +112,7 @@
 
   > .resources-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(min(20em, 100%), 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(min(25em, 100%), 1fr));
     gap: 1em;
     
     > .resource-card {
@@ -140,6 +140,7 @@
         padding: 1em;
         position: relative;
         row-gap: 0.25em;
+        overflow: hidden;
         transition: background-color 0.25s ease;
     
         > *:not(.resource-type-icon) {
@@ -196,6 +197,7 @@
       > .resource-card-footer {
         padding: 1em;
         display: flex;
+        justify-content: center;
         width: 100%;
     
         > a {
@@ -204,6 +206,17 @@
     
           > .book-btn {
             flex: 1;
+          }
+        }
+
+        > .booking-status {
+          text-align: center;
+
+          > div:not(.hover-label) {
+            color: var(--computer-blue-dark);
+            text-transform: uppercase;
+            letter-spacing: 0.25em;
+            font-weight: bold;
           }
         }
       }

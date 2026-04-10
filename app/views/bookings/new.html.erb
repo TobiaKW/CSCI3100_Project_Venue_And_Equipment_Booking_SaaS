@@ -1,7 +1,6 @@
-<div class="dashboard-container">
-  <div class="dashboard-header">
-    <h1 class="dashboard-title">Make a booking for <%= @resource.name %></h1>
-  </div>
+<%= link_to "← Back to Resources", root_path %>
+
+<h1 class="dashboard-title">Make a booking for <%= @resource.name %></h1>
 
 <%= form_with model: @booking, url: bookings_path(resource_id: @resource.id), local: true do |f| %>
 
