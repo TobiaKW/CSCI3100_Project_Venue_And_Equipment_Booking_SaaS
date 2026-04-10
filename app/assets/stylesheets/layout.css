@@ -43,7 +43,7 @@ header {
     align-items: center;
     column-gap: 1em;
     
-    > .toggle-theme {
+    .toggle-theme {
       background-color: transparent;
       padding: 0;
       font-size: 0.75em;
