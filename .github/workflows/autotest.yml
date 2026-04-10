@@ -55,3 +55,4 @@ jobs:
         run: |
           bundle exec rspec
           bundle exec cucumber
+          bin/rake coverage:merge
