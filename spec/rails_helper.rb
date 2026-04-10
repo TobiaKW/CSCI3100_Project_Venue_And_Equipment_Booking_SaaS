@@ -69,4 +69,10 @@ RSpec.configure do |config|
   config.filter_rails_from_backtrace!
   # arbitrary gems may also be filtered via:
   # config.filter_gems_from_backtrace("gem name")
+
+  config.around(:each) do |example|
+    Timecop.freeze(Time.zone.local(2026, 4, 10, 0, 0, 0)) do
+      example.run
+    end
+  end
 end

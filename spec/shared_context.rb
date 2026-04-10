@@ -18,6 +18,7 @@ RSpec.shared_context :database, :shared_context => :metadata do
   let(:users) do
     {
       :admin => User.create!( name: 'admin', email: 'admin@example.com', password: '123456', role: 'admin', department: departments[:engine] ),
+      :admin2 => User.create!( name: 'admin2', email: 'admin2@example.com', password: '123456', role: 'admin', department: departments[:maths] ),
       :alice => User.create!( name: 'alice', email: 'alice@example.com', password: '123456', role: 'student', department: departments[:engine] ),
       :bob => User.create!( name: 'bob', email: 'bob@example.com', password: '123456', role: 'student', department: departments[:maths] )
     }
@@ -27,6 +28,7 @@ RSpec.shared_context :database, :shared_context => :metadata do
     {
       :computer => Resource.create!( name: 'Computer', rtype: 'equipment', department: departments[:engine] ),
       :shb123 => Resource.create!( name: 'SHB 123', rtype: 'room', department: departments[:engine] ),
+      :lsbc1 => Resource.create!( name: 'LSB C1', rtype: 'room', department: departments[:maths] ),
       :shb924 => Resource.create!( name: 'SHB 924', rtype: 'room', department: departments[:engine] )
     }
   end
@@ -37,6 +39,14 @@ RSpec.shared_context :database, :shared_context => :metadata do
         :user => users[:alice],
         :resource => resources[:shb924],
         :department => resources[:shb924].department,
+        :start_time => freeze_date + 7.day + 10.hour,
+        :end_time => freeze_date + 7.day + 11.hour,
+        :status => 'pending'
+      }),
+      :alice_c1 => Booking.create!({ 
+        :user => users[:alice],
+        :resource => resources[:lsbc1],
+        :department => resources[:lsbc1].department,
         :start_time => freeze_date + 7.day + 10.hour,
         :end_time => freeze_date + 7.day + 11.hour,
         :status => 'pending'
