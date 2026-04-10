@@ -40,6 +40,8 @@ header {
 
   .info {
     display: flex;
+    align-items: center;
+    column-gap: 1em;
     
     > .toggle-theme {
       background-color: transparent;
@@ -76,6 +78,9 @@ header {
 
     > .user-info {
       display: flex;
+      column-gap: 1em;
+      font-size: 0.875em;
+      align-items: center;
     }
   }
 }

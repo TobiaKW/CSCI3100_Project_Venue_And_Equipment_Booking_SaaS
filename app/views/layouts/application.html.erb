@@ -66,19 +66,22 @@
       <div class="info">
         <% if user_signed_in? %>
           <div class="user-info">
-            <span class="user-badge"><span class="material-symbols-outlined">person</span> <%= current_user.name %> (<%= current_user.role %>)</span>
+            <div class="user-badge">
+              <div class="hover-label"><%= current_user.role.titleize %></div>
+              <span class="material-symbols-outlined">person</span> <%= current_user.name %>
+            </div>
             <% if current_user.role == "admin" %>
-              <%= link_to "Admin Dashboard", admin_bookings_path, class: "btn btn-secondary" %>
+              <%= link_to "<button>Admin Dashboard</button>".html_safe, admin_bookings_path %>
             <% else %>
-              <%= link_to "My Bookings", bookings_path, class: "btn btn-secondary" %>
+              <%= link_to "<button>My Bookings</button>".html_safe, bookings_path %>
             <% end %>
-            <%= button_to "Log out", destroy_user_session_path, method: :delete, class: "btn" %>
+            <%= button_to "Log out", destroy_user_session_path, method: :delete %>
           </div>
         <% else %>
           <% unless current_page?(new_user_session_path) || current_page?(new_user_registration_path) %>
-            <div class="dashboard-user-info">
-              <%= button_to "Log in", new_user_session_path, method: :get, class: "btn" %>
-              <%= button_to "Sign up", new_user_registration_path, method: :get, class: "btn btn-secondary" %>
+            <div class="user-info">
+              <%= button_to "Log in", new_user_session_path, method: :get %>
+              <%= button_to "Sign up", new_user_registration_path, method: :get %>
             </div>
           <% end %>
         <% end %>
