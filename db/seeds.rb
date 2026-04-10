@@ -330,8 +330,7 @@ Booking_list = [
       user: 'Kevin',
       resource: 'SHB122',
       start_time: '2026-05-01 14:00',
-      end_time:   '2026-05-01 16:00',
-      dept:       'Engineering'
+      end_time:   '2026-05-01 16:00'
     },
     {
       user: 'Eason23',
@@ -360,8 +359,7 @@ Booking_list.each do |attr|
       resource: resource,
       start_time: start_at,
       end_time: end_at,
-      status: 'approved',
-      department: dept
+      status: 'approved'
     )
     booking.save(validate: false)
 end
@@ -430,7 +428,6 @@ if rooms.any? && equipment.any? && users.any? && departments.any?
         booking = Booking.new(
           user: user,
           resource: resource,
-          department: user.department,
           start_time: start_time,
           end_time: end_time,
           status: status

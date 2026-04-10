@@ -20,11 +20,14 @@ jobs:
         options: --health-cmd="pg_isready" --health-interval=10s --health-timeout=5s --health-retries=3
 
     steps:
-      - name: Install packages
-        run: sudo apt-get update && sudo apt-get install --no-install-recommends -y google-chrome-stable curl libjemalloc2 libvips postgresql-client libpq-dev
-
       - name: Checkout code
         uses: actions/checkout@v4
+
+      - name: Install system dependencies
+        run: |
+          sudo apt-get update
+          sudo apt-get install --no-install-recommends -y \
+            google-chrome-stable curl libjemalloc2 libvips postgresql-client libpq-dev
 
       - name: Set up Ruby
         uses: ruby/setup-ruby@v1
@@ -32,16 +35,23 @@ jobs:
           ruby-version: .ruby-version
           bundler-cache: true
 
-      - name: Add account to postgres
+      - name: Run custom SQL setup
+        env:
+          PGPASSWORD: postgres
         run: |
-          sudo systemctl start postgresql.service
-          sudo -u postgres psql -f setup.sql
+          # Point psql to localhost
+          psql -h localhost -U postgres -f setup.sql
 
       - name: Set up Database
-        run: bin/rails db:drop db:create db:migrate db:seed
-
-      - name: Run rspec
         env:
           RAILS_ENV: test
-          DATABASE_URL: postgres://postgres:postgres@localhost:5432
-        run: bundle exec rspec
+          DATABASE_URL: postgres://postgres:postgres@localhost:5432/postgres_test
+        run: bin/rails db:drop db:create db:migrate db:seed
+
+      - name: Run Tests
+        env:
+          RAILS_ENV: test
+          DATABASE_URL: postgres://postgres:postgres@localhost:5432/postgres_test
+        run: |
+          bundle exec rspec
+          bundle exec cucumber

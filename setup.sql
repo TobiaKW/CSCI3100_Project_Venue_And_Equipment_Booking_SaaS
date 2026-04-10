@@ -1,2 +1,2 @@
-CREATE USER kevin WITH PASSWORD '';
+CREATE USER kevin;
 GRANT ALL ON SCHEMA public TO kevin;
