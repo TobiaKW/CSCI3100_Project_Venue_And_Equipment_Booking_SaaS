@@ -10,7 +10,9 @@
 }
 
 .search-section {
-  padding: 1em 2em;
+  padding: 0 max(2em, calc((100% - var(--page-max-width)) / 2));
+  display: flex;
+  align-items: center;
   backdrop-filter: blur(2em);
   background-color: color-mix(in srgb, var(--background-color) 25%, transparent);
   border-radius: var(--header-radius);
@@ -27,7 +29,7 @@
     position: absolute;
     inset: 0;
     background-color: color-mix(in srgb, var(--white) 25%, transparent);
-    border: color-mix(in srgb, var(--computer-blue-light) 50%, transparent) 0.125em solid;
+    border: color-mix(in srgb, var(--computer-blue-light) 25%, transparent) 0.25em solid;
     z-index: -1;
     border-radius: var(--header-radius);
   }
@@ -47,11 +49,37 @@
     display: flex;
     justify-content: space-between;
     column-gap: 2em;
-
+    flex: 1;
+    
     > .search-input-group {
-      flex: 1;
       display: flex;
+      align-items: center;
       justify-content: space-between;
+      column-gap: 2em;
+
+      > .filter-checkboxes {
+        display: flex;
+        column-gap: 0.5em;
+
+        > .filter-checkbox-label {
+          display: flex;
+          align-items: center;
+          column-gap: 0.25em;
+          padding: 0.25em 0.5em;
+          border-radius: 0.25em;
+          transition: all 0.25s ease;
+          transition-property: background-color color;
+
+          &:hover {
+            background-color: color-mix(in srgb, var(--computer-blue-light) 25%, transparent);
+          }
+
+          &:has(> input[type="checkbox"]:checked) {
+            background-color: color-mix(in srgb, var(--computer-blue-light) 50%, transparent);
+            color: var(--computer-blue-dark);
+          }
+        }
+      }
     }
   }
 }

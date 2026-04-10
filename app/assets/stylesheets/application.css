@@ -32,6 +32,7 @@
   --page-margin: 1rem;
   --header-top: 1rem;
   --header-radius: 0.75rem;
+  --page-max-width: 1400px;
 }
 
 .light {

@@ -9,8 +9,9 @@
             <%= f.label :search, "<span class='material-symbols-outlined'>search</span>".html_safe %>
             <%= f.text_field :search, value: params[:search], placeholder: "Enter resource name...", class: "search-input" %>
           </div>
+
           <div>
-            <%= f.label :department_id, "Department" %>
+            <div class="hover-label">Department</div>
             <%= f.collection_select :department_id, Department.all, :id, :name, { prompt: "All Departments" }, class: "filter-select" %>
           </div>
 

@@ -1,8 +1,9 @@
 header {
   display: flex;
+  align-items: center;
   justify-content: space-between;
   background-color: color-mix(in srgb, var(--background-color) 25%, transparent);
-  padding: 1em 2em;
+  padding: 0 max(2em, calc((100% - var(--page-max-width)) / 2));
   position: fixed;
   backdrop-filter: blur(2em);
   top: var(--header-top);
@@ -130,6 +131,6 @@ header {
 }
 
 main {
-  margin: var(--header-height) calc(max((100vw - 1400px) / 2, var(--page-margin))) var(--header-height) calc(max((100vw - 1400px) / 2, var(--page-margin)));
+  margin: var(--header-height) calc(max((100vw - var(--page-max-width)) / 2, var(--page-margin))) var(--header-height) calc(max((100vw - 1400px) / 2, var(--page-margin)));
   padding: 2em;
 }
