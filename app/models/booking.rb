@@ -1,7 +1,7 @@
 class Booking < ApplicationRecord
   belongs_to :user
   belongs_to :resource
-  belongs_to :department
+  belongs_to :department # should not exist since this should be inferred directly from user / resource?
 
   BLOCKING_STATUSES = %w[approved].freeze
   validates :start_time, :end_time, presence: true
@@ -34,7 +34,8 @@ class Booking < ApplicationRecord
 
     scope = Booking
             .where(resource_id: resource_id)
-            .where(status: BLOCKING_STATUSES)
+            # .where(status: BLOCKING_STATUSES)
+            # in reality should not allow placing booking even in pending status?
     scope = scope.where.not(id: id) if persisted? # for update operation later
 
     # Half-open intervals [start_time, end_time): overlap iff
@@ -53,7 +54,7 @@ class Booking < ApplicationRecord
   end
 
   def no_overnight_bookings_of_venue
-    return if !resource.is_a?(Resource) || resource.rtype != "room"
+    return if !resource.is_a?(Resource) || resource.rtype == "equipment"
     return if start_time.blank? || end_time.blank?
     return unless end_time > start_time
     return if end_time.to_date == start_time.to_date
