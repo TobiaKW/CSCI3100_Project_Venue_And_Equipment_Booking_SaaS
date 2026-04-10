@@ -35,6 +35,7 @@ group :development, :test do
   gem 'rspec-rails', '~> 8.0.0', require: false
   gem "rails-controller-testing"
   gem 'simplecov', require: false
+  gem 'webmock', require: false
   gem 'database_cleaner'
 end
 

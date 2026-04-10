@@ -13,7 +13,7 @@
       <img src="./assets/0.13.2/loading.gif" alt="loading"/>
     </div>
     <div id="wrapper" class="hide">
-      <div class="timestamp">Generated <abbr class="timeago" title="2026-04-11T01:56:27+08:00">2026-04-11T01:56:27+08:00</abbr></div>
+      <div class="timestamp">Generated <abbr class="timeago" title="2026-04-11T02:48:57+08:00">2026-04-11T02:48:57+08:00</abbr></div>
       <ul class="group_tabs"></ul>
 
       <div id="content">
@@ -93,12 +93,12 @@
         
           <tr class="t-file">
             <td class="strong t-file__name"><a href="#9c451db50f5e9e14c9b50347cd1a340abcc2bbf9" class="src_link" title="app/controllers/bookings_controller.rb">app/controllers/bookings_controller.rb</a></td>
-            <td class="green strong cell--number t-file__coverage">91.30 %</td>
+            <td class="yellow strong cell--number t-file__coverage">86.96 %</td>
             <td class="cell--number">56</td>
             <td class="cell--number">23</td>
-            <td class="cell--number">21</td>
-            <td class="cell--number">2</td>
-            <td class="cell--number">1.26</td>
+            <td class="cell--number">20</td>
+            <td class="cell--number">3</td>
+            <td class="cell--number">1.22</td>
             
           </tr>
         
@@ -148,12 +148,12 @@
         
           <tr class="t-file">
             <td class="strong t-file__name"><a href="#f55b8519f773d8e700588c5e7ef433297587ab6e" class="src_link" title="app/mailers/user_mailer.rb">app/mailers/user_mailer.rb</a></td>
-            <td class="yellow strong cell--number t-file__coverage">83.33 %</td>
+            <td class="green strong cell--number t-file__coverage">100.00 %</td>
             <td class="cell--number">12</td>
             <td class="cell--number">6</td>
-            <td class="cell--number">5</td>
-            <td class="cell--number">1</td>
-            <td class="cell--number">1.33</td>
+            <td class="cell--number">6</td>
+            <td class="cell--number">0</td>
+            <td class="cell--number">1.67</td>
             
           </tr>
         
@@ -979,7 +979,7 @@
 
             
 
-            <code class="ruby">            .where(resource_id: booking.resource_id, status: &quot;pending&quot;)</code>
+            <code class="ruby">            .where(resource_id: booking.resource.id, status: &quot;pending&quot;)</code>
           </li>
         </div>
       
@@ -2047,8 +2047,8 @@
   <div class="header">
     <h3>app/controllers/bookings_controller.rb</h3>
     <h4>
-      <span class="green">
-  91.3%
+      <span class="yellow">
+  86.96%
 </span>
 
       lines covered
@@ -2058,8 +2058,8 @@
 
     <div class="t-line-summary">
       <b>23</b> relevant lines.
-      <span class="green"><b>21</b> lines covered</span> and
-      <span class="red"><b>2</b> lines missed.</span>
+      <span class="green"><b>20</b> lines covered</span> and
+      <span class="red"><b>3</b> lines missed.</span>
     </div>
 
     
@@ -2415,7 +2415,7 @@
 
             
 
-            <code class="ruby">          ActionCable.server.broadcast(&quot;admin_bookings_dept_#{@booking.department_id}&quot;, {</code>
+            <code class="ruby">          ActionCable.server.broadcast(&quot;admin_bookings_dept_#{@booking.resource.department_id}&quot;, {</code>
           </li>
         </div>
       
@@ -2470,9 +2470,7 @@
         </div>
       
         <div>
-          <li class="covered" data-hits="1" data-linenumber="38">
-            
-              <span class="hits">1</span>
+          <li class="missed" data-hits="0" data-linenumber="38">
             
 
             
@@ -3378,8 +3376,8 @@
   <div class="header">
     <h3>app/mailers/user_mailer.rb</h3>
     <h4>
-      <span class="yellow">
-  83.33%
+      <span class="green">
+  100.0%
 </span>
 
       lines covered
@@ -3389,8 +3387,8 @@
 
     <div class="t-line-summary">
       <b>6</b> relevant lines.
-      <span class="green"><b>5</b> lines covered</span> and
-      <span class="red"><b>1</b> lines missed.</span>
+      <span class="green"><b>6</b> lines covered</span> and
+      <span class="red"><b>0</b> lines missed.</span>
     </div>
 
     
@@ -3456,7 +3454,7 @@
 
             
 
-            <code class="ruby">    @department = booking.department</code>
+            <code class="ruby">    @department = @resource.department</code>
           </li>
         </div>
       
@@ -3471,7 +3469,9 @@
         </div>
       
         <div>
-          <li class="missed" data-hits="0" data-linenumber="7">
+          <li class="covered" data-hits="2" data-linenumber="7">
+            
+              <span class="hits">2</span>
             
 
             
