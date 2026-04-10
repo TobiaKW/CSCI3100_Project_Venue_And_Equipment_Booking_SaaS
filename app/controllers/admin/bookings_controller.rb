@@ -46,7 +46,7 @@ class Admin::BookingsController < ApplicationController
           # Keep your policy: many pending requests can exist, but only one can be approved.
           # reject all other pending bookings for the same resource same time
           Booking
-            .where(resource_id: booking.resource_id, status: "pending")
+            .where(resource_id: booking.resource.id, status: "pending")
             .where.not(id: booking.id)
             .where("start_time < ? AND end_time > ?", booking.end_time, booking.start_time)
             .update_all(status: "rejected", updated_at: Time.current)
