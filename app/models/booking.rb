@@ -3,9 +3,8 @@ class Booking < ApplicationRecord
   belongs_to :resource
   belongs_to :department
 
-  # validation: conflict detection
   BLOCKING_STATUSES = %w[approved].freeze
-  validates :start_time, :end_time, presence: true # check data PRESENCE
+  validates :start_time, :end_time, presence: true
   validate :end_time_after_start_time
   validate :minimum_duration_one_hour
   validate :no_overlapping_bookings_for_resource
@@ -54,7 +53,8 @@ class Booking < ApplicationRecord
   end
 
   def no_overnight_bookings_of_venue
-    return if resource.rtype != "room" || start_time.blank? || end_time.blank?
+    return if !resource.is_a?(Resource) || resource.rtype != "room"
+    return if start_time.blank? || end_time.blank?
     return unless end_time > start_time
     return if end_time.to_date == start_time.to_date
     # day alone fails across months, e.g. Apr 1 vs May 1
