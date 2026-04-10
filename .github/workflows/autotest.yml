@@ -33,7 +33,7 @@ jobs:
           bundler-cache: true
 
       - name: Set up Database
-        run: PGPASSWORD='postgres' bin/rails db:drop db:create db:migrate db:seed
+        run: PGPASSWORD='' bin/rails db:drop db:create db:migrate db:seed
 
       - name: Run rspec
         env:
