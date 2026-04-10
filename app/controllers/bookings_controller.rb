@@ -12,7 +12,6 @@ class BookingsController < ApplicationController
     @resource = Resource.find(params[:resource_id])
     @booking  = current_user.bookings.build(booking_params.merge(
       resource: @resource,
-      department: current_user.department,
       status: "pending"
     ))
     if @booking.save

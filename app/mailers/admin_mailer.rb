@@ -1,7 +1,7 @@
 class AdminMailer < ApplicationMailer
   # Same-department admins first; if none, any admin (so mail still sends when only one dept has an admin in seeds).
   def self.pending_approval_recipients(booking)
-    department = booking.department
+    department = booking.resource.department
     emails = User.where(role: "admin", department_id: department.id).pluck(:email)
     return emails if emails.any?
 
@@ -10,7 +10,7 @@ class AdminMailer < ApplicationMailer
 
   def pending_approval(booking)
     @booking = booking
-    @department = booking.department
+    @department = booking.resource.department
     emails = self.class.pending_approval_recipients(booking)
     if emails.blank?
       raise ArgumentError, "AdminMailer#pending_approval: no admin recipients for booking #{booking.id}"

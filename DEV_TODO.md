@@ -51,7 +51,7 @@ Last updated: 2026-03-24
    - [x] Set up `rspec-rails` and baseline test helpers.
    - [x] Add model specs for booking validations (duration, overlap, seven-day, overnight).
    - [x] Add request specs for admin approval + auto-reject overlapping pending bookings.
-   - [ ] Add request spec for admin authorization protection.
+   - [x] Add request spec for admin authorization protection.
 
 
 
