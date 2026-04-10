@@ -31,8 +31,10 @@ group :development, :test do
   # Omakase Ruby styling [https://github.com/rails/rubocop-rails-omakase/]
   gem "rubocop-rails-omakase", require: false
 
-  # rspec for validation
+  # rspec
   gem 'rspec-rails', '~> 8.0.0'
+  # assert_template
+  gem "rails-controller-testing"
 end
 
 gem "turbo-rails", "~> 2.0"

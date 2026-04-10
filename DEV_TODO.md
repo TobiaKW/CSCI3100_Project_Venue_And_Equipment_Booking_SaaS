@@ -48,9 +48,9 @@ Last updated: 2026-03-24
    - [ ] Add small UI cue for live updates (optional highlight badge/row flash).
 
 3. **RSpec testing**
-   - [ ] Set up `rspec-rails` and baseline test helpers.
-   - [ ] Add model specs for booking validations (duration, overlap, seven-day, overnight).
-   - [ ] Add request specs for admin approval + auto-reject overlapping pending bookings.
+   - [x] Set up `rspec-rails` and baseline test helpers.
+   - [x] Add model specs for booking validations (duration, overlap, seven-day, overnight).
+   - [x] Add request specs for admin approval + auto-reject overlapping pending bookings.
    - [ ] Add request spec for admin authorization protection.
 
 
