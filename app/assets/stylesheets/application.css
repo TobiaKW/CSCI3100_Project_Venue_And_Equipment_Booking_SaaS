@@ -49,7 +49,7 @@
   --computer-blue-light: var(--fix-computer-blue-dark);
 }
 
-button, input[type="text"], input[type="submit"] {
+button, input[type="text"], input[type="submit"], select {
   all: unset;
   background-color: color-mix(in srgb, var(--computer-blue-light) 50%, transparent);
   border: none;
@@ -62,6 +62,10 @@ button, input[type="text"], input[type="submit"] {
   &:hover {
     background-color: color-mix(in srgb, var(--computer-blue-light) 75%, transparent);
   }
+}
+
+select > option {
+  background-color: color-mix(in srgb, var(--computer-blue-light) 25%, var(--white));
 }
 
 a {

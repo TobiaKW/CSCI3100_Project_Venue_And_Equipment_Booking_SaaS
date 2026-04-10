@@ -53,13 +53,12 @@
     
     > .search-input-group {
       display: flex;
-      align-items: center;
       justify-content: space-between;
       column-gap: 2em;
 
       > .filter-checkboxes {
         display: flex;
-        column-gap: 0.5em;
+        column-gap: 1em;
 
         > .filter-checkbox-label {
           display: flex;

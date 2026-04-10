@@ -104,8 +104,8 @@ header {
   flex-direction: column;
   row-gap: 1em;
   position: fixed;
-  bottom: 2em;
-  right: max(var(--page-margin), 2em);
+  top: calc(var(--header-height) + 1em);
+  right: calc(var(--page-margin) + 1em);
   z-index: 5;
   pointer-events: none;
   align-items: flex-end;
