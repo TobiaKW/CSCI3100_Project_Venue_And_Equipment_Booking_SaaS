@@ -32,8 +32,11 @@ jobs:
           ruby-version: .ruby-version
           bundler-cache: true
 
+      - name: Add account to postgres
+        run: sudo -u postgres psql -f setup.sql
+
       - name: Set up Database
-        run: PGPASSWORD='' bin/rails db:drop db:create db:migrate db:seed
+        run: bin/rails db:drop db:create db:migrate db:seed
 
       - name: Run rspec
         env:
