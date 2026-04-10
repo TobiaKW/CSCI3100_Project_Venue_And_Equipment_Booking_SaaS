@@ -33,7 +33,9 @@ jobs:
           bundler-cache: true
 
       - name: Add account to postgres
-        run: sudo -u postgres psql -f setup.sql
+        run: |
+          sudo systemctl start postgresql.service
+          sudo -u postgres psql -f setup.sql
 
       - name: Set up Database
         run: bin/rails db:drop db:create db:migrate db:seed
