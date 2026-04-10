@@ -68,8 +68,15 @@ Last updated: 2026-03-24
 | Show routes | `bin/rails routes` |
 | Rails console | `bin/rails console` |
 | RuboCop | `bundle exec rubocop` |
-
+| Rspec | `bundle exec rspec` |
+| Cucumber | `bundle exec cucumber` |
 ---
+
+## Testing notes
+- Both `rspec` and `cucumber` are incorporated in the Github Actions.
+- The coverage reports in HTML are generated at `coverage/*` where `*` is `rspec`, `cucumber` or `merged`.
+- You can manually merge the coverage report with `bin/rake coverage:merge`.
+
 
 ## Render notes
 
