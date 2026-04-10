@@ -31,10 +31,11 @@ group :development, :test do
   # Omakase Ruby styling [https://github.com/rails/rubocop-rails-omakase/]
   gem "rubocop-rails-omakase", require: false
 
-  # rspec
-  gem 'rspec-rails', '~> 8.0.0'
-  # assert_template
+  gem 'cucumber-rails', require: false
+  gem 'rspec-rails', '~> 8.0.0', require: false
   gem "rails-controller-testing"
+  gem 'simplecov', require: false
+  gem 'database_cleaner'
 end
 
 gem "turbo-rails", "~> 2.0"
@@ -42,3 +43,5 @@ gem "turbo-rails", "~> 2.0"
 gem "timecop", "~> 0.9.10"
 
 gem "capybara", "~> 3.40"
+
+gem "cucumber", "~> 10.2"

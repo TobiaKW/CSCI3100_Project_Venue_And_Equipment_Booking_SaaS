@@ -1,0 +1,2 @@
+CREATE USER kevin WITH PASSWORD '';
+GRANT ALL ON SCHEMA public TO kevin;

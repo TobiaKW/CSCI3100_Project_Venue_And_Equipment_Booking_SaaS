@@ -3,9 +3,11 @@ class User < ApplicationRecord
 
   belongs_to :department
   has_many :bookings, dependent: :restrict_with_error
-  before_validation :normalize_name
-  validates :name, presence: true
+
+  validates :name, :password, :role, presence: true
   validate :username_must_be_unique
+  
+  before_validation :normalize_name
   before_validation :set_default_role, on: :create
 
   private
