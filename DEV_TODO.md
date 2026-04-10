@@ -23,6 +23,11 @@ Last updated: 2026-03-24
 - [x] Broadcast on booking create (student -> admin dashboard) and admin decision (admin -> student status).
 - [x] Frontend subscription wired via importmap (`@rails/actioncable`, `app/javascript/channels/*`).
 - [x] Booking row partial extracted for realtime prepend in admin dashboard.
+- [x] Cucumber testing
+   - [x] Set up `rspec-rails` and baseline test helpers.
+   - [x] Add model specs for booking validations (duration, overlap, seven-day, overnight).
+   - [x] Add request specs for admin approval + auto-reject overlapping pending bookings.
+   - [x] Add request spec for admin authorization protection.
 
 ### In progress
 1. **HTML to CSS refactoring**
@@ -47,13 +52,9 @@ Last updated: 2026-03-24
    - [x] Add short ActionCable troubleshooting note to README.
    - [ ] Add small UI cue for live updates (optional highlight badge/row flash).
 
-3. **RSpec testing**
-   - [x] Set up `rspec-rails` and baseline test helpers.
-   - [x] Add model specs for booking validations (duration, overlap, seven-day, overnight).
-   - [x] Add request specs for admin approval + auto-reject overlapping pending bookings.
-   - [x] Add request spec for admin authorization protection.
-
-
+3. **Resource searching**
+   - [ ] Add cucumber feature for searching resources.
+   - [ ] Make the resource searching more robust (lower / upper bound for seat #, type of classroom, etc)
 
 ---
 
