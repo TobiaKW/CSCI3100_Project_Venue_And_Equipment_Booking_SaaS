@@ -81,6 +81,56 @@ header {
   }
 }
 
+@keyframes alert-show {
+  from {
+    transform: translateX(1em);
+    opacity: 0;
+  }
+  5% {
+    transform: none;
+    opacity: 1;
+  }
+  95% {
+    transform: none;
+    opacity: 1;
+  }
+  to {
+    transform: translateX(1em);
+    opacity: 0;
+  }
+}
+
+.alerts-container {
+  display: flex;
+  flex-direction: column;
+  row-gap: 1em;
+  position: fixed;
+  bottom: 2em;
+  right: max(var(--page-margin), 2em);
+  z-index: 5;
+  pointer-events: none;
+  align-items: flex-end;
+  
+  > .alert {
+    background-color: color-mix(in srgb, var(--background-color) 25%, transparent);
+    border-radius: 0.5em;
+    position: relative;
+    padding: 1em;
+    overflow: hidden;
+    backdrop-filter: blur(2em);
+    animation: alert-show 10s ease forwards;
+    transform-origin: right;
+    
+    &:before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background-color: color-mix(in srgb, var(--computer-blue-light) 25%, transparent);
+      z-index: -1;
+    }
+  }
+}
+
 main {
   margin: var(--header-height) calc(max((100vw - 1400px) / 2, var(--page-margin))) 0 calc(max((100vw - 1400px) / 2, var(--page-margin)));
   padding: 2em;
