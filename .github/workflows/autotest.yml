@@ -34,6 +34,8 @@ jobs:
 
       - name: Add account to postgres
         run: |
+          apt-get update
+          apt-get install --yes --no-install-recommends postgresql-client
           sudo systemctl start postgresql.service
           sudo -u postgres psql -f setup.sql
 
