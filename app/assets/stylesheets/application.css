@@ -28,6 +28,7 @@
   --fix-black: #050505;
   --fix-computer-blue-dark: #1f4e79;
   --fix-computer-blue-light: #b9daf6;
+  --page-margin: 1rem;
 }
 
 .light {
@@ -52,6 +53,7 @@ button, input[type="text"] {
   transition: background-color 0.25s ease;
   text-align: center;
   padding: 0.5em 1em;
+  border-radius: 0.25em;
 
   &:hover {
     background-color: color-mix(in srgb, var(--computer-blue-light) 75%, transparent);
@@ -90,66 +92,32 @@ body {
   }
 }
 
-header {
-  display: flex;
-  justify-content: space-between;
-  background-color: color-mix(in srgb, var(--background-color) 25%, transparent);
-  padding: 1em 2em;
-  position: sticky;
-  backdrop-filter: blur(2em);
-  top: 0;
+.hover-label {
+  background-color: color-mix(in srgb, color-mix(in srgb, var(--computer-blue-light) 75%, var(--white)) 50%, transparent);
+  backdrop-filter: blur(1em);
+  color: var(--computer-blue-dark);
+  position: absolute;
+  padding: 0.25em 0.5em;
+  border-radius: 0.25em;
+  bottom: 100%;
+  font-size: 0.875em;
+  transform: translateY(0.5em);
+  opacity: 0;
+  transition: all 0.25s ease;
+  transition-property: transform, opacity;
 
-  &:before {
-    content: "";
-    position: absolute;
-    inset: 0;
-    background-color: color-mix(in srgb, var(--computer-blue-light) 25%, transparent);
-    z-index: -1;
-  }
+  *:has(> &) {
+    position: relative;
+    cursor: help;
+    transition: color 0.25s ease;
 
-  .title {
-    color: var(--computer-blue-dark);
-    font-size: 1.25em;
-  }
+    &:hover {
+      color: var(--computer-blue-dark);
 
-  .info {
-    display: flex;
-    
-    > .toggle-theme {
-      background-color: transparent;
-      font-size: 0.75em;
-      height: 2em;
-      aspect-ratio: 1 / 1;
-      position: relative;
-      overflow: hidden;
-      margin-left: 2em;
-      justify-content: space-between;
-  
-      > .logo {
-        position: absolute;
-        inset: 17.5%;
-        transition: transform 0.75s ease;
-  
-        &.theme-light {
-          transform-origin: 150% 150%;
-  
-          .dark & {
-            transform: rotate(-90deg);
-          }
-        }
-  
-        &.theme-dark {
-          transform-origin: -150% -150%;
-  
-          .light & {
-            transform: rotate(-90deg);
-          }
-        }
+      > .hover-label {
+        transform: none;
+        opacity: 1;
       }
-    }
-
-    > .user-info {
-      display: flex;
     }
   }
 }

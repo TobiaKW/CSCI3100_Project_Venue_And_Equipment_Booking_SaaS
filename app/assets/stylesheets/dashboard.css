@@ -1,0 +1,25 @@
+.resources-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(min(20em, 100%), 1fr));
+  gap: 1em;
+}
+
+.resource-card {
+  background-color: var(--white);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  > .resource-card-header {
+    background-color: var(--computer-blue-light);
+
+    > .resource-type-badge {
+      text-transform: uppercase;
+    }
+
+    > .resource-name {
+      font-size: 1.125em;
+      font-weight: bold;
+    }
+  }
+}
