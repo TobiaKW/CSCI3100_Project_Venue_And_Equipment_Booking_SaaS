@@ -1,6 +1,4 @@
 header {
-  --header-top: 1em;
-  --header-radius: 0.75em;
   display: flex;
   justify-content: space-between;
   background-color: color-mix(in srgb, var(--background-color) 25%, transparent);
@@ -29,7 +27,7 @@ header {
     inset: calc(var(--header-top) * -1) 0 0 0;
     background-color: var(--background-color);
     mask-mode: luminance;
-    mask-image: linear-gradient(to bottom, white var(--header-top), black);
+    mask-image: linear-gradient(to bottom, white var(--header-top), black calc(var(--header-top) + (var(--header-height) - var(--header-top)) / 2));
     z-index: -2;
     border-radius: 0 0 var(--header-radius) var(--header-radius);
   }

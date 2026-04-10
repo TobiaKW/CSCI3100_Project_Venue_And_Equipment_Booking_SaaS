@@ -4,11 +4,13 @@
     <div class="search-section">
       <%= form_with url: root_path, method: :get, local: true, class: "search-form" do |f| %>
         <div class="search-input-group">
-          <%= f.label :search, "<span class='material-symbols-outlined'>search</span> Search by name:".html_safe, style: "font-weight: 600;" %>
-          <%= f.text_field :search, value: params[:search], placeholder: "Enter resource name...", class: "search-input" %>
-          
           <div>
-            <%= f.label :department_id, "Department:", style: "font-weight: 600;" %>
+            <div class="hover-label">Search by Name</div>
+            <%= f.label :search, "<span class='material-symbols-outlined'>search</span>".html_safe %>
+            <%= f.text_field :search, value: params[:search], placeholder: "Enter resource name...", class: "search-input" %>
+          </div>
+          <div>
+            <%= f.label :department_id, "Department" %>
             <%= f.collection_select :department_id, Department.all, :id, :name, { prompt: "All Departments" }, class: "filter-select" %>
           </div>
 

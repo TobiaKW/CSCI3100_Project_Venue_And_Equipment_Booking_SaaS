@@ -30,6 +30,8 @@
   --fix-computer-blue-light: #b9daf6;
   --header-height: 5rem;
   --page-margin: 1rem;
+  --header-top: 1rem;
+  --header-radius: 0.75rem;
 }
 
 .light {
@@ -46,7 +48,7 @@
   --computer-blue-light: var(--fix-computer-blue-dark);
 }
 
-button, input[type="text"] {
+button, input[type="text"], input[type="submit"] {
   all: unset;
   background-color: color-mix(in srgb, var(--computer-blue-light) 50%, transparent);
   border: none;
