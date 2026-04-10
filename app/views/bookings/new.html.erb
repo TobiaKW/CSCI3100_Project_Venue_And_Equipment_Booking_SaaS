@@ -18,25 +18,13 @@
 
   <div class="form-row">
     <div class="form-group">
-      <p><%= f.label :start_date, "Start Date" %></p>
-      <p><%= f.date_field :start_date, value: @booking.start_time&.to_date, data: { field: 'start-date' } %></p>
+      <p><%= f.label :start_time, "Start Time" %></p>
+      <p><%= f.datetime_field :start_time, value: @booking.start_time, data: { field: 'start-date' } %></p>
     </div>
 
     <div class="form-group">
-      <p><%= f.label :start_time_only, "Start Time" %></p>
-      <p><%= f.time_field :start_time_only, value: @booking.start_time&.strftime("%H:%M"), data: { field: 'start-time' } %></p>
-    </div>
-  </div>
-
-  <div class="form-row">
-    <div class="form-group">
-      <p><%= f.label :end_date, "End Date" %></p>
-      <p><%= f.date_field :end_date, value: @booking.end_time&.to_date, data: { field: 'end-date' } %></p>
-    </div>
-
-    <div class="form-group">
-      <p><%= f.label :end_time_only, "End Time" %></p>
-      <p><%= f.time_field :end_time_only, value: @booking.end_time&.strftime("%H:%M"), data: { field: 'end-time' } %></p>
+      <p><%= f.label :end_time, "End Time" %></p>
+      <p><%= f.datetime_field :end_time, value: @booking.end_time, data: { field: 'end-date' } %></p>
     </div>
   </div>
 
