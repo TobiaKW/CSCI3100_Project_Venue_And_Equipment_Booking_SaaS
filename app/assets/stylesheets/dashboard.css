@@ -40,7 +40,7 @@
     inset: 0 0 calc(var(--header-top) * -1) 0;
     background-color: var(--background-color);
     mask-mode: luminance;
-    mask-image: linear-gradient(to top, white var(--header-top), black calc(var(--header-top) + (var(--header-height) - var(--header-top)) / 2));
+    mask-image: linear-gradient(to top, white var(--header-top), black);
     z-index: -2;
     border-radius: var(--header-radius) var(--header-radius) 0 0;
   }
