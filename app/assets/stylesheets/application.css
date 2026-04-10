@@ -28,6 +28,7 @@
   --fix-black: #050505;
   --fix-computer-blue-dark: #1f4e79;
   --fix-computer-blue-light: #b9daf6;
+  --header-height: 5rem;
   --page-margin: 1rem;
 }
 
@@ -96,12 +97,15 @@ body {
   background-color: color-mix(in srgb, color-mix(in srgb, var(--computer-blue-light) 75%, var(--white)) 50%, transparent);
   backdrop-filter: blur(1em);
   color: var(--computer-blue-dark);
+  white-space: nowrap;
   position: absolute;
   padding: 0.25em 0.5em;
   border-radius: 0.25em;
-  bottom: 100%;
-  font-size: 0.875em;
-  transform: translateY(0.5em);
+  bottom: calc(100% + 0.125em);
+  font-size: 0.75em;
+  left: 50%;
+  text-align: center;
+  transform: translateX(-50%) translateY(0.5em);
   opacity: 0;
   transition: all 0.25s ease;
   transition-property: transform, opacity;
@@ -115,7 +119,7 @@ body {
       color: var(--computer-blue-dark);
 
       > .hover-label {
-        transform: none;
+        transform: translateX(-50%);
         opacity: 1;
       }
     }

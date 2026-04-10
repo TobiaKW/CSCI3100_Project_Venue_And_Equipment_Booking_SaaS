@@ -9,17 +9,44 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  border: color-mix(in srgb, var(--computer-blue-light) 25%, transparent) 0.25em solid;
+  overflow: hidden;
+  border-radius: 0.5em;
 
   > .resource-card-header {
-    background-color: var(--computer-blue-light);
-
-    > .resource-type-badge {
-      text-transform: uppercase;
-    }
+    width: 100%;
+    background-color: color-mix(in srgb, var(--computer-blue-light) 25%, transparent);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 1em;
+    position: relative;
+    row-gap: 0.5em;
 
     > .resource-name {
       font-size: 1.125em;
       font-weight: bold;
+      color: var(--computer-blue-dark);
+    }
+  }
+
+  > .resource-card-body {
+    padding: 1em;
+    
+    > .resource-details {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      column-gap: 2em;
+
+      > .resource-detail-item {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+
+        > .material-symbols-outlined {
+          font-size: 1.125em;
+        }
+      }
     }
   }
 }

@@ -40,7 +40,14 @@
         <% @resources.each do |resource| %>
           <div class="resource-card">
             <div class="resource-card-header type-<%= resource.rtype %>">
-              <span class="resource-type-badge"><%= resource.rtype %></span>
+              <div class="resource-type">
+                <% if resource.rtype == 'room' %>
+                  <span class="material-symbols-outlined">home</span>
+                <% else %>
+                  <span class="material-symbols-outlined">build</span>
+                <% end %>
+                <div class="hover-label"><%= resource.rtype.titleize %></div>
+              </div>
               <div class="resource-name"><%= resource.name %></div>
               <div class="resource-department">
                 <div class="hover-label">Location</div>
@@ -63,11 +70,11 @@
                     <span class="resource-detail-value"><%= resource.seat_type %></span>
                   </div>
                 <% end %>
-                <div class="resource-detail-item">
+                <!--div class="resource-detail-item">
                   <div class="hover-label">Department</div>
-                  <span class="material-symbols-outlined">tatami_seat</span>
+                  <span class="material-symbols-outlined">flowchart</span>
                   <span class="resource-detail-value"><%= resource.department.name %></span>
-                </div>
+                </div-->
               </div>
             </div>
             
