@@ -1,4 +1,4 @@
-<%= link_to "← Back to Resources", root_path %>
+<%= link_to "<span class='material-symbols-outlined'>arrow_back</span>Back to Resources".html_safe, root_path, class: "back-btn" %>
 
 <div class="resources-section">
   <h1 class="resources-section-title">My Bookings <span class="count"><%= @bookings.count %></span></h1>

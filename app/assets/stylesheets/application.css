@@ -148,3 +148,27 @@ h1 {
   margin: 0 0 0.75em 0;
   text-align: center;
 }
+
+.back-btn {
+  display: flex;
+  align-items: center;
+  column-gap: 0.5em;
+  border-radius: 0.125em;
+  transition: all 0.25s ease;
+  transition-property: background-color, color;
+  width: max-content;
+  padding: 0.25em 0.5em;
+
+  &:hover {
+    background-color: color-mix(in srgb, var(--computer-blue-light) 50%, transparent);
+    color: var(--computer-blue-dark);
+
+    .material-symbols-outlined {
+      transform: translateX(-0.25em);
+    }
+  }
+
+  .material-symbols-outlined {
+    transition: transform 0.25s ease;
+  }
+}
