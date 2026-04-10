@@ -1,7 +1,6 @@
 class Booking < ApplicationRecord
   belongs_to :user
   belongs_to :resource
-  belongs_to :department # should be inferred from resource / user department directly?
 
   validates :start_time, :end_time, presence: true
   validate :end_time_after_start_time

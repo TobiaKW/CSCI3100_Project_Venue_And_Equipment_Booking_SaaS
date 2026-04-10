@@ -40,3 +40,5 @@ end
 gem "turbo-rails", "~> 2.0"
 
 gem "timecop", "~> 0.9.10"
+
+gem "capybara", "~> 3.40"

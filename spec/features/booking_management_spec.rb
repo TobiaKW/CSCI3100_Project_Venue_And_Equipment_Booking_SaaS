@@ -1,0 +1,53 @@
+require 'rails_helper'
+require_relative '../shared_context.rb'
+
+RSpec.configure do |config|
+  config.include Devise::Test::IntegrationHelpers, type: :feature # to sign_in user by Devise
+end
+
+RSpec.feature "Booking management", type: :feature do
+  include_context :database
+  scenario "User make a new booking" do
+    resources
+    sign_in users[:alice]
+
+    visit root_path
+    expect(page).to have_text('Venue & Equipment Booking')
+
+    first(".book-btn").click
+    expect(page).to have_text('Make a booking')
+    
+    fill_in 'booking_start_date', with: '2026-05-10'
+    fill_in 'booking_start_time_only', with: '14:00:00'
+    fill_in 'booking_end_date', with: '2026-05-10'
+    fill_in 'booking_end_time_only', with: '16:00:00'
+
+    find('input.btn').click
+    expect(page).to have_text('Booking requested.')
+
+    visit bookings_path
+    expect(page).to have_selector('.resource-card', count: 1)
+  end
+  
+  scenario "User make a new booking wrongly" do
+    resources
+    sign_in users[:alice]
+
+    visit root_path
+    expect(page).to have_text('Venue & Equipment Booking')
+
+    first(".book-btn").click
+    expect(page).to have_text('Make a booking')
+    
+    fill_in 'booking_start_date', with: '2026-05-10'
+    fill_in 'booking_start_time_only', with: '14:00:00'
+    fill_in 'booking_end_date', with: '2026-05-10'
+    fill_in 'booking_end_time_only', with: '14:00:00'
+
+    find('input.btn').click
+    expect(page).to have_text('error')
+    
+    visit bookings_path
+    expect(page).to have_selector('.resource-card', count: 0)
+  end
+end
