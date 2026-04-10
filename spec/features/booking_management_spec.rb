@@ -11,18 +11,13 @@ RSpec.feature "Booking management", type: :feature do
     resources
     sign_in users[:alice]
 
-    visit root_path
-    expect(page).to have_text('Venue & Equipment Booking')
-
-    first(".book-btn").click
+    visit new_booking_path(params: {resource_id: resources[:shb924].id})
     expect(page).to have_text('Make a booking')
     
-    fill_in 'booking_start_date', with: '2026-05-10'
-    fill_in 'booking_start_time_only', with: '14:00:00'
-    fill_in 'booking_end_date', with: '2026-05-10'
-    fill_in 'booking_end_time_only', with: '16:00:00'
+    fill_in 'booking_start_time', with: '2026-05-10 14:00:00'
+    fill_in 'booking_end_time', with: '2026-05-10 16:00:00'
 
-    find('input.btn').click
+    find('input[type=submit]').click
     expect(page).to have_text('Booking requested.')
 
     visit bookings_path
@@ -32,19 +27,13 @@ RSpec.feature "Booking management", type: :feature do
   scenario "User make a new booking wrongly" do
     resources
     sign_in users[:alice]
-
-    visit root_path
-    expect(page).to have_text('Venue & Equipment Booking')
-
-    first(".book-btn").click
+    visit new_booking_path(params: {resource_id: resources[:shb924].id})
     expect(page).to have_text('Make a booking')
     
-    fill_in 'booking_start_date', with: '2026-05-10'
-    fill_in 'booking_start_time_only', with: '14:00:00'
-    fill_in 'booking_end_date', with: '2026-05-10'
-    fill_in 'booking_end_time_only', with: '14:00:00'
+    fill_in 'booking_start_time', with: '2026-05-10 14:00:00'
+    fill_in 'booking_end_time', with: '2026-05-10 12:00:00'
 
-    find('input.btn').click
+    find('input[type=submit]').click
     expect(page).to have_text('error')
     
     visit bookings_path

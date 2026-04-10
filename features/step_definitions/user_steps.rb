@@ -23,6 +23,10 @@ Given /^I have logout$/ do
   click_button('Log out')
 end
 
+Given /^I visit the admin dashboard$/ do
+  visit(admin_bookings_path)
+end
+
 Then /^I should see "([^"]*)"$/ do |desc|
  expect(page).to have_content desc
 end

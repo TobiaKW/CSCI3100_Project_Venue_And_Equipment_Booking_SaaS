@@ -25,7 +25,7 @@ Feature: User wants to book a room
     Given I have login with username "alice" and email "alice@example.com"
     Given I book the resource "SHB 924" with start time "2026-04-20 14:00" and end time "2026-04-20 15:00"
     Then I should see "Booking requested."
-    Given admin approves the booking on resource "SHB 924" with start time "2026-04-20 14:00" and end time "2026-04-20 15:00"
+    Given admin approves the booking on the resource "SHB 924" with start time "2026-04-20 14:00" and end time "2026-04-20 15:00"
     And I book the resource "SHB 924" with start time "2026-04-20 14:00" and end time "2026-04-20 15:00"
     Then I should see "This time overlaps another booking for this resource"
 

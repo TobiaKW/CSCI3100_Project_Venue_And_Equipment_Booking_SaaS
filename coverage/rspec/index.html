@@ -13,7 +13,7 @@
       <img src="./assets/0.13.2/loading.gif" alt="loading"/>
     </div>
     <div id="wrapper" class="hide">
-      <div class="timestamp">Generated <abbr class="timeago" title="2026-04-10T23:20:08+08:00">2026-04-10T23:20:08+08:00</abbr></div>
+      <div class="timestamp">Generated <abbr class="timeago" title="2026-04-11T01:56:27+08:00">2026-04-11T01:56:27+08:00</abbr></div>
       <ul class="group_tabs"></ul>
 
       <div id="content">
@@ -22,7 +22,7 @@
     <span class="group_name">All Files</span>
     (<span class="covered_percent">
       <span class="yellow">
-  84.91%
+  84.75%
 </span>
 
      </span>
@@ -42,11 +42,11 @@
   </div>
 
   <div class="t-line-summary">
-    <b>464</b> relevant lines,
-    <span class="green"><b>394</b> lines covered</span> and
+    <b>459</b> relevant lines,
+    <span class="green"><b>389</b> lines covered</span> and
     <span class="red"><b>70</b> lines missed. </span>
     (<span class="yellow">
-  84.91%
+  84.75%
 </span>
 )
   </div>
@@ -93,12 +93,12 @@
         
           <tr class="t-file">
             <td class="strong t-file__name"><a href="#9c451db50f5e9e14c9b50347cd1a340abcc2bbf9" class="src_link" title="app/controllers/bookings_controller.rb">app/controllers/bookings_controller.rb</a></td>
-            <td class="green strong cell--number t-file__coverage">92.86 %</td>
-            <td class="cell--number">68</td>
-            <td class="cell--number">28</td>
-            <td class="cell--number">26</td>
+            <td class="green strong cell--number t-file__coverage">91.30 %</td>
+            <td class="cell--number">56</td>
+            <td class="cell--number">23</td>
+            <td class="cell--number">21</td>
             <td class="cell--number">2</td>
-            <td class="cell--number">1.39</td>
+            <td class="cell--number">1.26</td>
             
           </tr>
         
@@ -109,7 +109,7 @@
             <td class="cell--number">10</td>
             <td class="cell--number">7</td>
             <td class="cell--number">3</td>
-            <td class="cell--number">1.50</td>
+            <td class="cell--number">0.70</td>
             
           </tr>
         
@@ -175,7 +175,7 @@
             <td class="cell--number">39</td>
             <td class="cell--number">39</td>
             <td class="cell--number">0</td>
-            <td class="cell--number">11.69</td>
+            <td class="cell--number">11.82</td>
             
           </tr>
         
@@ -2048,7 +2048,7 @@
     <h3>app/controllers/bookings_controller.rb</h3>
     <h4>
       <span class="green">
-  92.86%
+  91.3%
 </span>
 
       lines covered
@@ -2057,8 +2057,8 @@
     
 
     <div class="t-line-summary">
-      <b>28</b> relevant lines.
-      <span class="green"><b>26</b> lines covered</span> and
+      <b>23</b> relevant lines.
+      <span class="green"><b>21</b> lines covered</span> and
       <span class="red"><b>2</b> lines missed.</span>
     </div>
 
@@ -2647,7 +2647,7 @@
 
             
 
-            <code class="ruby">    params_permitted = params.require(:booking).permit(:resource_id, :start_date, :start_time_only, :end_date, :end_time_only)</code>
+            <code class="ruby">    params_permitted = params.require(:booking).permit(:resource_id, :start_time, :end_time)</code>
           </li>
         </div>
       
@@ -2657,142 +2657,12 @@
 
             
 
-            <code class="ruby"></code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="never" data-hits="" data-linenumber="56">
-            
-
-            
-
-            <code class="ruby">    # Merge separate date and time fields into datetime format</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="covered" data-hits="2" data-linenumber="57">
-            
-              <span class="hits">2</span>
-            
-
-            
-
-            <code class="ruby">    if params_permitted[:start_date].present? &amp;&amp; params_permitted[:start_time_only].present?</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="covered" data-hits="2" data-linenumber="58">
-            
-              <span class="hits">2</span>
-            
-
-            
-
-            <code class="ruby">      params_permitted[:start_time] = &quot;#{params_permitted[:start_date]} #{params_permitted[:start_time_only]}:00&quot;</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="never" data-hits="" data-linenumber="59">
-            
-
-            
-
-            <code class="ruby">    end</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="never" data-hits="" data-linenumber="60">
-            
-
-            
-
-            <code class="ruby"></code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="covered" data-hits="2" data-linenumber="61">
-            
-              <span class="hits">2</span>
-            
-
-            
-
-            <code class="ruby">    if params_permitted[:end_date].present? &amp;&amp; params_permitted[:end_time_only].present?</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="covered" data-hits="2" data-linenumber="62">
-            
-              <span class="hits">2</span>
-            
-
-            
-
-            <code class="ruby">      params_permitted[:end_time] = &quot;#{params_permitted[:end_date]} #{params_permitted[:end_time_only]}:00&quot;</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="never" data-hits="" data-linenumber="63">
-            
-
-            
-
-            <code class="ruby">    end</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="never" data-hits="" data-linenumber="64">
-            
-
-            
-
-            <code class="ruby"></code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="never" data-hits="" data-linenumber="65">
-            
-
-            
-
-            <code class="ruby">    # Remove the separate fields since we&#39;ve merged them</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="covered" data-hits="2" data-linenumber="66">
-            
-              <span class="hits">2</span>
-            
-
-            
-
-            <code class="ruby">    params_permitted.except(:start_date, :start_time_only, :end_date, :end_time_only)</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="never" data-hits="" data-linenumber="67">
-            
-
-            
-
             <code class="ruby">  end</code>
           </li>
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="68">
+          <li class="never" data-hits="" data-linenumber="56">
             
 
             
@@ -2889,9 +2759,9 @@
         </div>
       
         <div>
-          <li class="covered" data-hits="3" data-linenumber="6">
+          <li class="covered" data-hits="1" data-linenumber="6">
             
-              <span class="hits">3</span>
+              <span class="hits">1</span>
             
 
             
@@ -2921,9 +2791,9 @@
         </div>
       
         <div>
-          <li class="covered" data-hits="3" data-linenumber="9">
+          <li class="covered" data-hits="1" data-linenumber="9">
             
-              <span class="hits">3</span>
+              <span class="hits">1</span>
             
 
             
@@ -2973,9 +2843,9 @@
         </div>
       
         <div>
-          <li class="covered" data-hits="3" data-linenumber="14">
+          <li class="covered" data-hits="1" data-linenumber="14">
             
-              <span class="hits">3</span>
+              <span class="hits">1</span>
             
 
             
@@ -3025,9 +2895,9 @@
         </div>
       
         <div>
-          <li class="covered" data-hits="3" data-linenumber="19">
+          <li class="covered" data-hits="1" data-linenumber="19">
             
-              <span class="hits">3</span>
+              <span class="hits">1</span>
             
 
             
@@ -4397,9 +4267,9 @@
         </div>
       
         <div>
-          <li class="covered" data-hits="25" data-linenumber="58">
+          <li class="covered" data-hits="27" data-linenumber="58">
             
-              <span class="hits">25</span>
+              <span class="hits">27</span>
             
 
             
@@ -4409,9 +4279,9 @@
         </div>
       
         <div>
-          <li class="covered" data-hits="23" data-linenumber="59">
+          <li class="covered" data-hits="25" data-linenumber="59">
             
-              <span class="hits">23</span>
+              <span class="hits">25</span>
             
 
             
@@ -4421,9 +4291,9 @@
         </div>
       
         <div>
-          <li class="covered" data-hits="22" data-linenumber="60">
+          <li class="covered" data-hits="23" data-linenumber="60">
             
-              <span class="hits">22</span>
+              <span class="hits">23</span>
             
 
             
