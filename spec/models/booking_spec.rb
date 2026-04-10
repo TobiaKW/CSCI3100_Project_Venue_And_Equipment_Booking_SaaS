@@ -1,10 +1,10 @@
 require 'rails_helper'
 require 'timecop'
-require_relative 'shared_context.rb'
+require_relative '../shared_context.rb'
 
 RSpec.describe Booking, type: :model do
-  include_context "database"
-  let (:freeze_date) { Time.zone.local(2026, 4, 10, 0, 0, 0) }
+  include_context :database
+  
   let (:booking) do
     Booking.new({ 
       :user => users[:alice],
@@ -59,37 +59,35 @@ RSpec.describe Booking, type: :model do
   context "overlapping bookings for resource" do
     it "invalidates" do
       Timecop.freeze(freeze_date) do
-        
-        booking_alice_924 = Booking.new({ 
-          :user => users[:alice],
-          :resource => resources[:shb924],
-          :department => resources[:shb924].department,
-          :start_time => freeze_date + 7.day + 10.hour,
-          :end_time => freeze_date + 7.day + 11.hour,
-          :status => 'approved'
-        })
-        
-        booking_bob_924 = Booking.new({ 
-          :user => users[:bob],
-          :resource => resources[:shb924],
-          :department => resources[:shb924].department,
-          :start_time => freeze_date + 7.day + 10.hour + 30.minute,
-          :end_time => freeze_date + 7.day + 11.hour + 30.minute,
-          :status => 'approved'
-        })
-        
-        booking_bob_123 = Booking.new({ 
-          :user => users[:bob],
-          :resource => resources[:shb123],
-          :department => resources[:shb123].department,
-          :start_time => freeze_date + 7.day + 10.hour + 30.minute,
-          :end_time => freeze_date + 7.day + 11.hour + 30.minute,
-          :status => 'approved'
-        })
-
-        expect(booking_alice_924.save).to be(true) # Alice books SHB 924 from 10:00 to 11:00
-        expect(booking_bob_924.save).to be(false) # Bob cannot book SHB 924 from 10:30 to 11:30
-        expect(booking_bob_123.save).to be(true) # Bob books SHB 123 from 10:30 to 11:30
+        bookings = {
+          :alice_924 => Booking.new({ 
+            :user => users[:alice],
+            :resource => resources[:shb924],
+            :department => resources[:shb924].department,
+            :start_time => freeze_date + 7.day + 10.hour,
+            :end_time => freeze_date + 7.day + 11.hour,
+            :status => 'approved'
+          }),
+          :bob_924 => Booking.new({ 
+            :user => users[:bob],
+            :resource => resources[:shb924],
+            :department => resources[:shb924].department,
+            :start_time => freeze_date + 7.day + 10.hour + 30.minute,
+            :end_time => freeze_date + 7.day + 11.hour + 30.minute,
+            :status => 'approved'
+          }),
+          :bob_123 => Booking.new({ 
+            :user => users[:bob],
+            :resource => resources[:shb123],
+            :department => resources[:shb123].department,
+            :start_time => freeze_date + 7.day + 10.hour + 30.minute,
+            :end_time => freeze_date + 7.day + 11.hour + 30.minute,
+            :status => 'approved'
+          })
+        }
+        expect(bookings[:alice_924].save).to be(true) # Alice books SHB 924 from 10:00 to 11:00
+        expect(bookings[:bob_924].save).to be(false) # Bob cannot book SHB 924 from 10:30 to 11:30
+        expect(bookings[:bob_123].save).to be(true) # Bob books SHB 123 from 10:30 to 11:30
       end
     end
   end

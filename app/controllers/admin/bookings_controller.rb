@@ -71,7 +71,7 @@ class Admin::BookingsController < ApplicationController
         Rails.logger.error("ActionCable broadcast failed: #{e.class}: #{e.message}")
       end
     end
-    # redirect_to admin_bookings_path
+    redirect_to admin_bookings_path
   end
 
   private

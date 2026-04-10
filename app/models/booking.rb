@@ -3,13 +3,14 @@ class Booking < ApplicationRecord
   belongs_to :resource
   belongs_to :department # should be inferred from resource / user department directly?
 
-  BLOCKING_STATUSES = %w[approved].freeze
   validates :start_time, :end_time, presence: true
   validate :end_time_after_start_time
   validate :minimum_duration_one_hour
   validate :no_overlapping_bookings_for_resource
   validate :seven_days_in_advance, on: :create
   validate :no_overnight_bookings_of_venue
+
+  STATUS_APPROVED = %w[approved].freeze
 
   private
 
@@ -34,7 +35,8 @@ class Booking < ApplicationRecord
 
     scope = Booking
             .where(resource_id: resource_id)
-            .where(status: BLOCKING_STATUSES)
+            .where(status: STATUS_APPROVED)
+
     scope = scope.where.not(id: id) if persisted? # for update operation later
 
     # Half-open intervals [start_time, end_time): overlap iff
@@ -48,7 +50,7 @@ class Booking < ApplicationRecord
   def seven_days_in_advance
     return if start_time.blank? || end_time.blank?
     return if start_time >= 7.days.from_now
-
+    return if status == STATUS_APPROVED # allow creation if in approved state
     errors.add(:base, "Booking must be made at least 7 days in advance")
   end
 
