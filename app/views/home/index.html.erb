@@ -36,7 +36,7 @@
 
   <!-- Resources Grid -->
   <div class="resources-section">
-    <div class="resources-section-title">Available Resources <span class="count"><%= @resources.count %></span></div>
+    <h1 class="resources-section-title">Available Resources <span class="count"><%= @resources.count %></span></h1>
     
     <% if @resources.any? %>
       <div class="resources-grid">
@@ -91,7 +91,7 @@
   </div>
 <% else %>
   <div class="card" style="text-align: center; padding: 3rem;">
-    <h2>Welcome to the Booking System</h2>
+    <h1>Welcome to the Booking System</h1>
     <p>Please log in to view and book resources.</p>
   </div>
 <% end %>
