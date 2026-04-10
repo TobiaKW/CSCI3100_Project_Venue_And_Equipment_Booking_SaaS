@@ -29,7 +29,7 @@ class BookingsController < ApplicationController
           )
         end
         begin
-          ActionCable.server.broadcast("admin_bookings_dept_#{@booking.department_id}", {
+          ActionCable.server.broadcast("admin_bookings_dept_#{@booking.resource.department_id}", {
             type: "new_booking_created",
             booking_id: @booking.id,
             html: render_to_string(partial: "admin/bookings/booking_row", locals: { booking: @booking })
