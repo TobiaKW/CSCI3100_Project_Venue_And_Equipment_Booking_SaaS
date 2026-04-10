@@ -31,12 +31,12 @@ group :development, :test do
   # Omakase Ruby styling [https://github.com/rails/rubocop-rails-omakase/]
   gem "rubocop-rails-omakase", require: false
 
-  gem 'cucumber-rails', require: false
-  gem 'rspec-rails', '~> 8.0.0', require: false
+  gem "cucumber-rails", require: false
+  gem "rspec-rails", "~> 8.0.0", require: false
   gem "rails-controller-testing"
-  gem 'simplecov', require: false
-  gem 'webmock', require: false
-  gem 'database_cleaner'
+  gem "simplecov", require: false
+  gem "webmock", require: false
+  gem "database_cleaner"
 end
 
 gem "turbo-rails", "~> 2.0"

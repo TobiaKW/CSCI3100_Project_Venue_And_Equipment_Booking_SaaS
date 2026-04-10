@@ -11,7 +11,7 @@ end
 
 When('I deliver a test email with:') do |table|
   details = table.rows_hash
-  
+
   mail = Mail.new do
     from    'admin@system.com'
     to      details['to']
@@ -28,13 +28,13 @@ end
 
 And('the JSON payload should contain:') do |table|
   details = table.rows_hash
-  
+
   assert_requested(:post, "https://api.sendgrid.com/v3/mail/send") do |req|
     body = JSON.parse(req.body)
-    
+
     subject_match = body['subject'] == details['subject']
     to_match = body['personalizations'][0]['to'].any? { |to| to['email'] == details['email'] }
-    
+
     subject_match && to_match
   end
 end

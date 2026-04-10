@@ -12,7 +12,7 @@ namespace :db do
     puts "Data cleared. Running seeds..."
 
     # Seed data
-    Rake::Task['db:seed'].invoke
+    Rake::Task["db:seed"].invoke
 
     puts "Database reset complete!"
   end

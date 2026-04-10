@@ -20,7 +20,7 @@ RSpec.describe "Admin approval of bookings", type: :request do
       expect(bookings.count).to eq(3)
     end
 
-    patch admin_booking_path(bookings[:alice_924].id), params: {status: 'approved'}
+    patch admin_booking_path(bookings[:alice_924].id), params: { status: 'approved' }
     expect(response.status).to eq(302)
 
     get admin_bookings_path
@@ -29,7 +29,7 @@ RSpec.describe "Admin approval of bookings", type: :request do
       expect(bookings.count).to eq(1)
     end
   end
-  
+
   it "admin rejects" do
     bookings # lazy eval
 
@@ -42,7 +42,7 @@ RSpec.describe "Admin approval of bookings", type: :request do
       expect(bookings.count).to eq(3)
     end
 
-    patch admin_booking_path(bookings[:alice_924].id), params: {status: 'rejected'}
+    patch admin_booking_path(bookings[:alice_924].id), params: { status: 'rejected' }
     expect(response.status).to eq(302)
 
     get admin_bookings_path

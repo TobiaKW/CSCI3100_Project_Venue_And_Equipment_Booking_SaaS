@@ -20,7 +20,7 @@ RSpec.describe User, type: :model do
       expect(alice.valid?).to eq(true)
     end
   end
-  
+
   context "same username or email" do
     it "invalidates" do
       alice = new_user('alice', 'alice@example.com')
@@ -32,7 +32,7 @@ RSpec.describe User, type: :model do
 
       alice_2 = new_user('Alice', 'alice2@example.com')
       expect(alice_2.valid?).to eq(false)
-      
+
       alice_2 = new_user('alice2', 'alice@example.com')
       expect(alice_2.valid?).to eq(false)
     end

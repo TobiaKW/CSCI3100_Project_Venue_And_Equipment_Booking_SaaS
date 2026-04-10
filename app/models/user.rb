@@ -6,7 +6,7 @@ class User < ApplicationRecord
 
   validates :name, :password, :role, presence: true
   validate :username_must_be_unique
-  
+
   before_validation :normalize_name
   before_validation :set_default_role, on: :create
 

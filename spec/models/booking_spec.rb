@@ -3,11 +3,11 @@ require_relative '../shared_context.rb'
 
 RSpec.describe Booking, type: :model do
   include_context :database
-  
+
   let (:booking) do
-    Booking.new({ 
-      :user => users[:alice],
-      :resource => resources[:shb924]
+    Booking.new({
+      user: users[:alice],
+      resource: resources[:shb924]
     })
   end
   context "correct usage" do
@@ -23,7 +23,7 @@ RSpec.describe Booking, type: :model do
       booking.start_time = nil
       booking.end_time = freeze_date + 7.day + 11.hour
       expect(booking.valid?).to be(false)
-      
+
       booking.start_time =  freeze_date + 7.day + 10.hour
       booking.end_time = nil
       expect(booking.valid?).to be(false)
@@ -49,26 +49,26 @@ RSpec.describe Booking, type: :model do
   context "overlapping bookings for resource" do
     it "invalidates" do
       bookings = {
-        :alice_924 => Booking.new({ 
-          :user => users[:alice],
-          :resource => resources[:shb924],
-          :start_time => freeze_date + 7.day + 10.hour,
-          :end_time => freeze_date + 7.day + 11.hour,
-          :status => 'approved'
+        alice_924: Booking.new({
+          user: users[:alice],
+          resource: resources[:shb924],
+          start_time: freeze_date + 7.day + 10.hour,
+          end_time: freeze_date + 7.day + 11.hour,
+          status: 'approved'
         }),
-        :bob_924 => Booking.new({ 
-          :user => users[:bob],
-          :resource => resources[:shb924],
-          :start_time => freeze_date + 7.day + 10.hour + 30.minute,
-          :end_time => freeze_date + 7.day + 11.hour + 30.minute,
-          :status => 'approved'
+        bob_924: Booking.new({
+          user: users[:bob],
+          resource: resources[:shb924],
+          start_time: freeze_date + 7.day + 10.hour + 30.minute,
+          end_time: freeze_date + 7.day + 11.hour + 30.minute,
+          status: 'approved'
         }),
-        :bob_123 => Booking.new({ 
-          :user => users[:bob],
-          :resource => resources[:shb123],
-          :start_time => freeze_date + 7.day + 10.hour + 30.minute,
-          :end_time => freeze_date + 7.day + 11.hour + 30.minute,
-          :status => 'approved'
+        bob_123: Booking.new({
+          user: users[:bob],
+          resource: resources[:shb123],
+          start_time: freeze_date + 7.day + 10.hour + 30.minute,
+          end_time: freeze_date + 7.day + 11.hour + 30.minute,
+          status: 'approved'
         })
       }
       expect(bookings[:alice_924].save).to be(true) # Alice books SHB 924 from 10:00 to 11:00
@@ -82,7 +82,7 @@ RSpec.describe Booking, type: :model do
       booking.start_time = freeze_date + 6.day + 10.hour
       booking.end_time = freeze_date + 6.day + 11.hour
       expect(booking.valid?).to be(false)
-      
+
       booking.start_time = freeze_date + 6.day + 23.hour
       booking.end_time = freeze_date + 7.day + 0.hour
       expect(booking.valid?).to be(false)
