@@ -27,7 +27,7 @@
     position: absolute;
     inset: 0;
     background-color: color-mix(in srgb, var(--white) 25%, transparent);
-    border: color-mix(in srgb, var(--computer-blue-light) 25%, transparent) 0.125em solid;
+    border: color-mix(in srgb, var(--computer-blue-light) 50%, transparent) 0.125em solid;
     z-index: -1;
     border-radius: var(--header-radius);
   }
