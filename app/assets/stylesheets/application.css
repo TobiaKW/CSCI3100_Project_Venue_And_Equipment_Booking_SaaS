@@ -66,6 +66,10 @@ a {
   color: unset;
 }
 
+html {
+  filter: saturate(1.5);
+}
+
 body {
   font-family: "Lexend", sans-serif;
   margin: 0;

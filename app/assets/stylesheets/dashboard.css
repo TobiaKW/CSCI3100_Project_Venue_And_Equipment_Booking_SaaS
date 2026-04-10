@@ -5,23 +5,54 @@
 }
 
 .resource-card {
+  --card-color: color-mix(in srgb, var(--computer-blue-light) 25%, transparent);
   background-color: var(--white);
   display: flex;
   flex-direction: column;
   align-items: center;
-  border: color-mix(in srgb, var(--computer-blue-light) 25%, transparent) 0.25em solid;
+  border: var(--card-color) 0.25em solid;
   overflow: hidden;
+  justify-content: space-between;
   border-radius: 0.5em;
+  transition: border-color 0.25s ease;
+
+  &:hover {
+    --card-color: color-mix(in srgb, var(--computer-blue-light) 50%, transparent);
+  }
 
   > .resource-card-header {
     width: 100%;
-    background-color: color-mix(in srgb, var(--computer-blue-light) 25%, transparent);
+    background-color: var(--card-color);
     display: flex;
     flex-direction: column;
     align-items: center;
     padding: 1em;
     position: relative;
-    row-gap: 0.5em;
+    row-gap: 0.25em;
+    transition: background-color 0.25s ease;
+
+    > *:not(.resource-type-icon) {
+      z-index: 1;
+    }
+
+    > .resource-type-icon {
+      position: absolute;
+      right: -0.25em;
+      font-size: 10em;
+      align-items: center;
+      top: 0.25em;
+      bottom: 0;
+      color: color-mix(in srgb, var(--white) 50%, transparent);
+      display: flex;
+      user-select: none; 
+    }
+
+    > .resource-type-label {
+      font-size: 0.75em;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: var(--computer-blue-dark);
+    }
 
     > .resource-name {
       font-size: 1.125em;
@@ -31,7 +62,7 @@
   }
 
   > .resource-card-body {
-    padding: 1em;
+    padding: 1em 1em 0 1em;
     
     > .resource-details {
       display: grid;
@@ -42,10 +73,26 @@
         display: flex;
         flex-direction: column;
         align-items: center;
+        text-align: center;
 
         > .material-symbols-outlined {
           font-size: 1.125em;
         }
+      }
+    }
+  }
+
+  > .resource-card-footer {
+    padding: 1em;
+    display: flex;
+    width: 100%;
+
+    > a {
+      display: flex;
+      flex: 1;
+
+      > .book-btn {
+        flex: 1;
       }
     }
   }
