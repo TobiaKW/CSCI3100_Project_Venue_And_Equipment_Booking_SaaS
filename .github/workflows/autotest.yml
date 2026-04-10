@@ -34,16 +34,18 @@ jobs:
 
       - name: Add account to postgres
         run: |
-          apt-get update
-          apt-get install --yes --no-install-recommends postgresql-client
+          sudo apt-get update
+          sudo apt-get install --yes --no-install-recommends postgresql-client
           sudo systemctl start postgresql.service
           sudo -u postgres psql -f setup.sql
 
       - name: Set up Database
         run: bin/rails db:drop db:create db:migrate db:seed
 
-      - name: Run rspec
+      - name: rspec + cucumber
         env:
           RAILS_ENV: test
           DATABASE_URL: postgres://postgres:postgres@localhost:5432
-        run: bundle exec rspec
+        run: |
+          bundle exec rspec
+          bundle exec cucumber
