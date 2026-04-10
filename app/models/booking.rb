@@ -1,7 +1,7 @@
 class Booking < ApplicationRecord
   belongs_to :user
   belongs_to :resource
-  belongs_to :department
+  belongs_to :department # should be inferred from resource / user department directly?
 
   BLOCKING_STATUSES = %w[approved].freeze
   validates :start_time, :end_time, presence: true
