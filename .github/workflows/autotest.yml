@@ -39,7 +39,7 @@ jobs:
         env:
           PGPASSWORD: postgres
         run: |
-          # Point psql to localhost (where the container port is mapped)
+          # Point psql to localhost
           psql -h localhost -U postgres -f setup.sql
 
       - name: Set up Database
