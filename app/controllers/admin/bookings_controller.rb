@@ -38,7 +38,7 @@ class Admin::BookingsController < ApplicationController
   def update
     booking = Booking.find(params[:id])
     # Ensure admin only updates their own department’s bookings
-    if booking.department_id == current_user.department_id
+    if booking.resource.department == current_user.department
       Booking.transaction do
         booking.update!(status: params[:status])
 
@@ -71,7 +71,7 @@ class Admin::BookingsController < ApplicationController
         Rails.logger.error("ActionCable broadcast failed: #{e.class}: #{e.message}")
       end
     end
-    redirect_to admin_bookings_path
+    # redirect_to admin_bookings_path
   end
 
   private
