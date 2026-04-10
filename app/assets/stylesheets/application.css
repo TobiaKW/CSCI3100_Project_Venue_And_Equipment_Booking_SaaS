@@ -49,6 +49,11 @@
   --computer-blue-light: var(--fix-computer-blue-dark);
 }
 
+::selection {
+  background-color: var(--computer-blue-light);
+  color: var(--computer-blue-dark);
+}
+
 button, input[type="text"], input[type="submit"], select {
   all: unset;
   background-color: color-mix(in srgb, var(--computer-blue-light) 50%, transparent);
