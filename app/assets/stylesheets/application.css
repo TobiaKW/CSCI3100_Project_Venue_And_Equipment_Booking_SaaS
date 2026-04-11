@@ -151,14 +151,19 @@ h1 {
 }
 
 .back-btn {
+  position: fixed;
+  top: calc(var(--header-height) + 1em);
+  left: calc(var(--page-margin) + 1em);
   display: flex;
   align-items: center;
   column-gap: 0.5em;
-  border-radius: 0.125em;
+  border-radius: 0.25em;
   transition: all 0.25s ease;
+  background-color: color-mix(in srgb, var(--white) 50%, transparent);
+  backdrop-filter: blur(1em);
   transition-property: background-color, color;
   width: max-content;
-  padding: 0.25em 0.5em;
+  padding: 0.5em 1em;
 
   &:hover {
     background-color: color-mix(in srgb, var(--computer-blue-light) 50%, transparent);

@@ -144,4 +144,8 @@ main {
     display: flex;
     flex-direction: column;
   }
+
+  &:has(> .back-btn) {
+    padding: 4em;
+  }
 }
