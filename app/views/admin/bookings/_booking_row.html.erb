@@ -1,16 +1,15 @@
 <tr data-booking-id="<%= booking.id %>">
-  <td><%= booking.user.name %> (<%= booking.user.email %>)</td>
+  <td><%= booking.user.name %><div class="user-email"><%= booking.user.email %></div></td>
   <td><%= booking.resource.name %></td>
   <td><%= booking.start_time.strftime("%Y-%m-%d %H:%M") %></td>
   <td><%= booking.end_time.strftime("%Y-%m-%d %H:%M") %></td>
-  <td><strong data-booking-status><%= booking.status %></strong></td>
   <td>
     <% if booking.status == "pending" %>
-      <%= link_to "Approve", admin_booking_path(booking, status: "approved"),
+      <%= link_to "<button>Approve</button>".html_safe, admin_booking_path(booking, status: "approved"),
         data: { turbo_method: :patch },
         class: "action-link action-approve" %>
       <%= " " %>
-      <%= link_to "Reject", admin_booking_path(booking, status: "rejected"),
+      <%= link_to "<button>Reject</button>".html_safe, admin_booking_path(booking, status: "rejected"),
         data: { turbo_method: :patch },
         class: "action-link action-reject" %>
     <% else %>

@@ -150,6 +150,17 @@ h1 {
   text-align: center;
 }
 
+@keyframes back-btn-appear {
+  from {
+    transform: translateX(1em);
+    opacity: 0;
+  }
+  to {
+    transform: none;
+    opacity: 1;
+  }
+}
+
 .back-btn {
   position: fixed;
   top: calc(var(--header-height) + 1em);
@@ -164,6 +175,8 @@ h1 {
   transition-property: background-color, color;
   width: max-content;
   padding: 0.5em 1em;
+  opacity: 0;
+  animation: back-btn-appear 1s ease forwards;
 
   &:hover {
     background-color: color-mix(in srgb, var(--computer-blue-light) 50%, transparent);

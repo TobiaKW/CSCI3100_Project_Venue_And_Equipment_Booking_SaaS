@@ -4,7 +4,7 @@
   <h1>Admin Dashboard</h1>
 
   <!-- Pending Bookings Table -->
-  <section class="dashboard-section">
+  <section>
     <h2>Pending Bookings</h2>
     <% if @pending_bookings.any? %>
       <table class="bookings-table">
@@ -24,12 +24,12 @@
         </tbody>
       </table>
     <% else %>
-      <p class="no-data">No pending bookings</p>
+      <div class="no-data">No pending bookings</div>
     <% end %>
   </section>
 
   <!-- This Week's Approved Bookings Table -->
-  <section class="dashboard-section">
+  <section>
     <h2>Approved Bookings This Week</h2>
     <% if @week_bookings.any? %>
       <table class="bookings-table">
@@ -55,27 +55,23 @@
         </tbody>
       </table>
     <% else %>
-      <p class="no-data">No approved bookings this week</p>
+      <div class="no-data">No approved bookings this week</div>
     <% end %>
   </section>
 
   <!-- Charts Section -->
-  <section class="dashboard-section charts-section">
-    <div class="chart-container">
-      <div class="chart-item">
-        <h3>Bookings by Status</h3>
-        <%= pie_chart @bookings_by_status, library: { pieHole: 0.4 } %>
-      </div>
+  <section>
+    <h2>Bookings by Status</h2>
+    <%= pie_chart @bookings_by_status, library: { pieHole: 0.4 } %>
+  </section>
 
-      <div class="chart-item">
-        <h3>Booking Trends (Apr-Jun 2026)</h3>
-        <%= line_chart @booking_trends, library: { curveType: "function" } %>
-      </div>
+  <section>
+    <h2>Booking Trends</h2>
+    <%= line_chart @booking_trends, library: { curveType: "function" } %>
+  </section>
 
-      <div class="chart-item">
-        <h3>Top Resources</h3>
-        <%= bar_chart @resource_utilization %>
-      </div>
-    </div>
+  <section>
+    <h2>Top Resources</h2>
+    <%= bar_chart @resource_utilization %>
   </section>
 </div>

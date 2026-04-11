@@ -22,7 +22,8 @@
   right: var(--page-margin);
   height: calc(var(--header-height) - var(--header-top));
   z-index: 2;
-  animation: search-section-appear 0.5s ease forwards;
+  opacity: 0;
+  animation: search-section-appear 1s ease forwards;
   
   &:before {
     content: "";

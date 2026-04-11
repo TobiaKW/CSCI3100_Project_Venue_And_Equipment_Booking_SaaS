@@ -107,10 +107,10 @@ class Admin::BookingsController < ApplicationController
                .where("resources.department_id = ?", current_user.department_id)
                .where("start_time >= ? AND start_time <= ?", Date.new(2026, 4, 1), Date.new(2026, 6, 30))
                .group_by { |b| b.start_time.to_date.beginning_of_week }
-               .transform_keys { |k| k.strftime("%b %d") }
+               .transform_keys { |k| k.strftime("%Y-%m-%d") }
                .transform_values(&:count)
 
-    bookings.sort_by { |k, _| Date.strptime(k, "%b %d") }.to_h
+    bookings.sort_by { |k, _| Date.strptime(k) }.to_h
   end
 
   def resource_utilization_data

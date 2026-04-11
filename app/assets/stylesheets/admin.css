@@ -1,0 +1,43 @@
+.admin-dashboard {
+  > section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: var(--white);
+    border-radius: 0.5em;
+    margin-top: 2em;
+    padding: 2em;
+    row-gap: 1.5em;
+
+    > h2 {
+      font-size: 1.125em;
+      margin: 0;
+      text-align: center;
+    }
+
+    > .bookings-table {
+      text-align: center;
+
+      th {
+        font-size: 0.75em;
+        color: var(--computer-blue-dark);
+        text-transform: uppercase;
+        font-weight: unset;
+        letter-spacing: 0.125em;
+      }
+
+      td {
+        padding: 0.25em 1.5em;
+
+        > .user-email {
+          font-size: 0.75em;
+        }
+      }
+    }
+
+    > .no-data {
+      color: var(--computer-blue-dark);
+      margin: 1em 0;
+    }
+  }
+}
