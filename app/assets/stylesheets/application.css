@@ -176,7 +176,7 @@ h1 {
   width: max-content;
   padding: 0.5em 1em;
   opacity: 0;
-  animation: back-btn-appear 1s ease forwards;
+  animation: back-btn-appear 1s 0.5s ease forwards;
 
   &:hover {
     background-color: color-mix(in srgb, var(--computer-blue-light) 50%, transparent);

@@ -1,9 +1,10 @@
 header {
+  --max-padding: 2em;
   display: flex;
   align-items: center;
   justify-content: space-between;
   background-color: color-mix(in srgb, var(--background-color) 25%, transparent);
-  padding: 0 max(2em, calc((100% - var(--page-max-width)) / 2));
+  padding: 0 max(var(--max-padding), calc((100% - var(--page-max-width)) / 2));
   position: fixed;
   backdrop-filter: blur(2em);
   top: var(--header-top);
@@ -12,6 +13,10 @@ header {
   height: calc(var(--header-height) - var(--header-top));
   z-index: 10;
   border-radius: var(--header-radius);
+
+  @media only screen and (max-width: 840px) {
+    --max-padding: 1em;
+  }
   
   &:before {
     content: "";
@@ -36,6 +41,15 @@ header {
   .title {
     color: var(--computer-blue-dark);
     font-size: 1.25em;
+    display: flex;
+    align-items: center;
+    column-gap: 0.5em;
+
+    @media only screen and (max-width: 840px) {
+      > .title-word {
+        display: none;
+      }
+    }
   }
 
   .info {
@@ -89,6 +103,14 @@ header {
       column-gap: 1em;
       font-size: 0.875em;
       align-items: center;
+
+      @media only screen and (max-width: 840px) {
+        column-gap: 0.5em;
+
+        > .user-badge {
+          display: none;
+        }
+      }
     }
   }
 }
@@ -154,6 +176,11 @@ main {
   }
 
   &:has(> .back-btn) {
-    padding: 4em;
+    padding-top: 4em;
+  }
+
+  @media only screen and (max-width: 840px) {
+    padding-left: 1em;
+    padding-right: 1em;
   }
 }
