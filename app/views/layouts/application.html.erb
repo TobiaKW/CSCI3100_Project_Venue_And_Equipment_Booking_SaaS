@@ -54,10 +54,48 @@
           setTheme("light");
         }
       })();
+
+      document.addEventListener("turbo:load", () => {
+        const animationElements = document.querySelectorAll(".background-animation > span");
+
+        function animateElement(i) {
+          animationElements[i].style.left = Math.random() * 100 + "%";
+          animationElements[i].style.top = Math.random() * 100 + "%";
+          animationElements[i].classList.add("show");
+          setInterval(() => {
+            animationElements[i].classList.add("hide");
+            animationElements[i].classList.remove("show");
+            setTimeout(() => {
+              animationElements[i].classList.remove("hide");
+              setTimeout(() => {
+                animationElements[i].style.left = Math.random() * 100 + "%";
+                animationElements[i].style.top = Math.random() * 100 + "%";
+                animationElements[i].classList.add("show");
+              }, 500);
+            }, 2000);
+          }, 10000);
+        }
+
+        var now = 0;
+        animateElement(now);
+        var animationInterval = setInterval(() => {
+          now++;
+          if (now >= animationElements.length) clearInterval(animationInterval);
+          animateElement(now);
+        }, 10000 / animationElements.length);
+      });
     </script>
   </head>
 
   <body>
+    <div class="background-animation">
+      <span class="material-symbols-outlined">corporate_fare</span>
+      <span class="material-symbols-outlined">home</span>
+      <span class="material-symbols-outlined">build</span>
+      <span class="material-symbols-outlined">corporate_fare</span>
+      <span class="material-symbols-outlined">home</span>
+      <span class="material-symbols-outlined">build</span>
+    </div>
     <header>
       <%= link_to root_path do %>
         <div class="title"><span class="material-symbols-outlined">corporate_fare</span> Venue & Equipment Booking</div>

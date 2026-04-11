@@ -1,0 +1,35 @@
+.background-animation {
+  position: fixed;
+  inset: 0;
+  z-index: -10;
+
+  &:before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to bottom, var(--background-color) var(--header-height), transparent calc(var(--header-height) + 5em), transparent calc(100vh - var(--header-height) - 5em), var(--background-color) calc(100vh - var(--header-height)));
+    z-index: 1;
+  }
+
+  > span {
+    position: absolute;
+    pointer-events: none;
+    color: color-mix(in srgb, var(--computer-blue-light) 10%, var(--background-color));
+    opacity: 0;
+    transform: scale(10);
+    transition: opacity 2s ease;
+
+    &:is(.show, .hide) {
+      transform: scale(20);
+      transition: opacity 2s ease, transform 10s ease-out;
+    }
+    
+    &.show {
+      opacity: 1;
+    }
+
+    &.hide {
+      opacity: 0;
+    }
+  }
+}
