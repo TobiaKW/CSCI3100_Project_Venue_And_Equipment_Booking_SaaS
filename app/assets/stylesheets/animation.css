@@ -2,6 +2,8 @@
   position: fixed;
   inset: 0;
   z-index: -10;
+  pointer-events: none;
+  user-select: none;
 
   &:before {
     content: "";
@@ -13,7 +15,6 @@
 
   > span {
     position: absolute;
-    pointer-events: none;
     color: color-mix(in srgb, var(--computer-blue-light) 10%, var(--background-color));
     opacity: 0;
     transform: scale(10);

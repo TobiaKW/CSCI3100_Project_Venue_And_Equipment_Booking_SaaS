@@ -46,26 +46,6 @@
         flex: 1;
       }
     }
-
-    > .error-explanation {
-      border: color-mix(in srgb, var(--computer-blue-light) 25%, transparent) 0.25em solid;
-      border-radius: 0.5em;
-      overflow: hidden;
-
-      > .error-title {
-        background-color: color-mix(in srgb, var(--computer-blue-light) 25%, transparent);
-        padding: 0.5em;
-        text-align: center;
-        color: var(--computer-blue-dark);
-        text-transform: uppercase;
-        letter-spacing: 0.25em;
-        font-weight: bold;
-      }
-
-      > ul {
-        margin: 0.5em 0;
-      }
-    }
 	}
 
   > .devise-links {
