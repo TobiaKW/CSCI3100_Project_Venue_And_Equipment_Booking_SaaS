@@ -178,6 +178,17 @@
           display: grid;
           grid-template-columns: 1fr 1fr;
           column-gap: 2em;
+
+          &:has(> .material-symbols-outlined) {
+            display: flex;
+            align-items: center;
+            column-gap: 1.5em;
+
+            > .material-symbols-outlined {
+              color: var(--computer-blue-light);
+              font-size: 1.5em;
+            }
+          }
     
           > .resource-detail-item {
             display: flex;

@@ -1,9 +1,39 @@
 <%= link_to "<span class='material-symbols-outlined'>arrow_back</span>Back to Resources".html_safe, root_path, class: "back-btn" %>
 
-<h1 class="dashboard-title">Make a booking for <%= @resource.name %></h1>
+<h1>Make a Booking</h1>
 
-<%= form_with model: @booking, url: bookings_path(resource_id: @resource.id), local: true do |f| %>
+<div class="booking-info">
+  <div class="resource-type-label">
+    <% if @resource.rtype == 'room' %>
+      <span class="material-symbols-outlined">home</span>
+    <% else %>
+      <span class="material-symbols-outlined">build</span>
+    <% end %>
+    <%= @resource.rtype %>
+  </div>
+  <div class="resource-name"><%= @resource.name %></div>
+  <div class="booking-item">
+    <div class="item-label">Department</div>
+    <span class="material-symbols-outlined">location_on</span>
+    <div class="item-value"><%= @resource.department.name %></div>
+  </div>
+  <% if @resource.rtype == 'room' && @resource.capacity && @resource.capacity > 0 %>
+    <div class="booking-details">
+      <div class="booking-item">
+        <div class="item-label">Capacity</div>
+        <span class="material-symbols-outlined">groups</span>
+        <div class="item-value"><%= @resource.capacity %> seats</div>
+      </div>
+      <div class="booking-item">
+        <div class="item-label">Seat Type</div>
+        <span class="material-symbols-outlined">tatami_seat</span>
+        <div class="item-value"><%= @resource.seat_type %></div>
+      </div>
+    </div>
+  <% end %>
+</div>
 
+<%= form_with model: @booking, url: bookings_path(resource_id: @resource.id), local: true, class: "booking-form" do |f| %>
   <% if @booking.errors.any? %>
     <div class="error-explanation">
       <div class="error-title">Error</div>
@@ -17,13 +47,15 @@
 
   <div class="form-row">
     <div class="form-group">
-      <p><%= f.label :start_time, "Start Time" %></p>
-      <p><%= f.datetime_field :start_time, value: @booking.start_time, data: { field: 'start-date' } %></p>
+      <%= f.label :start_time, "Start Time" %>
+      <%= f.datetime_field :start_time, value: @booking.start_time, data: { field: 'start-date' } %>
     </div>
 
+    <span class="material-symbols-outlined">trending_flat</span>
+
     <div class="form-group">
-      <p><%= f.label :end_time, "End Time" %></p>
-      <p><%= f.datetime_field :end_time, value: @booking.end_time, data: { field: 'end-date' } %></p>
+      <%= f.label :end_time, "End Time" %>
+      <%= f.datetime_field :end_time, value: @booking.end_time, data: { field: 'end-date' } %>
     </div>
   </div>
 
