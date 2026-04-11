@@ -119,7 +119,7 @@ header {
     background-color: color-mix(in srgb, var(--background-color) 25%, transparent);
     border-radius: 0.5em;
     position: relative;
-    padding: 1em;
+    padding: 0.5em 1em;
     overflow: hidden;
     backdrop-filter: blur(2em);
     animation: alert-show 10s ease forwards;
@@ -138,4 +138,10 @@ header {
 main {
   margin: var(--header-height) calc(max((100vw - var(--page-max-width)) / 2, var(--page-margin))) var(--header-height) calc(max((100vw - 1400px) / 2, var(--page-margin)));
   padding: 2em;
+
+  &:has(> .resources-section > .empty-state, .devise-form) {
+    height: calc(100vh - var(--header-height) * 2);
+    display: flex;
+    flex-direction: column;
+  }
 }

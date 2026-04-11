@@ -1,0 +1,44 @@
+.devise-form {
+	flex: 1;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	flex-direction: column;
+  row-gap: 2em;
+
+	> form {
+		background-color: var(--white);
+		padding: 2em;
+		border-radius: 0.5em;
+		display: flex;
+		flex-direction: column;
+		row-gap: 1em;
+
+		> .form-group {
+			display: flex;
+			align-items: center;
+			justify-content: space-between;
+      column-gap: 1em;
+
+      > label {
+        flex: 1;
+        text-align: center;
+      }
+		}
+
+    > .form-actions {
+      display: flex;
+      
+      > input {
+        flex: 1;
+      }
+    }
+	}
+
+  > .devise-links {
+    font-size: 0.875em;
+    display: flex;
+    align-items: center;
+    column-gap: 1em;
+  }
+}

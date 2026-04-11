@@ -1,6 +1,6 @@
-<div class="devise-form">
-  <h1>Log in</h1>
+<h1>Log In</h1>
 
+<div class="devise-form">
   <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
     <div class="form-group">
       <%= f.label :email %>
@@ -20,7 +20,7 @@
     <% end %>
 
     <div class="form-actions">
-      <%= f.submit "Log in" %>
+      <%= f.submit "Log In" %>
     </div>
   <% end %>
 

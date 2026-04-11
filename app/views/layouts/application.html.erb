@@ -118,8 +118,8 @@
         <% else %>
           <% unless current_page?(new_user_session_path) || current_page?(new_user_registration_path) %>
             <div class="user-info">
-              <%= button_to "Log in", new_user_session_path, method: :get %>
-              <%= button_to "Sign up", new_user_registration_path, method: :get %>
+              <%= button_to "Log In", new_user_session_path, method: :get %>
+              <%= button_to "Sign Up", new_user_registration_path, method: :get %>
             </div>
           <% end %>
         <% end %>

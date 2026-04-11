@@ -40,6 +40,7 @@
   --black: var(--fix-black);
   --computer-blue-dark: var(--fix-computer-blue-dark);
   --computer-blue-light: var(--fix-computer-blue-light);
+  --background-color: color-mix(in srgb, var(--white) 98%, var(--black));
 }
 
 .dark {
@@ -47,6 +48,7 @@
   --black: var(--fix-white);
   --computer-blue-dark: var(--fix-computer-blue-light);
   --computer-blue-light: var(--fix-computer-blue-dark);
+  --background-color: color-mix(in srgb, var(--white) 95%, var(--black));
 }
 
 ::selection {
@@ -54,14 +56,14 @@
   color: var(--computer-blue-dark);
 }
 
-button, input[type="text"], input[type="submit"], select {
+button, input:not([type="checkbox"]), select {
   all: unset;
   background-color: color-mix(in srgb, var(--computer-blue-light) 50%, transparent);
   border: none;
   cursor: pointer;
   transition: background-color 0.25s ease;
   text-align: center;
-  padding: 0.5em 1em;
+  padding: 0.375em 0.75em;
   border-radius: 0.25em;
 
   &:hover {
@@ -85,7 +87,6 @@ html {
 body {
   font-family: "Lexend", sans-serif;
   margin: 0;
-  --background-color: color-mix(in srgb, var(--white) 98%, var(--black));
   background-color: var(--background-color);
   color: color-mix(in srgb, var(--black) 85%, var(--white));
   /* transition: all 0.5s ease; */
