@@ -83,7 +83,8 @@
       }
     }
   }
-  @media only screen and (max-width: 840px) {
+  
+  @media only screen and (max-width: 1080px) {
     padding: 1em;
 
     > form {
