@@ -20,9 +20,22 @@
 			justify-content: space-between;
       column-gap: 1em;
 
-      > label {
+      > :is(label, .field_with_errors:has(> label)) {
         flex: 1;
         text-align: center;
+      }
+
+      label {
+        display: flex;
+        flex-direction: column;
+
+        .hint {
+          font-size: 0.75em;
+        }
+      }
+
+      input, select {
+        width: 15em;
       }
 		}
 
@@ -31,6 +44,26 @@
       
       > input {
         flex: 1;
+      }
+    }
+
+    > .error-explanation {
+      border: color-mix(in srgb, var(--computer-blue-light) 25%, transparent) 0.25em solid;
+      border-radius: 0.5em;
+      overflow: hidden;
+
+      > .error-title {
+        background-color: color-mix(in srgb, var(--computer-blue-light) 25%, transparent);
+        padding: 0.5em;
+        text-align: center;
+        color: var(--computer-blue-dark);
+        text-transform: uppercase;
+        letter-spacing: 0.25em;
+        font-weight: bold;
+      }
+
+      > ul {
+        margin: 0.5em 0;
       }
     }
 	}
