@@ -58,7 +58,7 @@
 
 button, input:not([type="checkbox"]), select {
   all: unset;
-  background-color: color-mix(in srgb, var(--computer-blue-light) 50%, transparent);
+  background-color: color-mix(in srgb, var(--computer-blue-light) 25%, transparent);
   border: none;
   cursor: pointer;
   transition: background-color 0.25s ease;
@@ -67,7 +67,7 @@ button, input:not([type="checkbox"]), select {
   border-radius: 0.25em;
 
   &:hover {
-    background-color: color-mix(in srgb, var(--computer-blue-light) 75%, transparent);
+    background-color: color-mix(in srgb, var(--computer-blue-light) 50%, transparent);
   }
 }
 
