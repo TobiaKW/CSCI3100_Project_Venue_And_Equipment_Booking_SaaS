@@ -56,6 +56,7 @@
       })();
 
       function setHue(x) {
+        x %= 360;
         localStorage.setItem("hue", x);
         document.documentElement.style.setProperty("--hue", x + "deg");
       }
