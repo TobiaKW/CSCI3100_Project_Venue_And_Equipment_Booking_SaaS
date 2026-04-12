@@ -55,6 +55,23 @@
         }
       })();
 
+      function setHue(x) {
+        localStorage.setItem("hue", x);
+        document.documentElement.style.setProperty("--hue", x + "deg");
+      }
+
+      function changeHue() {
+        setHue(parseInt(localStorage.getItem("hue")) + 30);
+      }
+
+      (() => {
+        if (localStorage.getItem("hue") === null) {
+          setHue(0);
+        } else {
+          setHue(localStorage.getItem("hue"));
+        }
+      })();
+
       document.addEventListener("turbo:load", () => {
         const animationElements = document.querySelectorAll(".background-animation > span");
 
@@ -130,12 +147,21 @@
           <% end %>
         <% end %>
 
-        <div>
-          <div class="hover-label">Toggle Theme</div>
-          <button class="toggle-theme" onclick="changeTheme()">
-            <div class="logo theme-light"></div>
-            <div class="logo theme-dark"></div>
-          </button>
+        <div class="page-appearance">
+          <div>
+            <div class="hover-label">Toggle Theme</div>
+            <button class="toggle-theme" onclick="changeTheme()">
+              <span class="material-symbols-outlined theme-light">light_mode</span>
+              <span class="material-symbols-outlined theme-dark">dark_mode</span>
+            </button>
+          </div>
+
+          <div>
+            <div class="hover-label">Switch Colour</div>
+            <button class="toggle-theme" onclick="changeHue()">
+              <span class="material-symbols-outlined">palette</span>
+            </button>
+          </div>
         </div>
       </div>
     </header>

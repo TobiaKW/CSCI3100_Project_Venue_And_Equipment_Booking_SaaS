@@ -33,6 +33,7 @@
   --header-top: 1rem;
   --header-radius: 0.75rem;
   --page-max-width: 1400px;
+  --hue: 0deg;
 }
 
 .light {
@@ -81,7 +82,7 @@ a {
 }
 
 html {
-  filter: saturate(1.5);
+  filter: saturate(1.5) hue-rotate(var(--hue));
 }
 
 body {
@@ -91,23 +92,6 @@ body {
   color: color-mix(in srgb, var(--black) 85%, var(--white));
   /* transition: all 0.5s ease; */
   transition-property: background-color, color;
-}
-
-.logo {
-  mask-repeat: no-repeat;
-  mask-position: center;
-  mask-size: contain;
-  background-color: var(--computer-blue-dark);
-  transition: background-color 0.25s ease;
-  display: block;
-
-  &.theme-light {
-    mask-image: url("theme_light.svg");
-  }
-
-  &.theme-dark {
-    mask-image: url("theme_dark.svg");
-  }
 }
 
 .hover-label {

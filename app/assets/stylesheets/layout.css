@@ -57,41 +57,50 @@ header {
     align-items: center;
     column-gap: 1em;
     
-    > div:has(> .toggle-theme) {
+    > .page-appearance {
       display: flex;
-
-      > .toggle-theme {
-        background-color: transparent;
-        padding: 0;
-        font-size: 0.75em;
-        height: 2em;
-        aspect-ratio: 1 / 1;
-        position: relative;
-        overflow: hidden;
-        justify-content: space-between;
-
-        &:hover {
-          background-color: color-mix(in srgb, var(--computer-blue-light) 50%, transparent);
-        }
-    
-        > .logo {
-          position: absolute;
-          inset: 17.5%;
-          transition: transform 0.75s ease;
-    
-          &.theme-light {
-            transform-origin: 150% 150%;
-    
-            .dark & {
-              transform: rotate(-90deg);
-            }
+      column-gap: 0.5em;
+      
+      > div:has(> .toggle-theme) {
+        display: flex;
+  
+        > .toggle-theme {
+          background-color: transparent;
+          padding: 0;
+          font-size: 1em;
+          height: 1.75em;
+          aspect-ratio: 1 / 1;
+          position: relative;
+          overflow: hidden;
+          justify-content: space-between;
+  
+          &:hover {
+            background-color: color-mix(in srgb, var(--computer-blue-light) 50%, transparent);
           }
-    
-          &.theme-dark {
-            transform-origin: -150% -150%;
-    
-            .light & {
-              transform: rotate(-90deg);
+      
+          > .material-symbols-outlined {
+            position: absolute;
+            inset: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: transform 0.75s ease;
+            color: var(--computer-blue-dark);
+  
+            &.theme-light {
+              transform-origin: 150% 150%;
+  
+              .dark & {
+                transform: rotate(-90deg);
+              }
+            }
+  
+            &.theme-dark {
+              transform-origin: -150% -150%;
+  
+              .light & {
+                transform: rotate(-90deg);
+              }
             }
           }
         }
