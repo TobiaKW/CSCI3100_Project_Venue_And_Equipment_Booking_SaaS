@@ -57,10 +57,9 @@
       <%= f.submit "Search", class: "search-btn" %>
       <script>
         setupSlider = (e) => {
-          console.log('Set up Slider')
           const sliderNode = document.querySelector(".slider-multithumb")
           if (typeof slider === 'undefined') {
-            const slider = new SliderMultithumb(sliderNode)
+            slider = new SliderMultithumb(sliderNode)
           }
           <% if (params[:min_capacity]) %>
             sliderNode.querySelector(".minimum").setAttribute('aria-valuenow', '<%= params[:min_capacity] %>')

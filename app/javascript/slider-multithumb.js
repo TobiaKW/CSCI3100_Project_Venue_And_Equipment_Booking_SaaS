@@ -10,7 +10,6 @@
 'use strict';
 
 if (typeof window.SliderMultithumb === 'undefined') {
-  console.log("Include slider")
   class SliderMultithumb {
     constructor(domNode) {
       this.isMoving = false;
