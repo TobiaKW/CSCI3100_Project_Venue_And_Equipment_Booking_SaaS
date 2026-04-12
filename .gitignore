@@ -43,3 +43,6 @@
 /Proposal/*.log
 /Proposal/*.out
 /Proposal/*.synctex.gz
+
+# Coverage Reports
+/coverage/*

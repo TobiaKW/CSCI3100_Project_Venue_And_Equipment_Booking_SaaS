@@ -34,7 +34,7 @@ RSpec.feature "Booking management", type: :feature do
     fill_in 'booking_end_time', with: '2026-05-10 12:00:00'
 
     find('input[type=submit]').click
-    expect(page).to have_text('error')
+    expect(page).to have_text('Error')
 
     visit bookings_path
     expect(page).to have_selector('.resource-card', count: 0)

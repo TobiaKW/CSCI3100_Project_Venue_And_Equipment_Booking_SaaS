@@ -12,8 +12,8 @@ class HomeController < ApplicationController
     end
 
     # Filter by rtype (room/equipment)
-    if params[:rtypes].present?
-      @resources = @resources.where(rtype: params[:rtypes])
+    if params[:rtype].present?
+      @resources = @resources.where(rtype: params[:rtype])
     end
 
     # Filter by department
