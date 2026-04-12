@@ -80,7 +80,10 @@
         animateElement(now);
         var animationInterval = setInterval(() => {
           now++;
-          if (now >= animationElements.length) clearInterval(animationInterval);
+          if (now >= animationElements.length) {
+            clearInterval(animationInterval);
+            return;
+          }
           animateElement(now);
         }, 10000 / animationElements.length);
       });
