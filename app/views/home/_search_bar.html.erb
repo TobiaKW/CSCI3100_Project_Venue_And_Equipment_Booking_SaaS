@@ -56,10 +56,11 @@
     <div>
       <%= f.submit "Search", class: "search-btn" %>
       <script>
-        window.addEventListener("turbo:load", () => {
+        setupSlider = (e) => {
+          console.log('Set up Slider')
           const sliderNode = document.querySelector(".slider-multithumb")
           if (typeof slider === 'undefined') {
-            slider = new SliderMultithumb(sliderNode)
+            const slider = new SliderMultithumb(sliderNode)
           }
           <% if (params[:min_capacity]) %>
             sliderNode.querySelector(".minimum").setAttribute('aria-valuenow', '<%= params[:min_capacity] %>')
@@ -69,7 +70,8 @@
             sliderNode.querySelector(".maximum").setAttribute('aria-valuenow', '<%= params[:max_capacity] %>')
             slider.moveSliderTo(slider.maxSliderNode, '<%= params[:max_capacity] %>')
           <% end %>
-        });
+        }
+        setupSlider()
         window.addEventListener('load', () => {
           document.getElementById("search-form").onsubmit = async function(e) {
             e.preventDefault();
