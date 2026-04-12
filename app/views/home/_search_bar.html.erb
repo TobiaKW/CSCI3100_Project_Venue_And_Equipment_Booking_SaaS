@@ -1,5 +1,5 @@
 <div class="search-section">
-  <%= form_with url: root_path, method: :get, local: true, class: "search-form" do |f| %>
+  <%= form_with url: root_path, id: "search-form", method: :get, local: true, class: "search-form" do |f| %>
     <div class="search-input-group">
       <div>
         <div class="hover-label">Search by Name</div>
@@ -24,10 +24,73 @@
           Equipment
         </label>
       </div>
+
+      <div>
+        <span>Capacity</span>
+        <div class="slider-multithumb">
+          <svg role="none" class="slider-group" width="360" height="60">
+            <g aria-hidden="true" class="rail">
+              <rect height="0" width="0"></rect>
+            </g>
+            <g aria-hidden="true" class="range">
+              <rect height="0" width="0"></rect>
+            </g>
+            <g class="minimum" role="slider" tabindex="0" aria-valuemin="1" aria-valuenow="100" aria-valuemax="250" aria-label="Minimum Capacity">
+              <text class="value">0</text>
+              <rect class="focus-ring" height="0" width="0"></rect>
+              <polygon class="thumb" points="0,0 0,0"></polygon>
+            </g>
+            <g class="maximum" role="slider" tabindex="0" aria-valuemin="100" aria-valuenow="250" aria-valuemax="400" aria-label="Maximum Capacity">
+              <text class="value">0</text>
+              <rect class="focus-ring" height="0" width="0"></rect>
+              <polygon class="thumb" points="0,0 0,0"></polygon>
+            </g>
+          </svg>
+        </div>
+        <%= javascript_include_tag "slider-multithumb", "data-turbolinks-track" => true %>
+        <%= stylesheet_link_tag "slider-multithumb", "data-turbolinks-track" => true %>
+      </div>
+
     </div>
 
     <div>
       <%= f.submit "Search", class: "search-btn" %>
+      <script>
+        window.addEventListener('load', () => {
+          const sliderNode = document.querySelector(".slider-multithumb")
+          var slider
+          if (typeof slider === 'undefined') {
+            slider = new SliderMultithumb(sliderNode)
+          }
+          <% if (params[:min_capacity]) %>
+            sliderNode.querySelector(".minimum").setAttribute('aria-valuenow', '<%= params[:min_capacity] %>')
+            slider.moveSliderTo(slider.minSliderNode, '<%= params[:min_capacity] %>')
+          <% end %>
+          <% if (params[:max_capacity]) %>
+            sliderNode.querySelector(".maximum").setAttribute('aria-valuenow', '<%= params[:max_capacity] %>')
+            slider.moveSliderTo(slider.maxSliderNode, '<%= params[:max_capacity] %>')
+          <% end %>
+          
+          document.getElementById("search-form").onsubmit = async function(e) {
+            e.preventDefault();
+
+            const form = document.getElementById("search-form");
+            const min_capacity = document.querySelector(".slider-multithumb .minimum").getAttribute('aria-valuenow')
+            const max_capacity = document.querySelector(".slider-multithumb .maximum").getAttribute('aria-valuenow')
+            console.log(min_capacity, max_capacity)
+
+            function htmlToNode(html) {
+              const template = document.createElement('template');
+              template.innerHTML = html;
+              return template.content.firstChild;
+            }
+
+            form.append(htmlToNode(`<input style='display: none' name='min_capacity' value='${min_capacity}'>`))
+            form.append(htmlToNode(`<input style='display: none' name='max_capacity' value='${max_capacity}'>`))
+            form.submit()
+          }
+        })
+      </script>
     </div>
   <% end %>
 </div>

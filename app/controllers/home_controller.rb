@@ -5,6 +5,7 @@ class HomeController < ApplicationController
   def index
     @resources = Resource.all
 
+    pp(params)
     # Filter by name
     if params[:search].present?
       @resources = @resources.where("name ILIKE ?", "%#{params[:search]}%")
@@ -19,5 +20,14 @@ class HomeController < ApplicationController
     if params[:department_id].present?
       @resources = @resources.where(department_id: params[:department_id])
     end
+
+    # Filter by capacity
+    if params[:min_capacity].present?
+      @resources = @resources.where("capacity >= ? or rtype = 'equipment'", params[:min_capacity])
+    end
+    if params[:max_capacity].present?
+      @resources = @resources.where("capacity <= ? or rtype = 'equipment'", params[:max_capacity])
+    end
+    # @resources = @resources.order(capacity: :desc)
   end
 end
