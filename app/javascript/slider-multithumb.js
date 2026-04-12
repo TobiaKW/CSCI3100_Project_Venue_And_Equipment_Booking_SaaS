@@ -41,7 +41,7 @@ if (typeof window.SliderMultithumb === 'undefined') {
       // Dimensions of the slider focus ring, thumb and rail
 
       this.svgWidth = 360;
-      this.svgHeight = 100;
+      this.svgHeight = 80;
 
       this.valueTop = 24;
       this.valueHeight = this.minSliderValueNode.getBoundingClientRect().height;
@@ -78,6 +78,8 @@ if (typeof window.SliderMultithumb === 'undefined') {
 
       this.minSliderValueNode.setAttribute('y', this.valueTop);
       this.maxSliderValueNode.setAttribute('y', this.valueTop);
+      this.minSliderValueNode.setAttribute('text-anchor', 'end');
+      this.maxSliderValueNode.setAttribute('text-anchor', 'start');
 
       this.railNode.setAttribute('y', this.railY);
       this.railNode.setAttribute('x', this.railX);
@@ -217,11 +219,11 @@ if (typeof window.SliderMultithumb === 'undefined') {
 
         // Position value
         width = this.minSliderValueNode.getBoundingClientRect().width;
-        pos += (this.thumbWidth - width) / 2;
-        if (pos + width > this.maxSliderLeft - 2) {
-          pos = this.maxSliderLeft - width - 2;
-        }
-        this.minSliderValueNode.setAttribute('x', pos);
+        // pos += (this.thumbWidth - width) / 2;
+        // if (pos + width > this.maxSliderLeft - 2) {
+        //   pos = this.maxSliderLeft - width - 2;
+        // }
+        this.minSliderValueNode.setAttribute('x', pos + width);
         this.minSliderRight = pos;
       } else {
         // update label and ARIA attributes
@@ -243,12 +245,12 @@ if (typeof window.SliderMultithumb === 'undefined') {
           0,
           this.maxSliderValueNode.getBoundingClientRect().width
         );
-        pos = pos + this.thumbWidth + (this.thumbWidth - width) / 2;
-        if (pos - width < this.minSliderRight + 2) {
-          pos = this.minSliderRight + width + 2;
-        }
+        // pos = pos + this.thumbWidth + (this.thumbWidth - width) / 2;
+        // if (pos - width < this.minSliderRight + 2) {
+        //   pos = this.minSliderRight + width + 2;
+        // }
 
-        this.maxSliderValueNode.setAttribute('x', pos);
+        this.maxSliderValueNode.setAttribute('x', pos + this.thumbWidth + width / 2);
         this.maxSliderLeft = pos;
       }
 

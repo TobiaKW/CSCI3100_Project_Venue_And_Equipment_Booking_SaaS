@@ -25,22 +25,23 @@
         </label>
       </div>
 
-      <div>
-        <span>Capacity</span>
+      <div class="capacity">
+        <div class="hover-label">Capacity</div>
+        <span class="material-symbols-outlined">groups</span>
         <div class="slider-multithumb">
-          <svg role="none" class="slider-group" width="360" height="60">
+          <svg role="none" class="slider-group" viewBox="-30 0 420 60">
             <g aria-hidden="true" class="rail">
               <rect height="0" width="0"></rect>
             </g>
             <g aria-hidden="true" class="range">
               <rect height="0" width="0"></rect>
             </g>
-            <g class="minimum" role="slider" tabindex="0" aria-valuemin="1" aria-valuenow="1" aria-valuemax="400" aria-label="Minimum Capacity">
+            <g class="minimum" role="slider" tabindex="0" aria-valuemin="1" aria-valuenow="1" aria-valuemax="351" aria-label="Minimum Capacity">
               <text class="value">0</text>
               <rect class="focus-ring" height="0" width="0"></rect>
               <polygon class="thumb" points="0,0 0,0"></polygon>
             </g>
-            <g class="maximum" role="slider" tabindex="0" aria-valuemin="1" aria-valuenow="400" aria-valuemax="400" aria-label="Maximum Capacity">
+            <g class="maximum" role="slider" tabindex="0" aria-valuemin="1" aria-valuenow="350" aria-valuemax="351" aria-label="Maximum Capacity">
               <text class="value">0</text>
               <rect class="focus-ring" height="0" width="0"></rect>
               <polygon class="thumb" points="0,0 0,0"></polygon>
@@ -48,7 +49,6 @@
           </svg>
         </div>
         <%= javascript_include_tag "slider-multithumb", "data-turbolinks-track" => true %>
-        <%= stylesheet_link_tag "slider-multithumb", "data-turbolinks-track" => true %>
       </div>
 
     </div>

@@ -212,3 +212,43 @@ h1 {
     padding: 0 2em;
   }
 }
+
+.slider-multithumb {
+  display: flex;
+  cursor: default;
+  
+  > .slider-group {
+    height: 2.25em;
+    width: max-content;
+
+    > .rail {
+      fill: var(--computer-blue-light);
+    }
+
+    > .range {
+      fill: var(--computer-blue-dark);
+    }
+
+    > [role="slider"] {
+      cursor: pointer;
+
+      &:focus {
+        outline: none;
+      }
+
+      > .focus-ring {
+        display: none;
+      }
+
+      > .thumb {
+        fill: var(--computer-blue-dark);
+      }
+
+      > .value {
+        font-size: 2.5em;
+        fill: var(--computer-blue-dark);
+        user-select: none;
+      }
+    }
+  }
+}
