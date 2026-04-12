@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.2].define(version: 2026_04_10_120009) do
+ActiveRecord::Schema[7.2].define(version: 2026_04_12_144814) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -41,6 +41,8 @@ ActiveRecord::Schema[7.2].define(version: 2026_04_10_120009) do
     t.datetime "updated_at", null: false
     t.integer "capacity", default: -1
     t.string "seat_type", default: "N/A"
+    t.decimal "latitude", precision: 10, scale: 6
+    t.decimal "longitude", precision: 10, scale: 6
     t.index ["department_id", "name"], name: "index_resources_on_department_id_and_name", unique: true
     t.index ["department_id"], name: "index_resources_on_department_id"
   end
