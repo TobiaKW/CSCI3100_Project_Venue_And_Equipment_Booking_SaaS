@@ -56,40 +56,42 @@
     <div>
       <%= f.submit "Search", class: "search-btn" %>
       <script>
-        setupSlider = (e) => {
-          const sliderNode = document.querySelector(".slider-multithumb")
-          if (typeof slider === 'undefined') {
-            slider = new SliderMultithumb(sliderNode)
+        setup = async (e) => {
+          setupSlider = (e) => {
+            const sliderNode = document.querySelector(".slider-multithumb")
+            const slider = new SliderMultithumb(sliderNode)
+            <% if (params[:min_capacity]) %>
+              sliderNode.querySelector(".minimum").setAttribute('aria-valuenow', '<%= params[:min_capacity] %>')
+              slider.moveSliderTo(slider.minSliderNode, '<%= params[:min_capacity] %>')
+            <% end %>
+            <% if (params[:max_capacity]) %>
+              sliderNode.querySelector(".maximum").setAttribute('aria-valuenow', '<%= params[:max_capacity] %>')
+              slider.moveSliderTo(slider.maxSliderNode, '<%= params[:max_capacity] %>')
+            <% end %>
           }
-          <% if (params[:min_capacity]) %>
-            sliderNode.querySelector(".minimum").setAttribute('aria-valuenow', '<%= params[:min_capacity] %>')
-            slider.moveSliderTo(slider.minSliderNode, '<%= params[:min_capacity] %>')
-          <% end %>
-          <% if (params[:max_capacity]) %>
-            sliderNode.querySelector(".maximum").setAttribute('aria-valuenow', '<%= params[:max_capacity] %>')
-            slider.moveSliderTo(slider.maxSliderNode, '<%= params[:max_capacity] %>')
-          <% end %>
+          formOnSubmit = async (e) => {
+              e.preventDefault();
+
+              const form = document.getElementById("search-form");
+              const min_capacity = document.querySelector(".slider-multithumb .minimum").getAttribute('aria-valuenow')
+              const max_capacity = document.querySelector(".slider-multithumb .maximum").getAttribute('aria-valuenow')
+
+              function htmlToNode(html) {
+                const template = document.createElement('template');
+                template.innerHTML = html;
+                return template.content.firstChild;
+              }
+
+              form.append(htmlToNode(`<input style='display: none' name='min_capacity' value='${min_capacity}'>`))
+              form.append(htmlToNode(`<input style='display: none' name='max_capacity' value='${max_capacity}'>`))
+              form.submit()
+          }
+          const form = document.getElementById("search-form")
+          setupSlider(e)
+          form.onsubmit = formOnSubmit
         }
-        setupSlider()
-        window.addEventListener('load', () => {
-          document.getElementById("search-form").onsubmit = async function(e) {
-            e.preventDefault();
-
-            const form = document.getElementById("search-form");
-            const min_capacity = document.querySelector(".slider-multithumb .minimum").getAttribute('aria-valuenow')
-            const max_capacity = document.querySelector(".slider-multithumb .maximum").getAttribute('aria-valuenow')
-
-            function htmlToNode(html) {
-              const template = document.createElement('template');
-              template.innerHTML = html;
-              return template.content.firstChild;
-            }
-
-            form.append(htmlToNode(`<input style='display: none' name='min_capacity' value='${min_capacity}'>`))
-            form.append(htmlToNode(`<input style='display: none' name='max_capacity' value='${max_capacity}'>`))
-            form.submit()
-          }
-        })
+        document.removeEventListener('turbo:load', setup);
+        document.addEventListener('turbo:load', setup);
       </script>
     </div>
   <% end %>
