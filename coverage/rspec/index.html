@@ -13,7 +13,7 @@
       <img src="./assets/0.13.2/loading.gif" alt="loading"/>
     </div>
     <div id="wrapper" class="hide">
-      <div class="timestamp">Generated <abbr class="timeago" title="2026-04-11T02:59:30+08:00">2026-04-11T02:59:30+08:00</abbr></div>
+      <div class="timestamp">Generated <abbr class="timeago" title="2026-04-13T00:22:30+08:00">2026-04-13T00:22:30+08:00</abbr></div>
       <ul class="group_tabs"></ul>
 
       <div id="content">
@@ -22,14 +22,14 @@
     <span class="group_name">All Files</span>
     (<span class="covered_percent">
       <span class="yellow">
-  84.75%
+  81.7%
 </span>
 
      </span>
      covered at
      <span class="covered_strength">
        <span class="green">
-         2.94
+         2.88
        </span>
     </span> hits/line
     )
@@ -38,15 +38,15 @@
   <a name="AllFiles"></a>
 
   <div>
-    <b>31</b> files in total.
+    <b>29</b> files in total.
   </div>
 
   <div class="t-line-summary">
-    <b>459</b> relevant lines,
-    <span class="green"><b>389</b> lines covered</span> and
-    <span class="red"><b>70</b> lines missed. </span>
+    <b>448</b> relevant lines,
+    <span class="green"><b>366</b> lines covered</span> and
+    <span class="red"><b>82</b> lines missed. </span>
     (<span class="yellow">
-  84.75%
+  81.7%
 </span>
 )
   </div>
@@ -93,23 +93,23 @@
         
           <tr class="t-file">
             <td class="strong t-file__name"><a href="#9c451db50f5e9e14c9b50347cd1a340abcc2bbf9" class="src_link" title="app/controllers/bookings_controller.rb">app/controllers/bookings_controller.rb</a></td>
-            <td class="yellow strong cell--number t-file__coverage">86.96 %</td>
+            <td class="red strong cell--number t-file__coverage">34.78 %</td>
             <td class="cell--number">56</td>
             <td class="cell--number">23</td>
-            <td class="cell--number">20</td>
-            <td class="cell--number">3</td>
-            <td class="cell--number">1.22</td>
+            <td class="cell--number">8</td>
+            <td class="cell--number">15</td>
+            <td class="cell--number">0.43</td>
             
           </tr>
         
           <tr class="t-file">
             <td class="strong t-file__name"><a href="#ff027fa71656d1263bdfbe250836b710d4181776" class="src_link" title="app/controllers/home_controller.rb">app/controllers/home_controller.rb</a></td>
-            <td class="red strong cell--number t-file__coverage">70.00 %</td>
-            <td class="cell--number">23</td>
+            <td class="red strong cell--number t-file__coverage">66.67 %</td>
+            <td class="cell--number">33</td>
+            <td class="cell--number">15</td>
             <td class="cell--number">10</td>
-            <td class="cell--number">7</td>
-            <td class="cell--number">3</td>
-            <td class="cell--number">0.70</td>
+            <td class="cell--number">5</td>
+            <td class="cell--number">0.67</td>
             
           </tr>
         
@@ -121,17 +121,6 @@
             <td class="cell--number">1</td>
             <td class="cell--number">0</td>
             <td class="cell--number">1.00</td>
-            
-          </tr>
-        
-          <tr class="t-file">
-            <td class="strong t-file__name"><a href="#9ad0c611e4d2eefabcbac43d08f9378dbd4d863f" class="src_link" title="app/mailers/admin_mailer.rb">app/mailers/admin_mailer.rb</a></td>
-            <td class="yellow strong cell--number t-file__coverage">84.62 %</td>
-            <td class="cell--number">24</td>
-            <td class="cell--number">13</td>
-            <td class="cell--number">11</td>
-            <td class="cell--number">2</td>
-            <td class="cell--number">1.08</td>
             
           </tr>
         
@@ -175,7 +164,7 @@
             <td class="cell--number">39</td>
             <td class="cell--number">39</td>
             <td class="cell--number">0</td>
-            <td class="cell--number">11.82</td>
+            <td class="cell--number">11.08</td>
             
           </tr>
         
@@ -341,17 +330,6 @@
             <td class="cell--number">12</td>
             <td class="cell--number">57</td>
             <td class="cell--number">0.17</td>
-            
-          </tr>
-        
-          <tr class="t-file">
-            <td class="strong t-file__name"><a href="#3bea1cf3a6b9eba57716de66c62cb58b24f6b3ec" class="src_link" title="spec/features/search_resource_spec.rb">spec/features/search_resource_spec.rb</a></td>
-            <td class="green strong cell--number t-file__coverage">100.00 %</td>
-            <td class="cell--number">5</td>
-            <td class="cell--number">3</td>
-            <td class="cell--number">3</td>
-            <td class="cell--number">0</td>
-            <td class="cell--number">1.00</td>
             
           </tr>
         
@@ -1631,7 +1609,7 @@
 
             
 
-            <code class="ruby">               .transform_keys { |k| k.strftime(&quot;%b %d&quot;) }</code>
+            <code class="ruby">               .transform_keys { |k| k.strftime(&quot;%Y-%m-%d&quot;) }</code>
           </li>
         </div>
       
@@ -1663,7 +1641,7 @@
 
             
 
-            <code class="ruby">    bookings.sort_by { |k, _| Date.strptime(k, &quot;%b %d&quot;) }.to_h</code>
+            <code class="ruby">    bookings.sort_by { |k, _| Date.strptime(k) }.to_h</code>
           </li>
         </div>
       
@@ -2047,8 +2025,8 @@
   <div class="header">
     <h3>app/controllers/bookings_controller.rb</h3>
     <h4>
-      <span class="yellow">
-  86.96%
+      <span class="red">
+  34.78%
 </span>
 
       lines covered
@@ -2058,8 +2036,8 @@
 
     <div class="t-line-summary">
       <b>23</b> relevant lines.
-      <span class="green"><b>20</b> lines covered</span> and
-      <span class="red"><b>3</b> lines missed.</span>
+      <span class="green"><b>8</b> lines covered</span> and
+      <span class="red"><b>15</b> lines missed.</span>
     </div>
 
     
@@ -2094,9 +2072,7 @@
         </div>
       
         <div>
-          <li class="covered" data-hits="3" data-linenumber="3">
-            
-              <span class="hits">3</span>
+          <li class="missed" data-hits="0" data-linenumber="3">
             
 
             
@@ -2194,9 +2170,7 @@
         </div>
       
         <div>
-          <li class="covered" data-hits="2" data-linenumber="12">
-            
-              <span class="hits">2</span>
+          <li class="missed" data-hits="0" data-linenumber="12">
             
 
             
@@ -2206,9 +2180,7 @@
         </div>
       
         <div>
-          <li class="covered" data-hits="2" data-linenumber="13">
-            
-              <span class="hits">2</span>
+          <li class="missed" data-hits="0" data-linenumber="13">
             
 
             
@@ -2248,9 +2220,7 @@
         </div>
       
         <div>
-          <li class="covered" data-hits="2" data-linenumber="17">
-            
-              <span class="hits">2</span>
+          <li class="missed" data-hits="0" data-linenumber="17">
             
 
             
@@ -2270,9 +2240,7 @@
         </div>
       
         <div>
-          <li class="covered" data-hits="1" data-linenumber="19">
-            
-              <span class="hits">1</span>
+          <li class="missed" data-hits="0" data-linenumber="19">
             
 
             
@@ -2282,9 +2250,7 @@
         </div>
       
         <div>
-          <li class="covered" data-hits="1" data-linenumber="20">
-            
-              <span class="hits">1</span>
+          <li class="missed" data-hits="0" data-linenumber="20">
             
 
             
@@ -2304,9 +2270,7 @@
         </div>
       
         <div>
-          <li class="covered" data-hits="1" data-linenumber="22">
-            
-              <span class="hits">1</span>
+          <li class="missed" data-hits="0" data-linenumber="22">
             
 
             
@@ -2356,9 +2320,7 @@
         </div>
       
         <div>
-          <li class="covered" data-hits="1" data-linenumber="27">
-            
-              <span class="hits">1</span>
+          <li class="missed" data-hits="0" data-linenumber="27">
             
 
             
@@ -2408,9 +2370,7 @@
         </div>
       
         <div>
-          <li class="covered" data-hits="1" data-linenumber="32">
-            
-              <span class="hits">1</span>
+          <li class="missed" data-hits="0" data-linenumber="32">
             
 
             
@@ -2540,9 +2500,7 @@
         </div>
       
         <div>
-          <li class="covered" data-hits="1" data-linenumber="45">
-            
-              <span class="hits">1</span>
+          <li class="missed" data-hits="0" data-linenumber="45">
             
 
             
@@ -2562,9 +2520,7 @@
         </div>
       
         <div>
-          <li class="covered" data-hits="1" data-linenumber="47">
-            
-              <span class="hits">1</span>
+          <li class="missed" data-hits="0" data-linenumber="47">
             
 
             
@@ -2638,9 +2594,7 @@
         </div>
       
         <div>
-          <li class="covered" data-hits="2" data-linenumber="54">
-            
-              <span class="hits">2</span>
+          <li class="missed" data-hits="0" data-linenumber="54">
             
 
             
@@ -2679,7 +2633,7 @@
     <h3>app/controllers/home_controller.rb</h3>
     <h4>
       <span class="red">
-  70.0%
+  66.67%
 </span>
 
       lines covered
@@ -2688,9 +2642,9 @@
     
 
     <div class="t-line-summary">
-      <b>10</b> relevant lines.
-      <span class="green"><b>7</b> lines covered</span> and
-      <span class="red"><b>3</b> lines missed.</span>
+      <b>15</b> relevant lines.
+      <span class="green"><b>10</b> lines covered</span> and
+      <span class="red"><b>5</b> lines missed.</span>
     </div>
 
     
@@ -2779,7 +2733,19 @@
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="8">
+          <li class="covered" data-hits="1" data-linenumber="8">
+            
+              <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">    pp(params)</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="9">
             
 
             
@@ -2789,7 +2755,7 @@
         </div>
       
         <div>
-          <li class="covered" data-hits="1" data-linenumber="9">
+          <li class="covered" data-hits="1" data-linenumber="10">
             
               <span class="hits">1</span>
             
@@ -2801,7 +2767,7 @@
         </div>
       
         <div>
-          <li class="missed" data-hits="0" data-linenumber="10">
+          <li class="missed" data-hits="0" data-linenumber="11">
             
 
             
@@ -2811,7 +2777,7 @@
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="11">
+          <li class="never" data-hits="" data-linenumber="12">
             
 
             
@@ -2821,7 +2787,7 @@
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="12">
+          <li class="never" data-hits="" data-linenumber="13">
             
 
             
@@ -2831,7 +2797,7 @@
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="13">
+          <li class="never" data-hits="" data-linenumber="14">
             
 
             
@@ -2841,7 +2807,7 @@
         </div>
       
         <div>
-          <li class="covered" data-hits="1" data-linenumber="14">
+          <li class="covered" data-hits="1" data-linenumber="15">
             
               <span class="hits">1</span>
             
@@ -2853,7 +2819,7 @@
         </div>
       
         <div>
-          <li class="missed" data-hits="0" data-linenumber="15">
+          <li class="missed" data-hits="0" data-linenumber="16">
             
 
             
@@ -2863,7 +2829,7 @@
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="16">
+          <li class="never" data-hits="" data-linenumber="17">
             
 
             
@@ -2873,7 +2839,7 @@
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="17">
+          <li class="never" data-hits="" data-linenumber="18">
             
 
             
@@ -2883,7 +2849,7 @@
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="18">
+          <li class="never" data-hits="" data-linenumber="19">
             
 
             
@@ -2893,7 +2859,7 @@
         </div>
       
         <div>
-          <li class="covered" data-hits="1" data-linenumber="19">
+          <li class="covered" data-hits="1" data-linenumber="20">
             
               <span class="hits">1</span>
             
@@ -2905,7 +2871,7 @@
         </div>
       
         <div>
-          <li class="missed" data-hits="0" data-linenumber="20">
+          <li class="missed" data-hits="0" data-linenumber="21">
             
 
             
@@ -2915,7 +2881,7 @@
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="21">
+          <li class="never" data-hits="" data-linenumber="22">
             
 
             
@@ -2925,7 +2891,101 @@
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="22">
+          <li class="never" data-hits="" data-linenumber="23">
+            
+
+            
+
+            <code class="ruby"></code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="24">
+            
+
+            
+
+            <code class="ruby">    # Filter by capacity</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="25">
+            
+              <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">    if params[:min_capacity].present?</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="missed" data-hits="0" data-linenumber="26">
+            
+
+            
+
+            <code class="ruby">      @resources = @resources.where(&quot;capacity &gt;= ? or rtype = &#39;equipment&#39;&quot;, params[:min_capacity])</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="27">
+            
+
+            
+
+            <code class="ruby">    end</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="28">
+            
+              <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">    if params[:max_capacity].present?</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="missed" data-hits="0" data-linenumber="29">
+            
+
+            
+
+            <code class="ruby">      @resources = @resources.where(&quot;capacity &lt;= ? or rtype = &#39;equipment&#39;&quot;, params[:max_capacity])</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="30">
+            
+
+            
+
+            <code class="ruby">    end</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="31">
+            
+
+            
+
+            <code class="ruby">    # @resources = @resources.order(capacity: :desc)</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="32">
             
 
             
@@ -2935,7 +2995,7 @@
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="23">
+          <li class="never" data-hits="" data-linenumber="33">
             
 
             
@@ -2989,299 +3049,6 @@
       
         <div>
           <li class="never" data-hits="" data-linenumber="2">
-            
-
-            
-
-            <code class="ruby">end</code>
-          </li>
-        </div>
-      
-    </ol>
-  </pre>
-</div>
-
-      
-        <div class="source_table" id="9ad0c611e4d2eefabcbac43d08f9378dbd4d863f">
-  <div class="header">
-    <h3>app/mailers/admin_mailer.rb</h3>
-    <h4>
-      <span class="yellow">
-  84.62%
-</span>
-
-      lines covered
-    </h4>
-
-    
-
-    <div class="t-line-summary">
-      <b>13</b> relevant lines.
-      <span class="green"><b>11</b> lines covered</span> and
-      <span class="red"><b>2</b> lines missed.</span>
-    </div>
-
-    
-
-  </div>
-
-  <pre>
-    <ol>
-      
-        <div>
-          <li class="covered" data-hits="1" data-linenumber="1">
-            
-              <span class="hits">1</span>
-            
-
-            
-
-            <code class="ruby">class AdminMailer &lt; ApplicationMailer</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="never" data-hits="" data-linenumber="2">
-            
-
-            
-
-            <code class="ruby">  # Same-department admins first; if none, any admin (so mail still sends when only one dept has an admin in seeds).</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="covered" data-hits="1" data-linenumber="3">
-            
-              <span class="hits">1</span>
-            
-
-            
-
-            <code class="ruby">  def self.pending_approval_recipients(booking)</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="covered" data-hits="2" data-linenumber="4">
-            
-              <span class="hits">2</span>
-            
-
-            
-
-            <code class="ruby">    department = booking.resource.department</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="covered" data-hits="2" data-linenumber="5">
-            
-              <span class="hits">2</span>
-            
-
-            
-
-            <code class="ruby">    emails = User.where(role: &quot;admin&quot;, department_id: department.id).pluck(:email)</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="covered" data-hits="2" data-linenumber="6">
-            
-              <span class="hits">2</span>
-            
-
-            
-
-            <code class="ruby">    return emails if emails.any?</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="never" data-hits="" data-linenumber="7">
-            
-
-            
-
-            <code class="ruby"></code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="missed" data-hits="0" data-linenumber="8">
-            
-
-            
-
-            <code class="ruby">    User.where(role: &quot;admin&quot;).pluck(:email).uniq</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="never" data-hits="" data-linenumber="9">
-            
-
-            
-
-            <code class="ruby">  end</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="never" data-hits="" data-linenumber="10">
-            
-
-            
-
-            <code class="ruby"></code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="covered" data-hits="1" data-linenumber="11">
-            
-              <span class="hits">1</span>
-            
-
-            
-
-            <code class="ruby">  def pending_approval(booking)</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="covered" data-hits="1" data-linenumber="12">
-            
-              <span class="hits">1</span>
-            
-
-            
-
-            <code class="ruby">    @booking = booking</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="covered" data-hits="1" data-linenumber="13">
-            
-              <span class="hits">1</span>
-            
-
-            
-
-            <code class="ruby">    @department = booking.resource.department</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="covered" data-hits="1" data-linenumber="14">
-            
-              <span class="hits">1</span>
-            
-
-            
-
-            <code class="ruby">    emails = self.class.pending_approval_recipients(booking)</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="covered" data-hits="1" data-linenumber="15">
-            
-              <span class="hits">1</span>
-            
-
-            
-
-            <code class="ruby">    if emails.blank?</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="missed" data-hits="0" data-linenumber="16">
-            
-
-            
-
-            <code class="ruby">      raise ArgumentError, &quot;AdminMailer#pending_approval: no admin recipients for booking #{booking.id}&quot;</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="never" data-hits="" data-linenumber="17">
-            
-
-            
-
-            <code class="ruby">    end</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="never" data-hits="" data-linenumber="18">
-            
-
-            
-
-            <code class="ruby"></code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="covered" data-hits="1" data-linenumber="19">
-            
-              <span class="hits">1</span>
-            
-
-            
-
-            <code class="ruby">    mail(</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="never" data-hits="" data-linenumber="20">
-            
-
-            
-
-            <code class="ruby">      to: emails,</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="never" data-hits="" data-linenumber="21">
-            
-
-            
-
-            <code class="ruby">      subject: &quot;Booking requested: #{@booking.resource.name} (#{@booking.start_time.strftime(&#39;%Y-%m-%d %H:%M&#39;)})&quot;</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="never" data-hits="" data-linenumber="22">
-            
-
-            
-
-            <code class="ruby">    )</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="never" data-hits="" data-linenumber="23">
-            
-
-            
-
-            <code class="ruby">  end</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="never" data-hits="" data-linenumber="24">
             
 
             
@@ -3811,9 +3578,9 @@
         </div>
       
         <div>
-          <li class="covered" data-hits="28" data-linenumber="17">
+          <li class="covered" data-hits="26" data-linenumber="17">
             
-              <span class="hits">28</span>
+              <span class="hits">26</span>
             
 
             
@@ -3823,9 +3590,9 @@
         </div>
       
         <div>
-          <li class="covered" data-hits="26" data-linenumber="18">
+          <li class="covered" data-hits="24" data-linenumber="18">
             
-              <span class="hits">26</span>
+              <span class="hits">24</span>
             
 
             
@@ -3845,9 +3612,9 @@
         </div>
       
         <div>
-          <li class="covered" data-hits="2" data-linenumber="20">
+          <li class="covered" data-hits="1" data-linenumber="20">
             
-              <span class="hits">2</span>
+              <span class="hits">1</span>
             
 
             
@@ -3889,9 +3656,9 @@
         </div>
       
         <div>
-          <li class="covered" data-hits="28" data-linenumber="24">
+          <li class="covered" data-hits="26" data-linenumber="24">
             
-              <span class="hits">28</span>
+              <span class="hits">26</span>
             
 
             
@@ -3901,9 +3668,9 @@
         </div>
       
         <div>
-          <li class="covered" data-hits="26" data-linenumber="25">
+          <li class="covered" data-hits="24" data-linenumber="25">
             
-              <span class="hits">26</span>
+              <span class="hits">24</span>
             
 
             
@@ -3913,9 +3680,9 @@
         </div>
       
         <div>
-          <li class="covered" data-hits="24" data-linenumber="26">
+          <li class="covered" data-hits="23" data-linenumber="26">
             
-              <span class="hits">24</span>
+              <span class="hits">23</span>
             
 
             
@@ -3979,9 +3746,9 @@
         </div>
       
         <div>
-          <li class="covered" data-hits="28" data-linenumber="32">
+          <li class="covered" data-hits="26" data-linenumber="32">
             
-              <span class="hits">28</span>
+              <span class="hits">26</span>
             
 
             
@@ -3991,9 +3758,9 @@
         </div>
       
         <div>
-          <li class="covered" data-hits="26" data-linenumber="33">
+          <li class="covered" data-hits="24" data-linenumber="33">
             
-              <span class="hits">26</span>
+              <span class="hits">24</span>
             
 
             
@@ -4013,9 +3780,9 @@
         </div>
       
         <div>
-          <li class="covered" data-hits="24" data-linenumber="35">
+          <li class="covered" data-hits="23" data-linenumber="35">
             
-              <span class="hits">24</span>
+              <span class="hits">23</span>
             
 
             
@@ -4055,9 +3822,9 @@
         </div>
       
         <div>
-          <li class="covered" data-hits="24" data-linenumber="39">
+          <li class="covered" data-hits="23" data-linenumber="39">
             
-              <span class="hits">24</span>
+              <span class="hits">23</span>
             
 
             
@@ -4097,9 +3864,9 @@
         </div>
       
         <div>
-          <li class="covered" data-hits="24" data-linenumber="43">
+          <li class="covered" data-hits="23" data-linenumber="43">
             
-              <span class="hits">24</span>
+              <span class="hits">23</span>
             
 
             
@@ -4109,9 +3876,9 @@
         </div>
       
         <div>
-          <li class="covered" data-hits="24" data-linenumber="44">
+          <li class="covered" data-hits="23" data-linenumber="44">
             
-              <span class="hits">24</span>
+              <span class="hits">23</span>
             
 
             
@@ -4175,9 +3942,9 @@
         </div>
       
         <div>
-          <li class="covered" data-hits="26" data-linenumber="50">
+          <li class="covered" data-hits="24" data-linenumber="50">
             
-              <span class="hits">26</span>
+              <span class="hits">24</span>
             
 
             
@@ -4187,9 +3954,9 @@
         </div>
       
         <div>
-          <li class="covered" data-hits="24" data-linenumber="51">
+          <li class="covered" data-hits="22" data-linenumber="51">
             
-              <span class="hits">24</span>
+              <span class="hits">22</span>
             
 
             
@@ -4255,9 +4022,9 @@
         </div>
       
         <div>
-          <li class="covered" data-hits="28" data-linenumber="57">
+          <li class="covered" data-hits="26" data-linenumber="57">
             
-              <span class="hits">28</span>
+              <span class="hits">26</span>
             
 
             
@@ -4267,9 +4034,9 @@
         </div>
       
         <div>
-          <li class="covered" data-hits="27" data-linenumber="58">
+          <li class="covered" data-hits="25" data-linenumber="58">
             
-              <span class="hits">27</span>
+              <span class="hits">25</span>
             
 
             
@@ -4279,9 +4046,9 @@
         </div>
       
         <div>
-          <li class="covered" data-hits="25" data-linenumber="59">
+          <li class="covered" data-hits="23" data-linenumber="59">
             
-              <span class="hits">25</span>
+              <span class="hits">23</span>
             
 
             
@@ -4291,9 +4058,9 @@
         </div>
       
         <div>
-          <li class="covered" data-hits="23" data-linenumber="60">
+          <li class="covered" data-hits="22" data-linenumber="60">
             
-              <span class="hits">23</span>
+              <span class="hits">22</span>
             
 
             
@@ -4683,7 +4450,7 @@
 
             
 
-            <code class="ruby">  </code>
+            <code class="ruby"></code>
           </li>
         </div>
       
@@ -5753,7 +5520,7 @@
 
             
 
-            <code class="ruby">  config.annotations.register_directories(&#39;features&#39;)</code>
+            <code class="ruby">  config.annotations.register_directories(&quot;features&quot;)</code>
           </li>
         </div>
       
@@ -5765,7 +5532,7 @@
 
             
 
-            <code class="ruby">  config.annotations.register_extensions(&#39;feature&#39;) { |tag| /#\s*(#{tag}):?\s*(.*)$/ }</code>
+            <code class="ruby">  config.annotations.register_extensions(&quot;feature&quot;) { |tag| /#\s*(#{tag}):?\s*(.*)$/ }</code>
           </li>
         </div>
       
@@ -8982,93 +8749,6 @@
 </div>
 
       
-        <div class="source_table" id="3bea1cf3a6b9eba57716de66c62cb58b24f6b3ec">
-  <div class="header">
-    <h3>spec/features/search_resource_spec.rb</h3>
-    <h4>
-      <span class="green">
-  100.0%
-</span>
-
-      lines covered
-    </h4>
-
-    
-
-    <div class="t-line-summary">
-      <b>3</b> relevant lines.
-      <span class="green"><b>3</b> lines covered</span> and
-      <span class="red"><b>0</b> lines missed.</span>
-    </div>
-
-    
-
-  </div>
-
-  <pre>
-    <ol>
-      
-        <div>
-          <li class="covered" data-hits="1" data-linenumber="1">
-            
-              <span class="hits">1</span>
-            
-
-            
-
-            <code class="ruby">require &#39;rails_helper&#39;</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="never" data-hits="" data-linenumber="2">
-            
-
-            
-
-            <code class="ruby"></code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="covered" data-hits="1" data-linenumber="3">
-            
-              <span class="hits">1</span>
-            
-
-            
-
-            <code class="ruby">RSpec.feature &quot;SearchResources&quot;, type: :feature do</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="covered" data-hits="1" data-linenumber="4">
-            
-              <span class="hits">1</span>
-            
-
-            
-
-            <code class="ruby">  pending &quot;add some scenarios (or delete) #{__FILE__}&quot;</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="never" data-hits="" data-linenumber="5">
-            
-
-            
-
-            <code class="ruby">end</code>
-          </li>
-        </div>
-      
-    </ol>
-  </pre>
-</div>
-
-      
         <div class="source_table" id="008ba62a276a0beaca0e62c5bc23f30c9e38dbf8">
   <div class="header">
     <h3>spec/models/booking_spec.rb</h3>
@@ -9159,7 +8839,7 @@
 
             
 
-            <code class="ruby">  </code>
+            <code class="ruby"></code>
           </li>
         </div>
       
@@ -9183,7 +8863,7 @@
 
             
 
-            <code class="ruby">    Booking.new({ </code>
+            <code class="ruby">    Booking.new({</code>
           </li>
         </div>
       
@@ -9193,7 +8873,7 @@
 
             
 
-            <code class="ruby">      :user =&gt; users[:alice],</code>
+            <code class="ruby">      user: users[:alice],</code>
           </li>
         </div>
       
@@ -9203,7 +8883,7 @@
 
             
 
-            <code class="ruby">      :resource =&gt; resources[:shb924]</code>
+            <code class="ruby">      resource: resources[:shb924]</code>
           </li>
         </div>
       
@@ -9383,7 +9063,7 @@
 
             
 
-            <code class="ruby">      </code>
+            <code class="ruby"></code>
           </li>
         </div>
       
@@ -9675,7 +9355,7 @@
 
             
 
-            <code class="ruby">        :alice_924 =&gt; Booking.new({ </code>
+            <code class="ruby">        alice_924: Booking.new({</code>
           </li>
         </div>
       
@@ -9685,7 +9365,7 @@
 
             
 
-            <code class="ruby">          :user =&gt; users[:alice],</code>
+            <code class="ruby">          user: users[:alice],</code>
           </li>
         </div>
       
@@ -9695,7 +9375,7 @@
 
             
 
-            <code class="ruby">          :resource =&gt; resources[:shb924],</code>
+            <code class="ruby">          resource: resources[:shb924],</code>
           </li>
         </div>
       
@@ -9705,7 +9385,7 @@
 
             
 
-            <code class="ruby">          :start_time =&gt; freeze_date + 7.day + 10.hour,</code>
+            <code class="ruby">          start_time: freeze_date + 7.day + 10.hour,</code>
           </li>
         </div>
       
@@ -9715,7 +9395,7 @@
 
             
 
-            <code class="ruby">          :end_time =&gt; freeze_date + 7.day + 11.hour,</code>
+            <code class="ruby">          end_time: freeze_date + 7.day + 11.hour,</code>
           </li>
         </div>
       
@@ -9725,7 +9405,7 @@
 
             
 
-            <code class="ruby">          :status =&gt; &#39;approved&#39;</code>
+            <code class="ruby">          status: &#39;approved&#39;</code>
           </li>
         </div>
       
@@ -9745,7 +9425,7 @@
 
             
 
-            <code class="ruby">        :bob_924 =&gt; Booking.new({ </code>
+            <code class="ruby">        bob_924: Booking.new({</code>
           </li>
         </div>
       
@@ -9755,7 +9435,7 @@
 
             
 
-            <code class="ruby">          :user =&gt; users[:bob],</code>
+            <code class="ruby">          user: users[:bob],</code>
           </li>
         </div>
       
@@ -9765,7 +9445,7 @@
 
             
 
-            <code class="ruby">          :resource =&gt; resources[:shb924],</code>
+            <code class="ruby">          resource: resources[:shb924],</code>
           </li>
         </div>
       
@@ -9775,7 +9455,7 @@
 
             
 
-            <code class="ruby">          :start_time =&gt; freeze_date + 7.day + 10.hour + 30.minute,</code>
+            <code class="ruby">          start_time: freeze_date + 7.day + 10.hour + 30.minute,</code>
           </li>
         </div>
       
@@ -9785,7 +9465,7 @@
 
             
 
-            <code class="ruby">          :end_time =&gt; freeze_date + 7.day + 11.hour + 30.minute,</code>
+            <code class="ruby">          end_time: freeze_date + 7.day + 11.hour + 30.minute,</code>
           </li>
         </div>
       
@@ -9795,7 +9475,7 @@
 
             
 
-            <code class="ruby">          :status =&gt; &#39;approved&#39;</code>
+            <code class="ruby">          status: &#39;approved&#39;</code>
           </li>
         </div>
       
@@ -9815,7 +9495,7 @@
 
             
 
-            <code class="ruby">        :bob_123 =&gt; Booking.new({ </code>
+            <code class="ruby">        bob_123: Booking.new({</code>
           </li>
         </div>
       
@@ -9825,7 +9505,7 @@
 
             
 
-            <code class="ruby">          :user =&gt; users[:bob],</code>
+            <code class="ruby">          user: users[:bob],</code>
           </li>
         </div>
       
@@ -9835,7 +9515,7 @@
 
             
 
-            <code class="ruby">          :resource =&gt; resources[:shb123],</code>
+            <code class="ruby">          resource: resources[:shb123],</code>
           </li>
         </div>
       
@@ -9845,7 +9525,7 @@
 
             
 
-            <code class="ruby">          :start_time =&gt; freeze_date + 7.day + 10.hour + 30.minute,</code>
+            <code class="ruby">          start_time: freeze_date + 7.day + 10.hour + 30.minute,</code>
           </li>
         </div>
       
@@ -9855,7 +9535,7 @@
 
             
 
-            <code class="ruby">          :end_time =&gt; freeze_date + 7.day + 11.hour + 30.minute,</code>
+            <code class="ruby">          end_time: freeze_date + 7.day + 11.hour + 30.minute,</code>
           </li>
         </div>
       
@@ -9865,7 +9545,7 @@
 
             
 
-            <code class="ruby">          :status =&gt; &#39;approved&#39;</code>
+            <code class="ruby">          status: &#39;approved&#39;</code>
           </li>
         </div>
       
@@ -10021,7 +9701,7 @@
 
             
 
-            <code class="ruby">      </code>
+            <code class="ruby"></code>
           </li>
         </div>
       
@@ -10572,7 +10252,7 @@
 
             
 
-            <code class="ruby">  </code>
+            <code class="ruby"></code>
           </li>
         </div>
       
@@ -10710,7 +10390,7 @@
 
             
 
-            <code class="ruby">      </code>
+            <code class="ruby"></code>
           </li>
         </div>
       
@@ -11055,7 +10735,7 @@
 
             
 
-            <code class="ruby">    patch admin_booking_path(bookings[:alice_924].id), params: {status: &#39;approved&#39;}</code>
+            <code class="ruby">    patch admin_booking_path(bookings[:alice_924].id), params: { status: &#39;approved&#39; }</code>
           </li>
         </div>
       
@@ -11153,7 +10833,7 @@
 
             
 
-            <code class="ruby">  </code>
+            <code class="ruby"></code>
           </li>
         </div>
       
@@ -11299,7 +10979,7 @@
 
             
 
-            <code class="ruby">    patch admin_booking_path(bookings[:alice_924].id), params: {status: &#39;rejected&#39;}</code>
+            <code class="ruby">    patch admin_booking_path(bookings[:alice_924].id), params: { status: &#39;rejected&#39; }</code>
           </li>
         </div>
       
@@ -11813,7 +11493,7 @@
 
             
 
-            <code class="ruby">RSpec.shared_context :database, :shared_context =&gt; :metadata do</code>
+            <code class="ruby">RSpec.shared_context :database, shared_context: :metadata do</code>
           </li>
         </div>
       
@@ -11891,7 +11571,7 @@
 
             
 
-            <code class="ruby">      :nil =&gt; Department.create!( name: &#39;Nil&#39; ),</code>
+            <code class="ruby">      nil: Department.create!(name: &#39;Nil&#39;),</code>
           </li>
         </div>
       
@@ -11901,7 +11581,7 @@
 
             
 
-            <code class="ruby">      :maths =&gt; Department.create!( name: &#39;Mathematics&#39; ),</code>
+            <code class="ruby">      maths: Department.create!(name: &#39;Mathematics&#39;),</code>
           </li>
         </div>
       
@@ -11911,7 +11591,7 @@
 
             
 
-            <code class="ruby">      :engine =&gt; Department.create!( name: &#39;Engineering&#39; )</code>
+            <code class="ruby">      engine: Department.create!(name: &#39;Engineering&#39;)</code>
           </li>
         </div>
       
@@ -11975,7 +11655,7 @@
 
             
 
-            <code class="ruby">      :admin =&gt; User.create!( name: &#39;admin&#39;, email: &#39;admin@example.com&#39;, password: &#39;123456&#39;, role: &#39;admin&#39;, department: departments[:engine] ),</code>
+            <code class="ruby">      admin: User.create!(name: &#39;admin&#39;, email: &#39;admin@example.com&#39;, password: &#39;123456&#39;, role: &#39;admin&#39;, department: departments[:engine]),</code>
           </li>
         </div>
       
@@ -11985,7 +11665,7 @@
 
             
 
-            <code class="ruby">      :admin2 =&gt; User.create!( name: &#39;admin2&#39;, email: &#39;admin2@example.com&#39;, password: &#39;123456&#39;, role: &#39;admin&#39;, department: departments[:maths] ),</code>
+            <code class="ruby">      admin2: User.create!(name: &#39;admin2&#39;, email: &#39;admin2@example.com&#39;, password: &#39;123456&#39;, role: &#39;admin&#39;, department: departments[:maths]),</code>
           </li>
         </div>
       
@@ -11995,7 +11675,7 @@
 
             
 
-            <code class="ruby">      :alice =&gt; User.create!( name: &#39;alice&#39;, email: &#39;alice@example.com&#39;, password: &#39;123456&#39;, role: &#39;student&#39;, department: departments[:engine] ),</code>
+            <code class="ruby">      alice: User.create!(name: &#39;alice&#39;, email: &#39;alice@example.com&#39;, password: &#39;123456&#39;, role: &#39;student&#39;, department: departments[:engine]),</code>
           </li>
         </div>
       
@@ -12005,7 +11685,7 @@
 
             
 
-            <code class="ruby">      :bob =&gt; User.create!( name: &#39;bob&#39;, email: &#39;bob@example.com&#39;, password: &#39;123456&#39;, role: &#39;student&#39;, department: departments[:maths] )</code>
+            <code class="ruby">      bob: User.create!(name: &#39;bob&#39;, email: &#39;bob@example.com&#39;, password: &#39;123456&#39;, role: &#39;student&#39;, department: departments[:maths])</code>
           </li>
         </div>
       
@@ -12069,7 +11749,7 @@
 
             
 
-            <code class="ruby">      :computer =&gt; Resource.create!( name: &#39;Computer&#39;, rtype: &#39;equipment&#39;, department: departments[:engine] ),</code>
+            <code class="ruby">      computer: Resource.create!(name: &#39;Computer&#39;, rtype: &#39;equipment&#39;, department: departments[:engine]),</code>
           </li>
         </div>
       
@@ -12079,7 +11759,7 @@
 
             
 
-            <code class="ruby">      :shb123 =&gt; Resource.create!( name: &#39;SHB 123&#39;, rtype: &#39;room&#39;, department: departments[:engine] ),</code>
+            <code class="ruby">      shb123: Resource.create!(name: &#39;SHB 123&#39;, rtype: &#39;room&#39;, department: departments[:engine]),</code>
           </li>
         </div>
       
@@ -12089,7 +11769,7 @@
 
             
 
-            <code class="ruby">      :lsbc1 =&gt; Resource.create!( name: &#39;LSB C1&#39;, rtype: &#39;room&#39;, department: departments[:maths] ),</code>
+            <code class="ruby">      lsbc1: Resource.create!(name: &#39;LSB C1&#39;, rtype: &#39;room&#39;, department: departments[:maths]),</code>
           </li>
         </div>
       
@@ -12099,7 +11779,7 @@
 
             
 
-            <code class="ruby">      :shb924 =&gt; Resource.create!( name: &#39;SHB 924&#39;, rtype: &#39;room&#39;, department: departments[:engine] )</code>
+            <code class="ruby">      shb924: Resource.create!(name: &#39;SHB 924&#39;, rtype: &#39;room&#39;, department: departments[:engine])</code>
           </li>
         </div>
       
@@ -12163,7 +11843,7 @@
 
             
 
-            <code class="ruby">      :alice_924 =&gt; Booking.create!({ </code>
+            <code class="ruby">      alice_924: Booking.create!({</code>
           </li>
         </div>
       
@@ -12173,7 +11853,7 @@
 
             
 
-            <code class="ruby">        :user =&gt; users[:alice],</code>
+            <code class="ruby">        user: users[:alice],</code>
           </li>
         </div>
       
@@ -12183,7 +11863,7 @@
 
             
 
-            <code class="ruby">        :resource =&gt; resources[:shb924],</code>
+            <code class="ruby">        resource: resources[:shb924],</code>
           </li>
         </div>
       
@@ -12193,7 +11873,7 @@
 
             
 
-            <code class="ruby">        :start_time =&gt; freeze_date + 7.day + 10.hour,</code>
+            <code class="ruby">        start_time: freeze_date + 7.day + 10.hour,</code>
           </li>
         </div>
       
@@ -12203,7 +11883,7 @@
 
             
 
-            <code class="ruby">        :end_time =&gt; freeze_date + 7.day + 11.hour,</code>
+            <code class="ruby">        end_time: freeze_date + 7.day + 11.hour,</code>
           </li>
         </div>
       
@@ -12213,7 +11893,7 @@
 
             
 
-            <code class="ruby">        :status =&gt; &#39;pending&#39;</code>
+            <code class="ruby">        status: &#39;pending&#39;</code>
           </li>
         </div>
       
@@ -12233,7 +11913,7 @@
 
             
 
-            <code class="ruby">      :alice_c1 =&gt; Booking.create!({ </code>
+            <code class="ruby">      alice_c1: Booking.create!({</code>
           </li>
         </div>
       
@@ -12243,7 +11923,7 @@
 
             
 
-            <code class="ruby">        :user =&gt; users[:alice],</code>
+            <code class="ruby">        user: users[:alice],</code>
           </li>
         </div>
       
@@ -12253,7 +11933,7 @@
 
             
 
-            <code class="ruby">        :resource =&gt; resources[:lsbc1],</code>
+            <code class="ruby">        resource: resources[:lsbc1],</code>
           </li>
         </div>
       
@@ -12263,7 +11943,7 @@
 
             
 
-            <code class="ruby">        :start_time =&gt; freeze_date + 7.day + 10.hour,</code>
+            <code class="ruby">        start_time: freeze_date + 7.day + 10.hour,</code>
           </li>
         </div>
       
@@ -12273,7 +11953,7 @@
 
             
 
-            <code class="ruby">        :end_time =&gt; freeze_date + 7.day + 11.hour,</code>
+            <code class="ruby">        end_time: freeze_date + 7.day + 11.hour,</code>
           </li>
         </div>
       
@@ -12283,7 +11963,7 @@
 
             
 
-            <code class="ruby">        :status =&gt; &#39;pending&#39;</code>
+            <code class="ruby">        status: &#39;pending&#39;</code>
           </li>
         </div>
       
@@ -12303,7 +11983,7 @@
 
             
 
-            <code class="ruby">      :bob_924 =&gt; Booking.create!({ </code>
+            <code class="ruby">      bob_924: Booking.create!({</code>
           </li>
         </div>
       
@@ -12313,7 +11993,7 @@
 
             
 
-            <code class="ruby">        :user =&gt; users[:bob],</code>
+            <code class="ruby">        user: users[:bob],</code>
           </li>
         </div>
       
@@ -12323,7 +12003,7 @@
 
             
 
-            <code class="ruby">        :resource =&gt; resources[:shb924],</code>
+            <code class="ruby">        resource: resources[:shb924],</code>
           </li>
         </div>
       
@@ -12333,7 +12013,7 @@
 
             
 
-            <code class="ruby">        :start_time =&gt; freeze_date + 7.day + 10.hour + 30.minute,</code>
+            <code class="ruby">        start_time: freeze_date + 7.day + 10.hour + 30.minute,</code>
           </li>
         </div>
       
@@ -12343,7 +12023,7 @@
 
             
 
-            <code class="ruby">        :end_time =&gt; freeze_date + 7.day + 11.hour + 30.minute,</code>
+            <code class="ruby">        end_time: freeze_date + 7.day + 11.hour + 30.minute,</code>
           </li>
         </div>
       
@@ -12353,7 +12033,7 @@
 
             
 
-            <code class="ruby">        :status =&gt; &#39;pending&#39;</code>
+            <code class="ruby">        status: &#39;pending&#39;</code>
           </li>
         </div>
       
@@ -12373,7 +12053,7 @@
 
             
 
-            <code class="ruby">      :bob_123 =&gt; Booking.create!({ </code>
+            <code class="ruby">      bob_123: Booking.create!({</code>
           </li>
         </div>
       
@@ -12383,7 +12063,7 @@
 
             
 
-            <code class="ruby">        :user =&gt; users[:bob],</code>
+            <code class="ruby">        user: users[:bob],</code>
           </li>
         </div>
       
@@ -12393,7 +12073,7 @@
 
             
 
-            <code class="ruby">        :resource =&gt; resources[:shb123],</code>
+            <code class="ruby">        resource: resources[:shb123],</code>
           </li>
         </div>
       
@@ -12403,7 +12083,7 @@
 
             
 
-            <code class="ruby">        :start_time =&gt; freeze_date + 7.day + 10.hour + 30.minute,</code>
+            <code class="ruby">        start_time: freeze_date + 7.day + 10.hour + 30.minute,</code>
           </li>
         </div>
       
@@ -12413,7 +12093,7 @@
 
             
 
-            <code class="ruby">        :end_time =&gt; freeze_date + 7.day + 11.hour + 30.minute,</code>
+            <code class="ruby">        end_time: freeze_date + 7.day + 11.hour + 30.minute,</code>
           </li>
         </div>
       
@@ -12423,7 +12103,7 @@
 
             
 
-            <code class="ruby">        :status =&gt; &#39;pending&#39;</code>
+            <code class="ruby">        status: &#39;pending&#39;</code>
           </li>
         </div>
       
@@ -12497,7 +12177,7 @@
 
             
 
-            <code class="ruby">  rspec.include_context :database, :include_shared =&gt; true</code>
+            <code class="ruby">  rspec.include_context :database, include_shared: true</code>
           </li>
         </div>
       

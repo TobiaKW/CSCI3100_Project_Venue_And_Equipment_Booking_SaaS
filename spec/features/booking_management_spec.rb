@@ -12,7 +12,7 @@ RSpec.feature "Booking management", type: :feature do
     sign_in users[:alice]
 
     visit new_booking_path(params: { resource_id: resources[:shb924].id })
-    expect(page).to have_text('Make a booking')
+    expect(page).to have_text('Make a Booking')
 
     fill_in 'booking_start_time', with: '2026-05-10 14:00:00'
     fill_in 'booking_end_time', with: '2026-05-10 16:00:00'
@@ -28,7 +28,7 @@ RSpec.feature "Booking management", type: :feature do
     resources
     sign_in users[:alice]
     visit new_booking_path(params: { resource_id: resources[:shb924].id })
-    expect(page).to have_text('Make a booking')
+    expect(page).to have_text('Make a Booking')
 
     fill_in 'booking_start_time', with: '2026-05-10 14:00:00'
     fill_in 'booking_end_time', with: '2026-05-10 12:00:00'
