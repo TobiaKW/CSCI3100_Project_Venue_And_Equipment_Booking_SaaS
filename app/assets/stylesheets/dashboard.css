@@ -99,20 +99,18 @@
     }
   }
   
-  @media only screen and (max-width: 1280px) {
+  @media only screen and (max-width: 1080px) {
     padding: 1em;
 
     > form {
       flex-direction: column;
       align-items: center;
       row-gap: 1em;
-  
-      @media only screen and (max-width: 1080px) {
-        > .search-input-group {
-          flex-direction: column;
-          align-items: center;
-          row-gap: 1em;
-        }
+
+      > .search-input-group {
+        flex-direction: column;
+        align-items: center;
+        row-gap: 1em;
       }
     }
   }
