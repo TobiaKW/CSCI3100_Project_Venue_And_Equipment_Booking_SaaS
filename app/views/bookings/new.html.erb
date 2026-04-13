@@ -31,6 +31,24 @@
       </div>
     </div>
   <% end %>
+
+  <div class="location-map-section">
+    <div class="item-label">Location Map</div>
+    <% if @resource.has_location? %>
+      <% map_query = resource_map_query(@resource) %>
+      <iframe
+        class="location-map"
+        title="Location map for <%= @resource.name %>"
+        loading="lazy"
+        referrerpolicy="no-referrer-when-downgrade"
+        src="https://maps.google.com/maps?q=<%= ERB::Util.url_encode(map_query) %>&z=19&output=embed">
+      </iframe>
+    <% elsif @resource.rtype == 'equipment' %>
+      <div class="location-map-fallback">No location map for this resource.</div>
+    <% else %>
+      <div class="location-map-fallback">Location map is not available for this resource yet.</div>
+    <% end %>
+  </div>
 </div>
 
 <%= form_with model: @booking, url: bookings_path(resource_id: @resource.id), local: true, class: "booking-form" do |f| %>
