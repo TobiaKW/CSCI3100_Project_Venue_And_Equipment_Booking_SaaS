@@ -1,4 +1,4 @@
-## CSCI3100 Group project --- CUHK Venue and Equipment Booking SaaS
+# CSCI3100 Group project<br>CUHK Venue and Equipment Booking SaaS
 
 Course project @CUHK 2026 Spring
 
@@ -10,20 +10,27 @@ Members:
 - Hsieh Chong Ho (1155213925)   https://github.com/Qwerty-Pi
 - Ng Shing Hin (1155214379) https://github.com/Eason2123
 
-## Features Implementation
+## TODO: Setup Guide
+Put Setup Guide here.
 
+## Basic Features
 | Feature Name | Primary Developer | Secondary Developer | Notes |
 |---|---|---|---|
-| Deployment & Database | Wong Cheuk Yin | x | Render environment setup, maintain the Postgre database in production |
-| User Authentication & Authorization | Wong Cheuk Yin | Fill | Devise gem with admin/user roles |
-| Booking Management & Conflict Detection | Wong Cheuk Yin (can drag me down if you did sth on this) | Fill | Real-time validation, overlap prevention |
-| Real-time Updates | Wong Cheuk Yin | x | ActionCable + Redis integration |
-| Admin Dashboard & Charts | Fill | Wong Cheuk Yin | Chartkick with Redis caching |
-| Email Notifications | Wong Cheuk Yin | x | Sendgrid Mailer |
-| Google Maps Integration | Fill | Fill | Insert |
-| UI development & Styling | Fill | Wong Cheuk Yin | Insert |
-| Resource Search & Filtering | Fill | Fill | fuzzy search?? |
-| Testing | Fill | Fill | Rspec & Cucumber |
+| Deployment & Database | Wong Cheuk Yin | | Render environment setup, maintain the Postgre database in production |
+| UI & Styling | Wong Sheung Chit |  | Pure CSS Styling of All Pages |
+| User Authentication & Authorization | Wong Cheuk Yin | | Devise gem with admin/user roles |
+| Booking Management & Conflict Detection | Wong Cheuk Yin | | Real-time validation, overlap prevention |
+| Admin Dashboard & Charts | Wong Cheuk Yin | | Chartkick with Redis caching |
+| Testing | Hsieh Chong Ho | Li Yun Sum | Rspec & Cucumber |
+| Extra Appearance Feature | Wong Sheung Chit |  | Light / Dark Mode, Colour Theme |
+
+## N-1 Advanced Features
+| Feature Name | Primary Developer | Secondary Developer | Notes |
+|---|---|---|---|
+| Real-time Updates | Wong Cheuk Yin | | ActionCable + Redis integration |
+| Email Notifications | Wong Cheuk Yin | | Sendgrid Mailer |
+| Google Maps Integration | Ng Shing Hin | | Insert |
+| Resource Search & Filtering | Hsieh Chong Ho | Wong Cheuk Yin | Search by Multiple Criteria, Fuzzy Search |
 
 
 ## Disclaimer
@@ -193,32 +200,5 @@ If real-time updates do not work, check these in order:
    - Keep `config/cable.yml` configured for production redis adapter.
    - Use Redis service in the same Render workspace/region when possible.
 
-## TODOS:
-
-refer to DEV_TODO.md
-
-For now, the website can already provide most fundamental functions that a typical booking SaaS should have.
-
-## Changelog
-
-2026-02-23: Initialize the walking skeleton, deployed on Render
-
-2026-02-24: Finished proposal with LaTeX
-
-2026-03-02: basic data model set in seed.rb
-
-2026-03-10: Done Login/signup feature using devise. Now using PostgreSQL instead of sqlite3.
-
-2026-03-17: Simple booking interface. pending data validation.
-
-2026-03-18: Simple Sendgrid Mailer WIP.
-
-2026-03-22: Mailer pass testing. Render database reinitialized.
-
-2026-03-23: Conflict detection + other booking contraints implemented. Real-time update WIP.
-
-2026-03-24: Real-time update feature implementation done with Redis/ActionCable.
-
-2026-04-02: CSS interface WIP. Resource model upgraded + database reinitialised.
-
-2026-04-04: ChartKick WIP.
+## SimpleCov Report
+![](./SimpleCov%20Report.png)
