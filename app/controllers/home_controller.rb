@@ -5,16 +5,8 @@ class HomeController < ApplicationController
   def index
     @resources = Resource.all
 
-    pp(params)
-    # Filter by name
-    if params[:search].present?
-      @resources = @resources.where("name ILIKE ?", "%#{params[:search]}%")
-    end
-
     # Filter by rtype (room/equipment)
-    if params[:rtype].present?
-      @resources = @resources.where(rtype: params[:rtype])
-    end
+    @resources = @resources.where(rtype: (if params[:rtype] then params[:rtype] else 'room' end))
 
     # Filter by department
     if params[:department_id].present?
@@ -34,6 +26,9 @@ class HomeController < ApplicationController
       @resources = @resources.where("seat_type = ? or rtype = 'equipment'", params[:seat_type])
     end
     
-    # @resources = @resources.order(capacity: :desc)
+    # Filter and sort by similarity of name
+    if params[:search].present?
+      @resources = Resource.by_similarity @resources, params[:search]
+    end
   end
 end
