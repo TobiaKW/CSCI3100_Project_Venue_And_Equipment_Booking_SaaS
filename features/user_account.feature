@@ -8,12 +8,12 @@ Feature: User want to register and login to account
   Scenario: User register an account with same email
     Given I have account with username "abc" and email "abc@example.com"
     Given I have signed up with username "abcd" and email "abc@example.com"
-    Then I should see "error"
+    Then I should see "Error"
 
   Scenario: User register an account with same username
     Given I have account with username "abc" and email "abc@example.com"
     Given I have signed up with username "abc" and email "abcd@example.com"
-    Then I should see "error"
+    Then I should see "Error"
 
   Scenario: User login to an account
     Given I have account with username "abc" and email "abc@example.com"
@@ -29,4 +29,4 @@ Feature: User want to register and login to account
     Given I have account with username "abc" and email "abc@example.com"
     Given I have login with username "abc" and email "abc@example.com"
     Given I have logout
-    Then I should see "Log in"
+    Then I should see "Log In"

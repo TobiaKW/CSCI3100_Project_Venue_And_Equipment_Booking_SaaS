@@ -57,3 +57,23 @@ end
 # The :transaction strategy is faster, but might give you threading problems.
 # See https://github.com/cucumber/cucumber-rails/blob/master/features/choose_javascript_database_strategy.feature
 Cucumber::Rails::Database.javascript_strategy = :truncation
+
+# features/support/env.rb
+
+# Load Rails environment
+require_relative '../../config/environment'
+require 'cucumber/rails'
+
+# Enable RSpec Mocks in Cucumber
+require 'rspec/mocks'
+
+World(RSpec::Mocks::ExampleMethods)
+
+Before do
+  RSpec::Mocks.setup
+end
+
+After do
+  RSpec::Mocks.verify
+  RSpec::Mocks.teardown
+end

@@ -3,9 +3,9 @@ Given /^I have signed up with username "([^"]*)" and email "([^"]*)"$/ do |usern
   fill_in('Name', with: username)
   fill_in('Email', with: email)
   select('Engineering', from: 'Department')
-  fill_in('Password', with: '123456')
-  fill_in('Password confirmation', with: '123456')
-  click_button('Sign up')
+  fill_in('Password At Least 6 Characters Long', with: '123456')
+  fill_in('Confirm Password', with: '123456')
+  click_button('Sign Up')
 end
 
 Given /^I have account with username "([^"]*)" and email "([^"]*)"$/ do |username, email|
@@ -16,11 +16,11 @@ Given /^I have login with username "([^"]*)" and email "([^"]*)"$/ do |username,
   visit(new_user_session_path)
   fill_in('Email', with: email)
   fill_in('Password', with: '123456')
-  click_button('Log in')
+  click_button('Log In')
 end
 
 Given /^I have logout$/ do
-  click_button('Log out')
+  click_button('Log Out')
 end
 
 Given /^I visit the admin dashboard$/ do
