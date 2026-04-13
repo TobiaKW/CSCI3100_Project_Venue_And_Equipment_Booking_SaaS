@@ -45,7 +45,7 @@
     row-gap: 0.5em;
     
     > .location-map {
-      filter: saturate(calc(1 / 1.5)) hue-rotate(calc(360deg - var(--hue)));
+      filter: saturate(0.5) hue-rotate(calc(360deg - var(--hue)));
       width: 100%;
       height: 20em;
       border: 0;

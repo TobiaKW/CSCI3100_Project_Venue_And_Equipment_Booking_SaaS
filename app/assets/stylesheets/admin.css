@@ -9,6 +9,10 @@
     padding: 2em;
     row-gap: 1.5em;
 
+    canvas {
+      filter: saturate(0.5) hue-rotate(calc(360deg - var(--hue)));
+    }
+
     > h2 {
       font-size: 1.125em;
       margin: 0;

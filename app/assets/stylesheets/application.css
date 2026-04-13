@@ -147,6 +147,7 @@ h1 {
 
 .back-btn {
   position: fixed;
+  z-index: 7;
   top: calc(var(--header-height) + 1em);
   left: calc(var(--page-margin) + 1em);
   display: flex;
