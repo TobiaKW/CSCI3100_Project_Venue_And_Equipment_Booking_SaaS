@@ -28,6 +28,12 @@ class HomeController < ApplicationController
     if params[:max_capacity].present?
       @resources = @resources.where("capacity <= ? or rtype = 'equipment'", params[:max_capacity])
     end
+
+    # Filter by seat type
+    if params[:seat_type].present? and params[:seat_type] != 'All Seat Types'
+      @resources = @resources.where("seat_type = ? or rtype = 'equipment'", params[:seat_type])
+    end
+    
     # @resources = @resources.order(capacity: :desc)
   end
 end

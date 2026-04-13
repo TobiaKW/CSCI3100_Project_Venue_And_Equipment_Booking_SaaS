@@ -9,15 +9,22 @@
 
       <div>
         <div class="hover-label">Department</div>
-        <%= f.collection_select :department_id, Department.all, :id, :name, :prompt => "All Departments", :selected => params[:department_id], :class => "filter-select" %>
+        <%= f.collection_select :department_id, Department.all, :id, :name, :include_blank => "All Departments", :selected => params[:department_id], :class => "filter-select" %>
       </div>
 
       <div>
         <div class="hover-label">Resource Type</div>
-        <%= select_tag(:rtype, options_for_select([["Room", "room"], ["Equipment", "equipment"]], :selected => ( if params[:rtype] then params[:rtype] else 'room' end ), :class => "filter-select")) %>
+        <% rtypes = [["Room", "room"], ["Equipment", "equipment"]] %>
+        <%= select_tag(:rtype, options_for_select(rtypes, :selected => ( if params[:rtype] then params[:rtype] else 'room' end ), :class => "filter-select")) %>
+      </div>
+      
+      <div class="room-only" style="display: <%= if params[:rtype] == 'room' then '' else 'none' end %>">
+        <div class="hover-label">Seat Type</div>
+        <% seat_types = ["All Seat Types", "Lecture Theatre", "Table & Chair", "Armchair", "Armchair/Table & Chair"].map { |x| [x, x] } %>
+        <%= select_tag(:seat_type, options_for_select(seat_types, :selected => params[:seat_type], :class => "filter-select")) %>
       </div>
 
-      <div class="capacity">
+      <div class="room-only capacity" style="display: <%= if params[:rtype] == 'room' then '' else 'none' end %>">
         <div class="hover-label">Capacity</div>
         <span class="material-symbols-outlined">groups</span>
         <div class="slider-multithumb">
@@ -78,8 +85,19 @@
               form.append(htmlToNode(`<input style='display: none' name='max_capacity' value='${max_capacity}'>`))
               form.submit()
           }
-          const form = document.getElementById("search-form")
+          setupRoomOnly = (e) => {
+            const rtypeSelector = document.getElementById('rtype')
+            const roomOnlyAttributes = document.querySelectorAll(".room-only")
+            roomOnlyAttributes.forEach((e) => e.style.display = (rtypeSelector.value !== "room" ? "none" : ""));
+          }
+          
           setupSlider(e)
+          
+          const rtypeSelector = document.getElementById('rtype')
+          rtypeSelector.oninput = rtypeSelector.onchange = setupRoomOnly
+          setupRoomOnly() // call once initially
+          
+          const form = document.getElementById("search-form")
           form.onsubmit = formOnSubmit
         }
         document.removeEventListener('turbo:load', setup);
