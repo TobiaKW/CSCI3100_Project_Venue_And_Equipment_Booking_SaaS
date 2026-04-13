@@ -6,7 +6,7 @@
   <div class="department-name">
     <div class="item-label">Department</div>
     <span class="material-symbols-outlined">location_on</span>
-    <%= Department.all[current_user.department_id - 1].name %>
+    <%= Department.find(current_user.department_id).name %>
   </div>
 
   <!-- Pending Bookings Table -->
