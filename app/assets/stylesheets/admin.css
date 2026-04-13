@@ -1,4 +1,15 @@
 .admin-dashboard {
+  > .department-name {
+    display: flex;
+    align-items: center;
+    column-gap: 0.5em;
+    justify-content: center;
+
+    > .item-label {
+      font-size: 0.75em;
+    }
+  }
+
   > section {
     display: flex;
     flex-direction: column;
