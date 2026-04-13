@@ -10,6 +10,22 @@ Members:
 - Hsieh Chong Ho (1155213925)   https://github.com/Qwerty-Pi
 - Ng Shing Hin (1155214379) https://github.com/Eason2123
 
+## Features Implementation
+
+| Feature Name | Primary Developer | Secondary Developer | Notes |
+|---|---|---|---|
+| Deployment & Database | Wong Cheuk Yin | Fill | Render environment setup, maintain the production database |
+| User Authentication & Authorization | Wong Cheuk Yin | Fill | Devise gem with admin/user roles |
+| Booking Management & Conflict Detection | Wong Cheuk Yin | Fill | Real-time validation, overlap prevention |
+| Real-time Updates | Wong Cheuk Yin | Fill | ActionCable + Redis integration |
+| Admin Dashboard & Charts | Fill | Wong Cheuk Yin | Chartkick with Redis caching |
+| Email Notifications | Wong Cheuk Yin | Fill | Sendgrid Mailer |
+| Google Maps Integration | Fill | Fill | Insert |
+| UI development/Styling | Fill | Wong Cheuk Yin | Insert |
+| Resource Search & Filtering | Fill | Fill | fuzzy search?? |
+| Testing | Fill | Fill | Rspec & Cucumber |
+
+
 ## Disclaimer
 This repository contains academic work and is published for record and reference purposes only. Do not copy or reuse the code as it may constitute academic misconduct. The code is specific to our course project and should be used solely for learning and understanding the concepts. For your own good, please do your project with your own understanding and knowledge. We are not responsible for any academic misconduct caused by the code in this repository.
 
