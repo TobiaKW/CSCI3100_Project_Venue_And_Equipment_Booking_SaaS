@@ -33,22 +33,20 @@
   <% end %>
 
   <% if @resource.rtype == "room" %>
-    <% if @resource.has_location? %>
-      <div class="location-map-section">
-        <div class="item-label">Location Map</div>
-          <% map_query = resource_map_query(@resource) %>
-          <iframe
-            class="location-map"
-            title="Location map for <%= @resource.name %>"
-            loading="lazy"
-            referrerpolicy="no-referrer-when-downgrade"
-            src="https://maps.google.com/maps?q=<%= ERB::Util.url_encode(map_query) %>&z=19&output=embed">
-          </iframe>
-        </div>
-      </div>
-    <% else %>
-      <div class="location-map-fallback">Location map is not available for this resource yet.</div>
-    <% end %>
+    <div class="location-map-section">
+      <% if @resource.has_location? %>
+        <% map_query = resource_map_query(@resource) %>
+        <iframe
+          class="location-map"
+          title="Location map for <%= @resource.name %>"
+          loading="lazy"
+          referrerpolicy="no-referrer-when-downgrade"
+          src="https://maps.google.com/maps?q=<%= ERB::Util.url_encode(map_query) %>&z=19&output=embed">
+        </iframe>
+      <% else %>
+        <div class="location-map-fallback">Location map is not available for this resource yet.</div>
+      <% end %>
+    </div>
   <% end %>
 </div>
 
