@@ -14,14 +14,14 @@ Members:
 
 | Feature Name | Primary Developer | Secondary Developer | Notes |
 |---|---|---|---|
-| Deployment & Database | Wong Cheuk Yin | Fill | Render environment setup, maintain the production database |
+| Deployment & Database | Wong Cheuk Yin | x | Render environment setup, maintain the Postgre database in production |
 | User Authentication & Authorization | Wong Cheuk Yin | Fill | Devise gem with admin/user roles |
-| Booking Management & Conflict Detection | Wong Cheuk Yin | Fill | Real-time validation, overlap prevention |
-| Real-time Updates | Wong Cheuk Yin | Fill | ActionCable + Redis integration |
+| Booking Management & Conflict Detection | Wong Cheuk Yin (can drag me down if you did sth on this) | Fill | Real-time validation, overlap prevention |
+| Real-time Updates | Wong Cheuk Yin | x | ActionCable + Redis integration |
 | Admin Dashboard & Charts | Fill | Wong Cheuk Yin | Chartkick with Redis caching |
-| Email Notifications | Wong Cheuk Yin | Fill | Sendgrid Mailer |
+| Email Notifications | Wong Cheuk Yin | x | Sendgrid Mailer |
 | Google Maps Integration | Fill | Fill | Insert |
-| UI development/Styling | Fill | Wong Cheuk Yin | Insert |
+| UI development & Styling | Fill | Wong Cheuk Yin | Insert |
 | Resource Search & Filtering | Fill | Fill | fuzzy search?? |
 | Testing | Fill | Fill | Rspec & Cucumber |
 
