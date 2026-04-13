@@ -58,6 +58,9 @@
         setup = async (e) => {
           setupSlider = (e) => {
             const sliderNode = document.querySelector(".slider-multithumb")
+            if (typeof window.SliderMultithumb === 'undefined') {
+              setTimeout(setupSlider, 50)
+            }
             const slider = new SliderMultithumb(sliderNode)
             <% if (params[:min_capacity]) %>
               sliderNode.querySelector(".minimum").setAttribute('aria-valuenow', '<%= params[:min_capacity] %>')
