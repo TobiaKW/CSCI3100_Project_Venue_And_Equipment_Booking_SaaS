@@ -92,7 +92,7 @@ namespace :resource_locations do
       end
 
       if coordinates
-        if resource.update(latitude: coordinates[0], longitude: coordinates[1])
+        if resource.update(latitude: coordinates[0], longitude: coordinates[1], address: addresses[0])
           updated += 1
         else
           failed += 1

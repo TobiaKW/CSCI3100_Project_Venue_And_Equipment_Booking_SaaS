@@ -11,7 +11,7 @@ class Resource < ApplicationRecord
   def self.by_similarity(resources, term)
     term = ActiveRecord::Base.connection.quote(term)
     department_name = "(SELECT name FROM departments WHERE id = department_id)"
-    search_field = "CONCAT_WS(' ', name, rtype, #{department_name}, seat_type)"
+    search_field = "CONCAT_WS(' ', name, rtype, #{department_name}, address, seat_type)"
     similarity = "similarity(#{search_field}, #{term})"
     scored_resources = resources
       .select("*, #{similarity} AS score")
