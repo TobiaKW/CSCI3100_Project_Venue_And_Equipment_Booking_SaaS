@@ -10,13 +10,6 @@
     }
   }
 
-  > .charts-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 2em;
-    width: 100%;
-  }
-
   > section {
     display: flex;
     flex-direction: column;
@@ -26,12 +19,25 @@
     margin-top: 2em;
     padding: 2em;
     row-gap: 1.5em;
+    
+    &.charts-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(min(20em, 100%), 1fr));
+      gap: 2em;
+      width: 100%;
+
+      > div {
+        display: flex;
+        flex-direction: column;
+        row-gap: 1em;
+      }
+    }
 
     canvas {
       filter: saturate(0.5) hue-rotate(calc(360deg - var(--hue)));
     }
 
-    > h2 {
+    h2 {
       font-size: 1.125em;
       margin: 0;
       text-align: center;

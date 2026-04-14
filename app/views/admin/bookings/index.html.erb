@@ -66,20 +66,20 @@
   </section>
 
   <!-- Charts Section -->
-  <div class="charts-grid">
-    <section>
+  <section class="charts-grid">
+    <div>
       <h2>Bookings by Status</h2>
       <%= pie_chart @bookings_by_status, library: { pieHole: 0.4 } %>
-    </section>
+    </div>
 
-    <section>
+    <div>
       <h2>Booking Trends</h2>
       <%= line_chart @booking_trends %>
-    </section>
+    </div>
 
-    <section>
+    <div>
       <h2>Top Resources</h2>
       <%= bar_chart @resource_utilization %>
-    </section>
-  </div>
+    </div>
+  </section>
 </div>
