@@ -44,6 +44,8 @@ This repository contains academic work and is published for record and reference
 2. Register SendGrid Account and validate your email
 
 3. Set up a Redis database and Postgre Database in Render
+   To create Redis database, **New → Key Value**, choose the same project of the web deployment. Maxmemory policy choose `noeviction` 
+   To create Redis database, **New → Postgres**, choose the same project of the web deployment. Version=18.
 
 4. Deploy Web service to Render
    Go to [dashboard.render.com](https://dashboard.render.com) and sign in with GitHub.
@@ -61,11 +63,17 @@ This repository contains academic work and is published for record and reference
      - `SMTP_USERNAME` = `apikey`
      - `SMTP_PASSWORD` = API key of the SendGrid account
      - `USE_SENDGRID_HTTP_API` = true
+     - `GOOGLE_MAPS_API_KEY`
 5. Click **Create Web Service**. After the build, the app will be at `https://<name>.onrender.com`.
 
 Free plan: app sleeps after ~15 min of no traffic; first request may take 30–60s to wake.
 Now the web service is deployed on render via this repository, check deployment.
 
+You shd have the 3 services below on Render:
+![](rendersetup.png)
+1. the main web service depolyment
+2. Postgre Database
+3. Redis Database
 
 
 ## Database PSQL
