@@ -43,9 +43,10 @@ Project
 
    To create Redis database, **New → Key Value**, choose the same project of the web deployment. Maxmemory policy choose `noeviction` 
 
-   To create Redis database, **New → Postgres**, choose the same project of the web deployment. Version=18.
+   To create Postgre database, **New → Postgres**, choose the same project of the web deployment. Version=18.
 
 4. Deploy Web service to Render
+
    Go to [dashboard.render.com](https://dashboard.render.com) and sign in with GitHub.
    **New → Blueprint** , use `render.yaml`
    Connect the forked repo and pick this project.
@@ -62,6 +63,9 @@ Project
      - `SMTP_PASSWORD` = API key of the SendGrid account
      - `USE_SENDGRID_HTTP_API` = true
      - `GOOGLE_MAPS_API_KEY` = API key of Google Maps Platform
+
+     If some environment settings are missed, the deployment may fails.
+     
 5. Click **Create Web Service**. After the build, the app will be at `https://<name>.onrender.com`.
 
 Free plan: app sleeps after ~15 min of no traffic; first request may take 30–60s to wake.
