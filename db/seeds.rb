@@ -35,6 +35,13 @@ User.find_or_create_by!(email: 'kevinwong391@gmail.com') do |user|
   user.department = Department.find_by!(name: 'Engineering')
 end
 
+User.find_or_create_by!(email: 'useyouremail@gmail.com') do |user|
+  user.name = 'Uwide Admin User'
+  user.password = 'dev1234'
+  user.role = 'admin'
+  user.department = Department.find_by!(name: 'U-Wide')
+end
+
 # Create admin users for all other departments
 admin_departments = Department_list.reject { |d| d == 'Engineering' }
 admin_departments.each do |dept_name|
@@ -359,7 +366,7 @@ Booking_list.each do |attr|
       resource: resource,
       start_time: start_at,
       end_time: end_at,
-      status: 'approved'
+      status: 'confirmed'
     )
     booking.save(validate: false)
 end
