@@ -51,11 +51,11 @@
         <tbody>
           <% @week_bookings.each do |booking| %>
             <tr>
-              <td><%= booking.user.name %></td>
+              <td><%= booking.user.name %><div class="user-email"><%= booking.user.email %></div></td>
               <td><%= booking.resource.name %></td>
               <td><%= booking.start_time.strftime("%Y-%m-%d %H:%M") %></td>
               <td><%= booking.end_time.strftime("%Y-%m-%d %H:%M") %></td>
-              <td><span class="badge badge-confirmed"><%= booking.status %></span></td>
+              <td><%= booking.status.titleize %></td>
             </tr>
           <% end %>
         </tbody>
