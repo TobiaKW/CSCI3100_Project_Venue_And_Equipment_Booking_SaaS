@@ -10,9 +10,6 @@ Members:
 - Hsieh Chong Ho (1155213925)   https://github.com/Qwerty-Pi
 - Ng Shing Hin (1155214379) https://github.com/Eason2123
 
-## TODO: Setup Guide
-Put Setup Guide here.
-
 ## Basic Features
 | Feature Name | Primary Developer | Secondary Developer | Notes |
 |---|---|---|---|
@@ -118,41 +115,6 @@ WHERE email = 'abc@example.com';
 DELETE FROM users
 WHERE email = 'abc@example.com';
 ```
-
-## ActionCable troubleshooting (real-time updates)
-
-If real-time updates do not work, check these in order:
-
-1. **Server logs show websocket connected**
-   - You should see lines like:
-   - `Started GET "/cable" [WebSocket]`
-   - `BookingsChannel is streaming from ...`
-
-2. **Importmap / JS loading**
-   - `app/javascript/application.js` should import both:
-   - `import "@hotwired/turbo-rails"`
-   - `import "channels"`
-   - If you see `No route matches [GET] "/assets/channels/bookings_channel"`, import paths are wrong.
-     Use importmap-style module names (e.g. `import "channels/bookings_channel"`).
-
-3. **Missing channel base class**
-   - If you see `uninitialized constant ApplicationCable::Channel`,
-     ensure `app/channels/application_cable/channel.rb` exists and defines:
-   - `class Channel < ActionCable::Channel::Base`
-
-4. **CSRF / approve-reject issues on admin dashboard**
-   - If you see `InvalidAuthenticityToken` after clicking approve/reject on a realtime-added row:
-   - Do not use `button_to` inside HTML broadcast partials.
-   - Use `link_to` with `data: { turbo_method: :patch }` and ensure Turbo is loaded.
-
-5. **Wrong HTTP method for admin action**
-   - If you see `No route matches [GET] "/admin/bookings/:id"`, then PATCH was not sent.
-   - Confirm Turbo is loaded and links use `data-turbo-method="patch"`.
-
-6. **Render production setup**
-   - Set `REDIS_URL` in Render web service env vars.
-   - Keep `config/cable.yml` configured for production redis adapter.
-   - Use Redis service in the same Render workspace/region when possible.
 
 ## SimpleCov Report
 ![](./SimpleCov%20Report.png)
