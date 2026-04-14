@@ -35,6 +35,45 @@ Project
 
 ## Setup Guide
 
+### Prerequisites
+- Ruby 3.3.10
+- Rails 7.2.3
+- PostgreSQL (local development)
+
+### Local Development Setup
+
+1. Clone and install dependencies:
+```bash
+git clone https://github.com/<your-username>/CSCI3100_Project_Venue_And_Equipment_Booking_SaaS.git
+cd CSCI3100_Project_Venue_And_Equipment_Booking_SaaS
+bundle install
+```
+
+2. Set up environment variables:
+```bash
+cp .env.sample .env
+# Edit .env and add your API keys
+```
+
+3. Set up database:
+```bash
+rails db:create db:migrate db:seed
+```
+
+4. Start the server:
+```bash
+bin/rails server
+# App will be at http://localhost:3000
+```
+
+5. (Optional) Run tests:
+```bash
+bundle exec rspec          # Unit/integration tests
+bundle exec cucumber       # Feature tests
+```
+
+### Production Deployment (Render)
+
 1. Fork this repo
 
 2. Register SendGrid Account and validate your email
@@ -45,7 +84,7 @@ Project
 
 4. Set up a Redis database and Postgre Database in Render
 
-   To create Redis database, **New → Key Value**, choose the same project of the web deployment. Maxmemory policy choose `noeviction` 
+   To create Redis database, **New → Key Value**, choose the same project of the web deployment. Maxmemory policy choose `noeviction`
 
    To create Postgre database, **New → Postgres**, choose the same project of the web deployment. Version=18.
 
@@ -61,7 +100,7 @@ Project
      - `RAILS_MASTER_KEY` = contents of `config/master.key`
      - `WEB_CONCURRENCY` = `2`
      - `DATABASE_URL` = internal URL of a PostgreSQL database in Render
-     - `MAIL_FROM` = the email notification sender (need to setup in SendGrid)
+     - `MAIL_FROM` = email sender address (e.g., `noreply@yourdomain.com`, must be verified in SendGrid)
      - `REDIS_URL` = URL of Redis database (for real-time feature)
      - `SMTP_USERNAME` = `apikey`
      - `SMTP_PASSWORD` = API key of the SendGrid account
@@ -69,17 +108,19 @@ Project
      - `GOOGLE_MAPS_API_KEY` = API key of Google Maps Platform
 
      If some environment settings are missed, the deployment may fails.
-     
+
 6. Click **Create Web Service**. After the build, the app will be at `https://<name>.onrender.com`.
 
-Free plan: app sleeps after ~15 min of no traffic; first request may take 30–60s to wake.
-Now the web service is deployed on render via this repository, check deployment.
+   Free plan: app sleeps after ~15 min of no traffic; first request may take 30–60s to wake.
+   Now the web service is deployed on render via this repository, check deployment.
 
-You shd have the 3 services below on Render:
-![](rendersetup.png)
-1. the main web service depolyment
-2. Postgre Database
-3. Redis Database
+   You shd have the 3 services below on Render:
+   ![](rendersetup.png)
+   1. the main web service depolyment
+   2. Postgre Database
+   3. Redis Database
+
+   Note: If some environment settings are missed, the deployment may fails.
 
 
 ## Database PSQL (Only for local)
