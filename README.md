@@ -8,7 +8,7 @@ Members:
 - Li Yun Sum (1155212047)   https://github.com/Samuelliys
 - Wong Sheung Chit (1155212592)   https://github.com/jw1101
 - Hsieh Chong Ho (1155213925)   https://github.com/Qwerty-Pi
-- Ng Shing Hin (1155214379) https://github.com/Eason2123
+- Ng Shing Hin (1155214379) https://github.com/Eason2123 (hithub10)
 
 ## Basic Features
 | Feature Name | Primary Developer | Secondary Developer | Notes |
@@ -27,7 +27,7 @@ Members:
 |---|---|---|---|
 | Real-time Updates | Wong Cheuk Yin | | ActionCable + Redis integration |
 | Email Notifications | Wong Cheuk Yin | | Sendgrid Mailer |
-| Google Maps Integration | Ng Shing Hin | | Insert |
+| Google Maps Integration | Ng Shing Hin | | Google Map API |
 | Resource Search & Filtering | Hsieh Chong Ho | Wong Cheuk Yin | Search by Multiple Criteria, Fuzzy Search |
 
 
@@ -62,7 +62,7 @@ This repository contains academic work and is published for record and reference
      - `SMTP_USERNAME` = `apikey`
      - `SMTP_PASSWORD` = API key of the SendGrid account
      - `USE_SENDGRID_HTTP_API` = true
-     - `GOOGLE_MAPS_API_KEY`
+     - `GOOGLE_MAPS_API_KEY` = API key of Google Maps Platform
 5. Click **Create Web Service**. After the build, the app will be at `https://<name>.onrender.com`.
 
 Free plan: app sleeps after ~15 min of no traffic; first request may take 30–60s to wake.
