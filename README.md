@@ -22,7 +22,8 @@ Put Setup Guide here.
 | Booking Management & Conflict Detection | Wong Cheuk Yin | | Real-time validation, overlap prevention |
 | Admin Dashboard & Charts | Wong Cheuk Yin | | Chartkick with Redis caching |
 | Testing | Hsieh Chong Ho | Li Yun Sum | Rspec & Cucumber |
-| Extra Appearance Feature | Wong Sheung Chit |  | Light / Dark Mode, Colour Theme |
+| Responsive Layout | Wong Sheung Chit |  | CSS Media Queries |
+| Demo Video | Wong Sheung Chit |  | Recording, Narration & Editing |
 
 ## N-1 Advanced Features
 | Feature Name | Primary Developer | Secondary Developer | Notes |
