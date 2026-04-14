@@ -44,7 +44,7 @@ Project
 
 1. Clone and install dependencies:
 ```bash
-git clone https://github.com/<your-username>/CSCI3100_Project_Venue_And_Equipment_Booking_SaaS.git
+git clone https://github.com/TobiaKW/CSCI3100_Project_Venue_And_Equipment_Booking_SaaS.git
 cd CSCI3100_Project_Venue_And_Equipment_Booking_SaaS
 bundle install
 ```
