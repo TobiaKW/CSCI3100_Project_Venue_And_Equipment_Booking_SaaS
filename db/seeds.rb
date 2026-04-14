@@ -9,6 +9,8 @@
 #             resource.type:{room, equipment}
 #             resource.capacity (integer, -1 for equipment)
 #             resource.seat_type (string, 'N/A' for equipment)
+#             resource.latitude (decimal)
+#             resource.longitude (decimal)
 #
 #   booking: booking.user=person who booked
 #            booking.resource=booked resource
@@ -72,6 +74,11 @@ end
 # NOTE: Resource list is very large (238 classrooms + equipment)
 # Placeholder - will be replaced with actual data
 # Resources from CSV + old test data + equipment
+# Reuse helper geocoding logic during seeding to keep map behavior consistent.
+location_helper = Object.new.extend(ApplicationHelper)
+# Cache geocoding responses by address to avoid repeated external API calls.
+geocode_cache = {}
+
 Resource_list = [
     { name: 'NAH 11', rtype: 'room', capacity: 80, seat_type: 'Table & Chair', dept: 'New Asia College' },
     { name: 'NAH 12', rtype: 'room', capacity: 96, seat_type: 'Lecture Theatre', dept: 'New Asia College' },
@@ -325,10 +332,27 @@ Resource_list.each do |attr|
     dept = Department.find_by!(name: attr[:dept])
     next unless dept
 
-    Resource.find_or_create_by!(name: attr[:name], department: dept) do |resource|
+    resource = Resource.find_or_create_by!(name: attr[:name], department: dept) do |resource|
       resource.rtype = attr[:rtype]
       resource.capacity = attr[:capacity]
       resource.seat_type = attr[:seat_type]
+    end
+
+    # Only rooms are geocoded; equipment is intentionally skipped.
+    next unless resource.rtype == 'room'
+    # Preserve existing coordinates if already present.
+    next if resource.latitude.present? && resource.longitude.present?
+
+    # Try candidate addresses in order and persist the first successful result.
+    location_helper.send(:resource_location_queries, resource).each do |address|
+      coordinates = geocode_cache.fetch(address) do
+        geocode_cache[address] = location_helper.send(:geocode_coordinates, address)
+      end
+
+      next unless coordinates
+
+      resource.update!(address: address, latitude: coordinates[0], longitude: coordinates[1])
+      break
     end
 end
 
