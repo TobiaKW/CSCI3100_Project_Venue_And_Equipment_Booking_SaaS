@@ -10,7 +10,7 @@ Project
 | 1155212047 | Li Yun Sum | [Samuelliys](https://github.com/Samuelliys)
 | 1155212592 | Wong Sheung Chit | [jw1101](https://github.com/jw1101)
 | 1155213925 | Hsieh Chong Ho | [Qwerty-Pi](https://github.com/Qwerty-Pi)
-| 1155214379 | Ng Shing Hin | [Eason2123](https://github.com/Eason2123) (also nickname "hithub10" is the same commitor)
+| 1155214379 | Ng Shing Hin | [Eason2123](https://github.com/Eason2123) (also user nickname "hithub10" is the same commitor)
 
 ## Basic Features
 | Feature Name | Primary Developer | Secondary Developer | Notes |
@@ -39,13 +39,17 @@ Project
 
 2. Register SendGrid Account and validate your email
 
-3. Set up a Redis database and Postgre Database in Render
+3. Register Google Cloud Account and choose Google Maps Platform
+
+   Add a project and the API key will generate automatically, choose **API restriction** and check **Geocoding API, Maps JavaScript API** boxes only.
+
+4. Set up a Redis database and Postgre Database in Render
 
    To create Redis database, **New → Key Value**, choose the same project of the web deployment. Maxmemory policy choose `noeviction` 
 
    To create Postgre database, **New → Postgres**, choose the same project of the web deployment. Version=18.
 
-4. Deploy Web service to Render
+5. Deploy Web service to Render
 
    Go to [dashboard.render.com](https://dashboard.render.com) and sign in with GitHub.
    **New → Blueprint** , use `render.yaml`
@@ -66,7 +70,7 @@ Project
 
      If some environment settings are missed, the deployment may fails.
      
-5. Click **Create Web Service**. After the build, the app will be at `https://<name>.onrender.com`.
+6. Click **Create Web Service**. After the build, the app will be at `https://<name>.onrender.com`.
 
 Free plan: app sleeps after ~15 min of no traffic; first request may take 30–60s to wake.
 Now the web service is deployed on render via this repository, check deployment.
