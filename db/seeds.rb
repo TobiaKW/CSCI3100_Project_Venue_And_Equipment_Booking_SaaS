@@ -37,7 +37,7 @@ User.find_or_create_by!(email: 'kevinwong391@gmail.com') do |user|
   user.department = Department.find_by!(name: 'Engineering')
 end
 
-User.find_or_create_by!(email: 'useyouremail@gmail.com') do |user|
+User.find_or_create_by!(email: 'jackwong1637@gmail.com') do |user|
   user.name = 'Uwide Admin User'
   user.password = 'dev1234'
   user.role = 'admin'
