@@ -44,7 +44,9 @@ This repository contains academic work and is published for record and reference
 2. Register SendGrid Account and validate your email
 
 3. Set up a Redis database and Postgre Database in Render
+
    To create Redis database, **New → Key Value**, choose the same project of the web deployment. Maxmemory policy choose `noeviction` 
+
    To create Redis database, **New → Postgres**, choose the same project of the web deployment. Version=18.
 
 4. Deploy Web service to Render
@@ -76,7 +78,7 @@ You shd have the 3 services below on Render:
 3. Redis Database
 
 
-## Database PSQL
+## Database PSQL (Only for local)
 
 connecting
 
@@ -116,35 +118,6 @@ WHERE email = 'abc@example.com';
 DELETE FROM users
 WHERE email = 'abc@example.com';
 ```
-
-## Notes when you need rebuild the deployment database
-
-for local server database:
-
-```
-bin/rails db:drop db:create db:migrate db:seed
-```
-
-for Render server:
-
- 1. Update render.yaml to use db:reset:
-
- startCommand: 
-
- ```
- "DISABLE_DATABASE_ENVIRONMENT_CHECK=1 bin/rails db:reset && bin/rails server -p $PORT -e production"
- ```
-
- 1. Deploy once (this will wipe and regenerate everything)
- 2. Then switch it back to safe mode:
-
- startCommand: 
-
- ```
- "bin/rails db:migrate && bin/rails db:seed && bin/rails server -p $PORT -e production"
- ```
- 1. Deploy again
-
 
 ## ActionCable troubleshooting (real-time updates)
 
