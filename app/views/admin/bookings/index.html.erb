@@ -66,18 +66,20 @@
   </section>
 
   <!-- Charts Section -->
-  <section>
-    <h2>Bookings by Status</h2>
-    <%= pie_chart @bookings_by_status, library: { pieHole: 0.4 } %>
-  </section>
+  <div class="charts-grid">
+    <section>
+      <h2>Bookings by Status</h2>
+      <%= pie_chart @bookings_by_status, library: { pieHole: 0.4 } %>
+    </section>
 
-  <section>
-    <h2>Booking Trends</h2>
-    <%= line_chart @booking_trends, library: { curveType: "function" } %>
-  </section>
+    <section>
+      <h2>Booking Trends</h2>
+      <%= line_chart @booking_trends, library: { curveType: "function" } %>
+    </section>
 
-  <section>
-    <h2>Top Resources</h2>
-    <%= bar_chart @resource_utilization %>
-  </section>
+    <section>
+      <h2>Top Resources</h2>
+      <%= bar_chart @resource_utilization %>
+    </section>
+  </div>
 </div>
