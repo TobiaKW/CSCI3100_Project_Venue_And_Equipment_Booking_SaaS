@@ -1,14 +1,16 @@
-# CSCI3100 Group project<br>CUHK Venue and Equipment Booking SaaS
+The Chinese University of Hong Kong\
+2025-26 Term 2&emsp;CSCI3100 Software Engineering\
+Project
+# CUHK Venue and Equipment Booking SaaS
 
-Course project @CUHK 2026 Spring
-
-Members:
-
-- Wong Cheuk Yin (1155192671)   https://github.com/TobiaKW
-- Li Yun Sum (1155212047)   https://github.com/Samuelliys
-- Wong Sheung Chit (1155212592)   https://github.com/jw1101
-- Hsieh Chong Ho (1155213925)   https://github.com/Qwerty-Pi
-- Ng Shing Hin (1155214379) https://github.com/Eason2123 (hithub10)
+## Team Members
+| Student ID | Name | GitHub Account |
+|---|---|---|
+| Wong Cheuk Yin | 1155192671 | [TobiaKW](https://github.com/TobiaKW)
+| Li Yun Sum | 1155212047 | [Samuelliys](https://github.com/Samuelliys)
+| Wong Sheung Chit | 1155212592 | [jw1101](https://github.com/jw1101)
+| Hsieh Chong Ho | 1155213925 | [Qwerty-Pi](https://github.com/Qwerty-Pi)
+| Ng Shing Hin | 1155214379 | [Eason2123](https://github.com/Eason2123) (also [hithub10](https://github.com/hithub10))
 
 ## Basic Features
 | Feature Name | Primary Developer | Secondary Developer | Notes |
@@ -20,6 +22,7 @@ Members:
 | Admin Dashboard & Charts | Wong Cheuk Yin | | Chartkick with Redis caching |
 | Testing | Hsieh Chong Ho | Li Yun Sum | Rspec & Cucumber |
 | Responsive Layout | Wong Sheung Chit |  | CSS Media Queries |
+| Extra Appearance Feature | Wong Sheung Chit |  | Light / Dark Mode, Colour Theme |
 | Demo Video | Wong Sheung Chit |  | Recording, Narration & Editing |
 
 ## N-1 Advanced Features
@@ -29,10 +32,6 @@ Members:
 | Email Notifications | Wong Cheuk Yin | | Sendgrid Mailer |
 | Google Maps Integration | Ng Shing Hin | | Google Map API |
 | Resource Search & Filtering | Hsieh Chong Ho | Wong Cheuk Yin | Search by Multiple Criteria, Fuzzy Search |
-
-
-## Disclaimer
-This repository contains academic work and is published for record and reference purposes only. Do not copy or reuse the code as it may constitute academic misconduct. The code is specific to our course project and should be used solely for learning and understanding the concepts. For your own good, please do your project with your own understanding and knowledge. We are not responsible for any academic misconduct caused by the code in this repository.
 
 ## Setup Guide
 
@@ -77,14 +76,14 @@ You shd have the 3 services below on Render:
 
 ## Database PSQL (Only for local)
 
-connecting
+Connecting
 
 ```bash
 psql -d proj_development        # connect to DB
 \q                              # quit
 ```
 
-See structure
+See Structure
 
 ```
 \dt                             -- list tables
@@ -103,7 +102,7 @@ SELECT COUNT(*) FROM bookings;  -- how many rows
 SELECT id, name, email, role, department_id  FROM users;
 ```
 
-update/insert/delete rows
+Update / Insert / Delete rows
 
 ```sql
 INSERT INTO departments (name) VALUES ('Engineering');
@@ -118,3 +117,6 @@ WHERE email = 'abc@example.com';
 
 ## SimpleCov Report
 ![](./SimpleCov%20Report.png)
+
+## Disclaimer
+This repository contains academic work and is published for record and reference purposes only. Do not copy or reuse the code as it may constitute academic misconduct. The code is specific to our course project and should be used solely for learning and understanding the concepts. For your own good, please do your project with your own understanding and knowledge. We are not responsible for any academic misconduct caused by the code in this repository.
