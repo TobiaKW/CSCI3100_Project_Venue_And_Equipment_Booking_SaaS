@@ -390,7 +390,7 @@ Booking_list.each do |attr|
       resource: resource,
       start_time: start_at,
       end_time: end_at,
-      status: 'confirmed'
+      status: 'approved'
     )
     booking.save(validate: false)
 end
@@ -427,10 +427,10 @@ if rooms.any? && equipment.any? && users.any? && departments.any?
         resource = all_resources.sample
         user = dept_users.sample
 
-        # Randomly pick status with more weight on confirmed
+        # Randomly pick status with more weight on approved
         status_rand = rand(100)
         if status_rand < 70
-          status = 'confirmed'
+          status = 'approved'
         elsif status_rand < 85
           status = 'pending'
         else
