@@ -1,4 +1,14 @@
 require 'simplecov'
+
+unless SimpleCov.running
+  SimpleCov.start 'rails' do
+    coverage_dir 'coverage/cucumber'
+    command_name 'Cucumber'
+    add_filter '/spec/'
+    add_filter '/test/'
+  end
+end
+
 SimpleCov.start 'rails' do
   coverage_dir 'coverage/cucumber' # Optional: Separate folder
   add_filter '/spec/' # Optional: Filter out specs
