@@ -16,7 +16,7 @@ class Resource < ApplicationRecord
     scored_resources = resources
       .select("*, #{similarity} AS score")
       .where("#{similarity} > 0.01")
-      .order(:score => :desc)
+      .order(score: :desc)
     scored_resources.load
   end
 end

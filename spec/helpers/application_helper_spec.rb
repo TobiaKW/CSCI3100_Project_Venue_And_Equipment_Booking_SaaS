@@ -4,7 +4,7 @@ require 'webmock/rspec'
 RSpec.describe ApplicationHelper, type: :helper do
   let(:api_key) { "test_google_key" }
   let(:building_map) { { "ICC" => "International Commerce Centre" } }
-  
+
   # Mock the API Key and the Building Map before each test
   before do
     stub_const('ENV', ENV.to_h.merge("GOOGLE_MAPS_API_KEY" => api_key))
@@ -23,7 +23,7 @@ RSpec.describe ApplicationHelper, type: :helper do
           .with(query: hash_including(address: "International Commerce Centre, Hong Kong"))
           .to_return(status: 200, body: {
             status: "OK",
-            results: [{ geometry: { location: { lat: lat, lng: lng } } }]
+            results: [ { geometry: { location: { lat: lat, lng: lng } } } ]
           }.to_json)
 
         expect(helper.resource_map_query(resource)).to eq("International Commerce Centre, Hong Kong")
@@ -37,7 +37,7 @@ RSpec.describe ApplicationHelper, type: :helper do
           .with(query: hash_including(address: "International Commerce Centre, Hong Kong"))
           .to_return(status: 200, body: {
             status: "OK",
-            results: [{ geometry: { location: { lat: 0, lng: 0 } } }] # No match
+            results: [ { geometry: { location: { lat: 0, lng: 0 } } } ] # No match
           }.to_json)
 
         # Stub the fallback address (the loop continues)
@@ -45,7 +45,7 @@ RSpec.describe ApplicationHelper, type: :helper do
           .with(query: hash_including(address: "International Commerce Centre"))
           .to_return(status: 200, body: {
             status: "OK",
-            results: [{ geometry: { location: { lat: 0, lng: 0 } } }] # Still no match
+            results: [ { geometry: { location: { lat: 0, lng: 0 } } } ] # Still no match
           }.to_json)
 
         expect(helper.resource_map_query(resource)).to eq("#{lat},#{lng}")
@@ -64,11 +64,11 @@ RSpec.describe ApplicationHelper, type: :helper do
   describe "#coordinates_match?" do
     it "returns true if coordinates are within $0.0001$ degrees" do
       # 22.3033 vs 22.30330001
-      expect(helper.send(:coordinates_match?, [22.3033, 114.1601], 22.30330001, 114.1601)).to be true
+      expect(helper.send(:coordinates_match?, [ 22.3033, 114.1601 ], 22.30330001, 114.1601)).to be true
     end
 
     it "returns false if coordinates are too far apart" do
-      expect(helper.send(:coordinates_match?, [22.3033, 114.1601], 22.4, 114.2)).to be false
+      expect(helper.send(:coordinates_match?, [ 22.3033, 114.1601 ], 22.4, 114.2)).to be false
     end
   end
 end

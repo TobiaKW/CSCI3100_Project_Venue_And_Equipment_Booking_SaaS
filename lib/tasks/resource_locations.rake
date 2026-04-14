@@ -33,7 +33,7 @@ namespace :resource_locations do
     location = payload["results"].first.dig("geometry", "location")
     return nil unless location
 
-    [location["lat"], location["lng"]]
+    [ location["lat"], location["lng"] ]
   rescue JSON::ParserError, StandardError
     nil
   end

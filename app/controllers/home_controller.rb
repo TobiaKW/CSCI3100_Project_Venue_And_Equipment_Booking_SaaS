@@ -6,7 +6,7 @@ class HomeController < ApplicationController
     @resources = Resource.all
 
     # Filter by rtype (room/equipment)
-    @resources = @resources.where(rtype: (if params[:rtype] then params[:rtype] else 'room' end))
+    @resources = @resources.where(rtype: (if params[:rtype] then params[:rtype] else "room" end))
 
     # Filter by department
     if params[:department_id].present?
@@ -22,10 +22,10 @@ class HomeController < ApplicationController
     end
 
     # Filter by seat type
-    if params[:seat_type].present? and params[:seat_type] != 'All Seat Types'
+    if params[:seat_type].present? and params[:seat_type] != "All Seat Types"
       @resources = @resources.where("seat_type = ? or rtype = 'equipment'", params[:seat_type])
     end
-    
+
     # Filter and sort by similarity of name
     if params[:search].present?
       @resources = Resource.by_similarity @resources, params[:search]

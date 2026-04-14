@@ -4,10 +4,10 @@ require 'webmock/cucumber'
 Before do
   # Ensure an API key exists so the helper's blank? check doesn't trigger
   ENV["GOOGLE_MAPS_API_KEY"] ||= "test_key"
-  
+
   @helper = Object.new
   @helper.extend(ApplicationHelper)
-  
+
   # Default stub: Empty building map
   allow(@helper).to receive(:building_names_map).and_return({})
 end
@@ -29,23 +29,23 @@ end
 
 Given('the Google Geocoding API returns {float}, {float} for {string}') do |lat, lng, address|
   api_key = ENV["GOOGLE_MAPS_API_KEY"]
-  
+
   # Using hash_including is much more robust for URL parameters
   stub_request(:get, "https://maps.googleapis.com/maps/api/geocode/json")
     .with(query: hash_including({ "address" => address, "key" => api_key }))
     .to_return(status: 200, body: {
       status: "OK",
-      results: [{
-        geometry: { 
-          location: { lat: lat, lng: lng } 
+      results: [ {
+        geometry: {
+          location: { lat: lat, lng: lng }
         }
-      }]
+      } ]
     }.to_json)
 end
 
 Then('the map query for this resource should be {string}') do |expected_query|
   actual_query = @helper.resource_map_query(@resource)
-  
+
   # Helpful debug print if the test fails again
   if actual_query != expected_query
     puts "\nDEBUG: Expected '#{expected_query}', but got '#{actual_query}'"
